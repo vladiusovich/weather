@@ -1,8 +1,8 @@
 import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
 import React, { useRef, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import IconButton from '../ui/iconButton/IconButton';
-import Button from '../ui/button/Button';
+import { Button, ButtonText } from '../ui/button';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 interface CameraPreviewProps {
     onPressCapture: (url: string) => void;
@@ -23,7 +23,9 @@ const CameraPreview: React.FC<CameraPreviewProps> = ({
         return (
             <View style={styles.container}>
                 <Text style={styles.message}>We need your permission to show the camera</Text>
-                <Button label="Grant permission" onPress={requestPermission} />
+                <Button size="md" variant="solid" onPress={requestPermission}>
+                    <ButtonText>Grant permission</ButtonText>
+                </Button>
             </View>
         );
     }
@@ -47,8 +49,14 @@ const CameraPreview: React.FC<CameraPreviewProps> = ({
         <View style={styles.container}>
             <CameraView ref={cameraRef} style={styles.camera} facing={cameraType} />
             <View style={styles.buttonControllers}>
-                <IconButton icon="cameraswitch" label="Flip" onPress={onFlipCamera} />
-                <IconButton icon="camera-alt" label="Capture" onPress={onCapture} />
+                <Button onPress={onFlipCamera}>
+                    <MaterialIcons name="cameraswitch" size={24} color="#fff" />
+                    <ButtonText>Flip</ButtonText>
+                </Button>
+                <Button variant="solid" onPress={onCapture}>
+                    <MaterialIcons name="camera-alt" size={24} color="#fff" />
+                    <ButtonText>Capture</ButtonText>
+                </Button>
             </View>
         </View>
     );

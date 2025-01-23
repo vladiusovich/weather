@@ -6,16 +6,16 @@ import * as MediaLibrary from 'expo-media-library';
 import { type ImageSource } from "expo-image";
 import { captureRef } from 'react-native-view-shot';
 import domtoimage from 'dom-to-image';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
-import Button from '@/components/ui/button/Button';
 import ImageViewer from '@/components/ImageViewer';
-import IconButton from '@/components/ui/iconButton/IconButton';
-import CircleButton from '@/components/ui/button/CircleButton';
 import EmojiPicker from '@/components/emojiPicker/EmojiPicker';
 import EmojiList from '@/components/emojiPicker/EmojiList';
 import EmojiSticker from '@/components/emojiPicker/EmojiSticker';
 import CameraPreview from '@/components/camera/CameraPreview';
 import React from 'react';
+import { Button, ButtonIcon, ButtonText } from '@/components/ui/button';
+import { InfoIcon, AddIcon } from "@/components/ui/icon"
 
 const PlaceholderImage = require('@/assets/images/background-image.png');
 
@@ -120,16 +120,33 @@ const PhotoSticker = () => {
             {showAppOptions ? (
                 <View style={styles.optionsContainer}>
                     <View style={styles.optionsRow}>
-                        <IconButton icon="refresh" label="Reset" onPress={onReset} />
-                        <CircleButton onPress={onAddSticker} />
-                        <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync} />
+                        <Button variant="solid" onPress={onReset}>
+                            <MaterialIcons name="refresh" size={24} color="#fff" />
+                            <ButtonText>Reset</ButtonText>
+                        </Button>
+
+                        <Button variant="solid" onPress={onAddSticker}>
+                            <ButtonIcon as={AddIcon} className="mr-2" />
+                        </Button>
+
+                        <Button variant="solid" onPress={onAddSticker}>
+                            <MaterialIcons name="save-alt" size={24} color="#fff" />
+                            <ButtonText>Save</ButtonText>
+                        </Button>
                     </View>
                 </View>
             ) : (
                 <View style={styles.footerContainer}>
-                    <Button icon="picture-in-picture" label="Choose a photo" onPress={pickImageAsync} />
-                    <Button label="Use this photo" onPress={() => setShowAppOptions(true)} />
-                    <Button label="Use camera" onPress={() => onUseCamera()} />
+                    <Button variant="solid" onPress={pickImageAsync}>
+                        <ButtonIcon as={InfoIcon} className="mr-2" />
+                        <ButtonText>Choose a photo</ButtonText>
+                    </Button>
+                    <Button size="md" variant="solid" action="secondary" onPress={() => onUseCamera()}>
+                        <ButtonText>Use camera</ButtonText>
+                    </Button>
+                    <Button size="md" variant="outline" action="secondary" onPress={() => setShowAppOptions(true)}>
+                        <ButtonText>Use this photo</ButtonText>
+                    </Button>
                 </View>
             )}
             <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
