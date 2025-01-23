@@ -127,7 +127,7 @@ const PhotoSticker = () => {
                 </View>
             ) : (
                 <View style={styles.footerContainer}>
-                    <Button theme="primary" label="Choose a photo" onPress={pickImageAsync} />
+                    <Button icon="picture-in-picture" label="Choose a photo" onPress={pickImageAsync} />
                     <Button label="Use this photo" onPress={() => setShowAppOptions(true)} />
                     <Button label="Use camera" onPress={() => onUseCamera()} />
                 </View>
@@ -151,6 +151,8 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     footerContainer: {
+        width: '90%',
+        gap: 10,
         flex: 1 / 3,
         alignItems: 'center',
     },

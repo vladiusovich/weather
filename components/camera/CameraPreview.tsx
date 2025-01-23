@@ -1,7 +1,8 @@
 import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
 import React, { useRef, useState } from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import IconButton from '../ui/iconButton/IconButton';
+import Button from '../ui/button/Button';
 
 interface CameraPreviewProps {
     onPressCapture: (url: string) => void;
@@ -22,7 +23,7 @@ const CameraPreview: React.FC<CameraPreviewProps> = ({
         return (
             <View style={styles.container}>
                 <Text style={styles.message}>We need your permission to show the camera</Text>
-                <Button onPress={requestPermission} title="grant permission" />
+                <Button label="Grant permission" onPress={requestPermission} />
             </View>
         );
     }
@@ -44,12 +45,11 @@ const CameraPreview: React.FC<CameraPreviewProps> = ({
 
     return (
         <View style={styles.container}>
-            <CameraView ref={cameraRef} style={styles.camera} facing={cameraType}>
-                <View style={styles.buttonContainer}>
-                    <IconButton icon="cameraswitch" label="Flip" onPress={onFlipCamera} />
-                    <IconButton icon="camera-alt" label="Capture" onPress={onCapture} />
-                </View>
-            </CameraView>
+            <CameraView ref={cameraRef} style={styles.camera} facing={cameraType} />
+            <View style={styles.buttonControllers}>
+                <IconButton icon="cameraswitch" label="Flip" onPress={onFlipCamera} />
+                <IconButton icon="camera-alt" label="Capture" onPress={onCapture} />
+            </View>
         </View>
     );
 };
@@ -68,13 +68,18 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
-    buttonContainer: {
+    buttonControllers: {
         position: 'absolute',
-        bottom: 20,
+        bottom: 0,
+        paddingTop: 20,
+        paddingBottom: 20,
+        borderTopRightRadius: 10,
+        borderTopLeftRadius: 10,
         width: '100%',
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "stretch",
+        backgroundColor: '#25292e80',
     },
     button: {
         padding: 10,
