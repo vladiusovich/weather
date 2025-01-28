@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button, ButtonText } from '../ui/button';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { VStack } from '../ui/vstack';
 
 interface CameraPreviewProps {
     onPressCapture: (url: string) => void;
@@ -46,16 +47,20 @@ const CameraPreview: React.FC<CameraPreviewProps> = ({
     }
 
     return (
-        <View style={styles.container}>
+        <View className='flex-1' style={styles.container}>
             <CameraView ref={cameraRef} style={styles.camera} facing={cameraType} />
             <View style={styles.buttonControllers}>
-                <Button onPress={onFlipCamera}>
-                    <MaterialIcons name="cameraswitch" size={24} color="#fff" />
-                    <ButtonText>Flip</ButtonText>
+                <Button variant="link" onPress={onFlipCamera}>
+                    <VStack space="sm" className="">
+                        <MaterialIcons name="cameraswitch" size={24} color="#fff" />
+                        <ButtonText variant="solid">Flip</ButtonText>
+                    </VStack>
                 </Button>
-                <Button variant="solid" onPress={onCapture}>
-                    <MaterialIcons name="camera-alt" size={24} color="#fff" />
-                    <ButtonText>Capture</ButtonText>
+                <Button variant="link" onPress={onCapture}>
+                    <VStack space="sm">
+                        <MaterialIcons name="camera-alt" size={24} color="#fff" />
+                        <ButtonText variant="solid">Capture</ButtonText>
+                    </VStack>
                 </Button>
             </View>
         </View>

@@ -4,8 +4,6 @@ import { useState, useRef } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import * as MediaLibrary from 'expo-media-library';
 import { type ImageSource } from "expo-image";
-import { captureRef } from 'react-native-view-shot';
-import domtoimage from 'dom-to-image';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 import ImageViewer from '@/components/ImageViewer';
@@ -16,6 +14,8 @@ import CameraPreview from '@/components/camera/CameraPreview';
 import React from 'react';
 import { Button, ButtonIcon, ButtonText } from '@/components/ui/button';
 import { InfoIcon, AddIcon } from "@/components/ui/icon"
+import { saveFileNative, saveFileWeb } from '@/utils/fileSystemHelper';
+import useToastNotification from '@/utils/useToastNotification';
 
 const PlaceholderImage = require('@/assets/images/background-image.png');
 
@@ -29,12 +29,14 @@ const PhotoSticker = () => {
     const [status, requestPermission] = MediaLibrary.usePermissions();
     const imageRef = useRef<View>(null);
 
+    const toastNotification = useToastNotification();
+
     if (status === null) {
         requestPermission();
     }
 
     const pickImageAsync = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
+        const result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ['images'],
             allowsEditing: true,
             quality: 1,
@@ -44,7 +46,11 @@ const PhotoSticker = () => {
             setSelectedImage(result.assets[0].uri);
             setShowAppOptions(true);
         } else {
-            alert('You did not select any image.');
+            toastNotification.notify({
+                title: "Upppsss",
+                description: "You did not select any image",
+                action: "warning",
+            });
         }
     };
 
@@ -73,36 +79,17 @@ const PhotoSticker = () => {
     };
 
     const onSaveImageAsync = async () => {
-        if (Platform.OS !== 'web') {
-            try {
-                const localUri = await captureRef(imageRef, {
-                    height: 440,
-                    quality: 1,
-                });
-
-                await MediaLibrary.saveToLibraryAsync(localUri);
-                if (localUri) {
-                    alert('Saved!');
-                }
-            } catch (e) {
-                console.log(e);
-            }
+        if (Platform.OS === 'web') {
+            await saveFileWeb(imageRef.current);
         } else {
-            try {
-                const dataUrl = await domtoimage.toJpeg(imageRef.current, {
-                    quality: 0.95,
-                    width: 320,
-                    height: 440,
-                });
-
-                let link = document.createElement('a');
-                link.download = 'sticker-smash.jpeg';
-                link.href = dataUrl;
-                link.click();
-            } catch (e) {
-                console.log(e);
-            }
+            await saveFileNative(imageRef);
         }
+
+        toastNotification.notify({
+            title: "Image saved",
+            description: "Your image has been saved successfully",
+            action: "info",
+        });
     };
 
     if (isUseCamera) {
@@ -129,7 +116,7 @@ const PhotoSticker = () => {
                             <ButtonIcon as={AddIcon} className="mr-2" />
                         </Button>
 
-                        <Button variant="solid" onPress={onAddSticker}>
+                        <Button variant="solid" onPress={onSaveImageAsync}>
                             <MaterialIcons name="save-alt" size={24} color="#fff" />
                             <ButtonText>Save</ButtonText>
                         </Button>
