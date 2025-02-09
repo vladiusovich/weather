@@ -15,16 +15,16 @@ const OptionsActions: React.FC<OptionsActionsProps> = ({
     onAddSticker,
     onSaveImage,
 }) => (
-    <VStack space="sm" className="w-5/6">
-        <Button variant="solid" onPress={onReset}>
-            <MaterialIcons name="refresh" size={24} color="#fff" />
+    <VStack space='sm' className='w-5/6'>
+        <Button variant='solid' onPress={onReset}>
+            <MaterialIcons name='refresh' size={24} color='#fff' />
             <ButtonText>Reset</ButtonText>
         </Button>
-        <Button variant="solid" onPress={onAddSticker}>
-            <ButtonIcon as={AddIcon} className="mr-2" />
+        <Button variant='solid' onPress={onAddSticker}>
+            <ButtonIcon as={AddIcon} className='mr-2' />
         </Button>
-        <Button variant="solid" onPress={onSaveImage}>
-            <MaterialIcons name="save-alt" size={24} color="#fff" />
+        <Button variant='solid' onPress={onSaveImage}>
+            <MaterialIcons name='save-alt' size={24} color='#fff' />
             <ButtonText>Save</ButtonText>
         </Button>
     </VStack>

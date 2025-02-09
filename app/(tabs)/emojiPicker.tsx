@@ -3,11 +3,11 @@ import * as ImagePicker from 'expo-image-picker';
 import { useState, useRef, useCallback } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { type ImageSource } from 'expo-image';
-import ImageViewer from '@/components/ImageViewer';
+import ImageViewer from '@/components/emojiPicker/ImageViewer';
 import EmojiPickerModal from '@/components/emojiPicker/EmojiPickerModal';
 import EmojiList from '@/components/emojiPicker/EmojiList';
 import EmojiSticker from '@/components/emojiPicker/EmojiSticker';
-import CameraScreen from '@/components/camera/CameraScreen';
+import CameraScreen from '@/components/сameraScreen/CameraScreen';
 import React from 'react';
 import { saveFileAsync } from '@/utils/fileSystemHelper';
 import useToastNotification from '@/hooks/useToastNotification';
@@ -94,13 +94,13 @@ const EmojiPicker = () => {
                 onPressCapture={handleCapture}
                 onClose={() => setIsUseCamera(false)}
             />
-            <View className="flex-1 bg-[#25292e]">
-                <View className="w-full flex-1">
+            <View className='flex-1 bg-[#25292e]'>
+                <View className='w-full flex-1'>
                     <GestureHandlerRootView>
                         <View
                             ref={imageRef}
                             collapsable={false}
-                            className="flex items-center">
+                            className='flex-1 items-center'>
                             <ImageViewer
                                 imgSource={PlaceholderImage}
                                 selectedImage={selectedImage}
@@ -114,7 +114,7 @@ const EmojiPicker = () => {
                         </View>
                     </GestureHandlerRootView>
                 </View>
-                <View className="flex items-center p-4">
+                <View className='flex items-center p-4'>
                     {showAppOptions ? (
                         <OptionsActions
                             onReset={handleReset}

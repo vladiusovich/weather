@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import React from 'react';
 import { Image, type ImageSource } from 'expo-image';
 
 type Props = {
@@ -6,16 +7,20 @@ type Props = {
     selectedImage?: string;
 };
 
-export default function ImageViewer({ imgSource, selectedImage }: Props) {
+const ImageViewer: React.FC<Props> = ({
+    imgSource,
+    selectedImage,
+}: Props): JSX.Element => {
     const imageSource = selectedImage ? { uri: selectedImage } : imgSource;
-
     return <Image source={imageSource} style={styles.image} />;
-}
+};
 
 const styles = StyleSheet.create({
     image: {
-        width: 320,
-        height: 440,
-        borderRadius: 18,
+        flex: 1,
+        width: '85%',
+        borderRadius: 8,
     },
 });
+
+export default ImageViewer;

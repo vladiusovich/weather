@@ -22,7 +22,7 @@ export default function EmojiList({ onSelect, onCloseModal }: Props) {
             horizontal
             showsHorizontalScrollIndicator={Platform.OS === 'web'}
             data={emoji}
-            contentContainerClassName="rounded-t-lg px-5 flex-row items-center justify-between"
+            contentContainerClassName='rounded-t-lg px-5 flex-row items-center justify-between'
             renderItem={({ item, index }) => (
                 <Pressable
                     onPress={() => {

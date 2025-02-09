@@ -58,23 +58,23 @@ const CameraScreen: React.FC<CameraPreviewProps> = ({
             <Portal
                 isOpen={isOpen && permission.granted}
                 style={styles.container}>
-                <View className="flex-1 justify-center items-center">
+                <View className='flex-1 justify-center items-center'>
                     <CameraView
                         ref={cameraRef}
                         style={styles.container}
                         facing={cameraType}
                     />
-                    <View className="absolute bottom-0 pt-5 pb-5 rounded-t-lg w-full flex flex-row justify-around items-stretch bg-[#25292e80]">
-                        <Button variant="link" onPress={onFlipCamera}>
-                            <VStack space="sm" className="">
-                                <MaterialIcons name="cameraswitch" size={24} />
-                                <ButtonText variant="solid">Flip</ButtonText>
+                    <View className='absolute bottom-0 pt-5 pb-5 rounded-t-lg w-full flex flex-row justify-around items-stretch bg-[#25292e80]'>
+                        <Button variant='link' onPress={onFlipCamera}>
+                            <VStack space='sm' className=''>
+                                <MaterialIcons name='cameraswitch' size={24} />
+                                <ButtonText variant='solid'>Flip</ButtonText>
                             </VStack>
                         </Button>
-                        <Button variant="link" onPress={onCapture}>
-                            <VStack space="sm" className="items-center">
-                                <MaterialIcons name="camera-alt" size={24} />
-                                <ButtonText variant="solid">Capture</ButtonText>
+                        <Button variant='link' onPress={onCapture}>
+                            <VStack space='sm' className='items-center'>
+                                <MaterialIcons name='camera-alt' size={24} />
+                                <ButtonText variant='solid'>Capture</ButtonText>
                             </VStack>
                         </Button>
                     </View>

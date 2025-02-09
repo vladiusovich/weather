@@ -21,25 +21,25 @@ const CameraPermissionDialog: React.FC<CameraPermissionDialogProps> = ({
     onClose,
 }) => {
     return (
-        <AlertDialog isOpen={isOpen} onClose={onClose} size="md">
+        <AlertDialog isOpen={isOpen} onClose={onClose} size='md'>
             <AlertDialogBackdrop />
             <AlertDialogContent>
                 <AlertDialogHeader>
                     <Heading
-                        className="text-typography-950 font-semibold"
-                        size="md">
+                        className='text-typography-950 font-semibold'
+                        size='md'>
                         We need your permission to show the camera
                     </Heading>
                 </AlertDialogHeader>
-                <AlertDialogFooter className="">
+                <AlertDialogFooter className=''>
                     <Button
-                        variant="outline"
-                        action="secondary"
+                        variant='outline'
+                        action='secondary'
                         onPress={onClose}
-                        size="sm">
+                        size='sm'>
                         <ButtonText>Cancel</ButtonText>
                     </Button>
-                    <Button size="sm" onPress={() => onSuccess()}>
+                    <Button size='sm' onPress={() => onSuccess()}>
                         <ButtonText>Grant permission</ButtonText>
                     </Button>
                 </AlertDialogFooter>

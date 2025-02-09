@@ -7,15 +7,15 @@ import React from 'react';
 export default function RootLayout() {
     return (
         <>
-            <GluestackUIProvider mode="system">
+            <GluestackUIProvider mode='system'>
                 <Stack>
                     <Stack.Screen
-                        name="(tabs)"
+                        name='(tabs)'
                         options={{ headerShown: false }}
                     />
-                    <Stack.Screen name="+not-found" />
+                    <Stack.Screen name='+not-found' />
                 </Stack>
-                <StatusBar style="auto" />
+                <StatusBar style='auto' />
             </GluestackUIProvider>
         </>
     );

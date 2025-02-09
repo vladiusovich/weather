@@ -180,9 +180,9 @@ const ToastTitle = React.forwardRef<
         <Text
             {...props}
             ref={ref}
-            aria-live="assertive"
-            aria-atomic="true"
-            role="alert"
+            aria-live='assertive'
+            aria-atomic='true'
+            role='alert'
             className={toastTitleStyle({
                 size,
                 class: className,

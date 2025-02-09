@@ -17,7 +17,7 @@ export default function TabLayout() {
                 },
             }}>
             <Tabs.Screen
-                name="index"
+                name='index'
                 options={{
                     title: 'About',
                     tabBarIcon: ({ color, focused }) => (
@@ -34,7 +34,7 @@ export default function TabLayout() {
                 }}
             />
             <Tabs.Screen
-                name="emojiPicker"
+                name='emojiPicker'
                 options={{
                     title: 'Photo Sticker',
                     tabBarIcon: ({ color, focused }) => (
