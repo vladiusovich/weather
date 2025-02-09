@@ -1,15 +1,19 @@
-
-
 import React from 'react';
 import { Button, ButtonText } from '../ui/button';
-import { AlertDialog, AlertDialogBackdrop, AlertDialogContent, AlertDialogFooter, AlertDialogHeader } from '../ui/alert-dialog';
+import {
+    AlertDialog,
+    AlertDialogBackdrop,
+    AlertDialogContent,
+    AlertDialogFooter,
+    AlertDialogHeader,
+} from '../ui/alert-dialog';
 import { Heading } from '../ui/heading';
 
 interface CameraPermissionDialogProps {
     isOpen: boolean;
     onSuccess: () => void;
     onClose: () => void;
-};
+}
 
 const CameraPermissionDialog: React.FC<CameraPermissionDialogProps> = ({
     isOpen,
@@ -21,7 +25,9 @@ const CameraPermissionDialog: React.FC<CameraPermissionDialogProps> = ({
             <AlertDialogBackdrop />
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <Heading className="text-typography-950 font-semibold" size="md">
+                    <Heading
+                        className="text-typography-950 font-semibold"
+                        size="md">
                         We need your permission to show the camera
                     </Heading>
                 </AlertDialogHeader>
@@ -30,8 +36,7 @@ const CameraPermissionDialog: React.FC<CameraPermissionDialogProps> = ({
                         variant="outline"
                         action="secondary"
                         onPress={onClose}
-                        size="sm"
-                    >
+                        size="sm">
                         <ButtonText>Cancel</ButtonText>
                     </Button>
                     <Button size="sm" onPress={() => onSuccess()}>
@@ -39,10 +44,8 @@ const CameraPermissionDialog: React.FC<CameraPermissionDialogProps> = ({
                     </Button>
                 </AlertDialogFooter>
             </AlertDialogContent>
-        </AlertDialog >
+        </AlertDialog>
     );
 };
 
 export default CameraPermissionDialog;
-
-

@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import { BackHandler } from "react-native";
+import { useEffect } from 'react';
+import { BackHandler } from 'react-native';
 
 type Params = {
     backAction: () => void;
     state: boolean;
-}
+};
 
 const useBackHandler = (params: Params) => {
     useEffect(() => {
@@ -22,7 +22,7 @@ const useBackHandler = (params: Params) => {
 
         const backHandler = BackHandler.addEventListener(
             'hardwareBackPress',
-            backAction
+            backAction,
         );
 
         return () => backHandler.remove();

@@ -1,5 +1,5 @@
 import domtoimage from 'dom-to-image';
-import { Platform, View } from "react-native"
+import { Platform, View } from 'react-native';
 import * as MediaLibrary from 'expo-media-library';
 import { captureRef } from 'react-native-view-shot';
 
@@ -10,7 +10,7 @@ const saveFileAsync = async (imageRef: React.RefObject<View>) => {
     } else {
         saveFileNative(imageRef);
     }
-}
+};
 
 const saveFileWeb = async (view: View | null) => {
     try {
@@ -27,7 +27,7 @@ const saveFileWeb = async (view: View | null) => {
     } catch (e) {
         console.error(e);
     }
-}
+};
 
 const saveFileNative = async (imageRef: React.RefObject<View>) => {
     try {
@@ -40,6 +40,6 @@ const saveFileNative = async (imageRef: React.RefObject<View>) => {
     } catch (e) {
         console.error(e);
     }
-}
+};
 
 export { saveFileAsync };
