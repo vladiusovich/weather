@@ -5,7 +5,7 @@ import { captureRef } from 'react-native-view-shot';
 
 // TODO: Implement saveFileAsync function
 const saveFileAsync = async (imageRef: React.RefObject<View>) => {
-    if (Platform.OS === "web") {
+    if (Platform.OS === 'web') {
         saveFileWeb(imageRef?.current);
     } else {
         saveFileNative(imageRef);

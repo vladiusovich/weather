@@ -12,14 +12,14 @@ interface CameraPreviewProps {
     isOpen: boolean;
     onPressCapture: (url: string) => void;
     onClose: () => void;
-};
+}
 
 const CameraScreen: React.FC<CameraPreviewProps> = ({
     isOpen,
     onPressCapture,
     onClose,
 }) => {
-    const [cameraType, setCameraType] = useState<CameraType>("back");
+    const [cameraType, setCameraType] = useState<CameraType>('back');
     const [permission, requestPermission] = useCameraPermissions();
     const cameraRef = useRef<CameraView>(null);
 
@@ -32,16 +32,16 @@ const CameraScreen: React.FC<CameraPreviewProps> = ({
         if (cameraRef) {
             const photo = await cameraRef.current?.takePictureAsync({
                 quality: 1,
-                imageType: "jpg",
+                imageType: 'jpg',
             });
 
-            onPressCapture(photo?.uri ?? "");
+            onPressCapture(photo?.uri ?? '');
         }
-    }
+    };
 
     const onFlipCamera = () => {
-        setCameraType(current => (current === 'back' ? 'front' : 'back'));
-    }
+        setCameraType((current) => (current === 'back' ? 'front' : 'back'));
+    };
 
     if (!permission) {
         return <View />;
@@ -55,10 +55,16 @@ const CameraScreen: React.FC<CameraPreviewProps> = ({
                 onClose={onClose}
             />
 
-            <Portal isOpen={isOpen && permission.granted} style={styles.container}>
-                <View className='flex-1 justify-center items-center'>
-                    <CameraView ref={cameraRef} style={styles.container} facing={cameraType} />
-                    <View className='absolute bottom-0 pt-5 pb-5 rounded-t-lg w-full flex flex-row justify-around items-stretch bg-[#25292e80]'>
+            <Portal
+                isOpen={isOpen && permission.granted}
+                style={styles.container}>
+                <View className="flex-1 justify-center items-center">
+                    <CameraView
+                        ref={cameraRef}
+                        style={styles.container}
+                        facing={cameraType}
+                    />
+                    <View className="absolute bottom-0 pt-5 pb-5 rounded-t-lg w-full flex flex-row justify-around items-stretch bg-[#25292e80]">
                         <Button variant="link" onPress={onFlipCamera}>
                             <VStack space="sm" className="">
                                 <MaterialIcons name="cameraswitch" size={24} />
@@ -66,7 +72,7 @@ const CameraScreen: React.FC<CameraPreviewProps> = ({
                             </VStack>
                         </Button>
                         <Button variant="link" onPress={onCapture}>
-                            <VStack space="sm" className='items-center'>
+                            <VStack space="sm" className="items-center">
                                 <MaterialIcons name="camera-alt" size={24} />
                                 <ButtonText variant="solid">Capture</ButtonText>
                             </VStack>
@@ -86,4 +92,3 @@ const styles = StyleSheet.create({
 });
 
 export default CameraScreen;
-

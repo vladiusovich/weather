@@ -1,8 +1,14 @@
-import { Toast, ToastTitle, ToastDescription } from "@/components/ui/toast";
-import React from "react";
+import { Toast, ToastTitle, ToastDescription } from '@/components/ui/toast';
+import React from 'react';
 
-export type VariantType = "outline" | "solid" | undefined;
-export type ToastNotificationActionType = "success" | "info" | "error" | "warning" | "muted" | undefined;
+export type VariantType = 'outline' | 'solid' | undefined;
+export type ToastNotificationActionType =
+    | 'success'
+    | 'info'
+    | 'error'
+    | 'warning'
+    | 'muted'
+    | undefined;
 
 export interface ToastNotificationPropsType {
     id: string;
@@ -21,9 +27,7 @@ const ToastNotification: React.FC<ToastNotificationPropsType> = ({
     return (
         <Toast nativeID={id} {...props}>
             <ToastTitle>{title}</ToastTitle>
-            <ToastDescription>
-                {description}
-            </ToastDescription>
+            <ToastDescription>{description}</ToastDescription>
         </Toast>
     );
 };

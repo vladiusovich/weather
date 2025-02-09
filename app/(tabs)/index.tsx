@@ -6,6 +6,6 @@ const AboutScreen = () => {
             <Text className="text-white">About screen</Text>
         </View>
     );
-}
+};
 
 export default AboutScreen;

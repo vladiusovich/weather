@@ -1,4 +1,4 @@
-import React, { } from 'react';
+import React from 'react';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Button, ButtonIcon, ButtonText } from '@/components/ui/button';
 import { AddIcon } from '@/components/ui/icon';
@@ -15,7 +15,7 @@ const OptionsActions: React.FC<OptionsActionsProps> = ({
     onAddSticker,
     onSaveImage,
 }) => (
-    <VStack space='sm' className='w-5/6'>
+    <VStack space="sm" className="w-5/6">
         <Button variant="solid" onPress={onReset}>
             <MaterialIcons name="refresh" size={24} color="#fff" />
             <ButtonText>Reset</ButtonText>
