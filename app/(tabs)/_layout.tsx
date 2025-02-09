@@ -27,7 +27,7 @@ export default function TabLayout() {
                 }}
             />
             <Tabs.Screen
-                name="photoSticker"
+                name="emojiPicker"
                 options={{
                     title: 'Photo Sticker',
                     tabBarIcon: ({ color, focused }) => (

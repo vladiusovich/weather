@@ -3,11 +3,16 @@ import { Platform, View } from "react-native"
 import * as MediaLibrary from 'expo-media-library';
 import { captureRef } from 'react-native-view-shot';
 
-const saveFileWeb = async (view: View | null) => {
-    if (Platform.OS !== "web") {
-        throw new Error("This function is only available on web");
+// TODO: Implement saveFileAsync function
+const saveFileAsync = async (imageRef: React.RefObject<View>) => {
+    if (Platform.OS === "web") {
+        saveFileWeb(imageRef?.current);
+    } else {
+        saveFileNative(imageRef);
     }
+}
 
+const saveFileWeb = async (view: View | null) => {
     try {
         const dataUrl = await domtoimage.toJpeg(view, {
             quality: 0.95,
@@ -25,9 +30,6 @@ const saveFileWeb = async (view: View | null) => {
 }
 
 const saveFileNative = async (imageRef: React.RefObject<View>) => {
-    if (Platform.OS === "web") {
-        throw new Error("This function is only available on web");
-    }
     try {
         const localUri = await captureRef(imageRef, {
             height: 440,
@@ -38,7 +40,6 @@ const saveFileNative = async (imageRef: React.RefObject<View>) => {
     } catch (e) {
         console.error(e);
     }
-
 }
 
-export { saveFileWeb, saveFileNative };
+export { saveFileAsync };
