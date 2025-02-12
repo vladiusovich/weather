@@ -1,5 +1,4 @@
 import { Tabs } from 'expo-router';
-
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function TabLayout() {
@@ -40,6 +39,23 @@ export default function TabLayout() {
                     tabBarIcon: ({ color, focused }) => (
                         <Ionicons
                             name={focused ? 'camera-sharp' : 'camera-outline'}
+                            color={color}
+                            size={24}
+                        />
+                    ),
+                }}
+            />
+            <Tabs.Screen
+                name='weather'
+                options={{
+                    title: 'Weather',
+                    tabBarIcon: ({ color, focused }) => (
+                        <Ionicons
+                            name={
+                                focused
+                                    ? 'cloud-circle'
+                                    : 'cloud-circle-outline'
+                            }
                             color={color}
                             size={24}
                         />
