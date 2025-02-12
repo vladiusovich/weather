@@ -1,9 +1,7 @@
 import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
 import React, { useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Button, ButtonText } from '../ui/button';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { VStack } from '../ui/vstack';
+import Button from '../ui/button/Button';
 import { Portal } from '../ui/portal';
 import useBackHandler from '@/hooks/useBackHandler';
 import CameraPermissionDialog from './CameraPermissionDialog';
@@ -47,6 +45,11 @@ const CameraScreen: React.FC<CameraPreviewProps> = ({
         return <View />;
     }
 
+    console.log({
+        isOpen,
+        granted: permission.granted,
+    });
+
     return (
         <>
             <CameraPermissionDialog
@@ -65,18 +68,16 @@ const CameraScreen: React.FC<CameraPreviewProps> = ({
                         facing={cameraType}
                     />
                     <View className='absolute bottom-0 pt-5 pb-5 rounded-t-lg w-full flex flex-row justify-around items-stretch bg-[#25292e80]'>
-                        <Button variant='link' onPress={onFlipCamera}>
-                            <VStack space='sm' className=''>
-                                <MaterialIcons name='cameraswitch' size={24} />
-                                <ButtonText variant='solid'>Flip</ButtonText>
-                            </VStack>
-                        </Button>
-                        <Button variant='link' onPress={onCapture}>
-                            <VStack space='sm' className='items-center'>
-                                <MaterialIcons name='camera-alt' size={24} />
-                                <ButtonText variant='solid'>Capture</ButtonText>
-                            </VStack>
-                        </Button>
+                        <Button
+                            label='Flip'
+                            variant='solid'
+                            onPress={onFlipCamera}
+                        />
+                        <Button
+                            label='Capture'
+                            variant='solid'
+                            onPress={onCapture}
+                        />
                     </View>
                 </View>
             </Portal>

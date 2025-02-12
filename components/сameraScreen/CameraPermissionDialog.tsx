@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button, ButtonText } from '../ui/button';
 import {
     AlertDialog,
     AlertDialogBackdrop,
@@ -7,7 +6,8 @@ import {
     AlertDialogFooter,
     AlertDialogHeader,
 } from '../ui/alert-dialog';
-import { Heading } from '../ui/heading';
+import { Text } from 'react-native';
+import Button from '../ui/button/Button';
 
 interface CameraPermissionDialogProps {
     isOpen: boolean;
@@ -25,23 +25,19 @@ const CameraPermissionDialog: React.FC<CameraPermissionDialogProps> = ({
             <AlertDialogBackdrop />
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <Heading
-                        className='text-typography-950 font-semibold'
-                        size='md'>
-                        We need your permission to show the camera
-                    </Heading>
+                    <Text>We need your permission to show the camera</Text>
                 </AlertDialogHeader>
                 <AlertDialogFooter className=''>
                     <Button
-                        variant='outline'
-                        action='secondary'
+                        label='Cancel'
+                        variant='secondary'
                         onPress={onClose}
-                        size='sm'>
-                        <ButtonText>Cancel</ButtonText>
-                    </Button>
-                    <Button size='sm' onPress={() => onSuccess()}>
-                        <ButtonText>Grant permission</ButtonText>
-                    </Button>
+                    />
+                    <Button
+                        label='Allow'
+                        variant='secondary'
+                        onPress={onSuccess}
+                    />
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>

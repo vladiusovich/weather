@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, ButtonIcon, ButtonText } from '@/components/ui/button';
-import { InfoIcon } from '@/components/ui/icon';
+import Button from '@/components/ui/button/Button';
 import { VStack } from '../ui/vstack';
 
 interface FooterActionsProps {
@@ -15,24 +14,13 @@ const FooterActions: React.FC<FooterActionsProps> = ({
     onUseSelectedPhoto,
 }) => (
     <VStack space='sm' className='w-5/6'>
-        <Button variant='solid' onPress={onPickImage}>
-            <ButtonIcon as={InfoIcon} className='mr-2' />
-            <ButtonText>Choose a photo</ButtonText>
-        </Button>
+        <Button label='Choose a photo' variant='solid' onPress={onPickImage} />
+        <Button label='Use camera' variant='secondary' onPress={onUseCamera} />
         <Button
-            size='md'
-            variant='solid'
-            action='secondary'
-            onPress={onUseCamera}>
-            <ButtonText>Use camera</ButtonText>
-        </Button>
-        <Button
-            size='md'
-            variant='outline'
-            action='secondary'
-            onPress={onUseSelectedPhoto}>
-            <ButtonText>Use this photo</ButtonText>
-        </Button>
+            label='Use this photo'
+            variant='secondary'
+            onPress={onUseSelectedPhoto}
+        />
     </VStack>
 );
 

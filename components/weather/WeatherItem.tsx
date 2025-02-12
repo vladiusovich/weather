@@ -1,9 +1,8 @@
 import { VStack } from '@/components/ui/vstack';
-import { View } from 'react-native';
 import { Text } from '@/components/ui/text';
 import { CurrentWeatherDataType } from '@/services/weather/types/WeatherDataType';
 import { WeatherVariableType } from '@/services/weather/types/MeteoRequestType';
-import styles from './WeatherItem.styles';
+import S from './WeatherItem.styled';
 
 interface WeatherItemProps {
     label?: string;
@@ -17,7 +16,7 @@ const WeatherItem: React.FC<WeatherItemProps> = ({
     value,
 }) => {
     return (
-        <View style={styles.container}>
+        <S.view>
             <VStack space='md' reversed={false}>
                 <Text bold size='sm'>
                     {label ?? variable}
@@ -26,7 +25,7 @@ const WeatherItem: React.FC<WeatherItemProps> = ({
                     {value?.toString() ?? 'N/A'}
                 </Text>
             </VStack>
-        </View>
+        </S.view>
     );
 };
 
