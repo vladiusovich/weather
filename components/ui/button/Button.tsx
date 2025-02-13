@@ -1,7 +1,8 @@
 import * as St from './Button.styled';
 import React from 'react';
-import { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components/native';
 import { removeUnitFromTheme } from '@/utils/theme';
+import Typography from '../typography';
 
 type Props = {
     disabled?: boolean;
@@ -25,9 +26,11 @@ const Button: React.FC<Props> = ({
             disabled={disabled}
             outlined={outlined}
             onPress={onPress}
-            // style={{ marginVertical: removeUnitFromTheme(theme.spacings.large) }}
+        // style={{ marginVertical: removeUnitFromTheme(theme.spacings.large) }}
         >
-            <St.Text>{label}</St.Text>
+            <Typography variant='xsmall' color='regular.100'>
+                {label}
+            </Typography>
         </St.Button>
     );
 };

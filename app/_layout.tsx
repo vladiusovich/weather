@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components/native';
 import THEMES from '@/theme/THEMES';
 import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider';
 
+// TODO: remove GluestackUIProvider and all UI components
 export default function RootLayout() {
     return (
         <>

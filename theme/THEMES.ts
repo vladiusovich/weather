@@ -1,6 +1,7 @@
 import { RFPercentage } from 'react-native-responsive-fontsize';
+import AppThemeType from './types/AppThemeType';
 
-const THEMES = {
+const THEMES: AppThemeType = {
     colors: {
         primary: {
             100: '#F7F6FC',
@@ -17,8 +18,18 @@ const THEMES = {
             300: '#CECDD0',
             400: '#9C9CA1',
             500: '#6B6A71',
-            600: '#393942',
+            600: '#1a1a1a80',
             700: '#080713',
+        },
+        typography: {
+            regular: {
+                100: '#f3f3f3',
+                200: '#111111',
+            },
+            warning: {
+                100: '#000000',
+                200: '#FFFFFF',
+            },
         },
         blur: '#F3F3F399',
     },
@@ -35,11 +46,5 @@ const THEMES = {
         extraLarge: '24px',
     },
 };
-
-type Theme = typeof THEMES;
-
-declare module 'styled-components' {
-    export interface DefaultTheme extends Theme {}
-}
 
 export default THEMES;

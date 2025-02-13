@@ -4,8 +4,8 @@ const S = {
     view: styled.View`
         width: 100%;
         padding: 15px;
-        background-color: ${({ theme }) => theme.colors.secondary[500]};
-        borderRadius: 15px;
+        background-color: ${({ theme }) => theme.colors.secondary[600]};
+        border-radius: 15px;
     `,
 };
 

@@ -45,11 +45,6 @@ const CameraScreen: React.FC<CameraPreviewProps> = ({
         return <View />;
     }
 
-    console.log({
-        isOpen,
-        granted: permission.granted,
-    });
-
     return (
         <>
             <CameraPermissionDialog
