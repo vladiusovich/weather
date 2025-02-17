@@ -1,44 +1,28 @@
-import { getWeather } from '@/services/weather/openMeteo';
-import {
-    CurrentWeatherDataType,
-    WeatherDataType,
-} from '@/services/weather/types/WeatherDataType';
-import { useEffect, useState } from 'react';
+import { CurrentWeatherDataType } from '@/services/weather/types/WeatherDataType';
+import { useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
 import { View } from 'react-native';
 import WeatherItem from '@/components/weather/WeatherItem';
 import { WeatherVariableType } from '@/services/weather/types/MeteoRequestType';
+import useAppStore from '@/hooks/useAppStore';
 
 const WeatherScreen = () => {
-    const [weather, setWeather] = useState<null | WeatherDataType>(null);
+    const appStore = useAppStore();
 
     useEffect(() => {
-        (async () => {
-            const weather = await getWeather({
-                latitude: 52.52,
-                longitude: 13.41,
-                current: [
-                    'temperature_2m',
-                    'relative_humidity_2m',
-                    'apparent_temperature',
-                    'weather_code',
-                ],
-                daily: ['temperature_2m_max'],
-                timezone: 'GMT',
-            });
+        appStore.weather.fetch();
+    }, [appStore.weather]);
 
-            setWeather(weather);
-        })();
-    }, []);
-
+    const currentWeather = appStore.weather?.data?.current;
     const variables = Object.keys(
-        weather?.current || {},
+        currentWeather ?? {},
     ) as WeatherVariableType[];
 
     return (
         <View className='flex-1 bg-[#25292e] p-3'>
             <View style={{ gap: 8 }}>
                 {variables.map((variable) => {
-                    const value = weather?.current?.[variable] ?? null;
+                    const value = currentWeather?.[variable] ?? null;
                     return (
                         <WeatherItem
                             key={variable}
@@ -52,4 +36,4 @@ const WeatherScreen = () => {
     );
 };
 
-export default WeatherScreen;
+export default observer(WeatherScreen);

@@ -5,24 +5,27 @@ import React, { StrictMode } from 'react';
 import { ThemeProvider } from 'styled-components/native';
 import THEMES from '@/theme/THEMES';
 import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider';
+import AppStoreProvider from '@/store/provider/AppStoreProvider';
 
 // TODO: remove GluestackUIProvider and all UI components
 export default function RootLayout() {
     return (
         <>
             <StrictMode>
-                <ThemeProvider theme={THEMES}>
-                    <GluestackUIProvider mode='system'>
-                        <Stack>
-                            <Stack.Screen
-                                name='(tabs)'
-                                options={{ headerShown: false }}
-                            />
-                            <Stack.Screen name='+not-found' />
-                        </Stack>
-                        <StatusBar style='auto' />
-                    </GluestackUIProvider>
-                </ThemeProvider>
+                <AppStoreProvider>
+                    <ThemeProvider theme={THEMES}>
+                        <GluestackUIProvider mode='system'>
+                            <Stack>
+                                <Stack.Screen
+                                    name='(tabs)'
+                                    options={{ headerShown: false }}
+                                />
+                                <Stack.Screen name='+not-found' />
+                            </Stack>
+                            <StatusBar style='auto' />
+                        </GluestackUIProvider>
+                    </ThemeProvider>
+                </AppStoreProvider>
             </StrictMode>
         </>
     );
