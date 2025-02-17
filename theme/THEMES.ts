@@ -9,7 +9,7 @@ const THEMES: AppThemeType = {
             300: '#DFDCF3',
             400: '#C0B9E7',
             500: '#A097DB',
-            600: '#8174CF',
+            600: '#1a1a1a80',
             700: '#6151C3',
         },
         secondary: {

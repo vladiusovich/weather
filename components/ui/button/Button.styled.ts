@@ -8,12 +8,12 @@ type Props = {
 const ButtonOutlinedStyle = css<Props>`
     border-width: 1px;
     border-color: ${({ theme, disabled }) =>
-        disabled ? theme.colors.primary[500] : theme.colors.primary[700]};
+        disabled ? theme.colors.primary[600] : theme.colors.primary[600]};
 `;
 
 const ButtonDefaultStyle = css<Props>`
     background-color: ${({ theme, disabled }) =>
-        disabled ? theme.colors.primary[500] : theme.colors.primary[700]};
+        disabled ? theme.colors.primary[600] : theme.colors.primary[600]};
 `;
 
 export const Button = styled.TouchableOpacity<Props>`

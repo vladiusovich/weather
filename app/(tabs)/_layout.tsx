@@ -1,67 +1,34 @@
-import { Tabs } from 'expo-router';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import TabNavigation from '@/components/common/tabNavigation/TabNavigation';
 
-export default function TabLayout() {
-    return (
-        <Tabs
-            screenOptions={{
-                tabBarActiveTintColor: '#dddda1',
-                headerStyle: {
-                    backgroundColor: '#25292e',
-                },
-                headerShadowVisible: false,
-                headerTintColor: '#fff',
-                tabBarStyle: {
-                    backgroundColor: '#25292e',
-                },
-            }}>
-            <Tabs.Screen
-                name='index'
-                options={{
-                    title: 'About',
-                    tabBarIcon: ({ color, focused }) => (
-                        <Ionicons
-                            name={
-                                focused
-                                    ? 'information-circle'
-                                    : 'information-circle-outline'
-                            }
-                            color={color}
-                            size={24}
-                        />
-                    ),
-                }}
-            />
-            <Tabs.Screen
-                name='emojiPicker'
-                options={{
-                    title: 'Photo Sticker',
-                    tabBarIcon: ({ color, focused }) => (
-                        <Ionicons
-                            name={focused ? 'camera-sharp' : 'camera-outline'}
-                            color={color}
-                            size={24}
-                        />
-                    ),
-                }}
-            />
-            <Tabs.Screen
-                name='weather'
-                options={{
-                    title: 'Weather',
-                    tabBarIcon: ({ color, focused }) => (
-                        <Ionicons
-                            name={
-                                focused
-                                    ? 'cloud-circle'
-                                    : 'cloud-circle-outline'
-                            }
-                            color={color}
-                            size={24}
-                        />
-                    ),
-                }}
-            />
-        </Tabs>
-    );
-}
+const tabs = [
+    {
+        name: 'index',
+        options: {
+            title: 'About',
+        },
+        activeIcon: 'information-circle',
+        inactiveIcon: 'information-circle-outline',
+    },
+    {
+        name: 'emojiPicker',
+        options: {
+            title: 'Photo Sticker',
+        },
+        activeIcon: 'camera-sharp',
+        inactiveIcon: 'camera-sharp',
+    },
+    {
+        name: 'weather',
+        options: {
+            title: 'Weather',
+        },
+        activeIcon: 'cloud-circle',
+        inactiveIcon: 'cloud-circle-outline',
+    },
+];
+
+const TabLayout = () => {
+    return <TabNavigation tabs={tabs} />;
+};
+
+export default TabLayout;
