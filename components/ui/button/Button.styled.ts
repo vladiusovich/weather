@@ -17,7 +17,7 @@ const ButtonDefaultStyle = css<Props>`
 `;
 
 export const Button = styled.TouchableOpacity<Props>`
-    min-width: 80px;
+    min-width: 130px;
     height: 40px;
     border-radius: 8px;
     flex-direction: row;

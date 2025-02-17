@@ -1,10 +1,10 @@
 import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
 import React, { useRef, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import Button from '../ui/button/Button';
-import { Portal } from '../ui/portal';
+import { View } from 'react-native';
+import UI from '@/components/ui';
 import useBackHandler from '@/hooks/useBackHandler';
-import CameraPermissionDialog from './CameraPermissionDialog';
+import CameraPermissionDialog from './cameraPermissionDialog/CameraPermissionDialog';
+import S from './CameraScreen.styled';
 
 interface CameraPreviewProps {
     isOpen: boolean;
@@ -46,45 +46,39 @@ const CameraScreen: React.FC<CameraPreviewProps> = ({
     }
 
     return (
-        <>
-            <CameraPermissionDialog
-                isOpen={isOpen && !permission.granted}
-                onSuccess={requestPermission}
-                onClose={onClose}
-            />
-
-            <Portal
-                isOpen={isOpen && permission.granted}
-                style={styles.container}>
-                <View className='flex-1 justify-center items-center'>
-                    <CameraView
-                        ref={cameraRef}
-                        style={styles.container}
-                        facing={cameraType}
+        <S.portal open={isOpen}>
+            <S.container>
+                {isOpen && !permission.granted && (
+                    <CameraPermissionDialog
+                        onSuccess={requestPermission}
+                        onClose={onClose}
                     />
-                    <View className='absolute bottom-0 pt-5 pb-5 rounded-t-lg w-full flex flex-row justify-around items-stretch bg-[#25292e80]'>
-                        <Button
-                            label='Flip'
-                            variant='solid'
-                            onPress={onFlipCamera}
-                        />
-                        <Button
-                            label='Capture'
-                            variant='solid'
-                            onPress={onCapture}
-                        />
-                    </View>
-                </View>
-            </Portal>
-        </>
+                )}
+
+                {isOpen && permission.granted && (
+                    <>
+                        <S.cameraView ref={cameraRef} facing={cameraType} />
+                        <S.actions>
+                            <UI.Stack
+                                direction='row'
+                                justifyContent='space-around'>
+                                <UI.Button
+                                    label='Flip'
+                                    variant='solid'
+                                    onPress={onFlipCamera}
+                                />
+                                <UI.Button
+                                    label='Capture'
+                                    variant='solid'
+                                    onPress={onCapture}
+                                />
+                            </UI.Stack>
+                        </S.actions>
+                    </>
+                )}
+            </S.container>
+        </S.portal>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        height: '100%',
-    },
-});
 
 export default CameraScreen;

@@ -1,6 +1,5 @@
 import React from 'react';
-import Button from '@/components/ui/button/Button';
-import { VStack } from '../ui/vstack';
+import UI from '@/components/ui';
 
 interface OptionsActionsProps {
     onReset: () => void;
@@ -13,11 +12,11 @@ const OptionsActions: React.FC<OptionsActionsProps> = ({
     onAddSticker,
     onSaveImage,
 }) => (
-    <VStack space='sm' className='w-5/6'>
-        <Button label='Reset' variant='solid' onPress={onReset} />
-        <Button label='Add' variant='solid' onPress={onAddSticker} />
-        <Button label='Save' variant='solid' onPress={onSaveImage} />
-    </VStack>
+    <UI.Stack alignItems='center'>
+        <UI.Button label='Reset' variant='solid' onPress={onReset} />
+        <UI.Button label='Add' variant='solid' onPress={onAddSticker} />
+        <UI.Button label='Save' variant='solid' onPress={onSaveImage} />
+    </UI.Stack>
 );
 
 export default OptionsActions;

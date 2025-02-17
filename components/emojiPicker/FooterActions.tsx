@@ -1,6 +1,5 @@
 import React from 'react';
-import Button from '@/components/ui/button/Button';
-import { VStack } from '../ui/vstack';
+import UI from '@/components/ui';
 
 interface FooterActionsProps {
     onPickImage: () => void;
@@ -13,15 +12,23 @@ const FooterActions: React.FC<FooterActionsProps> = ({
     onUseCamera,
     onUseSelectedPhoto,
 }) => (
-    <VStack space='sm' className='w-5/6'>
-        <Button label='Choose a photo' variant='solid' onPress={onPickImage} />
-        <Button label='Use camera' variant='secondary' onPress={onUseCamera} />
-        <Button
+    <UI.Stack alignItems='center'>
+        <UI.Button
+            label='Choose a photo'
+            variant='solid'
+            onPress={onPickImage}
+        />
+        <UI.Button
+            label='Use camera'
+            variant='secondary'
+            onPress={onUseCamera}
+        />
+        <UI.Button
             label='Use this photo'
             variant='secondary'
             onPress={onUseSelectedPhoto}
         />
-    </VStack>
+    </UI.Stack>
 );
 
 export default FooterActions;
