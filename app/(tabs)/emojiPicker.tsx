@@ -4,7 +4,7 @@ import { useState, useRef, useCallback } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { type ImageSource } from 'expo-image';
 import ImageViewer from '@/components/emojiPicker/ImageViewer';
-import EmojiPickerModal from '@/components/emojiPicker/EmojiPickerModal';
+import EmojiPickerModal from '@/components/emojiPicker/emojiPickerModal/EmojiPickerModal';
 import EmojiList from '@/components/emojiPicker/EmojiList';
 import EmojiSticker from '@/components/emojiPicker/EmojiSticker';
 import CameraScreen from '@/components/сameraScreen/CameraScreen';
