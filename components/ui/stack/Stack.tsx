@@ -6,6 +6,7 @@ type Props = {
     gap?: string;
     justifyContent?: string;
     alignItems?: string;
+    flex?: number | string;
     children: ReactNode | ReactNode[];
 };
 
@@ -15,6 +16,7 @@ const Stack: React.FC<Props> = ({
     children,
     justifyContent,
     alignItems,
+    flex,
     ...props
 }) => {
     const childrenArray = React.Children.toArray(children);
@@ -25,6 +27,7 @@ const Stack: React.FC<Props> = ({
             justifyContent={justifyContent}
             alignItems={alignItems}
             gap={gap}
+            flex={flex}
             {...props}>
             {childrenArray.map((child, index) => {
                 if (!React.isValidElement(child)) return child;

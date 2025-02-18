@@ -1,7 +1,8 @@
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import AppThemeType from './types/AppThemeType';
+import { backgroundColors } from './theme.base';
 
-const THEMES: AppThemeType = {
+const theme: AppThemeType = {
     colors: {
         primary: {
             100: '#F7F6FC',
@@ -32,6 +33,7 @@ const THEMES: AppThemeType = {
             },
         },
         blur: '#F3F3F399',
+        background: backgroundColors,
     },
     fontSize: {
         small: `${RFPercentage(2)}px`,
@@ -47,4 +49,4 @@ const THEMES: AppThemeType = {
     },
 };
 
-export default THEMES;
+export default theme;

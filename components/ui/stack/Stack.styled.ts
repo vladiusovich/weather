@@ -5,6 +5,7 @@ interface StackContainerProps {
     justifyContent?: string;
     alignItems?: string;
     gap?: string;
+    flex?: number | string;
 }
 
 const stack = styled.View<StackContainerProps>`
@@ -13,6 +14,7 @@ const stack = styled.View<StackContainerProps>`
     justify-content: ${({ justifyContent }) => justifyContent ?? 'flex-start'};
     align-items: ${({ alignItems }) => alignItems ?? 'flex-start'};
     gap: ${({ gap }) => gap ?? '10px'};
+    ${({ flex = '' }) => (flex ? `flex: ${flex};` : '')};
 `;
 
 const S = {

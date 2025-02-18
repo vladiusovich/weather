@@ -1,10 +1,17 @@
-import { Text, View } from 'react-native';
+import layout from '../layout/layout.styled';
+import UI from '@/components/ui';
 
 const AboutScreen = () => {
     return (
-        <View className='flex-1 bg-[#25292e] justify-center items-center'>
-            <Text className='text-white'>About screen</Text>
-        </View>
+        <layout.view>
+            <UI.Stack
+                direction='column'
+                justifyContent='center'
+                alignItems='center'
+                flex={1}>
+                <UI.Typography variant='default'>About screen</UI.Typography>
+            </UI.Stack>
+        </layout.view>
     );
 };
 

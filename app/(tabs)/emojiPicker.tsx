@@ -13,6 +13,7 @@ import { saveFileAsync } from '@/utils/fileSystemHelper';
 import useToastNotification from '@/hooks/useToastNotification';
 import OptionsActions from '@/components/emojiPicker/OptionsActions';
 import FooterActions from '@/components/emojiPicker/FooterActions';
+import layout from '../layout/layout.styled';
 
 const PlaceholderImage = require('@/assets/images/background-image.png');
 
@@ -88,13 +89,13 @@ const EmojiPicker = () => {
     }, []);
 
     return (
-        <>
+        <layout.view>
             <CameraScreen
                 isOpen={isUseCamera}
                 onPressCapture={handleCapture}
                 onClose={() => setIsUseCamera(false)}
             />
-            <View className='flex-1 bg-[#25292e]'>
+            <View className='flex-1'>
                 <View className='w-full flex-1'>
                     <GestureHandlerRootView>
                         <View
@@ -138,7 +139,7 @@ const EmojiPicker = () => {
                     />
                 </EmojiPickerModal>
             </View>
-        </>
+        </layout.view>
     );
 };
 

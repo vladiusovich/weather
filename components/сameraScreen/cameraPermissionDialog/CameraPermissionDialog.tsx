@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text } from 'react-native';
 import UI from '@/components/ui';
 
 interface CameraPermissionDialogProps {
@@ -13,7 +12,9 @@ const CameraPermissionDialog: React.FC<CameraPermissionDialogProps> = ({
 }) => {
     return (
         <UI.Stack>
-            <Text>We need your permission to show the camera</Text>
+            <UI.Typography variant='xsmall' color='regular.100'>
+                We need your permission to show the camera
+            </UI.Typography>
 
             <UI.Stack>
                 <UI.Button

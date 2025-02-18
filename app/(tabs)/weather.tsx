@@ -5,6 +5,7 @@ import { View } from 'react-native';
 import WeatherItem from '@/components/weather/WeatherItem';
 import { WeatherVariableType } from '@/services/weather/types/MeteoRequestType';
 import useAppStore from '@/hooks/useAppStore';
+import layout from '../layout/layout.styled';
 
 const WeatherScreen = () => {
     const appStore = useAppStore();
@@ -19,7 +20,7 @@ const WeatherScreen = () => {
     ) as WeatherVariableType[];
 
     return (
-        <View className='flex-1 bg-[#25292e] p-3'>
+        <layout.view>
             <View style={{ gap: 8 }}>
                 {variables.map((variable) => {
                     const value = currentWeather?.[variable] ?? null;
@@ -32,7 +33,7 @@ const WeatherScreen = () => {
                     );
                 })}
             </View>
-        </View>
+        </layout.view>
     );
 };
 

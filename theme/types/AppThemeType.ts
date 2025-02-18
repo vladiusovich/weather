@@ -1,30 +1,25 @@
-import { TypographyColors } from './ColorsType';
+import {
+    GradientColorTypeColorMapping,
+    LargeGradientColorMapping,
+    TypographyColors,
+} from './ColorsType';
 
-interface ColorGradient {
-    100: string;
-    200: string;
-    300: string;
-    400: string;
-    500: string;
-    600: string;
-    700: string;
-}
-
-interface Colors {
-    primary: ColorGradient;
-    secondary: ColorGradient;
+interface ColorsType {
+    primary: LargeGradientColorMapping;
+    secondary: LargeGradientColorMapping;
     typography: TypographyColors;
     blur: string;
+    background: GradientColorTypeColorMapping;
 }
 
-interface FontSize {
+interface FontSizeType {
     small: string;
     medium: string;
     large: string;
     extraLarge: string;
 }
 
-interface Spacings {
+interface SpacingsType {
     small: string;
     medium: string;
     large: string;
@@ -32,9 +27,9 @@ interface Spacings {
 }
 
 interface AppThemeType {
-    colors: Colors;
-    fontSize: FontSize;
-    spacings: Spacings;
+    colors: ColorsType;
+    fontSize: FontSizeType;
+    spacings: SpacingsType;
 }
 
 export default AppThemeType;

@@ -1,5 +1,6 @@
 import { ScreenProps, Tabs } from 'expo-router';
 import TabIcon from './TabIcon';
+import theme from '@/theme/theme';
 
 interface NavigationOption extends ScreenProps {
     activeIcon: string;
@@ -10,18 +11,19 @@ interface TabNavigationType {
     tabs: NavigationOption[];
 }
 
+// TODO: global styles
 const TabNavigation: React.FC<TabNavigationType> = ({ tabs }) => {
     return (
         <Tabs
             screenOptions={{
-                tabBarActiveTintColor: '#dddda1',
+                tabBarActiveTintColor: theme.colors.primary[300],
                 headerStyle: {
-                    backgroundColor: '#25292e',
+                    backgroundColor: theme.colors.background[100],
                 },
                 headerShadowVisible: false,
-                headerTintColor: '#fff',
+                headerTintColor: theme.colors.typography.regular[100],
                 tabBarStyle: {
-                    backgroundColor: '#25292e',
+                    backgroundColor: theme.colors.background[100],
                     borderTopWidth: 0, // Removes the top border
                     elevation: 0, // Removes Android shadow
                     shadowOpacity: 0, // Removes iOS shadow

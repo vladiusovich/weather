@@ -3,7 +3,7 @@ import '@/global.css';
 import { StatusBar } from 'expo-status-bar';
 import React, { StrictMode } from 'react';
 import { ThemeProvider } from 'styled-components/native';
-import THEMES from '@/theme/THEMES';
+import theme from '@/theme/theme';
 import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider';
 import AppStoreProvider from '@/store/provider/AppStoreProvider';
 
@@ -13,8 +13,9 @@ export default function RootLayout() {
         <>
             <StrictMode>
                 <AppStoreProvider>
-                    <ThemeProvider theme={THEMES}>
+                    <ThemeProvider theme={theme}>
                         <GluestackUIProvider mode='system'>
+                            <StatusBar style='auto' />
                             <Stack>
                                 <Stack.Screen
                                     name='(tabs)'
@@ -22,7 +23,6 @@ export default function RootLayout() {
                                 />
                                 <Stack.Screen name='+not-found' />
                             </Stack>
-                            <StatusBar style='auto' />
                         </GluestackUIProvider>
                     </ThemeProvider>
                 </AppStoreProvider>
