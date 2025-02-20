@@ -6,9 +6,12 @@ import { ThemeProvider } from 'styled-components/native';
 import theme from '@/theme/theme';
 import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider';
 import AppStoreProvider from '@/store/provider/AppStoreProvider';
+import i18n from '@/services/translations/i18n';
 
 // TODO: remove GluestackUIProvider and all UI components
 export default function RootLayout() {
+    i18n.init();
+
     return (
         <>
             <StrictMode>

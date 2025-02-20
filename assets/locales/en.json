@@ -1,0 +1,17 @@
+{
+    "meteo": {
+        "glossary": {
+            "temperature_2m": "Temperature",
+            "relative_humidity_2m": "Relative humidity",
+            "temperature_2m_max": "Max temperature",
+            "temperature_2m_min": "Min temperature",
+            "apparent_temperature": "Apparent temperature",
+            "time": "Time"
+        },
+        "periods": {
+            "current": "Current",
+            "hourly": "Hourly",
+            "daily": "Daily"
+        }
+    }
+}
