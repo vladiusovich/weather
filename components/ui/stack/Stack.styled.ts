@@ -10,7 +10,6 @@ interface StackContainerProps {
 }
 
 const stack = styled.View<StackContainerProps>`
-    width: 100%;
     flex-direction: ${({ direction }) => direction ?? 'column'};
     justify-content: ${({ justifyContent }) => justifyContent ?? 'flex-start'};
     align-items: ${({ alignItems }) => alignItems ?? 'flex-start'};

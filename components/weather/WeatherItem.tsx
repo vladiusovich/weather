@@ -21,7 +21,7 @@ const WeatherItem: React.FC<WeatherItemProps> = ({
         <S.view>
             <UI.Stack>
                 <UI.Typography variant='xsmall' color='regular.100'>
-                    {t(`meteo.glossary.${variable}`)}
+                    {label ?? t(`meteo.glossary.${variable}`)}
                 </UI.Typography>
                 <UI.Typography variant='small' color='regular.100'>
                     {value?.toString() ?? 'N/A'}

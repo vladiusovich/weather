@@ -1,4 +1,4 @@
-import WeatherStore from './stores/WeatherStore';
+import WeatherStore from './stores/weather/WeatherStore';
 
 interface AppStoreType {
     weather: WeatherStore;

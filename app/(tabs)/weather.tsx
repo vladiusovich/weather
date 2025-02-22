@@ -6,15 +6,16 @@ import { WeatherVariableType } from '@/services/weather/types/MeteoRequestType';
 import useAppStore from '@/hooks/useAppStore';
 import layout from '../layout/layout.styled';
 import UI from '@/components/ui';
+import CurrentWeatherStatus from '@/components/weather/currentWeatherStatus/CurrentWeatherStatus';
 
 const WeatherScreen = () => {
     const appStore = useAppStore();
 
     useEffect(() => {
-        appStore.weather.fetch();
+        appStore.weather.weatherData.fetch();
     }, [appStore.weather]);
 
-    const currentWeather = appStore.weather?.data?.current;
+    const currentWeather = appStore.weather.weatherData?.data?.current;
     const variables = Object.keys(
         currentWeather ?? {},
     ) as WeatherVariableType[];
@@ -22,6 +23,8 @@ const WeatherScreen = () => {
     return (
         <layout.view>
             <UI.Stack direction='row' gap='10px' wrap>
+                <CurrentWeatherStatus />
+
                 {variables.map((variable) => {
                     const value = currentWeather?.[variable] ?? null;
                     return (

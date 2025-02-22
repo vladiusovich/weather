@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const weatherVariables = [
     'temperature_2m',
     'relative_humidity_2m',
@@ -7,9 +8,10 @@ const weatherVariables = [
     'weather_code',
 ] as const;
 
-export type WeatherVariableType = (typeof weatherVariables)[number];
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const weatherPeriods = ['current', 'daily', 'hourly'] as const;
+
+export type WeatherVariableType = (typeof weatherVariables)[number];
 
 export type WeatherPeriodType = (typeof weatherPeriods)[number];
 

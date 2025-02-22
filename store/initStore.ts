@@ -1,5 +1,5 @@
 import AppStoreType from './AppStoreType';
-import WeatherStore from './stores/WeatherStore';
+import WeatherStore from './stores/weather/WeatherStore';
 
 const weather = new WeatherStore();
 
