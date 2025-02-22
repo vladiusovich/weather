@@ -1,7 +1,7 @@
 import { makeObservable, observable, runInAction } from 'mobx';
-import { getWeather } from '@/services/weather/openMeteo';
 import { WeatherDataType } from '@/services/weather/types/WeatherDataType';
 import WeatherSettingsStore from './WeatherSettingsStore';
+import OpenMeteoService from '@/services/weather/openMeteoService';
 
 type ConstructorArgsType = {
     weatherSettings: WeatherSettingsStore;
@@ -9,6 +9,7 @@ type ConstructorArgsType = {
 
 class WeatherDataStore {
     public data: WeatherDataType | null = null;
+    public openMeteoService: OpenMeteoService = new OpenMeteoService();
 
     constructor(protected args: ConstructorArgsType) {
         makeObservable(this, {
@@ -19,7 +20,7 @@ class WeatherDataStore {
     async fetch(): Promise<void> {
         const settings = this.args.weatherSettings.settings;
 
-        const weather = await getWeather({
+        const weather = await this.openMeteoService.fetch({
             ...settings,
             latitude: 52.52,
             longitude: 13.41,
