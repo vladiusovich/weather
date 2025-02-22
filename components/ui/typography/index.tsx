@@ -3,7 +3,7 @@ import S from './Typography.styled';
 
 export type TypoVariant = keyof typeof S;
 
-type TypographyProps = {
+export type TypographyProps = {
     variant: TypoVariant;
     color?: NestedColorType;
     children?: React.ReactNode;

@@ -1,14 +1,15 @@
 import { makeObservable, observable, runInAction } from 'mobx';
-import { WeatherDataType } from '@/services/weather/types/WeatherDataType';
+import { WeatherData } from '@/services/weather/types/WeatherData';
 import WeatherSettingsStore from './WeatherSettingsStore';
-import OpenMeteoService from '@/services/weather/openMeteoService';
+import OpenMeteoService from '@/services/weather/types/weather/openMeteoService';
+import { LocationCoords } from '@/services/weather/types/LocationCoords';
 
 type ConstructorArgsType = {
     weatherSettings: WeatherSettingsStore;
 };
 
 class WeatherDataStore {
-    public data: WeatherDataType | null = null;
+    public data: WeatherData | null = null;
     public openMeteoService: OpenMeteoService = new OpenMeteoService();
 
     constructor(protected args: ConstructorArgsType) {
@@ -17,13 +18,12 @@ class WeatherDataStore {
         });
     }
 
-    async fetch(): Promise<void> {
+    async fetch(location: LocationCoords): Promise<void> {
         const settings = this.args.weatherSettings.settings;
 
         const weather = await this.openMeteoService.fetch({
             ...settings,
-            latitude: 52.52,
-            longitude: 13.41,
+            ...location,
             timezone: 'GMT',
         });
 

@@ -2,7 +2,7 @@ import * as St from './Button.styled';
 import React from 'react';
 import Typography from '../typography';
 
-type Props = {
+export type ButtonProps = {
     disabled?: boolean;
     outlined?: boolean;
     onPress?: () => void;
@@ -11,7 +11,7 @@ type Props = {
     variant?: 'primary' | 'secondary' | 'solid';
 };
 
-const Button: React.FC<Props> = ({
+const Button: React.FC<ButtonProps> = ({
     disabled,
     outlined,
     onPress,

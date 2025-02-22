@@ -1,13 +1,13 @@
-import { CurrentWeatherDataType } from '@/services/weather/types/WeatherDataType';
-import { WeatherVariableType } from '@/services/weather/types/MeteoRequestType';
+import { CurrentWeatherData } from '@/services/weather/types/WeatherData';
+import { WeatherVariable } from '@/services/weather/types/MeteoRequest';
 import S from './WeatherItem.styled';
 import UI from '../ui';
 import { useTranslation } from 'react-i18next';
 
 interface WeatherItemProps {
     label?: string;
-    variable: WeatherVariableType;
-    value?: CurrentWeatherDataType;
+    variable: WeatherVariable;
+    value?: CurrentWeatherData;
 }
 
 const WeatherItem: React.FC<WeatherItemProps> = ({

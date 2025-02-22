@@ -1,9 +1,9 @@
-import { MeteoResponseType } from '@/services/weather/types/MeteoResponseType';
+import { MeteoResponse } from '@/services/weather/types/MeteoResponse';
 import RequestBuilder from '../core/RequestBuilder';
-import { MeteoRequestType } from '@/services/weather/types/MeteoRequestType';
+import { MeteoRequest } from '@/services/weather/types/MeteoRequest';
 
-type MeteoRequestDataType = MeteoRequestType;
-type MeteoResponseDataType = MeteoResponseType;
+type MeteoRequestDataType = MeteoRequest;
+type MeteoResponseDataType = MeteoResponse;
 
 const GetWeatherRequest = RequestBuilder.getType<
     MeteoRequestDataType,

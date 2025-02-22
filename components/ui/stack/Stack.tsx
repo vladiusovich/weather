@@ -1,7 +1,7 @@
 import S from './Stack.styled';
 import React, { ReactNode } from 'react';
 
-type Props = {
+export type StackProps = {
     direction?: 'row' | 'column';
     gap?: string;
     justifyContent?: string;
@@ -11,7 +11,7 @@ type Props = {
     children: ReactNode | ReactNode[];
 };
 
-const Stack: React.FC<Props> = ({
+const Stack: React.FC<StackProps> = ({
     direction = 'column',
     gap,
     children,

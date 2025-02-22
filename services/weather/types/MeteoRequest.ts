@@ -1,3 +1,5 @@
+import { LocationCoords } from './LocationCoords';
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const weatherVariables = [
     'temperature_2m',
@@ -11,16 +13,15 @@ const weatherVariables = [
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const weatherPeriods = ['current', 'daily', 'hourly'] as const;
 
-export type WeatherVariableType = (typeof weatherVariables)[number];
+export type WeatherVariable = (typeof weatherVariables)[number];
 
-export type WeatherPeriodType = (typeof weatherPeriods)[number];
+export type WeatherPeriod = (typeof weatherPeriods)[number];
 
-export type WeatherPeriodsRequestType = Partial<{
-    [key in WeatherPeriodType]: WeatherVariableType[] | null;
+export type WeatherPeriodsRequest = Partial<{
+    [key in WeatherPeriod]: WeatherVariable[] | null;
 }>;
 
-export type MeteoRequestType = {
-    latitude: number;
-    longitude: number;
+export type MeteoRequest = {
     timezone?: string;
-} & WeatherPeriodsRequestType;
+} & WeatherPeriodsRequest &
+    LocationCoords;
