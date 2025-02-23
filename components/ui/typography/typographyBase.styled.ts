@@ -1,17 +1,17 @@
 import styled from 'styled-components/native';
 
 const typographyBase = {
+    header: styled.Text`
+        font-size: 32px;
+        font-weight: 400;
+    `,
     default: styled.Text`
         font-weight: 400;
         font-size: 16px;
     `,
     small: styled.Text`
         font-weight: 400;
-        font-size: 16px;
-    `,
-    header: styled.Text`
-        font-size: 32px;
-        font-weight: 400;
+        font-size: 14px;
     `,
     xsmall: styled.Text`
         font-weight: 400;

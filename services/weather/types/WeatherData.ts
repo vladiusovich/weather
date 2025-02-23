@@ -1,7 +1,7 @@
 import { WeatherVariable } from './MeteoRequest';
 
 type Time = {
-    time: Date | Date[];
+    time: string | string[];
 };
 
 export type CurrentWeatherData = Partial<

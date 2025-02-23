@@ -5,6 +5,7 @@ import layout from '../layout/layout.styled';
 import UI from '@/components/ui';
 import CurrentWeatherStatus from '@/components/weather/currentWeatherStatus/CurrentWeatherStatus';
 import * as Location from 'expo-location';
+import DailyForecast from '@/components/weather/dailyForecast/DailyForecast';
 
 const WeatherScreen = () => {
     const appStore = useAppStore();
@@ -29,6 +30,7 @@ const WeatherScreen = () => {
         <layout.view>
             <UI.Stack direction='row' gap='10px' wrap>
                 <CurrentWeatherStatus />
+                <DailyForecast />
             </UI.Stack>
         </layout.view>
     );

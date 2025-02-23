@@ -1,4 +1,3 @@
-import { runInAction } from 'mobx';
 import { ClientApiEndpoint } from './ClientApiEndpoint';
 
 export type RequestOptionsType = {
@@ -42,10 +41,7 @@ class BaseRequest<RequestDataType, ResponseDataType> {
 
     public execute = async (data: RequestDataType) => {
         if (this.isCacheValid()) return;
-
-        runInAction(() => {
-            this.loading = true;
-        });
+        this.loading = true;
 
         try {
             const response =
@@ -59,15 +55,11 @@ class BaseRequest<RequestDataType, ResponseDataType> {
 
             this.cacheTimestamp = Date.now();
         } catch (error) {
-            runInAction(() => {
-                this.error = error;
-            });
+            this.error = error;
 
             throw error;
         } finally {
-            runInAction(() => {
-                this.loading = false;
-            });
+            this.loading = false;
         }
     };
 }

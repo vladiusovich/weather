@@ -4,7 +4,7 @@ import S from './Typography.styled';
 export type TypoVariant = keyof typeof S;
 
 export type TypographyProps = {
-    variant: TypoVariant;
+    variant?: TypoVariant;
     color?: NestedColorType;
     children?: React.ReactNode;
 };

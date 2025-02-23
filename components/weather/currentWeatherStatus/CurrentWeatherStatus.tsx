@@ -11,7 +11,7 @@ const CurrentWeatherStatus: React.FC<Props> = () => {
     const { t } = useTranslation();
     const appStore = useAppStore();
 
-    const current = appStore.weather.weatherData.data?.current;
+    const current = appStore.weather.weatherData?.current;
 
     const isLoading = !current;
 
