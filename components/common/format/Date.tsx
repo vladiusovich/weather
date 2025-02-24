@@ -1,11 +1,6 @@
 import React from 'react';
-import UI, { TypographyProps } from '@/components/ui';
-import {
-    formatDate,
-    getDayOfWeek,
-    isValidDate,
-    toDate,
-} from '@/utils/datetime.helper';
+import UI from '@/components/ui';
+import { formatDate, getDayOfWeek, isValidDate, toDate } from '@/utils/datetime.helper';
 
 type TempProps = {
     value: string | undefined;
@@ -26,9 +21,7 @@ const Date: React.FC<TempProps> = ({ value, asDayOfWeek, ...props }) => {
     }
 
     // TODO
-    const formatedValue = asDayOfWeek
-        ? getDayOfWeek(date)
-        : formatDate(date, DATE_FORMAT);
+    const formatedValue = asDayOfWeek ? getDayOfWeek(date) : formatDate(date, DATE_FORMAT);
 
     return (
         <UI.XStack>

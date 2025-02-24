@@ -1,6 +1,5 @@
 import { ScreenProps, Tabs } from 'expo-router';
 import TabIcon from './TabIcon';
-import theme from '@/theme/theme';
 
 interface NavigationOption extends ScreenProps {
     activeIcon: string;
@@ -16,14 +15,14 @@ const TabNavigation: React.FC<TabNavigationType> = ({ tabs }) => {
     return (
         <Tabs
             screenOptions={{
-                tabBarActiveTintColor: theme.colors.primary[300],
+                // tabBarActiveTintColor: theme.colors.primary[300],
                 headerStyle: {
-                    backgroundColor: theme.colors.background[100],
+                    // backgroundColor: theme.colors.background[100],
                 },
                 headerShadowVisible: false,
-                headerTintColor: theme.colors.typography.regular[100],
+                // headerTintColor: theme.colors.typography.regular[100],
                 tabBarStyle: {
-                    backgroundColor: theme.colors.background[100],
+                    // backgroundColor: theme.colors.background[100],
                     borderTopWidth: 0, // Removes the top border
                     elevation: 0, // Removes Android shadow
                     shadowOpacity: 0, // Removes iOS shadow
@@ -36,19 +35,8 @@ const TabNavigation: React.FC<TabNavigationType> = ({ tabs }) => {
                         name={tab.name}
                         options={{
                             ...tab?.options,
-                            tabBarIcon: ({
-                                color,
-                                focused,
-                            }: {
-                                color: string;
-                                focused: boolean;
-                            }) => (
-                                <TabIcon
-                                    focused={focused}
-                                    activeIcon={tab.activeIcon}
-                                    inactiveIcon={tab.inactiveIcon}
-                                    color={color}
-                                />
+                            tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) => (
+                                <TabIcon focused={focused} activeIcon={tab.activeIcon} inactiveIcon={tab.inactiveIcon} color={color} />
                             ),
                         }}
                     />

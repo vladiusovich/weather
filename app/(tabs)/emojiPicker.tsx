@@ -7,10 +7,8 @@ import ImageViewer from '@/components/emojiPicker/ImageViewer';
 import EmojiPickerModal from '@/components/emojiPicker/emojiPickerModal/EmojiPickerModal';
 import EmojiList from '@/components/emojiPicker/EmojiList';
 import EmojiSticker from '@/components/emojiPicker/EmojiSticker';
-// import CameraScreen from '@/components/сameraScreen/CameraScreen';
 import React from 'react';
 import { saveFileAsync } from '@/utils/fileSystemHelper';
-// import useToastNotification from '@/hooks/useToastNotification';
 import OptionsActions from '@/components/emojiPicker/OptionsActions';
 import FooterActions from '@/components/emojiPicker/FooterActions';
 
