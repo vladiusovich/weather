@@ -50,6 +50,9 @@ class WeatherDataStore {
             time,
             temperature_2m_max: daily!.temperature_2m_max![index],
             temperature_2m_min: daily!.temperature_2m_min![index],
+            weather_code: daily!.weather_code![index],
+            precipitation_probability_mean:
+                daily!.precipitation_probability_mean![index],
         }));
     }
 }

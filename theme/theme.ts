@@ -36,10 +36,12 @@ const theme: AppThemeType = {
         background: backgroundColors,
     },
     fontSize: {
-        small: `${RFPercentage(2)}px`,
-        medium: `${RFPercentage(2.5)}px`,
-        large: `${RFPercentage(3)}px`,
-        extraLarge: `${RFPercentage(3.5)}px`,
+        extraLarge: `${32}px`,
+        large: `${24}px`,
+        medium: `${20}px`,
+        default: `${16}px`,
+        small: `${14}px`,
+        xsmall: `${12}px`,
     },
     spacings: {
         small: '4px',

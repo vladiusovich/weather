@@ -1,5 +1,10 @@
 {
     "meteo": {
+        "daily": {
+            "nDayForecast": {
+                "title": "N-day forecast"
+            }
+        },
         "glossary": {
             "temperature_2m": "Temperature",
             "relative_humidity_2m": "Relative humidity",

@@ -13,7 +13,9 @@ interface ColorsType {
 }
 
 interface FontSizeType {
+    default: string;
     small: string;
+    xsmall: string;
     medium: string;
     large: string;
     extraLarge: string;

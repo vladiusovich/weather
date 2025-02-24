@@ -7,7 +7,14 @@ const weatherVariables = [
     'temperature_2m_max',
     'temperature_2m_min',
     'apparent_temperature',
+    'precipitation',
+    'precipitation_sum',
     'weather_code',
+    'pressure_msl',
+    'precipitation_probability_mean',
+    'surface_pressure',
+    'apparent_temperature_max',
+    'apparent_temperature_min',
 ] as const;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

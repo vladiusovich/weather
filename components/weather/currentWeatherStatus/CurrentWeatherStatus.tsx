@@ -5,7 +5,7 @@ import { observer } from 'mobx-react-lite';
 import useAppStore from '@/hooks/useAppStore';
 import Format from '@/components/common/format';
 
-interface Props {}
+interface Props { }
 
 const CurrentWeatherStatus: React.FC<Props> = () => {
     const { t } = useTranslation();
@@ -25,9 +25,11 @@ const CurrentWeatherStatus: React.FC<Props> = () => {
                 <UI.Stack direction='column' justifyContent='space-between'>
                     {current.weather_code && (
                         <UI.Stack direction='column'>
-                            <UI.Typography variant='xsmall' color='regular.100'>
-                                {t(`meteo.wmo_codes.${current.weather_code}`)}
-                            </UI.Typography>
+                            <Format.WmoCode
+                                variant='xsmall'
+                                color='regular.100'
+                                value={current.weather_code}
+                            />
                         </UI.Stack>
                     )}
 
