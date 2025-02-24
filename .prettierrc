@@ -4,5 +4,5 @@
     "jsxSingleQuote": true,
     "bracketSameLine": true,
     "endOfLine": "crlf",
-    "printWidth": 140
+    "printWidth": 180
 }

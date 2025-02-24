@@ -11,24 +11,16 @@ const CameraPermissionDialog: React.FC<CameraPermissionDialogProps> = ({
     onClose,
 }) => {
     return (
-        <UI.Stack>
-            <UI.Typography variant='xsmall' color='regular.100'>
+        <UI.YStack>
+            <UI.Typo.Text>
                 We need your permission to show the camera
-            </UI.Typography>
+            </UI.Typo.Text>
 
-            <UI.Stack>
-                <UI.Button
-                    label='Cancel'
-                    variant='secondary'
-                    onPress={onClose}
-                />
-                <UI.Button
-                    label='Allow'
-                    variant='secondary'
-                    onPress={onSuccess}
-                />
-            </UI.Stack>
-        </UI.Stack>
+            <UI.YStack>
+                <UI.Button onPress={onClose}>Cancel</UI.Button>
+                <UI.Button onPress={onSuccess}>Allow</UI.Button>
+            </UI.YStack>
+        </UI.YStack>
     );
 };
 

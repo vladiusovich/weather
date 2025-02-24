@@ -12,23 +12,11 @@ const FooterActions: React.FC<FooterActionsProps> = ({
     onUseCamera,
     onUseSelectedPhoto,
 }) => (
-    <UI.Stack alignItems='center'>
-        <UI.Button
-            label='Choose a photo'
-            variant='solid'
-            onPress={onPickImage}
-        />
-        <UI.Button
-            label='Use camera'
-            variant='secondary'
-            onPress={onUseCamera}
-        />
-        <UI.Button
-            label='Use this photo'
-            variant='secondary'
-            onPress={onUseSelectedPhoto}
-        />
-    </UI.Stack>
+    <UI.YStack verticalAlign='center'>
+        <UI.Button onPress={onPickImage}>Choose a photo</UI.Button>
+        <UI.Button onPress={onUseCamera}>Use this photo</UI.Button>
+        <UI.Button onPress={onUseSelectedPhoto}>Use this photo</UI.Button>F
+    </UI.YStack>
 );
 
 export default FooterActions;

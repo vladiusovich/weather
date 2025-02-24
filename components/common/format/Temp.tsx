@@ -1,10 +1,10 @@
 import React from 'react';
-import UI, { TypographyProps } from '@/components/ui';
+import UI from '@/components/ui';
 
 type TempProps = {
     value?: string | number | null;
     unit?: string;
-} & Omit<TypographyProps, 'children'>;
+};
 
 const TEMP_SYMBOL = '°';
 
@@ -17,11 +17,11 @@ const Temp: React.FC<TempProps> = ({ unit, value, ...props }) => {
     const formatedValue = Math.round(+value);
 
     return (
-        <UI.Stack direction='row' gap='0px'>
-            <UI.Typography {...props}>{formatedValue}</UI.Typography>
-            <UI.Typography {...props}>{TEMP_SYMBOL}</UI.Typography>
-            {unit && <UI.Typography {...props}>{unit}</UI.Typography>}
-        </UI.Stack>
+        <UI.XStack gap='$2'>
+            <UI.Typo.Text>{formatedValue}</UI.Typo.Text>
+            <UI.Typo.Text>{TEMP_SYMBOL}</UI.Typo.Text>
+            {unit && <UI.Typo.Text>{unit}</UI.Typo.Text>}
+        </UI.XStack>
     );
 };
 

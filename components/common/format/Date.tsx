@@ -10,7 +10,7 @@ import {
 type TempProps = {
     value: string | undefined;
     asDayOfWeek?: boolean;
-} & Omit<TypographyProps, 'children'>;
+};
 
 const DATE_FORMAT = 'DD/MM/YYYY';
 
@@ -31,9 +31,9 @@ const Date: React.FC<TempProps> = ({ value, asDayOfWeek, ...props }) => {
         : formatDate(date, DATE_FORMAT);
 
     return (
-        <UI.Stack direction='row' gap='0px'>
-            <UI.Typography {...props}>{formatedValue}</UI.Typography>
-        </UI.Stack>
+        <UI.XStack>
+            <UI.Typo.Text>{formatedValue}</UI.Typo.Text>
+        </UI.XStack>
     );
 };
 

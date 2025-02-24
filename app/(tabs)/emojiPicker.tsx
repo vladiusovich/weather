@@ -7,13 +7,12 @@ import ImageViewer from '@/components/emojiPicker/ImageViewer';
 import EmojiPickerModal from '@/components/emojiPicker/emojiPickerModal/EmojiPickerModal';
 import EmojiList from '@/components/emojiPicker/EmojiList';
 import EmojiSticker from '@/components/emojiPicker/EmojiSticker';
-import CameraScreen from '@/components/сameraScreen/CameraScreen';
+// import CameraScreen from '@/components/сameraScreen/CameraScreen';
 import React from 'react';
 import { saveFileAsync } from '@/utils/fileSystemHelper';
-import useToastNotification from '@/hooks/useToastNotification';
+// import useToastNotification from '@/hooks/useToastNotification';
 import OptionsActions from '@/components/emojiPicker/OptionsActions';
 import FooterActions from '@/components/emojiPicker/FooterActions';
-import layout from '../layout/layout.styled';
 
 const PlaceholderImage = require('@/assets/images/background-image.png');
 
@@ -30,7 +29,7 @@ const EmojiPicker = () => {
 
     const imageRef = useRef<View>(null);
 
-    const toastNotification = useToastNotification();
+    // const toastNotification = useToastNotification();
 
     const handlePickImage = useCallback(async () => {
         const result = await ImagePicker.launchImageLibraryAsync({
@@ -43,13 +42,13 @@ const EmojiPicker = () => {
             setSelectedImage(result.assets[0].uri);
             setShowAppOptions(true);
         } else {
-            toastNotification.notify({
-                title: 'Upppsss',
-                description: 'You did not select any image',
-                action: 'warning',
-            });
+            // toastNotification.notify({
+            //     title: 'Upppsss',
+            //     description: 'You did not select any image',
+            //     action: 'warning',
+            // });
         }
-    }, [toastNotification]);
+    }, []);
 
     const handleCapture = useCallback((uri: string) => {
         if (uri !== '') {
@@ -77,24 +76,24 @@ const EmojiPicker = () => {
 
     const handleSaveImage = useCallback(async () => {
         await saveFileAsync(imageRef);
-        toastNotification.notify({
-            title: 'Image saved',
-            description: 'Your image has been saved successfully',
-            action: 'info',
-        });
-    }, [imageRef, toastNotification]);
+        // toastNotification.notify({
+        //     title: 'Image saved',
+        //     description: 'Your image has been saved successfully',
+        //     action: 'info',
+        // });
+    }, [imageRef]);
 
     const handleUseSelectedPhoto = useCallback(() => {
         setShowAppOptions(true);
     }, []);
 
     return (
-        <layout.view>
-            <CameraScreen
+        <>
+            {/* <CameraScreen
                 isOpen={isUseCamera}
                 onPressCapture={handleCapture}
                 onClose={() => setIsUseCamera(false)}
-            />
+            /> */}
             <View className='flex-1'>
                 <View className='w-full flex-1'>
                     <GestureHandlerRootView>
@@ -139,7 +138,7 @@ const EmojiPicker = () => {
                     />
                 </EmojiPickerModal>
             </View>
-        </layout.view>
+        </>
     );
 };
 

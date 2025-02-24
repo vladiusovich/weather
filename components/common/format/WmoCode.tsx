@@ -1,10 +1,10 @@
 import React from 'react';
-import UI, { TypographyProps } from '@/components/ui';
+import UI from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 
 type WmoCodeProps = {
     value?: number | null;
-} & Omit<TypographyProps, 'children'>;
+};
 
 const WmoCode: React.FC<WmoCodeProps> = ({ value, ...props }) => {
     const { t } = useTranslation();
@@ -13,11 +13,7 @@ const WmoCode: React.FC<WmoCodeProps> = ({ value, ...props }) => {
         return null;
     }
 
-    return (
-        <UI.Typography {...props}>
-            {t(`meteo.wmo_codes.${value}`)}
-        </UI.Typography>
-    );
+    return <UI.Typo.Text>{t(`meteo.wmo_codes.${value}`)}</UI.Typo.Text>;
 };
 
 export default WmoCode;

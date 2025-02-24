@@ -1,9 +1,9 @@
-import S from './DailyForecast.styled';
 import { useTranslation } from 'react-i18next';
 import UI from '@/components/ui';
 import { observer } from 'mobx-react-lite';
 import useAppStore from '@/hooks/useAppStore';
 import Format from '@/components/common/format';
+import { View } from 'tamagui';
 
 interface Props { }
 
@@ -14,53 +14,39 @@ const DailyForecast: React.FC<Props> = () => {
     const daily = appStore.weather.weatherData.daily;
 
     return (
-        <S.view>
+        <View
+            style={{
+                width: '100%',
+                height: '220px',
+                backgroundColor: 'red',
+            }}>
             <UI.ScrollView horizontal>
-                <S.stack gap='10px'>
-                    <UI.Typography variant='header'>
+                <UI.YStack gap='$-1'>
+                    <UI.Typo.H3>
                         {t('meteo.daily.nDayForecast.title')}
-                    </UI.Typography>
-                    <UI.Stack
-                        direction='row'
-                        justifyContent='space-around'
-                        alignItems='stretch'
-                        gap='50px'>
+                    </UI.Typo.H3>
+                    <UI.XStack
+                        justify='space-around'
+                        verticalAlign='stretch'
+                        gap='$-10'>
                         {daily.map((i) => (
-                            <UI.Stack
+                            <UI.YStack
                                 key={i.time}
-                                direction='column'
-                                justifyContent='space-around'
-                                alignItems='center'>
-                                <Format.Date
-                                    variant='default'
-                                    value={i.time}
-                                    asDayOfWeek
-                                />
-                                <Format.Temp
-                                    value={i.temperature_2m_max}
-                                    color='regular.100'
-                                />
-                                <Format.Temp
-                                    value={i.temperature_2m_min}
-                                    variant='small'
-                                    color='regular.100'
-                                />
+                                justify='space-around'
+                                verticalAlign='center'>
+                                <Format.Date value={i.time} asDayOfWeek />
+                                <Format.Temp value={i.temperature_2m_max} />
+                                <Format.Temp value={i.temperature_2m_min} />
                                 <Format.Precipitation
                                     value={i.precipitation_probability_mean}
-                                    variant='small'
-                                    color='regular.100'
                                 />
-                                <Format.WmoCode
-                                    variant='xsmall'
-                                    color='regular.100'
-                                    value={i.weather_code}
-                                />
-                            </UI.Stack>
+                                <Format.WmoCode value={i.weather_code} />
+                            </UI.YStack>
                         ))}
-                    </UI.Stack>
-                </S.stack>
+                    </UI.XStack>
+                </UI.YStack>
             </UI.ScrollView>
-        </S.view>
+        </View>
     );
 };
 

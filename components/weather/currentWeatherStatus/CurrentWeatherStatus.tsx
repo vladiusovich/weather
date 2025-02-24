@@ -1,4 +1,3 @@
-import S from './CurrentWeatherStatus.styled';
 import { useTranslation } from 'react-i18next';
 import UI from '@/components/ui';
 import { observer } from 'mobx-react-lite';
@@ -16,68 +15,46 @@ const CurrentWeatherStatus: React.FC<Props> = () => {
     const isLoading = !current;
 
     if (isLoading) {
-        return <UI.Typography variant='xsmall'>Loading...</UI.Typography>;
+        return <UI.Typo.Text>Loading...</UI.Typo.Text>;
     }
 
     return (
-        <S.stack direction='row' justifyContent='center'>
-            <S.view>
-                <UI.Stack direction='column' justifyContent='space-between'>
-                    {current.weather_code && (
-                        <UI.Stack direction='column'>
-                            <Format.WmoCode
-                                variant='xsmall'
-                                color='regular.100'
-                                value={current.weather_code}
-                            />
-                        </UI.Stack>
-                    )}
+        <UI.YStack justify='center' bg={'$black10'}>
+            <UI.YStack justify={'space-between'}>
+                {current.weather_code && (
+                    <UI.YStack>
+                        <Format.WmoCode value={current.weather_code} />
+                    </UI.YStack>
+                )}
 
-                    <UI.Stack direction='column'>
-                        <Format.Temp
-                            variant='header'
-                            color='regular.100'
-                            value={current?.apparent_temperature}
-                        />
-                    </UI.Stack>
+                <UI.YStack>
+                    <Format.Temp value={current?.apparent_temperature} />
+                </UI.YStack>
 
-                    <UI.Stack direction='row' alignItems='center'>
-                        <UI.Typography variant='xsmall' color='regular.100'>
-                            {t(`meteo.glossary.apparent_temperature`)}
-                        </UI.Typography>
-                        <Format.Temp
-                            variant='small'
-                            color='regular.100'
-                            value={current?.apparent_temperature}
-                        />
-                    </UI.Stack>
+                <UI.XStack verticalAlign='center'>
+                    <UI.Typo.Text>
+                        {t(`meteo.glossary.apparent_temperature`)}
+                    </UI.Typo.Text>
+                    <Format.Temp value={current?.apparent_temperature} />
+                </UI.XStack>
 
-                    {/* TODO: added min/max */}
-                    <UI.Stack direction='row' gap='20px'>
-                        <UI.Stack direction='row'>
-                            <UI.Typography variant='xsmall' color='regular.100'>
-                                {t(`meteo.glossary.temperature_2m_max`)}
-                            </UI.Typography>
-                            <Format.Temp
-                                variant='xsmall'
-                                color='regular.100'
-                                value={current?.temperature_2m_max}
-                            />
-                        </UI.Stack>
-                        <UI.Stack direction='row'>
-                            <UI.Typography variant='xsmall' color='regular.100'>
-                                {t(`meteo.glossary.temperature_2m_min`)}
-                            </UI.Typography>
-                            <Format.Temp
-                                variant='xsmall'
-                                color='regular.100'
-                                value={current?.temperature_2m_min}
-                            />
-                        </UI.Stack>
-                    </UI.Stack>
-                </UI.Stack>
-            </S.view>
-        </S.stack>
+                {/* TODO: added min/max */}
+                <UI.XStack gap='$2'>
+                    <UI.XStack>
+                        <UI.Typo.Text>
+                            {t(`meteo.glossary.temperature_2m_max`)}
+                        </UI.Typo.Text>
+                        <Format.Temp value={current?.temperature_2m_max} />
+                    </UI.XStack>
+                    <UI.XStack>
+                        <UI.Typo.Text>
+                            {t(`meteo.glossary.temperature_2m_min`)}
+                        </UI.Typo.Text>
+                        <Format.Temp value={current?.temperature_2m_min} />
+                    </UI.XStack>
+                </UI.XStack>
+            </UI.YStack>
+        </UI.YStack>
     );
 };
 

@@ -12,11 +12,11 @@ const OptionsActions: React.FC<OptionsActionsProps> = ({
     onAddSticker,
     onSaveImage,
 }) => (
-    <UI.Stack alignItems='center'>
-        <UI.Button label='Reset' variant='solid' onPress={onReset} />
-        <UI.Button label='Add' variant='solid' onPress={onAddSticker} />
-        <UI.Button label='Save' variant='solid' onPress={onSaveImage} />
-    </UI.Stack>
+    <UI.YStack verticalAlign='center'>
+        <UI.Button onPress={onReset}>Reset</UI.Button>
+        <UI.Button onPress={onAddSticker}>Add</UI.Button>
+        <UI.Button onPress={onSaveImage}>Save</UI.Button>
+    </UI.YStack>
 );
 
 export default OptionsActions;

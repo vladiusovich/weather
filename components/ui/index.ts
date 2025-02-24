@@ -1,22 +1,38 @@
-import Stack from './stack/Stack';
+import XStack from './stack/XStack';
+import YStack from './stack/YStack';
+import ZStack from './stack/ZStack';
+import Card from './card/Card';
 import Button from './button/Button';
-import Typography from './typography/index';
-import { Portal } from './portal/index';
 import Modal from './modal/Modal';
 import ScrollView from './scrollView/ScrollView';
 
-export * from './stack/Stack';
-export * from './button/Button';
-export * from './typography/index';
-export * from './portal/index';
+// TODO: refactor it
+import { H1, H2, H3, H4, H5, H6, Paragraph, SizableText, Text } from 'tamagui';
+
 export * from './modal/Modal';
 export * from './scrollView/ScrollView';
 
 const UI = {
-    Typography,
+    Typo: {
+        H1,
+        H2,
+        H3,
+        H4,
+        H5,
+        H6,
+        Paragraph,
+        SizableText,
+        Text,
+    },
+
     Button,
-    Stack,
-    Portal,
+
+    XStack,
+    YStack,
+    ZStack,
+
+    Card,
+
     Modal,
     ScrollView,
 };

@@ -1,17 +1,15 @@
-import layout from '../layout/layout.styled';
 import UI from '@/components/ui';
 
 const AboutScreen = () => {
     return (
-        <layout.view>
-            <UI.Stack
-                direction='column'
-                justifyContent='center'
-                alignItems='center'
-                flex={1}>
-                <UI.Typography variant='default'>About screen</UI.Typography>
-            </UI.Stack>
-        </layout.view>
+        <UI.YStack
+            fullscreen
+            justify='center'
+            verticalAlign='center'
+            flex={1}
+            background='$color'>
+            <UI.Typo.Text>About screen</UI.Typo.Text>
+        </UI.YStack>
     );
 };
 

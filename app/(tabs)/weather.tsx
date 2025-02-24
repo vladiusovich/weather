@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import useAppStore from '@/hooks/useAppStore';
-import layout from '../layout/layout.styled';
 import UI from '@/components/ui';
 import CurrentWeatherStatus from '@/components/weather/currentWeatherStatus/CurrentWeatherStatus';
 import * as Location from 'expo-location';
@@ -27,12 +26,12 @@ const WeatherScreen = () => {
     }, [appStore.weather]);
 
     return (
-        <layout.view>
-            <UI.Stack direction='row' gap='10px' wrap>
+        <UI.YStack flex={1}>
+            <UI.YStack gap='$2.5'>
                 <CurrentWeatherStatus />
                 <DailyForecast />
-            </UI.Stack>
-        </layout.view>
+            </UI.YStack>
+        </UI.YStack>
     );
 };
 

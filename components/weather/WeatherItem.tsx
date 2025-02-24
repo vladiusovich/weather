@@ -1,8 +1,8 @@
 import { CurrentWeatherData } from '@/services/weather/types/WeatherData';
 import { WeatherVariable } from '@/services/weather/types/MeteoRequest';
-import S from './WeatherItem.styled';
 import UI from '../ui';
 import { useTranslation } from 'react-i18next';
+import { View } from 'tamagui';
 
 interface WeatherItemProps {
     label?: string;
@@ -18,16 +18,14 @@ const WeatherItem: React.FC<WeatherItemProps> = ({
     const { t } = useTranslation();
 
     return (
-        <S.view>
-            <UI.Stack>
-                <UI.Typography variant='xsmall' color='regular.100'>
+        <View>
+            <UI.YStack>
+                <UI.Typo.Text>
                     {label ?? t(`meteo.glossary.${variable}`)}
-                </UI.Typography>
-                <UI.Typography variant='small' color='regular.100'>
-                    {value?.toString() ?? 'N/A'}
-                </UI.Typography>
-            </UI.Stack>
-        </S.view>
+                </UI.Typo.Text>
+                <UI.Typo.Text>{value?.toString() ?? 'N/A'}</UI.Typo.Text>
+            </UI.YStack>
+        </View>
     );
 };
 
