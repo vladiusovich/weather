@@ -5,9 +5,7 @@ import useAppStore from '@/hooks/useAppStore';
 import Format from '@/components/common/format';
 import { View } from 'tamagui';
 
-interface Props { }
-
-const DailyForecast: React.FC<Props> = () => {
+const DailyForecast: React.FC = () => {
     const { t } = useTranslation();
     const appStore = useAppStore();
 

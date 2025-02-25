@@ -4,9 +4,7 @@ import { observer } from 'mobx-react-lite';
 import useAppStore from '@/hooks/useAppStore';
 import Format from '@/components/common/format';
 
-interface Props { }
-
-const CurrentWeatherStatus: React.FC<Props> = () => {
+const CurrentWeatherStatus: React.FC = () => {
     const { t } = useTranslation();
     const appStore = useAppStore();
 
