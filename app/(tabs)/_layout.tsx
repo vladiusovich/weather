@@ -10,14 +10,6 @@ const tabs = [
         inactiveIcon: 'information-circle-outline',
     },
     {
-        name: 'emojiPicker',
-        options: {
-            title: 'Photo Sticker',
-        },
-        activeIcon: 'camera-sharp',
-        inactiveIcon: 'camera-sharp',
-    },
-    {
         name: 'weather',
         options: {
             title: 'Weather',
