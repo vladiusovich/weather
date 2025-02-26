@@ -6,6 +6,7 @@ import Button from './button/Button';
 import Modal from './modal/Modal';
 import ScrollView from './scrollView/ScrollView';
 import { Screen } from './screen/Screen';
+import Loader from './loader/Loader';
 
 // TODO: refactor it
 import { H1, H2, H3, H4, H5, H6, Paragraph, SizableText, Text } from 'tamagui';
@@ -32,6 +33,7 @@ const UI = {
     ZStack,
 
     Card,
+    Loader,
 
     Screen,
 
