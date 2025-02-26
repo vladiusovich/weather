@@ -1,11 +1,12 @@
 import React from 'react';
 import UI from '@/components/ui';
 import { formatDate, getDayOfWeek, isValidDate, toDate } from '@/utils/datetime.helper';
+import { TextStyle } from 'tamagui';
 
 type TempProps = {
     value: string | undefined;
     asDayOfWeek?: boolean;
-};
+} & TextStyle;
 
 const DATE_FORMAT = 'DD/MM/YYYY';
 
@@ -25,7 +26,7 @@ const Date: React.FC<TempProps> = ({ value, asDayOfWeek, ...props }) => {
 
     return (
         <UI.XStack>
-            <UI.Typo.Text>{formatedValue}</UI.Typo.Text>
+            <UI.Typo.Text {...props}>{formatedValue}</UI.Typo.Text>
         </UI.XStack>
     );
 };

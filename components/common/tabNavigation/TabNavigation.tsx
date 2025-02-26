@@ -1,33 +1,39 @@
 import { ScreenProps, Tabs } from 'expo-router';
-import TabIcon from './TabIcon';
+import { NamedExoticComponent } from 'react';
+import { GetThemeValueForKey, useTheme } from 'tamagui';
+import type { IconProps } from "@tamagui/helpers-icon";
 
 interface NavigationOption extends ScreenProps {
-    activeIcon: string;
-    inactiveIcon: string;
+    Icon: NamedExoticComponent<IconProps>;
 }
 
 interface TabNavigationType {
     tabs: NavigationOption[];
 }
 
-// TODO: global styles
 const TabNavigation: React.FC<TabNavigationType> = ({ tabs }) => {
+    const theme = useTheme();
+
     return (
         <Tabs
             screenOptions={{
-                // tabBarActiveTintColor: theme.colors.primary[300],
+                tabBarActiveTintColor: theme.green10.val,
                 headerStyle: {
-                    // backgroundColor: theme.colors.background[100],
+                    backgroundColor: theme.black3.val,
+                },
+                sceneStyle: {
+                    backgroundColor: theme.black2.val,
                 },
                 headerShadowVisible: false,
-                // headerTintColor: theme.colors.typography.regular[100],
+                headerTintColor: theme.color.val,
                 tabBarStyle: {
-                    // backgroundColor: theme.colors.background[100],
+                    backgroundColor: theme.black3.val,
                     borderTopWidth: 0, // Removes the top border
                     elevation: 0, // Removes Android shadow
                     shadowOpacity: 0, // Removes iOS shadow
                 },
-            }}>
+            }}
+        >
             {tabs.map((tab) => {
                 return (
                     <Tabs.Screen
@@ -35,8 +41,8 @@ const TabNavigation: React.FC<TabNavigationType> = ({ tabs }) => {
                         name={tab.name}
                         options={{
                             ...tab?.options,
-                            tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) => (
-                                <TabIcon focused={focused} activeIcon={tab.activeIcon} inactiveIcon={tab.inactiveIcon} color={color} />
+                            tabBarIcon: ({ color }: { color: string }) => (
+                                <tab.Icon color={color as GetThemeValueForKey<"color">} strokeWidth={1} />
                             ),
                         }}
                     />

@@ -26,12 +26,12 @@ const WeatherScreen = () => {
     }, [appStore.weather]);
 
     return (
-        <UI.YStack flex={1}>
+        <UI.Screen>
             <UI.YStack gap='$2.5'>
                 <CurrentWeatherStatus />
                 <DailyForecast />
             </UI.YStack>
-        </UI.YStack>
+        </UI.Screen>
     );
 };
 

@@ -1,4 +1,5 @@
 import TabNavigation from '@/components/common/tabNavigation/TabNavigation';
+import { Home, Cloud } from '@tamagui/lucide-icons'
 
 const tabs = [
     {
@@ -6,16 +7,14 @@ const tabs = [
         options: {
             title: 'About',
         },
-        activeIcon: 'information-circle',
-        inactiveIcon: 'information-circle-outline',
+        Icon: Home,
     },
     {
         name: 'weather',
         options: {
             title: 'Weather',
         },
-        activeIcon: 'cloud-circle',
-        inactiveIcon: 'cloud-circle-outline',
+        Icon: Cloud,
     },
 ];
 

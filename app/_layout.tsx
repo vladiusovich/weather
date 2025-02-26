@@ -21,7 +21,9 @@ export default function RootLayout() {
                 <TamaguiProvider config={config} defaultTheme={themes}>
                     <AppStoreProvider>
                         <StatusBar style='auto' />
-                        <Stack>
+                        <Stack
+                            screenOptions={{
+                            }}>
                             <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
                             <Stack.Screen name='+not-found' />
                         </Stack>
