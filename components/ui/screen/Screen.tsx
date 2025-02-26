@@ -7,5 +7,3 @@ export const Screen = styled(View, {
 });
 
 export type ScreenProps = GetProps<typeof Screen>;
-
-
