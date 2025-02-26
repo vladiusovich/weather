@@ -14,40 +14,46 @@ const DailyForecast: React.FC = () => {
     return (
         <UI.Card
             padding='$3'
-            height={160}
+            height={250}
             backgroundColor={'$background02'}
         >
             {isLoading && (<UI.Loader />)}
-
             {!isLoading && (
-                <UI.ScrollView horizontal>
-                    <UI.YStack gap='$-1'>
+                <UI.ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    <UI.YStack gap='$2'>
                         <UI.Typo.H6>
                             {t('meteo.daily.nDayForecast.title')}
                         </UI.Typo.H6>
                         <UI.XStack
-                            justify='space-between'
                             verticalAlign='stretch'
-                            gap='$2'
+                            justify='space-between'
+                            gap='$4'
                             flex={1}
                         >
                             {daily.map((i) => (
-                                <UI.YStack
+                                <UI.Card
                                     key={i.time}
-                                    justify='space-around'
-                                    verticalAlign='center'
+                                    flex={1}
+                                    backgroundColor={'$white12'}
+                                    padded
+                                    borderRadius={50}
                                 >
-                                    <Format.Date value={i.time} asDayOfWeek />
-                                    <Format.Temp value={i.temperature_2m_max} />
-                                    <Format.Temp value={i.temperature_2m_min} />
-                                    <Format.Precipitation
-                                        value={i.precipitation_probability_mean}
-                                    />
-                                    <Format.WmoCode
-                                        fontSize={'$1'}
-                                        value={i.weather_code}
-                                    />
-                                </UI.YStack>
+                                    <UI.YStack
+                                        justify='space-around'
+                                        items='center'
+                                        flex={1}
+                                    >
+                                        <Format.Date value={i.time} asDayOfWeek />
+                                        <Format.Temp value={i.temperature_2m_max} />
+                                        <Format.WmoCode
+                                            value={i.weather_code}
+                                        />
+                                        <Format.Temp value={i.temperature_2m_min} />
+                                        <Format.Precipitation
+                                            value={i.precipitation_probability_mean}
+                                        />
+                                    </UI.YStack>
+                                </UI.Card>
                             ))}
                         </UI.XStack>
                     </UI.YStack>

@@ -9,7 +9,6 @@ const CurrentWeatherStatus: React.FC = () => {
     const appStore = useAppStore();
 
     const current = appStore.weather.weatherData?.current;
-
     const isLoading = !current;
 
     return (
@@ -25,23 +24,20 @@ const CurrentWeatherStatus: React.FC = () => {
                 backgroundColor={'$background02'}
             >
                 {isLoading && (<UI.Loader />)}
-
                 {!isLoading && (
                     <UI.YStack
                         justify={'space-between'}
                         gap={'$2'}
                     >
-                        {current.weather_code && (
-                            <UI.YStack>
-                                <Format.WmoCode fontSize={'$1'} value={current.weather_code} />
-                            </UI.YStack>
-                        )}
+                        <UI.YStack>
+                            <Format.WmoCode fontSize={'$1'} value={current.weather_code} />
+                        </UI.YStack>
 
                         <UI.YStack>
                             <Format.Temp value={current?.apparent_temperature} />
                         </UI.YStack>
 
-                        <UI.XStack verticalAlign='center'>
+                        <UI.XStack gap={'$2'}>
                             <UI.Typo.Text>
                                 {t(`meteo.glossary.apparent_temperature`)}
                             </UI.Typo.Text>

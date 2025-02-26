@@ -1,6 +1,6 @@
 import Temp from './Temp';
 import Date from './Date';
-import WmoCode from './WmoCode';
+import WmoCode from './wmoCode/WmoCode';
 import Precipitation from './Precipitation';
 
 const Format = {

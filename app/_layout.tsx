@@ -9,7 +9,7 @@ import { useColorScheme } from 'react-native';
 
 export default function RootLayout() {
     const systemTheme = useColorScheme();
-    const [themes] = useState(systemTheme || 'dark');
+    const [theme] = useState(systemTheme || 'dark');
 
     useEffect(() => {
         i18n.init();
@@ -18,9 +18,9 @@ export default function RootLayout() {
     return (
         <>
             <StrictMode>
-                <TamaguiProvider config={config} defaultTheme={themes}>
+                <TamaguiProvider config={config} defaultTheme={theme}>
                     <AppStoreProvider>
-                        <StatusBar style='auto' />
+                        <StatusBar style={theme} />
                         <Stack
                             screenOptions={{
                             }}>

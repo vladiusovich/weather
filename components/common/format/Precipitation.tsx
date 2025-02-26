@@ -8,9 +8,9 @@ type PrecipitationProps = {
 
 const Precipitation: React.FC<PrecipitationProps> = ({ value, ...props }) => {
     return (
-        <UI.XStack gap='$2'>
+        <UI.XStack gap='$1' items={'baseline'}>
             <UI.Typo.Text {...props}>{value ?? 'N/A'}</UI.Typo.Text>
-            <UI.Typo.Text>%</UI.Typo.Text>
+            <UI.Typo.Text fontSize='$1'>%</UI.Typo.Text>
         </UI.XStack>
     );
 };
