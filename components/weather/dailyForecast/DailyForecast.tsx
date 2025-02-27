@@ -1,8 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import UI from '@/components/ui';
 import { observer } from 'mobx-react-lite';
 import useAppStore from '@/hooks/useAppStore';
 import Format from '@/components/common/format';
+import ScrollableForecast from '../common/scrollableForecast/ScrollableForecast';
+import ForecastItem from '../common/scrollableForecast/ForecastItem';
 
 const DailyForecast: React.FC = () => {
     const { t } = useTranslation();
@@ -12,55 +13,22 @@ const DailyForecast: React.FC = () => {
     const daily = appStore.weather.weatherData.daily;
 
     return (
-        <UI.Card
-            padding='$5'
-            height={250}
-            backgroundColor={'$background02'}
+        <ScrollableForecast
+            title={t('meteo.daily.nDayForecast.title')}
+            isLoading={isLoading}
         >
-            {isLoading && (<UI.Loader />)}
-            {!isLoading && (
-                <>
-                    <UI.Card.Header size={'$0.5'}>
-                        <UI.Typo.H6>
-                            {t('meteo.daily.nDayForecast.title')}
-                        </UI.Typo.H6>
-                    </UI.Card.Header>
-
-                    <UI.ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                        <UI.XStack
-                            verticalAlign='stretch'
-                            justify='space-between'
-                            gap='$4'
-                            flex={1}
-                        >
-                            {daily.map((i) => (
-                                <UI.Card
-                                    key={i.time}
-                                    flex={1}
-                                    backgroundColor={'$white12'}
-                                    padded
-                                    borderRadius={50}
-                                >
-                                    <UI.YStack
-                                        justify='space-around'
-                                        items='center'
-                                        flex={1}
-                                    >
-                                        <Format.Date variant='dayOfWeek' value={i.time} asDayOfWeek />
-                                        <Format.Temp value={i.temperature_2m_max} />
-                                        <Format.WmoIcon value={i.weather_code} />
-                                        <Format.Temp value={i.temperature_2m_min} />
-                                        <Format.Precipitation
-                                            value={i.precipitation_probability_mean}
-                                        />
-                                    </UI.YStack>
-                                </UI.Card>
-                            ))}
-                        </UI.XStack>
-                    </UI.ScrollView>
-                </>
-            )}
-        </UI.Card>
+            {daily.map((i) => (
+                <ForecastItem key={i.time}>
+                    <Format.Date variant='dayOfWeek' value={i.time} asDayOfWeek />
+                    <Format.Temp value={i.temperature_2m_max} />
+                    <Format.WmoIcon value={i.weather_code} />
+                    <Format.Temp value={i.temperature_2m_min} />
+                    <Format.Precipitation
+                        value={i.precipitation_probability_mean}
+                    />
+                </ForecastItem>
+            ))}
+        </ScrollableForecast>
     );
 };
 

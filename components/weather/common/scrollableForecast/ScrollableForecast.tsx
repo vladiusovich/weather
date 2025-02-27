@@ -15,7 +15,7 @@ const ScrollableForecast: React.FC<ScrollableForecastProps> = ({
 }) => {
     return (
         <UI.Card
-            padding='$5'
+            padding='$4'
             height={300}
             backgroundColor={'$background02'}
         >
@@ -28,30 +28,16 @@ const ScrollableForecast: React.FC<ScrollableForecastProps> = ({
                         </UI.Typo.H6>
                     </UI.Card.Header>
 
+                    <UI.Separator marginBlock={'$2'} />
+
                     <UI.ScrollView horizontal showsHorizontalScrollIndicator={false}>
                         <UI.XStack
                             verticalAlign='stretch'
                             justify='space-between'
-                            gap='$4'
+                            gap='$3'
                             flex={1}
                         >
-                            {children.map((item, i) => (
-                                <UI.Card
-                                    key={i}
-                                    flex={1}
-                                    backgroundColor={'$white12'}
-                                    padded
-                                    borderRadius={50}
-                                >
-                                    <UI.YStack
-                                        justify='space-around'
-                                        items='center'
-                                        flex={1}
-                                    >
-                                        {item}
-                                    </UI.YStack>
-                                </UI.Card>
-                            ))}
+                            {children}
                         </UI.XStack>
                     </UI.ScrollView>
                 </>

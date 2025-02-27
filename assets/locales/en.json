@@ -3,7 +3,9 @@
         "daily": {
             "nDayForecast": {
                 "title": "N-day forecast"
-            },
+            }
+        },
+        "hourly": {
             "hourlyForecast": {
                 "title": "Hourly forecast"
             }
