@@ -3,13 +3,15 @@ import { observer } from 'mobx-react-lite';
 import React from 'react';
 
 interface ScrollableForecastProps {
-    title: string;
+    header: string | React.ReactNode;
+    headerIcon?: React.ReactNode;
     children: React.ReactNode[];
     isLoading?: boolean;
 }
 
 const ScrollableForecast: React.FC<ScrollableForecastProps> = ({
-    title,
+    header,
+    headerIcon,
     children,
     isLoading = false,
 }) => {
@@ -23,9 +25,12 @@ const ScrollableForecast: React.FC<ScrollableForecastProps> = ({
             {!isLoading && (
                 <>
                     <UI.Card.Header size={'$0.5'}>
-                        <UI.Typo.H6>
-                            {title}
-                        </UI.Typo.H6>
+                        <UI.XStack gap={'$2'} items={'center'}>
+                            {headerIcon}
+                            <UI.Typo.H6>
+                                {header}
+                            </UI.Typo.H6>
+                        </UI.XStack>
                     </UI.Card.Header>
 
                     <UI.Separator marginBlock={'$2'} />

@@ -4,6 +4,8 @@ import useAppStore from '@/hooks/useAppStore';
 import Format from '@/components/common/format';
 import ScrollableForecast from '../common/scrollableForecast/ScrollableForecast';
 import ForecastItem from '../common/scrollableForecast/ForecastItem';
+import { Calendar } from '@tamagui/lucide-icons';
+import { isSameDay, getNow, toDate } from '@/utils/datetime.helper';
 
 const DailyForecast: React.FC = () => {
     const { t } = useTranslation();
@@ -12,22 +14,28 @@ const DailyForecast: React.FC = () => {
     const isLoading = !appStore.weather.weatherData.data?.daily;
     const daily = appStore.weather.weatherData.daily;
 
+    const now = getNow();
     return (
         <ScrollableForecast
-            title={t('meteo.daily.nDayForecast.title')}
+            header={t('meteo.daily.nDayForecast.title')}
+            headerIcon={<Calendar size={20} />}
             isLoading={isLoading}
         >
-            {daily.map((i) => (
-                <ForecastItem key={i.time}>
-                    <Format.Date variant='dayOfWeek' value={i.time} asDayOfWeek />
-                    <Format.Temp value={i.temperature_2m_max} />
-                    <Format.WmoIcon value={i.weather_code} />
-                    <Format.Temp value={i.temperature_2m_min} />
-                    <Format.Precipitation
-                        value={i.precipitation_probability_mean}
-                    />
-                </ForecastItem>
-            ))}
+            {daily.map((i) => {
+                const datetime = toDate(i.time);
+                const isCurrent = isSameDay(now, datetime);
+                return (
+                    <ForecastItem key={i.time} current={isCurrent}>
+                        <Format.Date variant='dayOfWeek' value={i.time} asDayOfWeek />
+                        <Format.Temp value={i.temperature_2m_max} />
+                        <Format.WmoIcon value={i.weather_code} />
+                        <Format.Temp value={i.temperature_2m_min} />
+                        <Format.Precipitation
+                            value={i.precipitation_probability_mean}
+                        />
+                    </ForecastItem>
+                );
+            })}
         </ScrollableForecast>
     );
 };

@@ -3,6 +3,7 @@ import { WeatherData } from '@/services/weather/types/WeatherData';
 import WeatherSettingsStore from './WeatherSettingsStore';
 import OpenMeteoService from '@/services/weather/types/weather/openMeteoService';
 import { LocationCoords } from '@/services/weather/types/LocationCoords';
+import { getNow, isSameHour, toDate } from '@/utils/datetime.helper';
 
 type ConstructorArgsType = {
     weatherSettings: WeatherSettingsStore;
@@ -65,7 +66,12 @@ class WeatherDataStore {
                 ? [hourly?.time]
                 : [];
 
-        return time.map((time: string, index: number) => ({
+        const now = getNow();
+        const currentIndex = time.findIndex(t => isSameHour(now, toDate(t)));
+
+        const actualTime = time.slice(currentIndex);
+
+        return actualTime.map((time: string, index: number) => ({
             time,
             temperature_2m: hourly!.temperature_2m![index],
             relative_humidity_2m: hourly!.relative_humidity_2m![index],

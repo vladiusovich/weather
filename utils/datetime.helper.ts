@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+import dayjs, { OpUnitType } from 'dayjs';
 
 const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const;
 type DaysOfWeek = typeof daysOfWeek[number];
@@ -32,4 +32,30 @@ export const getDayOfWeek = (date: Date): DaysOfWeek => {
  */
 export const formatDate = (date: Date, template: string): string => {
     return dayjs(date).format(template);
+};
+
+/**
+ * Returns the current date and time as a Date object.
+ */
+export const getNow = (): Date => {
+    return dayjs().toDate();
+};
+
+const isSame = (date1: Date, date2: Date, unit: OpUnitType): boolean => {
+    return dayjs(date1).isSame(dayjs(date2), unit);
+};
+
+/**
+ * Determines if two dates occur on the same calendar day.
+ *
+ * @param date1 - The first date.
+ * @param date2 - The second date.
+ * @returns true if both dates are on the same day, false otherwise.
+ */
+export const isSameDay = (date1: Date, date2: Date): boolean => {
+    return isSame(date1, date2, 'day');
+};
+
+export const isSameHour = (date1: Date, date2: Date): boolean => {
+    return isSame(date1, date2, 'hours');
 };

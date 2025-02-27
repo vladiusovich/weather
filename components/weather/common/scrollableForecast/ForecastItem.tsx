@@ -4,17 +4,19 @@ import React from 'react';
 
 interface ForecastItemProps {
     children: React.ReactNode;
+    current?: boolean;
 }
 
 const ForecastItem: React.FC<ForecastItemProps> = ({
     children,
+    current,
 }) => {
     return (
         <UI.Card
             flex={1}
-            backgroundColor={'$white12'}
+            backgroundColor={current ? '$accent11' : '$background04'}
             padded
-            borderRadius={50}
+            borderRadius={40}
         >
             <UI.YStack
                 justify='space-around'

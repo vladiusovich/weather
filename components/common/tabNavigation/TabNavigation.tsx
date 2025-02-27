@@ -19,10 +19,10 @@ const TabNavigation: React.FC<TabNavigationType> = ({ tabs }) => {
             screenOptions={{
                 tabBarActiveTintColor: theme.green10.val,
                 headerStyle: {
-                    backgroundColor: theme.black3.val,
+                    backgroundColor: theme.black4.val,
                 },
                 sceneStyle: {
-                    backgroundColor: theme.black2.val,
+                    backgroundColor: theme.black4.val,
                 },
                 headerShadowVisible: false,
                 headerTintColor: theme.color.val,
