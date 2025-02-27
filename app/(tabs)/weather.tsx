@@ -5,6 +5,7 @@ import UI from '@/components/ui';
 import CurrentWeatherStatus from '@/components/weather/currentWeatherStatus/CurrentWeatherStatus';
 import * as Location from 'expo-location';
 import DailyForecast from '@/components/weather/dailyForecast/DailyForecast';
+import HourlyForecast from '@/components/weather/hourlyForecast/HourlyForecast';
 
 const WeatherScreen = () => {
     const appStore = useAppStore();
@@ -29,6 +30,7 @@ const WeatherScreen = () => {
         <UI.Screen>
             <UI.YStack gap='$2.5'>
                 <CurrentWeatherStatus />
+                <HourlyForecast />
                 <DailyForecast />
             </UI.YStack>
         </UI.Screen>

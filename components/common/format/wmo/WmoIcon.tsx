@@ -44,10 +44,11 @@ const iconMapper: Record<number, NamedExoticComponent<IconProps>> = {
 
 type WmoCodeProps = {
     value?: number | null;
-};
+} & IconProps;
 
-const IconWmo: React.FC<WmoCodeProps> = ({
+const WmoIcon: React.FC<WmoCodeProps> = ({
     value,
+    ...props
 }) => {
     if (!value) {
         return null;
@@ -56,8 +57,8 @@ const IconWmo: React.FC<WmoCodeProps> = ({
     const Icon = iconMapper[value];
 
     return (
-        <Icon />
+        <Icon {...props} />
     );
 };
 
-export default IconWmo;
+export default WmoIcon;

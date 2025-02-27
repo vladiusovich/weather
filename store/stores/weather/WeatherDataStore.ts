@@ -17,6 +17,7 @@ class WeatherDataStore {
             data: observable,
             current: computed,
             daily: computed,
+            hourly: computed,
         });
     }
 
@@ -43,8 +44,8 @@ class WeatherDataStore {
         const time: string[] = Array.isArray(daily?.time)
             ? daily?.time
             : daily?.time
-              ? [daily?.time]
-              : [];
+                ? [daily?.time]
+                : [];
 
         return time.map((time: string, index: number) => ({
             time,
@@ -53,6 +54,26 @@ class WeatherDataStore {
             weather_code: daily!.weather_code![index],
             precipitation_probability_mean:
                 daily!.precipitation_probability_mean![index],
+        }));
+    }
+
+    public get hourly() {
+        const hourly = this.data?.hourly;
+        const time: string[] = Array.isArray(hourly?.time)
+            ? hourly?.time
+            : hourly?.time
+                ? [hourly?.time]
+                : [];
+
+        return time.map((time: string, index: number) => ({
+            time,
+            temperature_2m: hourly!.temperature_2m![index],
+            relative_humidity_2m: hourly!.relative_humidity_2m![index],
+            weather_code: hourly!.weather_code![index],
+            apparent_temperature: hourly!.apparent_temperature![index],
+            precipitation_probability: hourly!.precipitation_probability![index],
+            pressure_msl: hourly!.pressure_msl![index],
+            surface_pressure: hourly!.surface_pressure![index],
         }));
     }
 }

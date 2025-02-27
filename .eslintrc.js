@@ -5,7 +5,7 @@ module.exports = {
     rules: {
         "indent": ["error", 4, { "SwitchCase": 1 }],
         "quotes": ["warning", "single"],
-        "max-len": ["error", { "code": 150, "tabWidth": 4, "ignoreComments": true }],
+        "max-len": ["error", { "code": 140, "tabWidth": 4, "ignoreComments": true }],
         "no-unused-vars": "off",
         "no-shadow": "off",
         "no-debugger": 1,

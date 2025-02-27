@@ -4,17 +4,17 @@ import { observer } from 'mobx-react-lite';
 import useAppStore from '@/hooks/useAppStore';
 import Format from '@/components/common/format';
 
-const DailyForecast: React.FC = () => {
+const HourlyForecast: React.FC = () => {
     const { t } = useTranslation();
     const appStore = useAppStore();
 
-    const isLoading = !appStore.weather.weatherData.data?.daily;
-    const daily = appStore.weather.weatherData.daily;
+    const isLoading = !appStore.weather.weatherData.data?.hourly;
+    const hourly = appStore.weather.weatherData.hourly;
 
     return (
         <UI.Card
             padding='$5'
-            height={250}
+            height={300}
             backgroundColor={'$background02'}
         >
             {isLoading && (<UI.Loader />)}
@@ -22,7 +22,7 @@ const DailyForecast: React.FC = () => {
                 <>
                     <UI.Card.Header size={'$0.5'}>
                         <UI.Typo.H6>
-                            {t('meteo.daily.nDayForecast.title')}
+                            {t('meteo.daily.hourlyForecast.title')}
                         </UI.Typo.H6>
                     </UI.Card.Header>
 
@@ -33,7 +33,7 @@ const DailyForecast: React.FC = () => {
                             gap='$4'
                             flex={1}
                         >
-                            {daily.map((i) => (
+                            {hourly.map((i) => (
                                 <UI.Card
                                     key={i.time}
                                     flex={1}
@@ -46,12 +46,14 @@ const DailyForecast: React.FC = () => {
                                         items='center'
                                         flex={1}
                                     >
-                                        <Format.Date variant='dayOfWeek' value={i.time} asDayOfWeek />
-                                        <Format.Temp value={i.temperature_2m_max} />
+                                        <Format.Date variant='time' value={i.time} />
+                                        <Format.Temp value={i.temperature_2m} />
                                         <Format.WmoIcon value={i.weather_code} />
-                                        <Format.Temp value={i.temperature_2m_min} />
                                         <Format.Precipitation
-                                            value={i.precipitation_probability_mean}
+                                            value={i.precipitation_probability}
+                                        />
+                                        <Format.Humidity
+                                            value={i.relative_humidity_2m}
                                         />
                                     </UI.YStack>
                                 </UI.Card>
@@ -64,4 +66,4 @@ const DailyForecast: React.FC = () => {
     );
 };
 
-export default observer(DailyForecast);
+export default observer(HourlyForecast);

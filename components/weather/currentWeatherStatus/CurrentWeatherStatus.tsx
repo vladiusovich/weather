@@ -18,7 +18,7 @@ const CurrentWeatherStatus: React.FC = () => {
             paddingInline={12}
         >
             <UI.Card
-                padding='$3'
+                padding='$5'
                 width={180}
                 minH={90}
                 backgroundColor={'$background02'}
@@ -29,9 +29,16 @@ const CurrentWeatherStatus: React.FC = () => {
                         justify={'space-between'}
                         gap={'$2'}
                     >
-                        <UI.YStack>
-                            <Format.WmoCode fontSize={'$1'} value={current.weather_code} />
+                        <UI.YStack
+                            gap={'$2'}
+                        >
+                            <Format.WmoIcon size={40} value={current.weather_code} />
+                            <Format.WmoCode
+                                fontSize={'$1'}
+                                value={current.weather_code}
+                            />
                         </UI.YStack>
+                        <UI.Separator />
 
                         <UI.YStack>
                             <Format.Temp value={current?.apparent_temperature} />

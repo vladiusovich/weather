@@ -9,7 +9,7 @@ import { Screen } from './screen/Screen';
 import Loader from './loader/Loader';
 
 // TODO: refactor it
-import { H1, H2, H3, H4, H5, H6, Paragraph, SizableText, Text, Separator } from 'tamagui';
+import { H1, H2, H3, H4, H5, H6, Paragraph, SizableText, Text, Separator, View } from 'tamagui';
 
 export * from './modal/Modal';
 
@@ -40,6 +40,7 @@ const UI = {
 
     Modal,
     ScrollView,
+    View,
 };
 
 export default UI;

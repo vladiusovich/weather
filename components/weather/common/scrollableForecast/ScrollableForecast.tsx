@@ -1,20 +1,22 @@
-import { useTranslation } from 'react-i18next';
 import UI from '@/components/ui';
 import { observer } from 'mobx-react-lite';
-import useAppStore from '@/hooks/useAppStore';
-import Format from '@/components/common/format';
+import React from 'react';
 
-const DailyForecast: React.FC = () => {
-    const { t } = useTranslation();
-    const appStore = useAppStore();
+interface ScrollableForecastProps {
+    title: string;
+    children: React.ReactNode[];
+    isLoading?: boolean;
+}
 
-    const isLoading = !appStore.weather.weatherData.data?.daily;
-    const daily = appStore.weather.weatherData.daily;
-
+const ScrollableForecast: React.FC<ScrollableForecastProps> = ({
+    title,
+    children,
+    isLoading = false,
+}) => {
     return (
         <UI.Card
             padding='$5'
-            height={250}
+            height={300}
             backgroundColor={'$background02'}
         >
             {isLoading && (<UI.Loader />)}
@@ -22,7 +24,7 @@ const DailyForecast: React.FC = () => {
                 <>
                     <UI.Card.Header size={'$0.5'}>
                         <UI.Typo.H6>
-                            {t('meteo.daily.nDayForecast.title')}
+                            {title}
                         </UI.Typo.H6>
                     </UI.Card.Header>
 
@@ -33,9 +35,9 @@ const DailyForecast: React.FC = () => {
                             gap='$4'
                             flex={1}
                         >
-                            {daily.map((i) => (
+                            {children.map((item, i) => (
                                 <UI.Card
-                                    key={i.time}
+                                    key={i}
                                     flex={1}
                                     backgroundColor={'$white12'}
                                     padded
@@ -46,13 +48,7 @@ const DailyForecast: React.FC = () => {
                                         items='center'
                                         flex={1}
                                     >
-                                        <Format.Date variant='dayOfWeek' value={i.time} asDayOfWeek />
-                                        <Format.Temp value={i.temperature_2m_max} />
-                                        <Format.WmoIcon value={i.weather_code} />
-                                        <Format.Temp value={i.temperature_2m_min} />
-                                        <Format.Precipitation
-                                            value={i.precipitation_probability_mean}
-                                        />
+                                        {item}
                                     </UI.YStack>
                                 </UI.Card>
                             ))}
@@ -64,4 +60,4 @@ const DailyForecast: React.FC = () => {
     );
 };
 
-export default observer(DailyForecast);
+export default observer(ScrollableForecast);

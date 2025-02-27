@@ -3,14 +3,35 @@ import UI from '@/components/ui';
 import { formatDate, getDayOfWeek, isValidDate, toDate } from '@/utils/datetime.helper';
 import { TextStyle } from 'tamagui';
 
-type TempProps = {
+type DateVariantType = 'date' | 'time' | 'datetime' | 'dayOfWeek';
+
+type DateProps = {
     value: string | undefined;
     asDayOfWeek?: boolean;
+    variant: DateVariantType;
 } & TextStyle;
 
 const DATE_FORMAT = 'DD/MM/YYYY';
+const TIME_FORMAT = 'HH:mm';
 
-const Date: React.FC<TempProps> = ({ value, asDayOfWeek, ...props }) => {
+const format = (date: Date, variant: DateVariantType) => {
+    switch (variant) {
+        case 'date':
+            return formatDate(date, DATE_FORMAT);
+        case 'time':
+            return formatDate(date, TIME_FORMAT);
+        case 'datetime':
+            return formatDate(date, `${DATE_FORMAT} ${TIME_FORMAT}`);
+        case 'dayOfWeek':
+            return getDayOfWeek(date);
+    }
+}
+
+const Date: React.FC<DateProps> = ({
+    value,
+    asDayOfWeek,
+    variant = 'date',
+    ...props }) => {
     if (!value) {
         return null;
     }
@@ -22,7 +43,7 @@ const Date: React.FC<TempProps> = ({ value, asDayOfWeek, ...props }) => {
     }
 
     // TODO
-    const formatedValue = asDayOfWeek ? getDayOfWeek(date) : formatDate(date, DATE_FORMAT);
+    const formatedValue = format(date, variant);
 
     return (
         <UI.XStack>

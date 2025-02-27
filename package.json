@@ -25,6 +25,7 @@
     "@tamagui/lucide-icons": "^1.125.14",
     "@tamagui/themes": "^1.125.14",
     "axios": "^1.7.9",
+    "dayjs": "^1.11.13",
     "dom-to-image": "^2.6.0",
     "expo": "~52.0.31",
     "expo-blur": "~14.0.3",

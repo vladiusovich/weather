@@ -22,7 +22,16 @@ class WeatherSettingsStore {
             'apparent_temperature_max',
             'apparent_temperature_min',
         ],
-    };
+        hourly: [
+            "temperature_2m",
+            "relative_humidity_2m",
+            "apparent_temperature",
+            "precipitation_probability",
+            "weather_code",
+            "pressure_msl",
+            "surface_pressure",
+        ],
+    }
 
     constructor() {
         makeObservable(this, {});

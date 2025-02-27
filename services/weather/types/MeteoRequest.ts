@@ -12,6 +12,7 @@ const weatherVariables = [
     'weather_code',
     'pressure_msl',
     'precipitation_probability_mean',
+    'precipitation_probability',
     'surface_pressure',
     'apparent_temperature_max',
     'apparent_temperature_min',

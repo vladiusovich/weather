@@ -1,35 +1,35 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+import dayjs from 'dayjs';
 
-type DaysOfWeek = (typeof daysOfWeek)[number];
+const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const;
+type DaysOfWeek = typeof daysOfWeek[number];
 
+/**
+ * Checks if the provided date is valid.
+ * Returns false if the date is null, undefined, or invalid.
+ */
 export const isValidDate = (date?: Date | null): boolean => {
-    if (date === null || date === undefined) {
-        return false;
-    }
-
-    try {
-        return !isNaN(date.getTime());
-    } catch (e) {
-        console.error('isValidDate:', date, e);
-        return false;
-    }
+    return !!date && dayjs(date).isValid();
 };
 
-export const toDate = (date: string) => {
-    return new Date(date);
+/**
+ * Converts a date string to a Date object using dayjs.
+ */
+export const toDate = (dateStr: string): Date => {
+    return dayjs(dateStr).toDate();
 };
 
+/**
+ * Retrieves the abbreviated day of the week for the given date.
+ */
 export const getDayOfWeek = (date: Date): DaysOfWeek => {
-    return daysOfWeek[date.getDay()];
+    const dayIndex = dayjs(date).day();
+    return daysOfWeek[dayIndex];
 };
 
+/**
+ * Formats the given date according to the provided template.
+ * The template supports dayjs tokens (e.g., "YYYY", "MM", "DD").
+ */
 export const formatDate = (date: Date, template: string): string => {
-    const replacements: { [key: string]: string } = {
-        YYYY: date.getFullYear().toString(),
-        MM: (date.getMonth() + 1).toString().padStart(2, '0'),
-        DD: date.getDate().toString().padStart(2, '0'),
-    };
-
-    return template.replace(/YYYY|MM|DD/g, (matched) => replacements[matched]);
+    return dayjs(date).format(template);
 };
