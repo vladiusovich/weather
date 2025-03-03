@@ -15,7 +15,7 @@ export type HourlyWeatherData = Partial<
     Time;
 
 export type DailyWeatherData = Partial<
-    Record<WeatherVariable, (number | null)[]>
+    Record<WeatherVariable, (number | string | null)[]>
 > &
     Time;
 

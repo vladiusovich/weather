@@ -1,7 +1,7 @@
 import { ScreenProps, Tabs } from 'expo-router';
 import { NamedExoticComponent } from 'react';
 import { GetThemeValueForKey, useTheme } from 'tamagui';
-import type { IconProps } from "@tamagui/helpers-icon";
+import type { IconProps } from '@tamagui/helpers-icon';
 
 interface NavigationOption extends ScreenProps {
     Icon: NamedExoticComponent<IconProps>;

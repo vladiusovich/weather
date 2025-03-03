@@ -12,15 +12,11 @@ const CurrentWeatherStatus: React.FC = () => {
     const isLoading = !current;
 
     return (
-        <UI.YStack
-            justify='center'
-            items='center'
-            paddingInline={12}
+        <UI.XStack
+            gap={'$2'}
         >
             <UI.Card
-                padding='$5'
-                width={180}
-                minH={90}
+                padding='$4'
                 backgroundColor={'$background02'}
             >
                 {isLoading && (<UI.Loader />)}
@@ -41,7 +37,7 @@ const CurrentWeatherStatus: React.FC = () => {
                         <UI.Separator />
 
                         <UI.YStack>
-                            <Format.Temp value={current?.apparent_temperature} />
+                            <Format.Temp fontSize={'$10'} value={current?.apparent_temperature} />
                         </UI.YStack>
 
                         <UI.XStack gap={'$2'}>
@@ -69,7 +65,7 @@ const CurrentWeatherStatus: React.FC = () => {
                     </UI.YStack>
                 )}
             </UI.Card>
-        </UI.YStack>
+        </UI.XStack>
     );
 };
 

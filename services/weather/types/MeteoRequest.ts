@@ -16,6 +16,8 @@ const weatherVariables = [
     'surface_pressure',
     'apparent_temperature_max',
     'apparent_temperature_min',
+    'sunrise',
+    'sunset'
 ] as const;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

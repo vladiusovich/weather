@@ -48,13 +48,15 @@ class WeatherDataStore {
                 ? [daily?.time]
                 : [];
 
-        return time.map((time: string, index: number) => ({
-            time,
+        return time.map((t: string, index: number) => ({
+            time: t,
             temperature_2m_max: daily!.temperature_2m_max![index],
             temperature_2m_min: daily!.temperature_2m_min![index],
             weather_code: daily!.weather_code![index],
             precipitation_probability_mean:
                 daily!.precipitation_probability_mean![index],
+            sunrise: daily?.sunrise![index],
+            sunset: daily?.sunset![index],
         }));
     }
 
@@ -71,8 +73,8 @@ class WeatherDataStore {
 
         const actualTime = time.slice(currentIndex);
 
-        return actualTime.map((time: string, index: number) => ({
-            time,
+        return actualTime.map((t: string, index: number) => ({
+            time: t,
             temperature_2m: hourly!.temperature_2m![index],
             relative_humidity_2m: hourly!.relative_humidity_2m![index],
             weather_code: hourly!.weather_code![index],

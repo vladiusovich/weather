@@ -4,7 +4,7 @@ module.exports = {
     extends: ['expo'],
     rules: {
         "indent": ["error", 4, { "SwitchCase": 1 }],
-        "quotes": ["warning", "single"],
+        "quotes": ["warn", "single"],
         "max-len": ["error", { "code": 140, "tabWidth": 4, "ignoreComments": true }],
         "no-unused-vars": "off",
         "no-shadow": "off",
@@ -48,6 +48,6 @@ module.exports = {
         "@typescript-eslint/no-non-null-assertion": 0,
         "@typescript-eslint/no-unused-vars": [1],
         "@typescript-eslint/no-shadow": "error",
-        "@typescript-eslint/member-delimiter-style": "error",
+        // "@typescript-eslint/member-delimiter-style": "error",
     },
 };

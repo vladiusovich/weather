@@ -1,14 +1,28 @@
 import { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
+import { RefreshControl, ScrollView } from 'react-native';
 import useAppStore from '@/hooks/useAppStore';
 import UI from '@/components/ui';
 import CurrentWeatherStatus from '@/components/weather/currentWeatherStatus/CurrentWeatherStatus';
 import * as Location from 'expo-location';
 import DailyForecast from '@/components/weather/dailyForecast/DailyForecast';
 import HourlyForecast from '@/components/weather/hourlyForecast/HourlyForecast';
+import React from 'react';
+import { LocationCoords } from '@/services/weather/types/LocationCoords';
+import SolarTransition from '@/components/weather/solarTransition/SolarTransition';
 
 const WeatherScreen = () => {
     const appStore = useAppStore();
+    const [refreshing, setRefreshing] = React.useState(false);
+    const [myLocation, setMyLocation] = React.useState<LocationCoords | null>();
+
+    const onRefresh = React.useCallback(async () => {
+        setRefreshing(true);
+        if (myLocation) {
+            await appStore.weather.weatherData.fetch(myLocation);
+            setRefreshing(false);
+        }
+    }, []);
 
     useEffect(() => {
         async function getCurrentLocation() {
@@ -20,6 +34,7 @@ const WeatherScreen = () => {
 
             let location = await Location.getCurrentPositionAsync({});
 
+            setMyLocation(location.coords)
             appStore.weather.weatherData.fetch({ ...location.coords });
         }
 
@@ -27,13 +42,26 @@ const WeatherScreen = () => {
     }, [appStore.weather]);
 
     return (
-        <UI.Screen>
-            <UI.YStack gap='$2.5'>
-                <CurrentWeatherStatus />
-                <HourlyForecast />
-                <DailyForecast />
-            </UI.YStack>
-        </UI.Screen>
+        <ScrollView
+            showsVerticalScrollIndicator={false}
+            refreshControl={
+                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            }>
+            <UI.Screen>
+                <UI.YStack gap='$2.5'>
+                    <UI.XStack
+                        items={'flex-start'}
+                        // justify={'space-between'}
+                        gap={'$2'}
+                    >
+                        <CurrentWeatherStatus />
+                        <SolarTransition />
+                    </UI.XStack>
+                    <HourlyForecast />
+                    <DailyForecast />
+                </UI.YStack>
+            </UI.Screen>
+        </ScrollView>
     );
 };
 
