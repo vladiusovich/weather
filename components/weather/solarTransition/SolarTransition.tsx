@@ -3,9 +3,15 @@ import useAppStore from '@/hooks/useAppStore';
 import Format from '@/components/common/format';
 import UI from '@/components/ui';
 import { Sunrise, Sunset } from '@tamagui/lucide-icons';
+import { useRouter } from 'expo-router';
 
 const SolarTransition: React.FC = () => {
     const appStore = useAppStore();
+    const router = useRouter();
+
+    const onPress = () => {
+        router.push('/solarTransition')
+    }
 
     const isLoading = !appStore.weather.weatherData.data?.daily;
     const daily = appStore.weather.weatherData.daily;
@@ -14,6 +20,7 @@ const SolarTransition: React.FC = () => {
         <UI.Card
             padding='$3'
             backgroundColor={'$background02'}
+            onPress={onPress}
         >
             {isLoading && (<UI.Loader />)}
             {!isLoading && (

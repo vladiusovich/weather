@@ -1,5 +1,7 @@
-import TabNavigation from '@/components/common/tabNavigation/TabNavigation';
+import Router from '@/components/route';
 import { Home, Cloud } from '@tamagui/lucide-icons'
+import { Tabs } from 'expo-router';
+import { GetThemeValueForKey } from 'tamagui';
 
 const tabs = [
     {
@@ -18,8 +20,25 @@ const tabs = [
     },
 ];
 
-const TabLayout = () => {
-    return <TabNavigation tabs={tabs} />;
+const TabsLayout = () => {
+    return (
+        <Router.Tabs>
+            {tabs.map((tab) => {
+                return (
+                    <Tabs.Screen
+                        key={tab.name}
+                        name={tab.name}
+                        options={{
+                            ...tab?.options,
+                            tabBarIcon: ({ color }: { color: string }) => (
+                                <tab.Icon color={color as GetThemeValueForKey<'color'>} strokeWidth={1} />
+                            ),
+                        }}
+                    />
+                );
+            })}
+        </Router.Tabs>
+    );
 };
 
-export default TabLayout;
+export default TabsLayout;

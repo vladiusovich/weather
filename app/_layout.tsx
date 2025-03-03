@@ -6,8 +6,9 @@ import config from '@/tamagui.config';
 import AppStoreProvider from '@/store/provider/AppStoreProvider';
 import i18n from '@/services/translations/i18n';
 import { useColorScheme } from 'react-native';
+import Router from '@/components/route';
 
-export default function RootLayout() {
+const RootLayout = () => {
     const systemTheme = useColorScheme();
     const [theme] = useState(systemTheme || 'dark');
 
@@ -16,20 +17,18 @@ export default function RootLayout() {
     }, []);
 
     return (
-        <>
-            <StrictMode>
-                <TamaguiProvider config={config} defaultTheme={theme}>
-                    <AppStoreProvider>
-                        <StatusBar style={theme} />
-                        <Stack
-                            screenOptions={{
-                            }}>
-                            <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-                            <Stack.Screen name='+not-found' />
-                        </Stack>
-                    </AppStoreProvider>
-                </TamaguiProvider>
-            </StrictMode>
-        </>
+        <StrictMode>
+            <TamaguiProvider config={config} defaultTheme={theme}>
+                <AppStoreProvider>
+                    <StatusBar style={theme} />
+                    <Router.Stack>
+                        <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
+                        <Stack.Screen name='+not-found' options={{ headerShown: false }} />
+                    </Router.Stack>
+                </AppStoreProvider>
+            </TamaguiProvider>
+        </StrictMode>
     );
 }
+
+export default RootLayout;
