@@ -1,4 +1,7 @@
 import dayjs, { OpUnitType } from 'dayjs';
+import duration from 'dayjs/plugin/duration';
+
+dayjs.extend(duration);
 
 const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const;
 type DaysOfWeek = typeof daysOfWeek[number];
@@ -58,4 +61,9 @@ export const isSameDay = (date1: Date, date2: Date): boolean => {
 
 export const isSameHour = (date1: Date, date2: Date): boolean => {
     return isSame(date1, date2, 'hours');
+};
+
+export const getDaylightDuration = (sunrise: string | Date, sunset: string | Date): string => {
+    const diff = dayjs(sunset).diff(dayjs(sunrise), 'millisecond');
+    return dayjs.duration(diff).format();
 };

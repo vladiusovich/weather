@@ -1,8 +1,10 @@
 import Format from '@/components/common/format';
 import UI, { Column } from '@/components/ui';
 import useAppStore from '@/hooks/useAppStore';
+import { getDaylightDuration } from '@/utils/datetime.helper';
+import { observer } from 'mobx-react-lite';
 
-type RenderType = { time: string; sunrise: string; sunset: string };
+type RenderType = { time: string; sunrise: string; sunset: string; daylight: string; };
 
 const SolarTransition = () => {
     const appStore = useAppStore();
@@ -13,12 +15,13 @@ const SolarTransition = () => {
         time: d.time,
         sunrise: d.sunrise,
         sunset: d.sunset,
+        daylight: getDaylightDuration(d.sunrise as string, d.sunset as string)
     })) as RenderType[];
 
     const columns: Column<RenderType>[] = [
         {
             key: 'time',
-            title: 'Time',
+            title: 'Date',
             render: (i => <Format.Date value={i.time} variant='date' />)
         },
         {
@@ -30,6 +33,11 @@ const SolarTransition = () => {
             key: 'sunset',
             title: 'Sunset',
             render: (i => <Format.Date value={i.sunset} variant='time' />)
+        },
+        {
+            key: 'daylight',
+            title: 'Daylight',
+            render: (i => <Format.Date value={i.daylight} variant='time' />)
         },
     ];
 
@@ -44,4 +52,4 @@ const SolarTransition = () => {
     );
 };
 
-export default SolarTransition;
+export default observer(SolarTransition);
