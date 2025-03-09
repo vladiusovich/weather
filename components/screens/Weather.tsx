@@ -11,7 +11,7 @@ import React from 'react';
 import { LocationCoords } from '@/services/weather/types/LocationCoords';
 import SolarTransition from '@/components/weather/solarTransition/SolarTransition';
 
-const WeatherScreen = () => {
+const Weather = () => {
     const appStore = useAppStore();
     const [refreshing, setRefreshing] = React.useState(false);
     const [myLocation, setMyLocation] = React.useState<LocationCoords | null>();
@@ -47,7 +47,7 @@ const WeatherScreen = () => {
             refreshControl={
                 <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
             }>
-            <UI.Screen>
+            <UI.ScreenView>
                 <UI.YStack gap='$2.5'>
                     <UI.XStack
                         items={'flex-start'}
@@ -60,9 +60,9 @@ const WeatherScreen = () => {
                     <HourlyForecast />
                     <DailyForecast />
                 </UI.YStack>
-            </UI.Screen>
+            </UI.ScreenView>
         </ScrollView>
     );
 };
 
-export default observer(WeatherScreen);
+export default observer(Weather);

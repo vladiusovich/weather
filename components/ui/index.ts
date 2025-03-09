@@ -5,7 +5,7 @@ import Card from './card/Card';
 import Button from './button/Button';
 import Modal from './modal/Modal';
 import ScrollView from './scrollView/ScrollView';
-import { Screen } from './screen/Screen';
+import { ScreenView } from './screen/ScreenView';
 import Loader from './loader/Loader';
 
 // TODO: refactor it
@@ -35,7 +35,7 @@ const UI = {
     Card,
     Loader,
 
-    Screen,
+    ScreenView,
     Separator,
 
     Modal,

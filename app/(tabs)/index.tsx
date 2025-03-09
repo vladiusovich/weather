@@ -1,17 +1,11 @@
-import UI from '@/components/ui';
+import { observer } from 'mobx-react-lite';
+import React from 'react';
+import Weather from '@/components/screens/weather';
 
-const AboutScreen = () => {
+const WeatherScreen = () => {
     return (
-        <UI.Screen>
-            <UI.YStack
-                fullscreen
-                justify='center'
-                items='center'
-            >
-                <UI.Typo.Text>About screen</UI.Typo.Text>
-            </UI.YStack>
-        </UI.Screen>
+        <Weather />
     );
 };
 
-export default AboutScreen;
+export default observer(WeatherScreen);

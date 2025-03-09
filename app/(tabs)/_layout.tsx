@@ -1,42 +1,29 @@
 import Router from '@/components/route';
-import { Home, Cloud } from '@tamagui/lucide-icons'
+import { Info, Cloud } from '@tamagui/lucide-icons'
 import { Tabs } from 'expo-router';
 import { GetThemeValueForKey } from 'tamagui';
-
-const tabs = [
-    {
-        name: 'index',
-        options: {
-            title: 'About',
-        },
-        Icon: Home,
-    },
-    {
-        name: 'weather',
-        options: {
-            title: 'Weather',
-        },
-        Icon: Cloud,
-    },
-];
 
 const TabsLayout = () => {
     return (
         <Router.Tabs>
-            {tabs.map((tab) => {
-                return (
-                    <Tabs.Screen
-                        key={tab.name}
-                        name={tab.name}
-                        options={{
-                            ...tab?.options,
-                            tabBarIcon: ({ color }: { color: string }) => (
-                                <tab.Icon color={color as GetThemeValueForKey<'color'>} strokeWidth={1} />
-                            ),
-                        }}
-                    />
-                );
-            })}
+            <Tabs.Screen
+                name='index'
+                options={{
+                    title: 'Weathre',
+                    tabBarIcon: ({ color }: { color: string }) => (
+                        <Cloud color={color as GetThemeValueForKey<'color'>} strokeWidth={1} />
+                    ),
+                }}
+            />
+            <Tabs.Screen
+                name='about'
+                options={{
+                    title: 'About',
+                    tabBarIcon: ({ color }: { color: string }) => (
+                        <Info color={color as GetThemeValueForKey<'color'>} strokeWidth={1} />
+                    ),
+                }}
+            />
         </Router.Tabs>
     );
 };
