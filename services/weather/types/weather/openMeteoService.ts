@@ -7,10 +7,7 @@ class OpenMeteoService {
 
     public async fetch(request: MeteoRequest): Promise<MeteoResponse | null> {
         await this.weatherRequest.execute(request);
-
-        const response = this.weatherRequest.data;
-
-        return response;
+        return this.weatherRequest.data;
     }
 }
 

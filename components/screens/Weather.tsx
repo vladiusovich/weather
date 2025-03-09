@@ -22,7 +22,7 @@ const Weather = () => {
             await appStore.weather.weatherData.fetch(myLocation);
             setRefreshing(false);
         }
-    }, []);
+    }, [appStore.weather.weatherData, myLocation]);
 
     useEffect(() => {
         async function getCurrentLocation() {
@@ -51,7 +51,6 @@ const Weather = () => {
                 <UI.YStack gap='$2.5'>
                     <UI.XStack
                         items={'flex-start'}
-                        // justify={'space-between'}
                         gap={'$2'}
                     >
                         <CurrentWeatherStatus />
