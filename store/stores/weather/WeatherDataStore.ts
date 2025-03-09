@@ -1,5 +1,5 @@
 import { computed, makeObservable, observable, runInAction } from 'mobx';
-import { WeatherData } from '@/services/weather/types/WeatherData';
+import { DailyWeatherData, WeatherData } from '@/services/weather/types/WeatherData';
 import WeatherSettingsStore from './WeatherSettingsStore';
 import OpenMeteoService from '@/services/weather/types/weather/openMeteoService';
 import { LocationCoords } from '@/services/weather/types/LocationCoords';

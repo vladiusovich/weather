@@ -1,48 +1,44 @@
 import Format from '@/components/common/format';
-import UI from '@/components/ui';
+import UI, { Column } from '@/components/ui';
 import useAppStore from '@/hooks/useAppStore';
-import { Sunrise, Sunset } from '@tamagui/lucide-icons';
+
+type RenderType = { time: string; sunrise: string; sunset: string };
 
 const SolarTransition = () => {
     const appStore = useAppStore();
 
     const daily = appStore.weather.weatherData.daily;
 
-    const solarData = daily.map(d => ({ sunrise: d.sunrise, sunset: d.sunset }));
+    const solarData = daily.map(d => ({
+        time: d.time,
+        sunrise: d.sunrise,
+        sunset: d.sunset,
+    })) as RenderType[];
+
+    const columns: Column<RenderType>[] = [
+        {
+            key: 'time',
+            title: 'Time',
+            render: (i => <Format.Date value={i.time} variant='date' />)
+        },
+        {
+            key: 'sunrise',
+            title: 'Sunrise',
+            render: (i => <Format.Date value={i.sunrise} variant='time' />)
+        },
+        {
+            key: 'sunset',
+            title: 'Sunset',
+            render: (i => <Format.Date value={i.sunset} variant='time' />)
+        },
+    ];
 
     return (
         <UI.ScreenView>
             <UI.Card
                 padded
             >
-                <UI.YStack
-                    gap={'$3'}
-                >
-                    <UI.XStack
-                        justify={'space-around'}
-                    >
-                        <Sunrise size={'$1'} />
-                        <Sunset size={'$1'} />
-                    </UI.XStack>
-                    <UI.Separator />
-                    {solarData.map(s => {
-                        return (
-                            <UI.YStack
-                                key={s.sunrise}
-                                gap={'$2'}
-
-                            >
-                                <UI.XStack
-                                    justify={'space-around'}
-                                >
-                                    <Format.Date variant='time' value={s.sunrise as string} />
-                                    <Format.Date variant='time' value={s.sunset as string} />
-                                </UI.XStack>
-                                <UI.Separator />
-                            </UI.YStack>
-                        )
-                    })}
-                </UI.YStack>
+                <UI.Table data={solarData} columns={columns} />
             </UI.Card>
         </UI.ScreenView>
     );
