@@ -7,6 +7,7 @@ import AppStoreProvider from '@/store/provider/AppStoreProvider';
 import i18n from '@/services/translations/i18n';
 import { useColorScheme } from 'react-native';
 import Router from '@/components/route';
+import BackgroundUpdateProvider from '@/theme/BackgroundUpdateProvider';
 
 i18n.init();
 
@@ -17,6 +18,8 @@ const RootLayout = () => {
     return (
         <StrictMode>
             <TamaguiProvider config={config} defaultTheme={theme}>
+                {/* <NavigationContainer theme={systemTheme}> */}
+                <BackgroundUpdateProvider />
                 <AppStoreProvider>
                     <StatusBar style={theme} />
                     <Router.Stack>
@@ -24,6 +27,7 @@ const RootLayout = () => {
                         <Stack.Screen name='+not-found' options={{ headerShown: false }} />
                     </Router.Stack>
                 </AppStoreProvider>
+                {/* </NavigationContainer> */}
             </TamaguiProvider>
         </StrictMode>
     );

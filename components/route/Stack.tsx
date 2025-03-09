@@ -1,7 +1,6 @@
 import { Stack as NativeStack } from 'expo-router';
 import React from 'react';
 import { useTheme } from 'tamagui';
-
 // type NativeStackProps = typeof NativeStack;
 
 interface StackProps {
@@ -16,14 +15,14 @@ const Stack: React.FC<StackProps> = ({
     return (
         <NativeStack
             screenOptions={{
-                animation: 'fade',
+                animation: 'default',
                 headerStyle: {
                     backgroundColor: theme.black4.val,
                 },
                 headerTintColor: theme.color.val,
                 contentStyle: {
                     backgroundColor: theme.black4.val,
-                }
+                },
             }}
         >
             {children}
