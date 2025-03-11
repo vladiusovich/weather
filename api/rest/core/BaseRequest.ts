@@ -19,7 +19,6 @@ class BaseRequest<RequestDataType, ResponseDataType> {
     public error: any = null;
     private options: RequestOptionsType;
     private cacheTimestamp: number | null = null;
-
     private apiClientEndpoint: ClientApiEndpoint;
 
     constructor(

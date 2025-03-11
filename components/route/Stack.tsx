@@ -23,6 +23,7 @@ const Stack: React.FC<StackProps> = ({
                 contentStyle: {
                     backgroundColor: theme.black4.val,
                 },
+                headerShadowVisible: false
             }}
         >
             {children}

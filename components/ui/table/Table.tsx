@@ -52,10 +52,10 @@ const Table = <T,>({ data, columns, isLoading = false }: TableProps<T>) => {
                         <YStack
                             key={colIndex}
                             flex={1}
+                            items={'center'}
                             paddingBlock={'$2'}
                             borderBottomWidth={'$1'}
                             borderColor={'$black3'}
-                            items={'center'}
                         >
                             {col.render
                                 ? col.render(row)

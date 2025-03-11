@@ -30,13 +30,13 @@ const HourlyForecast: React.FC = () => {
                 return (
                     <ForecastItem key={i.time} current={isCurrent}>
                         <Format.Date variant='time' value={i.time} />
-                        <Format.Temp value={i.temperature_2m} />
-                        <Format.WmoIcon value={i.weather_code} />
+                        <Format.Temp value={i.temperature2m} />
+                        <Format.WmoIcon value={i.weatherCode} />
                         <Format.Precipitation
-                            value={i.precipitation_probability}
+                            value={i.precipitationProbability}
                         />
                         <Format.Humidity
-                            value={i.relative_humidity_2m}
+                            value={i.relativeHumidity2m}
                         />
                     </ForecastItem>
                 );

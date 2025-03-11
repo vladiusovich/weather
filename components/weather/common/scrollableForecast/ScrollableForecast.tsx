@@ -37,7 +37,7 @@ const ScrollableForecast: React.FC<ScrollableForecastProps> = ({
 
                     <UI.ScrollView horizontal showsHorizontalScrollIndicator={false}>
                         <UI.XStack
-                            verticalAlign='stretch'
+                            items='stretch'
                             justify='space-between'
                             gap='$3'
                             flex={1}

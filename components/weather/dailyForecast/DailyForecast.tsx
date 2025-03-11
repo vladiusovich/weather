@@ -27,11 +27,11 @@ const DailyForecast: React.FC = () => {
                 return (
                     <ForecastItem key={i.time} current={isCurrent}>
                         <Format.Date variant='dayOfWeek' value={i.time} asDayOfWeek />
-                        <Format.Temp value={i.temperature_2m_max} />
-                        <Format.WmoIcon value={i.weather_code} />
-                        <Format.Temp value={i.temperature_2m_min} />
+                        <Format.Temp value={i.temperature2mMax} />
+                        <Format.WmoIcon value={i.weatherCode} />
+                        <Format.Temp value={i.temperature2mMin} />
                         <Format.Precipitation
-                            value={i.precipitation_probability_mean}
+                            value={i.precipitationProbabilityMean}
                         />
                     </ForecastItem>
                 );

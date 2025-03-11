@@ -9,6 +9,11 @@ export type CurrentWeatherData = Partial<
 > &
     Time;
 
+export type HourlyWeatherData = Partial<
+    Record<WeatherVariable, (number | null)[]>
+> &
+    Time;
+
 export type DailyWeatherData = Partial<
     Record<WeatherVariable, (number | null)[]>
 > &
@@ -22,6 +27,7 @@ export type WeatherUnitsResponse = Partial<{
 
 export type MeteoResponse = {
     current?: CurrentWeatherData;
+    hourly?: HourlyWeatherData,
     daily?: DailyWeatherData;
     latitude: number;
     longitude: number;

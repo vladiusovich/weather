@@ -25,26 +25,30 @@ const CurrentWeatherStatus: React.FC = () => {
                         justify={'space-between'}
                         gap={'$2'}
                     >
-                        <UI.YStack
-                            gap={'$2'}
-                        >
-                            <Format.WmoIcon size={40} value={current.weather_code} />
-                            <Format.WmoCode
-                                fontSize={'$1'}
-                                value={current.weather_code}
-                            />
-                        </UI.YStack>
-                        <UI.Separator />
+                        {current.weatherCode && (
+                            <>
+                                <UI.YStack
+                                    gap={'$2'}
+                                >
+                                    <Format.WmoIcon size={40} value={current.weatherCode} />
+                                    <Format.WmoCode
+                                        fontSize={'$1'}
+                                        value={current.weatherCode}
+                                    />
+                                </UI.YStack>
+                                <UI.Separator />
+                            </>
+                        )}
 
                         <UI.YStack>
-                            <Format.Temp fontSize={'$10'} value={current?.apparent_temperature} />
+                            <Format.Temp fontSize={'$10'} value={current?.apparentTemperature} />
                         </UI.YStack>
 
                         <UI.XStack gap={'$2'}>
                             <UI.Typo.Text>
                                 {t('meteo.glossary.apparent_temperature')}
                             </UI.Typo.Text>
-                            <Format.Temp value={current?.apparent_temperature} />
+                            <Format.Temp value={current?.apparentTemperature} />
                         </UI.XStack>
 
                         {/* TODO: added min/max */}
@@ -53,13 +57,13 @@ const CurrentWeatherStatus: React.FC = () => {
                                 <UI.Typo.Text>
                                     {t('meteo.glossary.temperature_2m_max')}
                                 </UI.Typo.Text>
-                                <Format.Temp value={current?.temperature_2m_max} />
+                                <Format.Temp value={current?.temperature2mMax} />
                             </UI.XStack>
                             <UI.XStack>
                                 <UI.Typo.Text>
                                     {t('meteo.glossary.temperature_2m_min')}
                                 </UI.Typo.Text>
-                                <Format.Temp value={current?.temperature_2m_min} />
+                                <Format.Temp value={current?.temperature2mMin} />
                             </UI.XStack>
                         </UI.XStack>
                     </UI.YStack>
