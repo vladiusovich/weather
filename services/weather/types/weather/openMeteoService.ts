@@ -1,4 +1,4 @@
-import GetWeatherRequest from '@/api/rest/weather/GetWeatherRequest';
+import GetWeatherRequest from '@/api/rest/openMeteo/GetWeatherRequest';
 import { MeteoRequest } from '../MeteoRequest';
 import { MeteoResponse } from '../MeteoResponse';
 import { MeteoData } from '../models/MeteoData';
@@ -8,10 +8,7 @@ class OpenMeteoService {
 
     public async fetch(request: MeteoRequest): Promise<MeteoData | null> {
         await this.weatherRequest.execute(request);
-
-        const result = this.mapResponse(this.weatherRequest?.data);
-
-        return result;
+        return this.mapResponse(this.weatherRequest?.data);
     }
 
     // eslint-disable-next-line class-methods-use-this

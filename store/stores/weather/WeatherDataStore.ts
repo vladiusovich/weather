@@ -42,19 +42,15 @@ class WeatherDataStore {
 
     public get daily() {
         const daily = this.data?.daily;
-        const time: string[] = Array.isArray(daily?.time)
-            ? daily?.time
-            : daily?.time
-                ? [daily?.time]
-                : [];
+        const time = daily?.time ?? [];
 
         return time.map((t: string, index: number) => ({
             time: t,
-            temperature2mMax: daily!.temperature2mMax![index],
-            temperature2mMin: daily!.temperature2mMin![index],
-            weatherCode: daily!.weatherCode![index],
+            temperature2mMax: daily!.temperature2mMax[index],
+            temperature2mMin: daily!.temperature2mMin[index],
+            weatherCode: daily!.weatherCode[index],
             precipitationProbabilityMean:
-                daily!.precipitationProbabilityMean![index],
+                daily!.precipitationProbabilityMean[index],
             sunrise: daily?.sunrise![index],
             sunset: daily?.sunset![index],
         }));
@@ -62,11 +58,7 @@ class WeatherDataStore {
 
     public get hourly() {
         const hourly = this.data?.hourly;
-        const time: string[] = Array.isArray(hourly?.time)
-            ? hourly?.time
-            : hourly?.time
-                ? [hourly?.time]
-                : [];
+        const time = hourly?.time ?? [];
 
         const now = getNow();
         const currentIndex = time.findIndex(t => isSameHour(now, toDate(t)));
@@ -75,13 +67,13 @@ class WeatherDataStore {
 
         return actualTime.map((t: string, index: number) => ({
             time: t,
-            temperature2m: hourly!.temperature2m![index],
-            relativeHumidity2m: hourly!.relativeHumidity2m![index],
-            weatherCode: hourly!.weatherCode![index],
-            apparentTemperature: hourly!.apparentTemperature![index],
-            precipitationProbability: hourly!.precipitationProbability![index],
-            pressureMsl: hourly!.pressureMsl![index],
-            surfacePressure: hourly!.surfacePressure![index],
+            temperature2m: hourly!.temperature2m[index],
+            relativeHumidity2m: hourly!.relativeHumidity2m[index],
+            weatherCode: hourly!.weatherCode[index],
+            apparentTemperature: hourly!.apparentTemperature[index],
+            precipitationProbability: hourly!.precipitationProbability[index],
+            pressureMsl: hourly!.pressureMsl[index],
+            surfacePressure: hourly!.surfacePressure[index],
         }));
     }
 }

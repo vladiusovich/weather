@@ -18,7 +18,6 @@ const RootLayout = () => {
     return (
         <StrictMode>
             <TamaguiProvider config={config} defaultTheme={theme}>
-                {/* <NavigationContainer theme={systemTheme}> */}
                 <BackgroundUpdateProvider />
                 <AppStoreProvider>
                     <StatusBar style={theme} />
@@ -27,7 +26,6 @@ const RootLayout = () => {
                         <Stack.Screen name='+not-found' options={{ headerShown: false }} />
                     </Router.Stack>
                 </AppStoreProvider>
-                {/* </NavigationContainer> */}
             </TamaguiProvider>
         </StrictMode>
     );
