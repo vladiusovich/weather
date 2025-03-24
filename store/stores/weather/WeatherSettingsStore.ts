@@ -1,5 +1,6 @@
-import { makeObservable } from 'mobx';
+import { makeObservable, observable, runInAction } from 'mobx';
 import { Settings } from '@/services/settings/Settings';
+import { LocationCoords } from '@/types/LocationCoords';
 
 // TODO: implement configrable weather's settings
 // Add DB support for weather settings.
@@ -35,8 +36,18 @@ class WeatherSettingsStore {
         ],
     }
 
+    public currentLocation: LocationCoords | null = null;
+
     constructor() {
-        makeObservable(this, {});
+        makeObservable(this, {
+            currentLocation: observable,
+        });
+    }
+
+    public saveLocation(location: LocationCoords) {
+        runInAction(() => {
+            this.currentLocation = location;
+        });
     }
 }
 

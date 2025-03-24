@@ -1,58 +1,61 @@
-import { useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { RefreshControl, ScrollView } from 'react-native';
+import * as Location from 'expo-location';
 import useAppStore from '@/hooks/useAppStore';
 import UI from '@/components/ui';
 import CurrentWeatherStatus from '@/components/weather/currentWeatherStatus/CurrentWeatherStatus';
-import * as Location from 'expo-location';
 import DailyForecast from '@/components/weather/dailyForecast/DailyForecast';
 import HourlyForecast from '@/components/weather/hourlyForecast/HourlyForecast';
-import React from 'react';
-import { LocationCoords } from '@/types/LocationCoords';
 import SolarTransition from '@/components/weather/solarTransition/SolarTransition';
+import AccessDenied from '../common/accessDenied/AccessDenied';
+import { LocationCoords } from '@/types/LocationCoords';
 
-const Weather = () => {
+const Weather = observer(() => {
     const appStore = useAppStore();
-    const [refreshing, setRefreshing] = React.useState(false);
-    const [myLocation, setMyLocation] = React.useState<LocationCoords | null>();
+    const [refreshing, setRefreshing] = useState(false);
+    const [status, requestPermission] = Location.useForegroundPermissions();
 
-    const onRefresh = React.useCallback(async () => {
-        setRefreshing(true);
-        if (myLocation) {
-            await appStore.weather.weatherData.fetch(myLocation);
-            setRefreshing(false);
+    const fetchWeather = useCallback(async (location: LocationCoords) => {
+        if (location) {
+            await appStore.weather.weatherData.fetch(location);
         }
-    }, [appStore.weather.weatherData, myLocation]);
+    }, [appStore.weather.weatherData]);
+
+    const onRefresh = useCallback(async () => {
+        setRefreshing(true);
+        await fetchWeather(appStore.weather.weatherSettings.currentLocation!);
+        setRefreshing(false);
+    }, [fetchWeather, appStore.weather.weatherSettings.currentLocation]);
 
     useEffect(() => {
-        async function getCurrentLocation() {
-            let { status } = await Location.requestForegroundPermissionsAsync();
-            if (status !== 'granted') {
-                // setErrorMsg('Permission to access location was denied');
-                return;
+        (async () => {
+            if (status?.status !== 'granted') {
+                await requestPermission();
             }
 
-            let location = await Location.getCurrentPositionAsync({});
+            const location = await Location.getCurrentPositionAsync();
+            const { coords } = location;
 
-            setMyLocation(location.coords)
-            appStore.weather.weatherData.fetch({ ...location.coords });
-        }
+            appStore.weather.weatherSettings.saveLocation(coords);
+            await fetchWeather(coords);
+        })();
+    }, [status?.status, requestPermission, appStore.weather.weatherSettings, fetchWeather]);
 
-        getCurrentLocation();
-    }, [appStore.weather]);
+    if (status === null) return null;
+
+    if (status.status === 'denied') {
+        return <AccessDenied type='geolocation' />
+    };
 
     return (
         <ScrollView
             showsVerticalScrollIndicator={false}
-            refreshControl={
-                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-            }>
+            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+        >
             <UI.ScreenView>
                 <UI.YStack gap='$2.5'>
-                    <UI.XStack
-                        items={'flex-start'}
-                        gap={'$2'}
-                    >
+                    <UI.XStack items='flex-start' gap='$2'>
                         <CurrentWeatherStatus />
                         <SolarTransition />
                     </UI.XStack>
@@ -62,6 +65,6 @@ const Weather = () => {
             </UI.ScreenView>
         </ScrollView>
     );
-};
+});
 
-export default observer(Weather);
+export default Weather;

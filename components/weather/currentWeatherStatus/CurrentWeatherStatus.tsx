@@ -25,20 +25,16 @@ const CurrentWeatherStatus: React.FC = () => {
                         justify={'space-between'}
                         gap={'$2'}
                     >
-                        {current.weatherCode && (
-                            <>
-                                <UI.YStack
-                                    gap={'$2'}
-                                >
-                                    <Format.WmoIcon size={40} value={current.weatherCode} />
-                                    <Format.WmoCode
-                                        fontSize={'$1'}
-                                        value={current.weatherCode}
-                                    />
-                                </UI.YStack>
-                                <UI.Separator />
-                            </>
-                        )}
+                        <UI.YStack
+                            gap={'$2'}
+                        >
+                            <Format.WmoIcon size={40} value={current?.weatherCode} />
+                            <Format.WmoCode
+                                fontSize={'$1'}
+                                value={current?.weatherCode}
+                            />
+                        </UI.YStack>
+                        <UI.Separator />
 
                         <UI.YStack>
                             <Format.Temp fontSize={'$10'} value={current?.apparentTemperature} />

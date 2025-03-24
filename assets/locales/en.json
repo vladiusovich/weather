@@ -63,5 +63,14 @@
             "Fri": "Friday",
             "Sat": "Saturday"
         }
+    },
+    "common": {
+        "accessDenied": {
+            "header": "Access denied",
+            "submit": "Open Settings",
+            "description": {
+                "geolocation": "Go to settings and allow access to geolocation"
+            }
+        }
     }
 }

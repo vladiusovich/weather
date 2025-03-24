@@ -1,6 +1,6 @@
 import React from 'react';
 import { NamedExoticComponent } from 'react';
-import type { IconProps } from "@tamagui/helpers-icon";
+import type { IconProps } from '@tamagui/helpers-icon';
 import {
     Sun,
     Cloudy,
