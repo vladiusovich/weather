@@ -1,5 +1,5 @@
 import { makeObservable } from 'mobx';
-import { Settings } from '@/services/weather/types/settings/Settings';
+import { Settings } from '@/services/settings/Settings';
 
 // TODO: implement configrable weather's settings
 // Add DB support for weather settings.

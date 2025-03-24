@@ -1,7 +1,7 @@
 import { computed, makeObservable, observable, runInAction } from 'mobx';
 import WeatherSettingsStore from './WeatherSettingsStore';
-import OpenMeteoService from '@/services/weather/types/weather/openMeteoService';
-import { LocationCoords } from '@/services/weather/types/LocationCoords';
+import OpenMeteoService from '@/services/weather/openMeteoService';
+import { LocationCoords } from '@/types/LocationCoords';
 import { getNow, isSameHour, toDate } from '@/utils/datetime.helper';
 import { MeteoData } from '@/services/weather/types/models/MeteoData';
 

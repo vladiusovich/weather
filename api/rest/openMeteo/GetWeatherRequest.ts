@@ -1,6 +1,6 @@
-import { MeteoResponse } from '@/services/weather/types/MeteoResponse';
+import { MeteoRequest } from '@/types/weather/MeteoRequest';
+import { MeteoResponse } from '@/types/weather/MeteoResponse';
 import RequestBuilder from '../core/RequestBuilder';
-import { MeteoRequest } from '@/services/weather/types/MeteoRequest';
 
 type MeteoRequestDataType = MeteoRequest;
 type MeteoResponseDataType = MeteoResponse;
@@ -8,11 +8,13 @@ type MeteoResponseDataType = MeteoResponse;
 const GetWeatherRequest = RequestBuilder.getType<
     MeteoRequestDataType,
     MeteoResponseDataType
->({
-    method: 'get',
-    url: '/forecast',
-    useParams: true,
-    cacheTimeInSeconds: 60,
-});
+>(
+    'meteo',
+    {
+        method: 'get',
+        url: '/forecast',
+        useParams: true,
+        cacheTimeInSeconds: 60,
+    });
 
 export default GetWeatherRequest;

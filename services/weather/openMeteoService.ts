@@ -1,7 +1,7 @@
 import GetWeatherRequest from '@/api/rest/openMeteo/GetWeatherRequest';
-import { MeteoRequest } from '../MeteoRequest';
-import { MeteoResponse } from '../MeteoResponse';
-import { MeteoData } from '../models/MeteoData';
+import { MeteoData } from './types/models/MeteoData';
+import { MeteoRequest } from '@/types/weather/MeteoRequest';
+import { MeteoResponse } from '@/types/weather/MeteoResponse';
 
 class OpenMeteoService {
     private weatherRequest = new GetWeatherRequest();

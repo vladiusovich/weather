@@ -5,6 +5,7 @@ export type RequestOptionsType = {
     url: string;
     useParams?: boolean;
     cacheTimeInSeconds?: number;
+    headers?: Partial<Record<string, string | string[] | number | boolean | null>>,
 };
 
 /*

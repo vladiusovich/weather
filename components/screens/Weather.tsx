@@ -8,7 +8,7 @@ import * as Location from 'expo-location';
 import DailyForecast from '@/components/weather/dailyForecast/DailyForecast';
 import HourlyForecast from '@/components/weather/hourlyForecast/HourlyForecast';
 import React from 'react';
-import { LocationCoords } from '@/services/weather/types/LocationCoords';
+import { LocationCoords } from '@/types/LocationCoords';
 import SolarTransition from '@/components/weather/solarTransition/SolarTransition';
 
 const Weather = () => {

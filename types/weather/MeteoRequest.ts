@@ -1,4 +1,4 @@
-import { LocationCoords } from './LocationCoords';
+import { LocationCoords } from '../LocationCoords';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const weatherVariables = [
