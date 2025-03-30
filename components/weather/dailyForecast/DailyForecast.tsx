@@ -5,7 +5,7 @@ import Format from '@/components/common/format';
 import ScrollableForecast from '../common/scrollableForecast/ScrollableForecast';
 import ForecastItem from '../common/scrollableForecast/ForecastItem';
 import { Calendar } from '@tamagui/lucide-icons';
-import { isSameDay, getNow, toDate } from '@/utils/datetime.helper';
+import { isSameDay, getNow } from '@/utils/datetime.helper';
 
 const DailyForecast: React.FC = () => {
     const { t } = useTranslation();
@@ -22,8 +22,7 @@ const DailyForecast: React.FC = () => {
             isLoading={isLoading}
         >
             {daily.map((i) => {
-                const datetime = toDate(i.time);
-                const isCurrent = isSameDay(now, datetime);
+                const isCurrent = isSameDay(now, i.time);
                 return (
                     <ForecastItem key={i.time} current={isCurrent}>
                         <Format.Date variant='dayOfWeek' value={i.time} asDayOfWeek />

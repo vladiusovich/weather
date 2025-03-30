@@ -9,7 +9,7 @@ const TabsLayout = () => {
             <Tabs.Screen
                 name='index'
                 options={{
-                    title: 'Weathre',
+                    title: 'Weather',
                     tabBarIcon: ({ color }: { color: string }) => (
                         <Cloud color={color as GetThemeValueForKey<'color'>} strokeWidth={1} />
                     ),

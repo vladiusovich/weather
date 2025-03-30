@@ -47,7 +47,7 @@ const CurrentWeatherStatus: React.FC = () => {
                             <Format.Temp value={current?.apparentTemperature} />
                         </UI.XStack>
 
-                        {/* TODO: added min/max */}
+                        {/* TODO: add min/max */}
                         <UI.XStack gap='$2'>
                             <UI.XStack>
                                 <UI.Typo.Text>

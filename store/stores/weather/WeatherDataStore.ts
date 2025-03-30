@@ -2,7 +2,7 @@ import { computed, makeObservable, observable, runInAction } from 'mobx';
 import WeatherSettingsStore from './WeatherSettingsStore';
 import OpenMeteoService from '@/services/weather/openMeteoService';
 import { LocationCoords } from '@/types/LocationCoords';
-import { getNow, isSameHour, toDate } from '@/utils/datetime.helper';
+import { getNow, isSameHour } from '@/utils/datetime.helper';
 import { MeteoData } from '@/services/weather/types/models/MeteoData';
 
 type ConstructorArgsType = {
@@ -61,10 +61,8 @@ class WeatherDataStore {
         const time = hourly?.time ?? [];
 
         const now = getNow();
-        const currentIndex = time.findIndex(t => isSameHour(now, toDate(t)));
-
+        const currentIndex = time.findIndex(t => isSameHour(now, t));
         const actualTime = time.slice(currentIndex);
-
         return actualTime.map((t: string, index: number) => ({
             time: t,
             temperature2m: hourly!.temperature2m[index],

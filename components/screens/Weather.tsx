@@ -20,18 +20,23 @@ const Weather = observer(() => {
         if (location) {
             await appStore.weather.weatherData.fetch(location);
         }
-    }, [appStore.weather.weatherData]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const onRefresh = useCallback(async () => {
         setRefreshing(true);
         await fetchWeather(appStore.weather.weatherSettings.currentLocation!);
         setRefreshing(false);
-    }, [fetchWeather, appStore.weather.weatherSettings.currentLocation]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     useEffect(() => {
         (async () => {
             if (status?.status !== 'granted') {
-                await requestPermission();
+                const result = await requestPermission();
+                if (!result.granted) {
+                    return;
+                }
             }
 
             const location = await Location.getCurrentPositionAsync();
@@ -40,7 +45,8 @@ const Weather = observer(() => {
             appStore.weather.weatherSettings.saveLocation(coords);
             await fetchWeather(coords);
         })();
-    }, [status?.status, requestPermission, appStore.weather.weatherSettings, fetchWeather]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     if (status === null) return null;
 

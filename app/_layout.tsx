@@ -1,6 +1,6 @@
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import React, { StrictMode, useState } from 'react';
+import React, { useState } from 'react';
 import { TamaguiProvider } from '@tamagui/core';
 import config from '@/tamagui.config';
 import AppStoreProvider from '@/store/provider/AppStoreProvider';
@@ -16,18 +16,16 @@ const RootLayout = () => {
     const [theme] = useState(systemTheme || 'dark');
 
     return (
-        <StrictMode>
-            <TamaguiProvider config={config} defaultTheme={theme}>
-                <BackgroundUpdateProvider />
-                <AppStoreProvider>
-                    <StatusBar style={theme} />
-                    <Router.Stack>
-                        <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-                        <Stack.Screen name='+not-found' options={{ headerShown: false }} />
-                    </Router.Stack>
-                </AppStoreProvider>
-            </TamaguiProvider>
-        </StrictMode>
+        <TamaguiProvider config={config} defaultTheme={theme}>
+            <BackgroundUpdateProvider />
+            <AppStoreProvider>
+                <StatusBar style={theme} />
+                <Router.Stack>
+                    <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
+                    <Stack.Screen name='+not-found' options={{ headerShown: false }} />
+                </Router.Stack>
+            </AppStoreProvider>
+        </TamaguiProvider>
     );
 }
 

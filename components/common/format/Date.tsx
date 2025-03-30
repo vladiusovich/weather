@@ -1,6 +1,6 @@
 import React from 'react';
 import UI from '@/components/ui';
-import { formatDate, getDayOfWeek, isValidDate, toDate } from '@/utils/datetime.helper';
+import { formatDate, getDayOfWeek } from '@/utils/datetime.helper';
 import { TextStyle } from 'tamagui';
 
 type DateVariantType = 'date' | 'time' | 'datetime' | 'dayOfWeek';
@@ -14,7 +14,7 @@ type DateProps = {
 const DATE_FORMAT = 'DD/MM/YYYY';
 const TIME_FORMAT = 'HH:mm';
 
-const format = (date: Date, variant: DateVariantType) => {
+const format = (date: string, variant: DateVariantType) => {
     switch (variant) {
         case 'date':
             return formatDate(date, DATE_FORMAT);
@@ -36,14 +36,11 @@ const Date: React.FC<DateProps> = ({
         return null;
     }
 
-    const date = toDate(value);
+    const formatedValue = format(value, variant);
 
-    if (!isValidDate(date)) {
+    if (formatedValue === null) {
         return null;
     }
-
-    // TODO
-    const formatedValue = format(date, variant);
 
     return (
         <UI.XStack>

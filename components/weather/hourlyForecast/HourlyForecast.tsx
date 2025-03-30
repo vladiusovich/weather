@@ -7,7 +7,7 @@ import ForecastItem from '../common/scrollableForecast/ForecastItem';
 import {
     Clock3,
 } from '@tamagui/lucide-icons'
-import { getNow, isSameHour, toDate } from '@/utils/datetime.helper';
+import { getNow, isSameHour } from '@/utils/datetime.helper';
 
 
 const HourlyForecast: React.FC = () => {
@@ -18,6 +18,7 @@ const HourlyForecast: React.FC = () => {
     const hourly = appStore.weather.weatherData.hourly;
 
     const now = getNow();
+
     return (
         <ScrollableForecast
             header={t('meteo.hourly.hourlyForecast.title')}
@@ -25,8 +26,7 @@ const HourlyForecast: React.FC = () => {
             isLoading={isLoading}
         >
             {hourly.map((i) => {
-                const datetime = toDate(i.time);
-                const isCurrent = isSameHour(now, datetime);
+                const isCurrent = isSameHour(now, i.time);
                 return (
                     <ForecastItem key={i.time} current={isCurrent}>
                         <Format.Date variant='time' value={i.time} />
