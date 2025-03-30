@@ -58,7 +58,6 @@ const Weather = observer(() => {
 
     return (
         <ScrollView
-            className='ScrollView'
             showsVerticalScrollIndicator={false}
             refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
         >

@@ -1,5 +1,5 @@
 import Router from '@/components/route';
-import { Info, Cloud } from '@tamagui/lucide-icons'
+import { BookHeart, CloudSun } from '@tamagui/lucide-icons'
 import { Tabs } from 'expo-router';
 import { GetThemeValueForKey } from 'tamagui';
 
@@ -11,16 +11,16 @@ const TabsLayout = () => {
                 options={{
                     title: 'Weather',
                     tabBarIcon: ({ color }: { color: string }) => (
-                        <Cloud color={color as GetThemeValueForKey<'color'>} strokeWidth={1} />
+                        <CloudSun color={color as GetThemeValueForKey<'color'>} strokeWidth={1} />
                     ),
                 }}
             />
             <Tabs.Screen
-                name='about'
+                name='diary'
                 options={{
-                    title: 'About',
+                    title: 'Diary',
                     tabBarIcon: ({ color }: { color: string }) => (
-                        <Info color={color as GetThemeValueForKey<'color'>} strokeWidth={1} />
+                        <BookHeart color={color as GetThemeValueForKey<'color'>} strokeWidth={1} />
                     ),
                 }}
             />

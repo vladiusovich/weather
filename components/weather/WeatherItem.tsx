@@ -1,5 +1,5 @@
-import { CurrentWeatherData } from '@/services/weather/types/WeatherData';
-import { WeatherVariable } from '@/services/weather/types/MeteoRequest';
+import { WeatherVariable } from '@/types/weather/MeteoRequest';
+import { CurrentWeatherData } from '@/types/weather/MeteoResponse';
 import UI from '../ui';
 import { useTranslation } from 'react-i18next';
 import { View } from 'tamagui';
