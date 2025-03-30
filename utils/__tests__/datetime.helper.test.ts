@@ -44,6 +44,24 @@ describe('Datetime func', () => {
         );
     });
 
+    describe('formatDate. Convert datetime to formated date', () => {
+        const datesCase: [string, string][] = [
+            ['2025-03-30', '30/03/2025'],
+            ['2025-04-03', '03/04/2025'],
+            ['2025-04-03', '03/04/2025'],
+            ['2025-04-03', '03/04/2025'],
+            ['2025-04-03', '03/04/2025'],
+            ['2025-04-03', '03/04/2025'],
+        ];
+
+        test.each(datesCase)(
+            'Format date %s. Result: %s',
+            (date, expected) => {
+                expect(formatDate(date, 'DD/MM/YYYY')).toBe(expected);
+            }
+        );
+    });
+
     describe('toDate', () => {
         test.each(testCases)('Convert str %s to Date', (dateStr, format, expected) => {
             const date = toDate(dateStr);

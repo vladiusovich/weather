@@ -2,7 +2,7 @@ import { computed, makeObservable, observable, runInAction } from 'mobx';
 import WeatherSettingsStore from './WeatherSettingsStore';
 import OpenMeteoService from '@/services/weather/openMeteoService';
 import { LocationCoords } from '@/types/LocationCoords';
-import { getNow, isSameHour } from '@/utils/datetime.helper';
+import { getNow, isSameHour, formatSecondsToTime } from '@/utils/datetime.helper';
 import { MeteoData } from '@/services/weather/types/models/MeteoData';
 
 type ConstructorArgsType = {
@@ -53,6 +53,7 @@ class WeatherDataStore {
                 daily!.precipitationProbabilityMean[index],
             sunrise: daily?.sunrise![index],
             sunset: daily?.sunset![index],
+            daylightDuration: formatSecondsToTime(daily?.daylightDuration![index] ?? 0),
         }));
     }
 

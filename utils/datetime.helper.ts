@@ -32,12 +32,7 @@ export const getDayOfWeek = (date: string): DaysOfWeek | null => {
 };
 
 function parseUtcDate(dateStr: string) {
-    // If the string doesn't explicitly indicate UTC, append "Z"
     try {
-
-        if (!dateStr?.endsWith('Z')) {
-            dateStr += 'Z';
-        }
         return dayjs.utc(dateStr);
     } catch (e: any) {
         console.error(dateStr, e)
@@ -86,4 +81,14 @@ export const isSameHour = (date1: string, date2: string): boolean => {
 export const getDaylightDuration = (sunrise: string | Date, sunset: string | Date): string => {
     const diff = dayjs(sunset).diff(dayjs(sunrise), 'millisecond');
     return dayjs.duration(diff).format();
+};
+
+export const formatSecondsToTime = (seconds: number) => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    // Format with leading zeros
+    const formattedHours = hours.toString().padStart(2, '0');
+    const formattedMinutes = minutes.toString().padStart(2, '0');
+
+    return `${formattedHours}:${formattedMinutes}`;
 };

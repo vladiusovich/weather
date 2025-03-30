@@ -24,6 +24,7 @@ class WeatherSettingsStore {
             'apparent_temperature_min',
             'sunrise',
             'sunset',
+            'daylight_duration',
         ],
         hourly: [
             'temperature_2m',

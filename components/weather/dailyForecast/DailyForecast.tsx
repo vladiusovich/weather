@@ -11,15 +11,12 @@ const DailyForecast: React.FC = () => {
     const { t } = useTranslation();
     const appStore = useAppStore();
 
-    const isLoading = !appStore.weather.weatherData.data?.daily;
     const daily = appStore.weather.weatherData.daily;
-
     const now = getNow();
     return (
         <ScrollableForecast
             header={t('meteo.daily.nDayForecast.title')}
             headerIcon={<Calendar size={20} />}
-            isLoading={isLoading}
         >
             {daily.map((i) => {
                 const isCurrent = isSameDay(now, i.time);
@@ -28,10 +25,10 @@ const DailyForecast: React.FC = () => {
                         <Format.Date variant='dayOfWeek' value={i.time} asDayOfWeek />
                         <Format.Temp value={i.temperature2mMax} />
                         <Format.WmoIcon value={i.weatherCode} />
-                        <Format.Temp value={i.temperature2mMin} />
                         <Format.Precipitation
                             value={i.precipitationProbabilityMean}
                         />
+                        <Format.Temp value={i.temperature2mMin} />
                     </ForecastItem>
                 );
             })}

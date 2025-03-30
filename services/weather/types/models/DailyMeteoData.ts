@@ -7,4 +7,5 @@ export interface DailyMeteoData {
     temperature2mMin: number[];
     sunrise?: string[];
     sunset?: string[];
+    daylightDuration?: number[];
 };

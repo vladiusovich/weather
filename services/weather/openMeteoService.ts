@@ -38,6 +38,7 @@ class OpenMeteoService {
                 temperature2mMin: (response.daily.temperature_2m_min ?? []) as number[],
                 sunrise: (response.daily?.sunrise ?? []) as unknown as string[],
                 sunset: (response.daily?.sunset ?? []) as unknown as string[],
+                daylightDuration: (response.daily?.daylight_duration ?? []) as unknown as number[]
             } : undefined,
 
             hourly: response.hourly ? {

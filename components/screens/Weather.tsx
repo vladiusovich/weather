@@ -48,6 +48,8 @@ const Weather = observer(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    const isLoading = !appStore.weather.weatherData?.current;
+
     if (status === null) return null;
 
     if (status.status === 'denied') {
@@ -56,18 +58,22 @@ const Weather = observer(() => {
 
     return (
         <ScrollView
+            className='ScrollView'
             showsVerticalScrollIndicator={false}
             refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
         >
-            <UI.ScreenView>
-                <UI.YStack gap='$2.5'>
-                    <UI.XStack items='flex-start' gap='$2'>
-                        <CurrentWeatherStatus />
-                        <SolarTransition />
-                    </UI.XStack>
-                    <HourlyForecast />
-                    <DailyForecast />
-                </UI.YStack>
+            <UI.ScreenView className='ScreenView' flex={1}>
+                {isLoading && (<UI.Loader />)}
+                {!isLoading && (
+                    <UI.YStack gap='$2.5'>
+                        <UI.XStack items='flex-start' gap='$2'>
+                            <CurrentWeatherStatus />
+                            <SolarTransition />
+                        </UI.XStack>
+                        <HourlyForecast />
+                        <DailyForecast />
+                    </UI.YStack>
+                )}
             </UI.ScreenView>
         </ScrollView>
     );

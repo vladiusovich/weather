@@ -14,16 +14,12 @@ const HourlyForecast: React.FC = () => {
     const { t } = useTranslation();
     const appStore = useAppStore();
 
-    const isLoading = !appStore.weather.weatherData.data?.hourly;
     const hourly = appStore.weather.weatherData.hourly;
-
     const now = getNow();
-
     return (
         <ScrollableForecast
             header={t('meteo.hourly.hourlyForecast.title')}
             headerIcon={<Clock3 size={20} />}
-            isLoading={isLoading}
         >
             {hourly.map((i) => {
                 const isCurrent = isSameHour(now, i.time);

@@ -2,9 +2,7 @@ import React from 'react';
 import { Spinner, SpinnerProps } from 'tamagui';
 import YStack from '../stack/YStack';
 
-interface LoaderProps extends SpinnerProps {
-
-}
+type LoaderProps = SpinnerProps
 
 const Loader: React.FC<LoaderProps> = ({
     size = 'large',
