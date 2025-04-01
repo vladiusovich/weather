@@ -5,14 +5,13 @@ import Card from './card/Card';
 import Button from './button/Button';
 import Modal from './modal/Modal';
 import ScrollView from './scrollView/ScrollView';
-import { ScreenView } from './screen/ScreenView';
 import Loader from './loader/Loader';
 
 // TODO: refactor it
 import { H1, H2, H3, H4, H5, H6, Paragraph, SizableText, Text, Separator, View } from 'tamagui';
 import Table from './table/Table';
+import Fab from './fab/Fab';
 
-export * from './modal/Modal';
 export * from './table/Table';
 
 const UI = {
@@ -29,6 +28,7 @@ const UI = {
     },
 
     Button,
+    Fab,
 
     XStack,
     YStack,
@@ -38,7 +38,6 @@ const UI = {
     Card,
     Loader,
 
-    ScreenView,
     Separator,
 
     Modal,

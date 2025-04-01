@@ -61,19 +61,17 @@ const Weather = observer(() => {
             showsVerticalScrollIndicator={false}
             refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
         >
-            <UI.ScreenView className='ScreenView' flex={1}>
-                {isLoading && (<UI.Loader />)}
-                {!isLoading && (
-                    <UI.YStack gap='$2.5'>
-                        <UI.XStack items='flex-start' gap='$2'>
-                            <CurrentWeatherStatus />
-                            <SolarTransition />
-                        </UI.XStack>
-                        <HourlyForecast />
-                        <DailyForecast />
-                    </UI.YStack>
-                )}
-            </UI.ScreenView>
+            {isLoading && (<UI.Loader />)}
+            {!isLoading && (
+                <UI.YStack gap='$2.5'>
+                    <UI.XStack items='flex-start' gap='$2'>
+                        <CurrentWeatherStatus />
+                        <SolarTransition />
+                    </UI.XStack>
+                    <HourlyForecast />
+                    <DailyForecast />
+                </UI.YStack>
+            )}
         </ScrollView>
     );
 });

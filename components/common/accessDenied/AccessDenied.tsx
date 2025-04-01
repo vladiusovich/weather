@@ -15,25 +15,23 @@ const AccessDenied: React.FC<AccessDeniedProps> = ({ type }) => {
     };
 
     return (
-        <UI.ScreenView>
-            <UI.YStack justify='center' flex={1}>
-                <UI.Card padding="$4" backgroundColor="$background02">
-                    <UI.YStack gap='$2.5' items='center'>
-                        <UI.Typo.H6>
-                            {t('common.accessDenied.header')}
-                        </UI.Typo.H6>
+        <UI.YStack justify='center' flex={1}>
+            <UI.Card padding="$4" backgroundColor="$background02">
+                <UI.YStack gap='$2.5' items='center'>
+                    <UI.Typo.H6>
+                        {t('common.accessDenied.header')}
+                    </UI.Typo.H6>
 
-                        <UI.Typo.Text color={'$black11'}>
-                            {t(`common.accessDenied.description.${type}`)}
-                        </UI.Typo.Text>
+                    <UI.Typo.Text color={'$black11'}>
+                        {t(`common.accessDenied.description.${type}`)}
+                    </UI.Typo.Text>
 
-                        <UI.Button onPress={handleOpenSettings}>
-                            {t('common.accessDenied.submit')}
-                        </UI.Button>
-                    </UI.YStack>
-                </UI.Card>
-            </UI.YStack>
-        </UI.ScreenView>
+                    <UI.Button onPress={handleOpenSettings}>
+                        {t('common.accessDenied.submit')}
+                    </UI.Button>
+                </UI.YStack>
+            </UI.Card>
+        </UI.YStack>
     );
 };
 

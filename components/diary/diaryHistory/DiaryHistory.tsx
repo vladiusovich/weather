@@ -1,12 +1,9 @@
-import { useTranslation } from 'react-i18next';
 import { observer } from 'mobx-react-lite';
 import useAppStore from '@/hooks/useAppStore';
 import UI from '@/components/ui';
 import HistoryItem from './historyItem/HistoryItem';
 
-
-const DiiaryHistory: React.FC = () => {
-    const { t } = useTranslation();
+const DiaryHistory: React.FC = () => {
     const appStore = useAppStore();
 
     const history = appStore.diary.history.data;
@@ -24,4 +21,4 @@ const DiiaryHistory: React.FC = () => {
     );
 };
 
-export default observer(DiiaryHistory);
+export default observer(DiaryHistory);

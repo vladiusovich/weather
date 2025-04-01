@@ -40,13 +40,11 @@ const SolarTransition = () => {
     ];
 
     return (
-        <UI.ScreenView>
-            <UI.Card
-                padded
-            >
-                <UI.Table data={solarData} columns={columns} />
-            </UI.Card>
-        </UI.ScreenView>
+        <UI.Card
+            padded
+        >
+            <UI.Table data={solarData} columns={columns} />
+        </UI.Card>
     );
 };
 
