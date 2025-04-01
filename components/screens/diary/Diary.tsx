@@ -2,8 +2,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { RefreshControl, ScrollView } from 'react-native';
 import useAppStore from '@/hooks/useAppStore';
-import DiaryHistory from '../diary/diaryHistory/DiaryHistory';
-import DiaryActions from '../diary/diaryHistory/actions/DiaryActions';
+import DiaryHistory from './diaryHistory/DiaryHistory';
+import DiaryActions from './diaryHistory/actions/DiaryActions';
 
 const Diary = observer(() => {
     const appStore = useAppStore();

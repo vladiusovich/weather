@@ -5,7 +5,7 @@ import UI from '@/components/ui';
 import { Sunrise, Sunset } from '@tamagui/lucide-icons';
 import { useRouter } from 'expo-router';
 
-const SolarTransition: React.FC = () => {
+const SolarTransitionInfo: React.FC = () => {
     const appStore = useAppStore();
     const router = useRouter();
 
@@ -39,4 +39,4 @@ const SolarTransition: React.FC = () => {
     );
 };
 
-export default observer(SolarTransition);
+export default observer(SolarTransitionInfo);

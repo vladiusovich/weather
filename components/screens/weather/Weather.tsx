@@ -4,12 +4,12 @@ import { RefreshControl, ScrollView } from 'react-native';
 import * as Location from 'expo-location';
 import useAppStore from '@/hooks/useAppStore';
 import UI from '@/components/ui';
-import CurrentWeatherStatus from '@/components/weather/currentWeatherStatus/CurrentWeatherStatus';
-import DailyForecast from '@/components/weather/dailyForecast/DailyForecast';
-import HourlyForecast from '@/components/weather/hourlyForecast/HourlyForecast';
-import SolarTransition from '@/components/weather/solarTransition/SolarTransition';
-import AccessDenied from '../common/accessDenied/AccessDenied';
+import AccessDenied from '../../common/accessDenied/AccessDenied';
 import { LocationCoords } from '@/types/LocationCoords';
+import CurrentWeatherStatus from './currentWeatherStatus/CurrentWeatherStatus';
+import HourlyForecast from './hourlyForecast/HourlyForecast';
+import DailyForecast from './dailyForecast/DailyForecast';
+import SolarTransitionInfo from './solarTransitionInfo/SolarTransitionInfo';
 
 const Weather = observer(() => {
     const appStore = useAppStore();
@@ -66,7 +66,7 @@ const Weather = observer(() => {
                 <UI.YStack gap='$2.5'>
                     <UI.XStack items='flex-start' gap='$2'>
                         <CurrentWeatherStatus />
-                        <SolarTransition />
+                        <SolarTransitionInfo />
                     </UI.XStack>
                     <HourlyForecast />
                     <DailyForecast />

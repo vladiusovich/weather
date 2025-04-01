@@ -2,8 +2,6 @@ import { Tabs as NativeTabs } from 'expo-router';
 import React from 'react';
 import { useTheme } from 'tamagui';
 
-// type NativeStackProps = typeof NativeStack;
-
 interface StackProps {
     children?: React.ReactNode;
 }
@@ -21,7 +19,6 @@ const Tabs: React.FC<StackProps> = ({
                     backgroundColor: theme.black4.val,
                 },
                 sceneStyle: {
-                    // paddingHorizontal: 15,
                     paddingHorizontal: 15,
                     backgroundColor: theme.black4.val,
                 },
