@@ -11,8 +11,12 @@ import Loader from './loader/Loader';
 import { H1, H2, H3, H4, H5, H6, Paragraph, SizableText, Text, Separator, View } from 'tamagui';
 import Table from './table/Table';
 import Fab from './fab/Fab';
+import { DatePicker, DatePickerInput } from './datapicker/dateParts';
+import DatePickerBody from './datapicker/DatePickerBody';
+import NativeDateTimePicker from './datapicker/nativeDateTimePicker/NativeDateTimePicker';
 
 export * from './table/Table';
+export * from './datapicker/dateParts';
 
 const UI = {
     Typo: {
@@ -26,6 +30,12 @@ const UI = {
         SizableText,
         Text,
     },
+    DatePicker: {
+        DatePicker,
+        DatePickerInput,
+        DatePickerBody,
+    },
+    NativeDateTimePicker,
 
     Button,
     Fab,

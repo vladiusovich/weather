@@ -19,7 +19,7 @@ const Tabs: React.FC<StackProps> = ({
                     backgroundColor: theme.black4.val,
                 },
                 sceneStyle: {
-                    paddingHorizontal: 15,
+                    // paddingHorizontal: 15,
                     backgroundColor: theme.black4.val,
                 },
                 headerShadowVisible: false,

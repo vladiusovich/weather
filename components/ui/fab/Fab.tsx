@@ -1,6 +1,7 @@
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button, ButtonProps } from 'tamagui';
 
+// TODO: remove?
 const Fab: React.FC<ButtonProps> = ({ ...props }) => {
     const insets = useSafeAreaInsets();
 

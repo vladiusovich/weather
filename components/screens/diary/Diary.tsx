@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { RefreshControl, ScrollView } from 'react-native';
 import useAppStore from '@/hooks/useAppStore';
 import DiaryHistory from './diaryHistory/DiaryHistory';
-import DiaryActions from './diaryHistory/actions/DiaryActions';
+import NewNoteButton from './diaryHistory/actions/NewNoteButton';
 
 const Diary = observer(() => {
     const appStore = useAppStore();
@@ -26,7 +26,7 @@ const Diary = observer(() => {
             >
                 <DiaryHistory />
             </ScrollView>
-            <DiaryActions />
+            <NewNoteButton />
         </>
     );
 });

@@ -2,7 +2,7 @@ import UI from '@/components/ui';
 import { Symptom } from '@/types/diary/DiaryHistoryItem';
 import React from 'react';
 import SymptomItem from './SymptomItem';
-import { Smile } from '@tamagui/lucide-icons';
+import FeelingGood from './FeelingGood';
 
 interface SymptomItemsProps {
     data: Symptom[];
@@ -11,20 +11,8 @@ interface SymptomItemsProps {
 const SymptomItems: React.FC<SymptomItemsProps> = ({
     data,
 }) => {
-    const noData = data.length === 0;
-
-    if (noData) {
-        return (
-            <UI.XStack
-                items='stretch'
-                gap='$2'
-            >
-                <UI.Typo.Text fontSize={'$2'}>
-                    {'No symptoms'}
-                </UI.Typo.Text>
-                <Smile size={16} />
-            </UI.XStack>
-        );
+    if (data.length === 0) {
+        return <FeelingGood />;
     }
 
     return (
