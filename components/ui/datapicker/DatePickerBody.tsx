@@ -40,6 +40,7 @@ const DateHeader = () => {
             </H3>
         )
     }
+
     return (
         <View flexDirection="row" width="100%" items="center" justify="space-between">
             <Button circular size="$4" {...swapOnClick(subtractOffset({ months: 1 }))}>
@@ -90,25 +91,25 @@ const DayPicker = () => {
                 <WeekView weekDays={weekDays} />
 
                 <View flexDirection="column" gap="$2" items="center" justify="center" width="100%">
-                    {subDays.map((days) => {
+                    {subDays.map((sDays) => {
                         return (
                             <View
                                 justify="space-between"
                                 verticalAlign="center"
                                 flexDirection="row"
-                                key={days[0].$date.toString()}
+                                key={sDays[0].$date.toString()}
                                 gap="$1"
                                 flex={1}
                                 width="100%"
                             >
-                                {days.map((d) => (
+                                {sDays.map((d) => (
                                     <Button
                                         key={d.$date.toString()}
                                         chromeless
                                         circular
                                         padding={0}
                                         {...swapOnClick(dayButton(d))}
-                                        backgroundColor={d.selected ? '$background' : 'transparent'}
+                                        backgroundColor={d.selected ? '$background02' : 'transparent'}
                                         themeInverse={d.selected}
                                         disabled={!d.inCurrentMonth}
                                     >

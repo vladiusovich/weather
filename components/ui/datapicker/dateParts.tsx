@@ -215,19 +215,19 @@ export const MonthPicker = ({
                 gap="$2"
                 animation="100ms"
                 flex={0}
-                // $platform-native={{ justifyContent: 'space-between', width: '100%' }}
+            // $platform-native={{ justifyContent: 'space-between', width: '100%' }}
             >
                 {months.map((month) => (
                     <Button
                         key={month.$date.toString()}
                         themeInverse={month.active}
                         flexBasis={90}
-                        backgroundColor={month.active ? '$background' : 'transparent'}
+                        backgroundColor={month.active ? '$background02' : 'transparent'}
                         chromeless
                         padding={0}
                         {...swapOnClick(monthButton(month, { onClick: onChange as any }))}
                     >
-                        <Button.Text color={month.active ? '$green9' : '$green10'}>
+                        <Button.Text color={'$green9'}>
                             {month.month}
                         </Button.Text>
                     </Button>
@@ -264,7 +264,7 @@ export const YearPicker = ({
                 flexWrap="wrap"
                 gap="$2"
                 width="100%"
-                // $gtMd={{ maxWidth: 280 }}
+            // $gtMd={{ maxWidth: 280 }}
             >
                 {years.map((year) => (
                     <Button
@@ -272,12 +272,12 @@ export const YearPicker = ({
                         themeInverse={year.year === Number(selectedYear)}
                         flexBasis="30%"
                         grow={1}
-                        backgroundColor={year.year === Number(selectedYear) ? '$background' : 'transparent'}
+                        backgroundColor={year.year === Number(selectedYear) ? '$background02' : 'transparent'}
                         chromeless
                         padding={0}
                         {...swapOnClick(yearButton(year, { onClick: onChange as any }))}
                     >
-                        <Button.Text color={year.year === Number(selectedYear) ? '$green12' : '$green11'}>
+                        <Button.Text color={'$green9'}>
                             {year.year}
                         </Button.Text>
                     </Button>
@@ -404,7 +404,7 @@ export const WeekView = ({
 }) => (
     <View width="100%" flexDirection="row" gap="$1" {...props}>
         {weekDays.map((day) => (
-            <SizableText key={day} flex={1} verticalAlign="center" width="100%" size="$4">
+            <SizableText key={day} flex={1} textAlign="center" width="100%" size="$4">
                 {day}
             </SizableText>
         ))}

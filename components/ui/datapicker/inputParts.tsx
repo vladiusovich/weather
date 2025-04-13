@@ -1,6 +1,5 @@
 import { getFontSized } from '@tamagui/get-font-sized'
 import { getSpace } from '@tamagui/get-token'
-import { User } from '@tamagui/lucide-icons'
 import { useState } from 'react'
 import type { SizeVariantSpreadFunction } from '@tamagui/web'
 import type { ColorTokens, FontSizeTokens } from 'tamagui'
@@ -64,7 +63,7 @@ const InputGroupFrame = styled(XGroup, {
         size: { '...size': () => ({}) },
     },
     defaultVariants: {
-        // unstyled: process.env.TAMAGUI_HEADLESS === '1',
+        unstyled: process.env.TAMAGUI_HEADLESS === '1',
     },
 })
 
@@ -218,20 +217,3 @@ export const Input = withStaticProperties(InputContainerFrame, {
     XGroup: withStaticProperties(InputXGroup, { Item: XGroup.Item }),
 })
 
-export const InputNew = () => (
-    <Input width={400} size="$3">
-        <Input.Box>
-            <Input.Section>
-                <Input.Icon><User /></Input.Icon>
-            </Input.Section>
-            <Input.Section>
-                <Input.Area paddingStart={0} />
-            </Input.Section>
-            <Input.Section>
-                <Input.Button>
-                    <Input.Icon><User /></Input.Icon>
-                </Input.Button>
-            </Input.Section>
-        </Input.Box>
-    </Input>
-)

@@ -10,6 +10,9 @@ dayjs.extend(timezone);
 const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const;
 type DaysOfWeek = typeof daysOfWeek[number];
 
+export const DATE_FORMAT = 'DD/MM/YYYY';
+export const TIME_FORMAT = 'HH:mm';
+
 /**
  * Converts a date string to a Date object using dayjs.
  */
@@ -44,6 +47,10 @@ function parseUtcDate(dateStr: string) {
  * The template supports dayjs tokens (e.g., "YYYY", "MM", "DD").
  */
 export const formatDate = (utcTime: string, template: string): string | null => {
+    if (!utcTime) {
+        return null;
+    }
+
     const d = dayjs(parseUtcDate(utcTime));
     if (d.isValid()) {
         return d.local().format(template);

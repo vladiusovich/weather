@@ -1,6 +1,6 @@
 import React from 'react';
 import UI from '@/components/ui';
-import { formatDate, getDayOfWeek } from '@/utils/datetime.helper';
+import { DATE_FORMAT, formatDate, getDayOfWeek, TIME_FORMAT } from '@/utils/datetime.helper';
 import { TextStyle } from 'tamagui';
 
 type DateVariantType = 'date' | 'time' | 'datetime' | 'dayOfWeek';
@@ -10,9 +10,6 @@ type DateProps = {
     asDayOfWeek?: boolean;
     variant: DateVariantType;
 } & TextStyle;
-
-const DATE_FORMAT = 'DD/MM/YYYY';
-const TIME_FORMAT = 'HH:mm';
 
 const format = (date: string, variant: DateVariantType) => {
     switch (variant) {
