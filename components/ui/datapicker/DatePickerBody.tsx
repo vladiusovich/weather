@@ -6,7 +6,7 @@ import {
 
 import { ChevronLeft, ChevronRight } from '@tamagui/lucide-icons'
 import { useMemo, useState } from 'react'
-import { , Button, H3, View } from 'tamagui'
+import { AnimatePresence, Button, H3, View } from 'tamagui'
 
 import {
     HeaderTypeProvider,
