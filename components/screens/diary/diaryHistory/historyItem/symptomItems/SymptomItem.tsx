@@ -4,7 +4,7 @@ import { styled, View } from '@tamagui/core';
 import React from 'react';
 
 export const RoundedSquare = styled(View, {
-    backgroundColor: '$background04',
+    bg: '$background04',
     paddingBlock: 5,
     paddingStart: 10,
     paddingEnd: 10,
@@ -15,7 +15,7 @@ export const RoundedSquare = styled(View, {
 });
 
 export const RoundedSquareValue = styled(View, {
-    backgroundColor: '$red9',
+    bg: '$red9',
     minW: '$1',
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,

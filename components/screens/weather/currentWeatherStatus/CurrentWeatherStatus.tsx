@@ -16,7 +16,7 @@ const CurrentWeatherStatus: React.FC = () => {
         >
             <UI.Card
                 padding='$4'
-                backgroundColor={'$background02'}
+                bg={'$background02'}
             >
                 <UI.YStack
                     justify={'space-between'}

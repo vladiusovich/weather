@@ -19,7 +19,7 @@ const ScrollableForecast: React.FC<ScrollableForecastProps> = ({
         <UI.Card
             padding='$4'
             height={300}
-            backgroundColor={'$background02'}
+            bg={'$background02'}
         >
             {isLoading && (<UI.Loader />)}
             {!isLoading && (

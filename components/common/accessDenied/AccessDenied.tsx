@@ -16,7 +16,7 @@ const AccessDenied: React.FC<AccessDeniedProps> = ({ type }) => {
 
     return (
         <UI.YStack justify='center' flex={1}>
-            <UI.Card padding="$4" backgroundColor="$background02">
+            <UI.Card padding="$4" bg="$background02">
                 <UI.YStack gap='$2.5' items='center'>
                     <UI.Typo.H6>
                         {t('common.accessDenied.header')}

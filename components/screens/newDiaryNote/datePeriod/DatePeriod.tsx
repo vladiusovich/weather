@@ -16,7 +16,7 @@ const DatePeriod: React.FC = () => {
     return (
         <UI.Card
             padding='$4'
-            backgroundColor={'$background02'}
+            bg={'$background02'}
         >
             <UI.Card.Header size={'$0.5'}>
                 <UI.YStack gap={'$2'} items='flex-start'>

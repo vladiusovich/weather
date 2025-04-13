@@ -17,7 +17,7 @@ const SolarTransitionInfo: React.FC = () => {
     return (
         <UI.Card
             padding='$3'
-            backgroundColor={'$background02'}
+            bg={'$background02'}
             onPress={onPress}
         >
             <UI.XStack

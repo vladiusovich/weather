@@ -45,7 +45,7 @@ const Modal = ({
             <Dialog modal>
                 <DialogOverlay
                     key="overlay"
-                    backgroundColor="$shadow6"
+                    bg="$shadow6"
                     animation='100ms'
                     enterStyle={{ opacity: 0 }}
                     exitStyle={{ opacity: 0 }}
@@ -62,14 +62,14 @@ const Modal = ({
                     {children && <YStack mt="$4">{children}</YStack>}
 
                     {showFooter && (
-                        <XStack justifyContent="flex-end" gap="$2" mt="$4">
+                        <XStack justify="flex-end" gap="$2" mt="$4">
                             <DialogClose asChild>
-                                <Button theme="alt1" onPress={onCancel}>
+                                <Button onPress={onCancel}>
                                     {cancelText}
                                 </Button>
                             </DialogClose>
                             <DialogClose asChild>
-                                <Button theme="active" onPress={onConfirm}>
+                                <Button onPress={onConfirm}>
                                     {confirmText}
                                 </Button>
                             </DialogClose>

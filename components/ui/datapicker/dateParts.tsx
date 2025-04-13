@@ -222,9 +222,9 @@ export const MonthPicker = ({
                         key={month.$date.toString()}
                         themeInverse={month.active}
                         flexBasis={90}
-                        backgroundColor={month.active ? '$background02' : 'transparent'}
+                        bg={month.active ? '$background02' : 'transparent'}
                         chromeless
-                        padding={0}
+                        p={0}
                         {...swapOnClick(monthButton(month, { onClick: onChange as any }))}
                     >
                         <Button.Text color={'$green9'}>
@@ -272,9 +272,9 @@ export const YearPicker = ({
                         themeInverse={year.year === Number(selectedYear)}
                         flexBasis="30%"
                         grow={1}
-                        backgroundColor={year.year === Number(selectedYear) ? '$background02' : 'transparent'}
+                        bg={year.year === Number(selectedYear) ? '$background02' : 'transparent'}
                         chromeless
-                        padding={0}
+                        p={0}
                         {...swapOnClick(yearButton(year, { onClick: onChange as any }))}
                     >
                         <Button.Text color={'$green9'}>

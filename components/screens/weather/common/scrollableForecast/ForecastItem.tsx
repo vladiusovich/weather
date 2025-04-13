@@ -14,7 +14,7 @@ const ForecastItem: React.FC<ForecastItemProps> = ({
     return (
         <UI.Card
             flex={1}
-            backgroundColor={current ? '$accent11' : '$background04'}
+            bg={current ? '$accent11' : '$background04'}
             padded
             borderRadius={40}
         >

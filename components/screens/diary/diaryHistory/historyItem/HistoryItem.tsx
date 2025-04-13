@@ -18,7 +18,7 @@ const HistoryItem: React.FC<HistoryItemProps> = ({
     return (
         <UI.Card
             padding='$4'
-            backgroundColor={'$background02'}
+            bg={'$background02'}
         >
             <UI.Card.Header size={'$0.5'}>
                 <UI.XStack gap={'$2'} items={'center'}>

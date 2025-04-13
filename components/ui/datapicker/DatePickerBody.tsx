@@ -6,7 +6,7 @@ import {
 
 import { ChevronLeft, ChevronRight } from '@tamagui/lucide-icons'
 import { useMemo, useState } from 'react'
-import { AnimatePresence, Button, H3, View } from 'tamagui'
+import { , Button, H3, View } from 'tamagui'
 
 import {
     HeaderTypeProvider,
@@ -107,9 +107,9 @@ const DayPicker = () => {
                                         key={d.$date.toString()}
                                         chromeless
                                         circular
-                                        padding={0}
+                                        p={0}
                                         {...swapOnClick(dayButton(d))}
-                                        backgroundColor={d.selected ? '$background02' : 'transparent'}
+                                        bg={d.selected ? '$background02' : 'transparent'}
                                         themeInverse={d.selected}
                                         disabled={!d.inCurrentMonth}
                                     >
