@@ -14,6 +14,8 @@ import Fab from './fab/Fab';
 import DatePickerSelector from './datapicker/index';
 import NativeDateTimePicker from './datapicker/nativeDateTimePicker/NativeDateTimePicker';
 import ScreenWrapper from './layoutWrapper/LayoutWrapper';
+import Papper from './paper/Paper';
+import SheetView from './sheet/SheetView';
 
 export * from './table/Table';
 export * from './datapicker/index';
@@ -46,6 +48,8 @@ const UI = {
 
     Separator,
 
+    Papper,
+    SheetView,
     Modal,
     ScrollView,
     View,

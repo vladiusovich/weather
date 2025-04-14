@@ -1,7 +1,7 @@
 import UI from '@/components/ui';
 import { Symptom } from '@/types/diary/DiaryHistoryItem';
 import React from 'react';
-import SymptomItem from './SymptomItem';
+import SymptomChip from './SymptomChip';
 import FeelingGood from './FeelingGood';
 
 interface SymptomItemsProps {
@@ -20,7 +20,7 @@ const SymptomItems: React.FC<SymptomItemsProps> = ({
             items='stretch'
             gap='$1'
         >
-            {data.map((i) => <SymptomItem key={i.id} data={i} />)}
+            {data.map((i) => <SymptomChip key={i.id} data={i} />)}
         </UI.XStack>
     );
 };

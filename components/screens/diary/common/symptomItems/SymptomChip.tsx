@@ -21,13 +21,13 @@ export const RoundedSquareValue = styled(View, {
     borderTopRightRadius: 50,
     borderBottomLeftRadius: 50,
     borderBottomRightRadius: 50,
-})
+});
 
 interface SymptomProps {
     data: Symptom;
 }
 
-const SymptomItem: React.FC<SymptomProps> = ({
+const SymptomChip: React.FC<SymptomProps> = ({
     data,
 }) => {
     return (
@@ -49,4 +49,4 @@ const SymptomItem: React.FC<SymptomProps> = ({
     );
 };
 
-export default SymptomItem;
+export default SymptomChip;

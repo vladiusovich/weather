@@ -2,28 +2,33 @@ import React from 'react';
 import { SafeAreaView } from 'react-native';
 import { styled } from 'tamagui';
 
-type ScreenWrapperProps<T extends React.ElementType> = {
-    Component?: T;
+type BaseWrapperProps = {
     children: React.ReactNode;
-} & Omit<React.ComponentProps<T>, 'children' | 'Component'>;
+};
 
-const ScreenWrapper = <T extends React.ElementType = typeof SafeAreaView>({
+interface OwnProps<T extends React.ElementType> {
+    Component?: T;
+}
+
+export type ScreenWrapperProps<T extends React.ElementType = typeof SafeAreaView> =
+    OwnProps<T> & Omit<React.ComponentProps<T>, keyof BaseWrapperProps | 'Component'> & BaseWrapperProps;
+
+const baseStyle = {
+    flex: 1,
+    px: '$4',
+    py: '$2',
+} as const;
+
+export const ScreenWrapper = <T extends React.ElementType = typeof SafeAreaView>({
     Component,
     children,
     ...rest
-}: ScreenWrapperProps<T>) => {
+}: ScreenWrapperProps<T>): React.ReactElement => {
     const WrapperComponent = Component || SafeAreaView;
 
-    // Приводим объект конфигурации к типу any, чтобы избежать ошибки типизации
-    const StyledWrapper = React.useMemo(() => {
-        return styled(WrapperComponent as any, {
-            flex: 1,
-            px: '$4',
-            py: '$2',
-        } as any);
-    }, [WrapperComponent]);
+    const Styled = React.useMemo(() => styled(WrapperComponent as any, baseStyle), [WrapperComponent]);
 
-    return <StyledWrapper {...rest}>{children}</StyledWrapper>;
-}
+    return <Styled {...(rest as any)}>{children}</Styled>;
+};
 
 export default ScreenWrapper;

@@ -3,7 +3,7 @@ import UI from '@/components/ui';
 import { DiaryHistoryItem } from '@/types/diary/DiaryHistoryItem';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import SymptomItems from './symptomItems/SymptomItems';
+import SymptomItems from '../../common/symptomItems/SymptomItems';
 import Comment from './commet/Comment';
 
 interface HistoryItemProps {

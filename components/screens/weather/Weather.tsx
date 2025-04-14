@@ -62,7 +62,7 @@ const Weather = observer(() => {
             showsVerticalScrollIndicator={false}
             refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
         >
-            {isLoading && (<UI.Loader />)}
+            {isLoading && <UI.Loader />}
             {!isLoading && (
                 <UI.YStack gap='$2.5'>
                     <UI.XStack items='flex-start' gap='$2'>
@@ -72,7 +72,7 @@ const Weather = observer(() => {
                     <HourlyForecast />
                     <DailyForecast />
                 </UI.YStack>
-            )}F
+            )}
         </UI.ScreenWrapper>
     );
 });
