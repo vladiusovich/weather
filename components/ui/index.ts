@@ -13,6 +13,7 @@ import Table from './table/Table';
 import Fab from './fab/Fab';
 import DatePickerSelector from './datapicker/index';
 import NativeDateTimePicker from './datapicker/nativeDateTimePicker/NativeDateTimePicker';
+import ScreenWrapper from './layoutWrapper/LayoutWrapper';
 
 export * from './table/Table';
 export * from './datapicker/index';
@@ -48,6 +49,7 @@ const UI = {
     Modal,
     ScrollView,
     View,
+    ScreenWrapper,
 };
 
 export default UI;

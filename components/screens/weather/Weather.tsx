@@ -57,7 +57,8 @@ const Weather = observer(() => {
     };
 
     return (
-        <ScrollView
+        <UI.ScreenWrapper
+            Component={ScrollView}
             showsVerticalScrollIndicator={false}
             refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
         >
@@ -71,8 +72,8 @@ const Weather = observer(() => {
                     <HourlyForecast />
                     <DailyForecast />
                 </UI.YStack>
-            )}
-        </ScrollView>
+            )}F
+        </UI.ScreenWrapper>
     );
 });
 

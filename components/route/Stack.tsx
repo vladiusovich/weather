@@ -22,7 +22,6 @@ const Stack: React.FC<StackProps> = ({
                 headerTintColor: theme.color.val,
                 contentStyle: {
                     backgroundColor: theme.black4.val,
-                    paddingHorizontal: 15,
                 },
                 headerShadowVisible: false,
             }}
