@@ -3,6 +3,8 @@ import useAppStore from '@/hooks/useAppStore';
 import React from 'react';
 import UI, { SelectorOption } from '@/components/ui';
 import PainStrengthField from './painStrengthField/PainStrengthField';
+import { Field, FormProvider } from '@/store/formStore/FormField';
+import SymptomFormStore from './SymptomFormStore';
 
 interface Props {
     open: boolean;
@@ -14,6 +16,13 @@ const AddSymptomItemSheet: React.FC<Props> = ({
     onClose,
 }) => {
     const appStore = useAppStore();
+
+    const [form] = React.useState(() => new SymptomFormStore({
+        initialValues: {
+            painPower: [],
+            symptom: ''
+        }
+    }));
 
     // TODO
     const onOpenChange = (state: boolean) => {
@@ -36,32 +45,38 @@ const AddSymptomItemSheet: React.FC<Props> = ({
             snapPoints={[40]}
             modal
         >
-            <UI.YStack
-                gap={'$3'}
-                flex={1}
-            >
-                <UI.Typo.H6>
-                    Add symptom
-                </UI.Typo.H6>
+            <FormProvider form={form}>
                 <UI.YStack
-                    items='stretch'
-                    gap='$4'
+                    gap={'$3'}
+                    flex={1}
                 >
-                    <UI.Selector
-                        options={options}
-                        label="Type of symptom"
-                        palceholder='Select pain'
-                    />
+                    <UI.Typo.H6>
+                        Add symptom
+                    </UI.Typo.H6>
+                    <UI.YStack
+                        items='stretch'
+                        gap='$4'
+                    >
+                        <Field
+                            name="symptom"
+                            component={UI.Selector}
+                            options={options}
+                            label="Type of symptom"
+                            palceholder='Select pain'
+                        />
 
-                    <PainStrengthField />
+                        <PainStrengthField />
+                    </UI.YStack>
                 </UI.YStack>
-            </UI.YStack>
 
-            <UI.YStack gap={'$3'}>
-                <UI.Button size={'$3'}>
-                    Add
-                </UI.Button>
-            </UI.YStack>
+                <UI.YStack gap={'$3'}>
+                    <UI.Button size={'$3'}>
+                        Add
+                    </UI.Button>
+                </UI.YStack>
+
+            </FormProvider>
+
         </UI.SheetView >
     );
 };

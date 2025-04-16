@@ -1,17 +1,17 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import UI from '@/components/ui';
+import { Field, useFormContext } from '@/store/formStore/FormField';
+import SymptomFormStore, {  } from '../SymptomFormStore';
 
 interface Props {
 }
 
+
 const PainStrengthField: React.FC<Props> = ({
 }) => {
-    const [value, setValue] = React.useState([0]);
-
-    const onValueChange = (val: number[]) => {
-        setValue(val)
-    };
+    const form = useFormContext<SymptomFormStore>();
+    const painPower = form.values.painPower?.at(0) ?? 0;
 
     return (
         <UI.YStack
@@ -22,19 +22,20 @@ const PainStrengthField: React.FC<Props> = ({
                     The power of pain:
                 </UI.Typo.Text>
                 <UI.Typo.Paragraph size='$5' fontWeight={900}>
-                    {value[0]}
+                    {painPower}
                 </UI.Typo.Paragraph>
             </UI.XStack>
 
             <UI.View gap='$1' paddingInline={15}>
-                <UI.Slider
+                <Field
+                    name="painPower"
+                    component={UI.Slider}
                     size='$2'
                     orientation='horizontal'
                     defaultValue={[0]}
                     min={0}
                     max={10}
                     step={1}
-                    onValueChange={onValueChange}
                 />
             </UI.View>
 

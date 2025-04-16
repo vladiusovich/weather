@@ -30,22 +30,8 @@ const Selector: React.FC<ExSelectProps> = ({
     label,
     ...props
 }) => {
-    const [val, setVal] = React.useState('apple');
-
-    const onOpenChange = (open: boolean) => {
-        console.log("onOpenChange", open);
-    }
-
-    const onValueChange = (value: string) => {
-        console.log("onValueChange", value);
-        setVal(value);
-    }
-
     return (
         <Select
-            value={val}
-            onValueChange={onValueChange}
-            onOpenChange={onOpenChange}
             disablePreventBodyScroll
             {...props}
         >

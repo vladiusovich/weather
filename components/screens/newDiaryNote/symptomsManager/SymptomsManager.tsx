@@ -6,7 +6,7 @@ import SymptomChip from '../../diary/common/symptomItems/SymptomChip';
 import { Symptom } from '@/types/diary/DiaryHistoryItem';
 import AddSymptomItemSheet from './addSymptomItemSheet/AddSymptomItemSheet';
 import PainStrengthField from './addSymptomItemSheet/painStrengthField/PainStrengthField';
-import CommentField from './addSymptomItemSheet/commentField/CommentField';
+import CommentField from './commentField/CommentField';
 
 const SymptomsManager: React.FC = () => {
     const appStore = useAppStore();
