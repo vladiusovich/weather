@@ -5,6 +5,8 @@ import UI from '@/components/ui';
 import SymptomChip from '../../diary/common/symptomItems/SymptomChip';
 import { Symptom } from '@/types/diary/DiaryHistoryItem';
 import AddSymptomItemSheet from './addSymptomItemSheet/AddSymptomItemSheet';
+import PainStrengthField from './addSymptomItemSheet/painStrengthField/PainStrengthField';
+import CommentField from './addSymptomItemSheet/commentField/CommentField';
 
 const SymptomsManager: React.FC = () => {
     const appStore = useAppStore();
@@ -24,8 +26,9 @@ const SymptomsManager: React.FC = () => {
             <UI.Papper
                 p='$4'
                 bg={'$background02'}
+                flex={1}
             >
-                <UI.YStack gap={'$3'}>
+                <UI.YStack gap={'$3'} flex={1}>
                     <UI.Typo.Text>
                         Symptoms
                     </UI.Typo.Text>
@@ -37,7 +40,7 @@ const SymptomsManager: React.FC = () => {
                     >
                         {value.length === 0 && (
                             <UI.Button size={'$3'} variant='outlined'>
-                                Use previous list
+                                Use from prev note
                             </UI.Button>
                         )}
 
@@ -46,10 +49,16 @@ const SymptomsManager: React.FC = () => {
 
                     <UI.YStack gap={'$3'}>
                         <UI.Button size={'$3'} onPress={onOpen}>
-                            Add
+                            Add symptom
                         </UI.Button>
                     </UI.YStack>
+
+                    <CommentField />
                 </UI.YStack>
+
+                <UI.Button size={'$5'} onPress={onOpen}>
+                    Create note
+                </UI.Button>
             </UI.Papper>
             <AddSymptomItemSheet open={open} onClose={onClose} />
         </>

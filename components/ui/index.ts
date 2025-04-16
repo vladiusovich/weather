@@ -16,9 +16,13 @@ import NativeDateTimePicker from './datapicker/nativeDateTimePicker/NativeDateTi
 import ScreenWrapper from './layoutWrapper/LayoutWrapper';
 import Papper from './paper/Paper';
 import SheetView from './sheet/SheetView';
+import Selector from './selector/Selector';
+import Slider from './slider/Slider';
+import TextArea from './textArea/TextArea';
 
 export * from './table/Table';
 export * from './datapicker/index';
+export * from './selector/Selector';
 
 const UI = {
     Typo: {
@@ -44,9 +48,13 @@ const UI = {
     Table,
 
     Card,
+    Slider,
     Loader,
 
     Separator,
+
+    Selector,
+    TextArea,
 
     Papper,
     SheetView,

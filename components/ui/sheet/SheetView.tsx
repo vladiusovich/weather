@@ -1,8 +1,6 @@
-// CustomSheet.tsx
-import React, { useState } from 'react';
+import React from 'react';
 import type { SheetProps } from '@tamagui/sheet';
 import { Sheet } from '@tamagui/sheet';
-import { ChevronDown } from '@tamagui/lucide-icons';
 
 export type CustomSheetProps = {
     /** Content to render inside the main sheet */

@@ -15,7 +15,7 @@ const NewDiaryNote = observer(() => {
 
     return (
         <UI.ScreenWrapper>
-            <UI.YStack gap={'$2'}>
+            <UI.YStack gap={'$2'} flex={1}>
                 <DatePeriod />
                 <SymptomsManager />
             </UI.YStack>

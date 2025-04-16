@@ -1,7 +1,8 @@
 import { observer } from 'mobx-react-lite';
 import useAppStore from '@/hooks/useAppStore';
 import React from 'react';
-import UI from '@/components/ui';
+import UI, { SelectorOption } from '@/components/ui';
+import PainStrengthField from './painStrengthField/PainStrengthField';
 
 interface Props {
     open: boolean;
@@ -21,27 +22,42 @@ const AddSymptomItemSheet: React.FC<Props> = ({
         }
     };
 
+    const options: SelectorOption[] = appStore.diary.symptoms.data.map((s) => {
+        return {
+            name: s.name,
+            value: s.name,
+        }
+    });
+
     return (
         <UI.SheetView
             open={open}
             onOpenChange={onOpenChange}
-            snapPoints={[50]}
+            snapPoints={[40]}
             modal
         >
-            <UI.YStack gap={'$3'} flex={1}>
+            <UI.YStack
+                gap={'$3'}
+                flex={1}
+            >
                 <UI.Typo.H6>
                     Add symptom
                 </UI.Typo.H6>
-
-                <UI.XStack
+                <UI.YStack
                     items='stretch'
-                    gap='$1'
-                    minW={80}
+                    gap='$4'
                 >
+                    <UI.Selector
+                        options={options}
+                        label="Type of symptom"
+                        palceholder='Select pain'
+                    />
 
-                </UI.XStack>
+                    <PainStrengthField />
+                </UI.YStack>
             </UI.YStack>
-            <UI.YStack gap={'$3'} p={15}>
+
+            <UI.YStack gap={'$3'}>
                 <UI.Button size={'$3'}>
                     Add
                 </UI.Button>

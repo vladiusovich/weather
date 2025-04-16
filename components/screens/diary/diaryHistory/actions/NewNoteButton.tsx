@@ -18,8 +18,8 @@ const NewNoteButton: React.FC = () => {
             position="absolute"
             theme='green'
             size="$6"
-            bottom={insets.bottom + 20}
-            right={15}
+            b={insets.bottom + 20}
+            r={15}
             icon={PlusSquare}
             circular
             elevate
