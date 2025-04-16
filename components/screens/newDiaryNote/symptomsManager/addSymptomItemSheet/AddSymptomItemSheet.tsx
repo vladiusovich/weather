@@ -3,8 +3,8 @@ import useAppStore from '@/hooks/useAppStore';
 import React from 'react';
 import UI, { SelectorOption } from '@/components/ui';
 import PainStrengthField from './painStrengthField/PainStrengthField';
-import { Field, FormProvider } from '@/store/formStore/FormField';
 import SymptomFormStore from './SymptomFormStore';
+import Form from '@/store/formStore';
 
 interface Props {
     open: boolean;
@@ -45,7 +45,7 @@ const AddSymptomItemSheet: React.FC<Props> = ({
             snapPoints={[40]}
             modal
         >
-            <FormProvider form={form}>
+            <Form.Provider form={form}>
                 <UI.YStack
                     gap={'$3'}
                     flex={1}
@@ -57,7 +57,7 @@ const AddSymptomItemSheet: React.FC<Props> = ({
                         items='stretch'
                         gap='$4'
                     >
-                        <Field
+                        <Form.Field
                             name="symptom"
                             component={UI.Selector}
                             options={options}
@@ -75,7 +75,7 @@ const AddSymptomItemSheet: React.FC<Props> = ({
                     </UI.Button>
                 </UI.YStack>
 
-            </FormProvider>
+            </Form.Provider>
 
         </UI.SheetView >
     );

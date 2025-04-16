@@ -1,15 +1,10 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import UI from '@/components/ui';
-import { Field, useFormContext } from '@/store/formStore/FormField';
-import SymptomFormStore, {  } from '../SymptomFormStore';
+import SymptomFormStore from '../SymptomFormStore';
+import Form, { useFormContext } from '@/store/formStore';
 
-interface Props {
-}
-
-
-const PainStrengthField: React.FC<Props> = ({
-}) => {
+const PainStrengthField: React.FC = () => {
     const form = useFormContext<SymptomFormStore>();
     const painPower = form.values.painPower?.at(0) ?? 0;
 
@@ -27,12 +22,11 @@ const PainStrengthField: React.FC<Props> = ({
             </UI.XStack>
 
             <UI.View gap='$1' paddingInline={15}>
-                <Field
+                <Form.Field
                     name="painPower"
                     component={UI.Slider}
                     size='$2'
                     orientation='horizontal'
-                    defaultValue={[0]}
                     min={0}
                     max={10}
                     step={1}
