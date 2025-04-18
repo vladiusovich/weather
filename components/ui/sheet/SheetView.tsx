@@ -31,7 +31,7 @@ const SheetView: React.FC<CustomSheetProps> = ({
         }
     };
 
-    useBackHandler(onClose);
+    useBackHandler(open, onClose);
 
     return (
         <Sheet

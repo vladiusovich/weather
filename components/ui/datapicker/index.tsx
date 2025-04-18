@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { DatePicker, DatePickerInput } from './dateParts';
 import DatePickerBody from './DatePickerBody';
 import { DatePickerProviderProps } from '@rehookify/datepicker';
 import { DATE_FORMAT, formatDate, toDate } from '@/utils/datetime.helper';
+import useBackHandler from '@/hooks/useBackHandler';
+import useModalController from '@/hooks/useModalController';
 
 
 interface DatePickerProps {
@@ -19,13 +21,14 @@ export const DatePickerSelector: React.FC<DatePickerProps> = ({
 }) => {
     const date = toDate(value);
     const [selectedDates, setSelectedDates] = useState<Date[]>([date])
-    const [open, setOpen] = useState(false)
+    const { open, onOpen, onClose } = useModalController();
 
+    useBackHandler(open, onClose);
 
     const onDatesChange = (d: Date[]) => {
         setSelectedDates(d);
         onChange(d);
-        setOpen(false)
+        onClose();
     }
 
     const onReset = () => {
@@ -45,13 +48,13 @@ export const DatePickerSelector: React.FC<DatePickerProps> = ({
     const formated = formatDate(value, DATE_FORMAT);
 
     return (
-        <DatePicker keepChildrenMounted open={open} onOpenChange={setOpen} config={initConfig}>
+        <DatePicker keepChildrenMounted open={open} onOpenChange={onOpen} config={initConfig}>
             <DatePicker.Trigger asChild>
                 <DatePickerInput
                     placeholder="Select Date"
                     value={formated ?? ''}
                     onReset={onReset}
-                    onButtonPress={() => setOpen(true)}
+                    onButtonPress={onOpen}
                 />
             </DatePicker.Trigger>
 
