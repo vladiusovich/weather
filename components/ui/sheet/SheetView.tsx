@@ -1,37 +1,41 @@
 import React from 'react';
 import type { SheetProps } from '@tamagui/sheet';
 import { Sheet } from '@tamagui/sheet';
+import useBackHandler from '@/hooks/useBackHandler';
+import AppStoreProvider from '@/store/provider/AppStoreProvider';
 
 export type CustomSheetProps = {
     /** Content to render inside the main sheet */
     children?: React.ReactNode;
-    /** Optional custom content to render inside an inner/nested sheet */
-    // innerSheetContent?: React.ReactNode;
     /**
      * Snap points for the main sheet.
      * Default is percentage-based snap points.
      */
     snapPoints?: (number | string)[];
-    /** Whether the sheet is modal (true) or inline (false) */
-    modal?: boolean;
-    /**
-     * Optional additional props to pass to the underlying Sheet component.
-     * (The "open" and "onOpenChange" props are managed internally.)
-     */
-} & Omit<SheetProps, 'snapPoints'>;
+    onClose?: () => void;
+    /**  For Android you need to manually re-propagate any context when using modal. This is because React Native doesn't support portals yet */
+    useContexProvider?: boolean
+} & Omit<SheetProps, 'snapPoints' | 'onOpenChange' | 'modal'>;
 
 const SheetView: React.FC<CustomSheetProps> = ({
     children,
-    // innerSheetContent,
-    onOpenChange,
     snapPoints = [50],
     open = false,
-    modal = true,
+    onClose,
+    useContexProvider = true,
     ...sheetRest
 }) => {
+    const onOpenChange = (state: boolean) => {
+        if (state === false) {
+            onClose?.();
+        }
+    };
+
+    useBackHandler(onClose);
+
     return (
         <Sheet
-            modal={modal}
+            modal
             open={open}
             onOpenChange={onOpenChange}
             snapPoints={snapPoints}
@@ -53,7 +57,12 @@ const SheetView: React.FC<CustomSheetProps> = ({
                 bg={'$background06'}
             >
                 {/* Content inside the main sheet */}
-                {children}
+                {useContexProvider && (
+                    <AppStoreProvider>
+                        {open && children}
+                    </AppStoreProvider>
+                )}
+                {!useContexProvider && (open && children)}
             </Sheet.Frame>
         </Sheet>
     );

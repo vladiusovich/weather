@@ -1,9 +1,10 @@
-import { Field, Provider } from './FormContext';
+import { Button, Field, Provider } from './FormContext';
 
 export * from './FormContext';
 
 const Form = {
     Field,
+    Button,
     Provider,
 };
 

@@ -19,8 +19,8 @@ const RootLayout = () => {
     return (
         <TamaguiProvider config={config} defaultTheme={theme}>
             <PortalProvider shouldAddRootHost>
-                <BackgroundUpdateProvider />
                 <AppStoreProvider>
+                    <BackgroundUpdateProvider />
                     <StatusBar style={theme} />
                     <Router.Stack>
                         <Stack.Screen name='(tabs)' options={{ headerShown: false }} />

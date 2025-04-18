@@ -1,7 +1,8 @@
 import React, { createContext, useContext, ReactNode } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Text, View } from 'react-native';
 import { FormStore } from './FormStore';
+import UI from '@/components/ui';
+import { ButtonProps } from 'tamagui';
 
 /**
     * Context for FormStore.
@@ -56,7 +57,6 @@ export const Field = observer(<
         form.setValue(name, newValue);
     };
 
-    // Автовыбор пропа для изменения, если не указан
     const defaultChangeProp =
         changeProp ||
         (value as any instanceof Date
@@ -71,12 +71,38 @@ export const Field = observer(<
     };
 
     return (
-        <View>
+        <UI.YStack gap='$3'>
             <Component {...componentProps} />
             {form.touched[name] && form.errors[name] ? (
-                <Text style={{ color: 'red', marginTop: 4 }}>{form.errors[name]}</Text>
+                <UI.Typo.Text color='$red9'>{form.errors[name]}</UI.Typo.Text>
             ) : null}
-        </View>
+        </UI.YStack>
+    );
+});
+
+
+/**
+    * A generic wrapper for Submit button attached to a form.
+ */
+
+type SubmitButtonProps = ButtonProps;
+
+export const Button = observer(<
+    T extends Record<string, any>>(props: SubmitButtonProps) => {
+    const form = useFormContext<T>();
+
+    const handler = async () => {
+        await form.handleSubmit();
+    };
+
+    const hasError = form.hasError;
+
+    return (
+        <UI.Button
+            {...props}
+            disabled={hasError}
+            onPress={handler}
+        />
     );
 });
 

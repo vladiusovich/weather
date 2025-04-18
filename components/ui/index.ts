@@ -19,6 +19,7 @@ import SheetView from './sheet/SheetView';
 import Selector from './selector/Selector';
 import Slider from './slider/Slider';
 import TextArea from './textArea/TextArea';
+import Chip from './chip/Chip';
 
 export * from './table/Table';
 export * from './datapicker/index';
@@ -46,6 +47,7 @@ const UI = {
     YStack,
     ZStack,
     Table,
+    Chip,
 
     Card,
     Slider,

@@ -1,4 +1,4 @@
-import { makeObservable, observable, runInAction } from 'mobx';
+import { computed, makeObservable, observable, runInAction } from 'mobx';
 
 /**
  * Validator functions map. Each function returns an error message or undefined if valid.
@@ -20,7 +20,7 @@ export interface FormStoreOptions<T extends Record<string, any>> {
 /**
  * Universal, generic MobX Form Store for any shape of form values.
  */
-export class FormStore<T extends Record<string, any>> {
+export abstract class FormStore<T extends Record<string, any>> {
     /** Current form values */
     values: T;
     /** Validation error messages per field */
@@ -43,18 +43,23 @@ export class FormStore<T extends Record<string, any>> {
             values: observable,
             errors: observable,
             touched: observable,
+            hasError: computed,
             isSubmitting: observable,
             isSubmitted: observable,
         });
 
+        this.reset();
     }
 
     /**
      * Set a field value, mark as touched, and re-validate.
      */
     setValue<K extends keyof T>(field: K, value: T[K]) {
-        this.values[field] = value;
-        this.touched[field] = true;
+        runInAction(() => {
+            this.values[field] = value;
+            this.touched[field] = true;
+        });
+
         this.validateField(field);
     }
 
@@ -78,6 +83,10 @@ export class FormStore<T extends Record<string, any>> {
         return error;
     }
 
+    public get hasError() {
+        return Object.keys(this.errors).length !== 0;
+    }
+
     /**
      * Validate all fields. Returns true if no errors.
      */
@@ -93,24 +102,32 @@ export class FormStore<T extends Record<string, any>> {
      */
     markAllTouched() {
         (Object.keys(this.values) as (keyof T)[]).forEach((field) => {
-            this.touched[field] = true;
+            runInAction(() => {
+                this.touched[field] = true;
+            });
         });
     }
+
+    abstract submit(): Promise<void>;
 
     /**
      * Submit handler: validates, calls onSubmit callback, and manages state flags.
      */
-    async submit(onSubmit: (values: T) => Promise<void>) {
+    public async handleSubmit(): Promise<void> {
         this.markAllTouched();
         const isValid = this.validateAll();
         if (!isValid) return;
 
         this.isSubmitting = true;
         try {
-            await onSubmit({ ...this.values });
-            runInAction(() => { this.isSubmitted = true; });
+            await this.submit();
+            runInAction(() => {
+                this.isSubmitted = true;
+            });
         } finally {
-            runInAction(() => { this.isSubmitting = false; });
+            runInAction(() => {
+                this.isSubmitting = false;
+            });
         }
     }
 

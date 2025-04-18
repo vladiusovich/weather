@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import UI from '@/components/ui';
-import SymptomFormStore from '../SymptomFormStore';
+import SymptomFormStore from '../store/SymptomFormStore';
 import Form, { useFormContext } from '@/store/formStore';
 
 const PainStrengthField: React.FC = () => {

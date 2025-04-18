@@ -12,21 +12,22 @@ const ForecastItem: React.FC<ForecastItemProps> = ({
     current,
 }) => {
     return (
-        <UI.Card
+        <UI.View
             flex={1}
             bg={current ? '$accent11' : '$background04'}
-            padded
-            borderRadius={40}
+            rounded={40}
+            px={16}
+            py={16}
         >
             <UI.YStack
                 justify='space-around'
                 items='center'
-                minW={'$3'}
                 flex={1}
+                gap='$2'
             >
                 {children}
             </UI.YStack>
-        </UI.Card>
+        </UI.View>
     );
 };
 

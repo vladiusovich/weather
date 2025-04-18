@@ -1,25 +1,24 @@
 import { observer } from 'mobx-react-lite';
 import useAppStore from '@/hooks/useAppStore';
-import React, { useState } from 'react';
+import React from 'react';
 import UI from '@/components/ui';
-import SymptomChip from '../../diary/common/symptomItems/SymptomChip';
-import { Symptom } from '@/types/diary/DiaryHistoryItem';
 import AddSymptomItemSheet from './addSymptomItemSheet/AddSymptomItemSheet';
-import PainStrengthField from './addSymptomItemSheet/painStrengthField/PainStrengthField';
-import CommentField from './commentField/CommentField';
+import CommentField from './fileds/commentField/CommentField';
+import useModalController from '@/hooks/useModalController';
 
 const SymptomsManager: React.FC = () => {
     const appStore = useAppStore();
-    const [value, setValue] = useState<Symptom[]>([]);
-    const [open, setOpen] = useState(false);
+    const { open, onOpen, onClose } = useModalController();
 
-    const onOpen = () => {
-        setOpen(true);
+    const onDelete = () => {
+        console.log("onDelete");
     };
 
-    const onClose = () => {
-        setOpen(false);
+    const onPressChip = () => {
+        console.log("onPressChip");
     };
+
+    const symptoms = appStore.diary.symptoms.data;
 
     return (
         <>
@@ -29,22 +28,28 @@ const SymptomsManager: React.FC = () => {
                 flex={1}
             >
                 <UI.YStack gap={'$3'} flex={1}>
-                    <UI.Typo.Text>
-                        Symptoms
-                    </UI.Typo.Text>
-
+                    <UI.Typo.Text>Symptoms</UI.Typo.Text>
                     <UI.XStack
                         items='stretch'
                         gap='$1'
-                        minW={80}
+                        flexWrap='wrap'
+                    // minW={80}
                     >
-                        {value.length === 0 && (
+                        {symptoms.length === 0 && (
                             <UI.Button size={'$3'} variant='outlined'>
                                 Use from prev note
                             </UI.Button>
                         )}
 
-                        {value.map((i) => <SymptomChip key={i.id} data={i} />)}
+                        {symptoms.map((i) => (
+                            <UI.Chip
+                                key={i.id}
+                                label={i.name}
+                                counter={2}
+                            // onPress={onPressChip}
+                            // onDelete={onDelete}
+                            />
+                        ))}
                     </UI.XStack>
 
                     <UI.YStack gap={'$3'}>

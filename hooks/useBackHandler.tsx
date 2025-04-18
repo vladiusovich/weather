@@ -1,23 +1,22 @@
 import { useEffect } from 'react';
 import { BackHandler } from 'react-native';
 
-type Params = {
-    backAction: () => void;
-    state: boolean;
-};
-
-const useBackHandler = (params: Params) => {
+const useBackHandler = (callback?: () => void) => {
     useEffect(() => {
         const backAction = () => {
-            if (params.state) {
-                params.backAction();
+            callback?.();
+            // Prevent default behavior (exit app)
+            return true;
 
-                // Prevent default behavior (exit app)
-                return true;
-            }
 
-            // Allow default behavior
-            return false;
+            // if (callback) {
+            //     callback?.();
+            //     // Prevent default behavior (exit app)
+            //     return true;
+            // }
+
+            // // Allow default behavior
+            // return false;
         };
 
         const backHandler = BackHandler.addEventListener(
@@ -26,7 +25,7 @@ const useBackHandler = (params: Params) => {
         );
 
         return () => backHandler.remove();
-    }, [params]);
+    }, [callback]);
 };
 
 export default useBackHandler;
