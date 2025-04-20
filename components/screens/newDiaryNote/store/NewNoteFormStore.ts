@@ -3,9 +3,11 @@ import { Symptom } from '@/types/diary/DiaryHistoryItem';
 import LocalizedFormStore from '@/store/formStore/LocalizedFormStore';
 import AppStoreType from '@/store/AppStoreType';
 import { TFunction } from 'i18next';
+import { ValidatorBuilder } from '@/validation';
+import constraints from '@/validation/constraints';
 
 type NewNoteFormFields = {
-    date: string;
+    date: Date[];
     symptoms?: Symptom[];
 }
 
@@ -18,6 +20,16 @@ class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
     ) {
         super(store, t);
         this.symptomForm = new SymptomFormStore(store, t, this);
+
+        this.values.date = [new Date()];
+
+        this.initValidation({
+            date: ValidatorBuilder.create<Date[]>()
+                .add('required', constraints.requiredDate)
+                .build({
+                    required: this.t('common.fields.errors.required'),
+                }),
+        });
     }
 
     async submit(): Promise<void> {

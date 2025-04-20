@@ -9,14 +9,14 @@ import useModalController from '@/hooks/useModalController';
 
 interface DatePickerProps {
     value?: string;
-    onChange: (d: Date[]) => void;
+    onValueChange: (d: Date[]) => void;
     config?: DatePickerProviderProps['config'];
 }
 
 
 export const DatePickerSelector: React.FC<DatePickerProps> = ({
     value = '',
-    onChange,
+    onValueChange,
     config,
 }) => {
     const date = toDate(value);
@@ -27,13 +27,13 @@ export const DatePickerSelector: React.FC<DatePickerProps> = ({
 
     const onDatesChange = (d: Date[]) => {
         setSelectedDates(d);
-        onChange(d);
+        onValueChange(d);
         onClose();
     }
 
     const onReset = () => {
         setSelectedDates([]);
-        onChange([]);
+        onValueChange([]);
     }
 
     const initConfig: DatePickerProviderProps['config'] = {

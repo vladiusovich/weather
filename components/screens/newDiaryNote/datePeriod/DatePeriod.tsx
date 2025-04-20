@@ -1,18 +1,9 @@
 import { observer } from 'mobx-react-lite';
-import useAppStore from '@/hooks/useAppStore';
-import React, { useState } from 'react';
+import React from 'react';
 import UI from '@/components/ui';
-import { getNow } from '@/utils/datetime.helper';
+import Form from '@/form';
 
 const DatePeriod: React.FC = () => {
-    const appStore = useAppStore();
-    const [value, setValue] = useState(getNow())
-
-    const onDatesChange = (d: Date[]) => {
-        const date = d[0]?.toDateString() ?? '';
-        setValue(date);
-    }
-
     return (
         <UI.Card
             padding='$4'
@@ -20,15 +11,11 @@ const DatePeriod: React.FC = () => {
         >
             <UI.Card.Header size={'$0.5'}>
                 <UI.YStack gap={'$2'} items='flex-start'>
-                    <UI.DatePicker value={value} onChange={onDatesChange} />
-                    {/* <UI.NativeDateTimePicker
-                        date={now}
-                        type='date'
+                    <Form.Field
+                        name='date'
+                        component={UI.DatePicker}
                     />
-                    <UI.NativeDateTimePicker
-                        date={now}
-                        type='time'
-                    /> */}
+                    {/* <UI.DatePicker value={value} onChange={onDatesChange} /> */}
                 </UI.YStack>
             </UI.Card.Header>
 

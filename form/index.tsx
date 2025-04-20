@@ -1,10 +1,10 @@
 import Field from './Field';
 import Provider from './FormProvider';
-import Button from './Submit';
+import Submit from './Submit';
 
 const Form = {
     Field,
-    Button,
+    Submit,
     Provider,
 };
 

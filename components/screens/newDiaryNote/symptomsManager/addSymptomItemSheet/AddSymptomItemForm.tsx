@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import React from 'react';
+import React, { useEffect } from 'react';
 import UI from '@/components/ui';
 import SymptomFormStore from '../../store/SymptomFormStore';
 import useCallbackIf from '@/hooks/useCallbackIf';
@@ -19,10 +19,11 @@ const AddSymptomItemForm: React.FC<Props> = ({
     const { t } = useTranslation();
     const form = useFormContext<SymptomFormStore>();
 
-    useCallbackIf(form.isSubmitted, () => {
-        onClose();
-        form.reset();
-    });
+    useCallbackIf(form.isSubmitted, onClose);
+
+    useEffect(() => {
+        return () => form.reset();
+    }, [form]);
 
     return (
         <Form.Provider form={form}>
@@ -36,9 +37,9 @@ const AddSymptomItemForm: React.FC<Props> = ({
                 </UI.YStack>
             </UI.YStack>
             <UI.YStack gap={'$3'}>
-                <Form.Button size={'$4'}>
+                <Form.Submit size={'$4'}>
                     {t('meteo.pages.newDiaryNote.addSymptom.submit')}
-                </Form.Button>
+                </Form.Submit>
             </UI.YStack>
         </Form.Provider>
     );

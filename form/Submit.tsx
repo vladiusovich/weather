@@ -1,4 +1,4 @@
-import UI from '@/components/ui';
+import Button from '@/components/ui/button/Button';
 import { useFormContext } from '@/store/formStore/FormContext';
 import { observer } from 'mobx-react-lite';
 import { ButtonProps } from 'tamagui';
@@ -9,7 +9,7 @@ import { ButtonProps } from 'tamagui';
 
 type SubmitButtonProps = ButtonProps;
 
-export const Button = observer(<
+export const Submit = observer(<
     T extends Record<string, any>>(props: SubmitButtonProps) => {
     const form = useFormContext<T>();
 
@@ -20,7 +20,7 @@ export const Button = observer(<
     const hasError = form.hasError;
 
     return (
-        <UI.Button
+        <Button
             {...props}
             disabled={hasError}
             onPress={handler}
@@ -28,4 +28,4 @@ export const Button = observer(<
     );
 });
 
-export default Button;
+export default Submit;

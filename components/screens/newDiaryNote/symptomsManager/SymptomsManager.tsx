@@ -6,6 +6,7 @@ import CommentField from './fileds/commentField/CommentField';
 import useModalController from '@/hooks/useModalController';
 import { useTranslation } from 'react-i18next';
 import SymptomChipsField from './fileds/symptomChipsField/SymptomChipsField';
+import Form from '@/form';
 
 const SymptomsManager: React.FC = () => {
     const { open, onOpen, onClose } = useModalController();
@@ -32,9 +33,9 @@ const SymptomsManager: React.FC = () => {
                     <CommentField />
                 </UI.YStack>
 
-                <UI.Button size={'$5'} onPress={onOpen}>
+                <Form.Submit size={'$5'}>
                     {t('meteo.pages.newDiaryNote.submit')}
-                </UI.Button>
+                </Form.Submit>
             </UI.Papper>
         </>
     );

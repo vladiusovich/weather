@@ -1,3 +1,4 @@
+import { requiredDate } from './requiredDate';
 import { requiredRange } from './requiredRange';
 
 export const required = (value?: string): boolean => {
@@ -10,6 +11,7 @@ export const minLen = (min: number) => (value?: string): boolean =>
 const constraints = {
     required,
     requiredRange,
+    requiredDate,
 };
 
 export default constraints;

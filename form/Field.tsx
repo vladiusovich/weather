@@ -36,16 +36,9 @@ const Field = observer(<
         form.setValue(name, newValue);
     };
 
-    const defaultChangeProp =
-        changeProp ||
-        (value as any instanceof Date
-            ? 'onChange'
-            : 'onValueChange'
-        );
-
     const componentProps = {
         [valueProp]: value,
-        [defaultChangeProp]: handler,
+        onValueChange: handler,
         ...rest,
     };
 
