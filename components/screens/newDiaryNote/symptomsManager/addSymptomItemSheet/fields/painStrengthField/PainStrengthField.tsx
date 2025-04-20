@@ -1,11 +1,13 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import UI from '@/components/ui';
-import SymptomFormStore from '../store/SymptomFormStore';
 import Form, { useFormContext } from '@/store/formStore';
+import { useTranslation } from 'react-i18next';
+import SymptomFormStore from '../../store/SymptomFormStore';
 
 const PainStrengthField: React.FC = () => {
     const form = useFormContext<SymptomFormStore>();
+    const { t } = useTranslation();
     const painPower = form.values.painPower?.at(0) ?? 0;
 
     return (
@@ -14,7 +16,7 @@ const PainStrengthField: React.FC = () => {
         >
             <UI.XStack items='center' gap="$2">
                 <UI.Typo.Text>
-                    The power of pain:
+                    {t('meteo.pages.newDiaryNote.addSymptom.fields.painPower.title')}
                 </UI.Typo.Text>
                 <UI.Typo.Paragraph size='$5' fontWeight={900}>
                     {painPower}

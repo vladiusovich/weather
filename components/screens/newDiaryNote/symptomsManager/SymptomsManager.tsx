@@ -5,10 +5,12 @@ import UI from '@/components/ui';
 import AddSymptomItemSheet from './addSymptomItemSheet/AddSymptomItemSheet';
 import CommentField from './fileds/commentField/CommentField';
 import useModalController from '@/hooks/useModalController';
+import { useTranslation } from 'react-i18next';
 
 const SymptomsManager: React.FC = () => {
     const appStore = useAppStore();
     const { open, onOpen, onClose } = useModalController();
+    const { t } = useTranslation();
 
     const onDelete = () => {
         console.log("onDelete");
@@ -28,16 +30,15 @@ const SymptomsManager: React.FC = () => {
                 flex={1}
             >
                 <UI.YStack gap={'$3'} flex={1}>
-                    <UI.Typo.Text>Symptoms</UI.Typo.Text>
+                    <UI.Typo.Text>{t('meteo.pages.newDiaryNote.symptomsList.header')}</UI.Typo.Text>
                     <UI.XStack
                         items='stretch'
                         gap='$1'
                         flexWrap='wrap'
-                    // minW={80}
                     >
                         {symptoms.length === 0 && (
                             <UI.Button size={'$3'} variant='outlined'>
-                                Use from prev note
+                                {t('meteo.pages.newDiaryNote.symptomsList.buttons.useFormHistory')}
                             </UI.Button>
                         )}
 
@@ -54,7 +55,7 @@ const SymptomsManager: React.FC = () => {
 
                     <UI.YStack gap={'$3'}>
                         <UI.Button size={'$3'} onPress={onOpen}>
-                            Add symptom
+                            {t('meteo.pages.newDiaryNote.symptomsList.buttons.addNew')}
                         </UI.Button>
                     </UI.YStack>
 
@@ -62,7 +63,7 @@ const SymptomsManager: React.FC = () => {
                 </UI.YStack>
 
                 <UI.Button size={'$5'} onPress={onOpen}>
-                    Create note
+                    {t('meteo.pages.newDiaryNote.submit')}
                 </UI.Button>
             </UI.Papper>
             <AddSymptomItemSheet open={open} onClose={onClose} />

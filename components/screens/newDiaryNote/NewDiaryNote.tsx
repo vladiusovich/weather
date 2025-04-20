@@ -4,7 +4,7 @@ import UI from '@/components/ui';
 import DatePeriod from './datePeriod/DatePeriod';
 import SymptomsManager from './symptomsManager/SymptomsManager';
 
-const NewDiaryNote = observer(() => {
+const NewDiaryNote = (() => {
     return (
         <UI.ScreenWrapper>
             <UI.YStack gap={'$2'} flex={1}>
@@ -15,4 +15,4 @@ const NewDiaryNote = observer(() => {
     )
 });
 
-export default NewDiaryNote;
+export default observer(NewDiaryNote);

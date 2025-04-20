@@ -62,6 +62,32 @@
             "Thu": "Thursday",
             "Fri": "Friday",
             "Sat": "Saturday"
+        },
+        "pages": {
+            "newDiaryNote": {
+                "header": "New note",
+                "symptomsList": {
+                    "header": "Symptoms",
+                    "buttons": {
+                        "useFormHistory": "Use from prev note",
+                        "addNew": "Add symptom"
+                    }
+                },
+                "submit": "Create note",
+                "addSymptom": {
+                    "header": "Add symptom",
+                    "submit": "Add",
+                    "fields": {
+                        "painPower": {
+                            "title": "The power of pain:"
+                        },
+                        "symptom": {
+                            "title": "Type of symptom",
+                            "palceholder": "Select symptom"
+                        }
+                    }
+                }
+            }
         }
     },
     "common": {
