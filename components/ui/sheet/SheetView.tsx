@@ -1,10 +1,12 @@
-import React from 'react';
-import type { SheetProps } from '@tamagui/sheet';
+import React, { ReactNode } from 'react';
+import type { SheetProps as NativeSheetProps } from '@tamagui/sheet';
 import { Sheet } from '@tamagui/sheet';
 import useBackHandler from '@/hooks/useBackHandler';
 import AppStoreProvider from '@/store/provider/AppStoreProvider';
+import { FormStore } from '@/store/formStore/FormStore';
+import Form from '@/form';
 
-export type CustomSheetProps = {
+export type SheetProps<T extends Record<string, any>> = {
     /** Content to render inside the main sheet */
     children?: React.ReactNode;
     /**
@@ -15,16 +17,18 @@ export type CustomSheetProps = {
     onClose?: () => void;
     /**  For Android you need to manually re-propagate any context when using modal. This is because React Native doesn't support portals yet */
     useContexProvider?: boolean
-} & Omit<SheetProps, 'snapPoints' | 'onOpenChange' | 'modal'>;
+    formStore?: FormStore<T>,
+} & Omit<NativeSheetProps, 'snapPoints' | 'onOpenChange' | 'modal'>;
 
-const SheetView: React.FC<CustomSheetProps> = ({
+const SheetView = <T extends Record<string, any>>({
     children,
     snapPoints = [50],
     open = false,
     onClose,
     useContexProvider = true,
+    formStore,
     ...sheetRest
-}) => {
+}: SheetProps<T>) => {
     const onOpenChange = (state: boolean) => {
         if (state === false) {
             onClose?.();
@@ -32,6 +36,20 @@ const SheetView: React.FC<CustomSheetProps> = ({
     };
 
     useBackHandler(open, onClose);
+
+    const wrapWithProviders = (child?: ReactNode): ReactNode => {
+        let wrapped = child;
+
+        if (formStore) {
+            wrapped = <Form.Provider form={formStore}>{wrapped}</Form.Provider>;
+        }
+
+        if (useContexProvider) {
+            wrapped = <AppStoreProvider>{wrapped}</AppStoreProvider>;
+        }
+
+        return wrapped;
+    }
 
     return (
         <Sheet
@@ -57,12 +75,7 @@ const SheetView: React.FC<CustomSheetProps> = ({
                 bg={'$background06'}
             >
                 {/* Content inside the main sheet */}
-                {useContexProvider && (
-                    <AppStoreProvider>
-                        {open && children}
-                    </AppStoreProvider>
-                )}
-                {!useContexProvider && (open && children)}
+                {wrapWithProviders(open && children)}
             </Sheet.Frame>
         </Sheet>
     );

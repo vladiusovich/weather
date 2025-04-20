@@ -1,14 +1,15 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import UI from '@/components/ui';
-import Form, { useFormContext } from '@/store/formStore';
 import { useTranslation } from 'react-i18next';
-import SymptomFormStore from '../../store/SymptomFormStore';
+import SymptomFormStore from '../../../../store/SymptomFormStore';
+import { useFormContext } from '@/store/formStore/FormContext';
+import Form from '@/form';
 
 const PainStrengthField: React.FC = () => {
     const form = useFormContext<SymptomFormStore>();
     const { t } = useTranslation();
-    const painPower = form.values.painPower?.at(0) ?? 0;
+    const painPower = form.values.strengtOfPain?.at(0) ?? 0;
 
     return (
         <UI.YStack
@@ -25,7 +26,7 @@ const PainStrengthField: React.FC = () => {
 
             <UI.View gap='$1' paddingInline={15}>
                 <Form.Field
-                    name="painPower"
+                    name="strengtOfPain"
                     component={UI.Slider}
                     size='$2'
                     orientation='horizontal'

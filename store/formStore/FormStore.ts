@@ -1,10 +1,11 @@
-import { computed, makeObservable, observable, runInAction } from 'mobx';
+import { computed, makeObservable, observable, runInAction, toJS } from 'mobx';
 
 /**
  * Validator functions map. Each function returns an error message or undefined if valid.
  */
+
 export type Validator<T> = {
-    [K in keyof T]?: (value: T[K], values: T) => string | undefined;
+    [K in keyof T]?: (value?: T[K]) => string | undefined;
 };
 
 /**
@@ -12,9 +13,9 @@ export type Validator<T> = {
  */
 export interface FormStoreOptions<T extends Record<string, any>> {
     /** Initial values for all fields */
-    initialValues: T;
+    // initialValues: T;
     /** Optional validators for fields */
-    validators?: Validator<T>;
+    // validators?: Validator<T>;
 }
 
 /**
@@ -22,7 +23,7 @@ export interface FormStoreOptions<T extends Record<string, any>> {
  */
 export abstract class FormStore<T extends Record<string, any>> {
     /** Current form values */
-    values: T;
+    values: T = {} as T;
     /** Validation error messages per field */
     errors: Partial<Record<keyof T, string>> = {};
     /** Tracks touched fields */
@@ -31,13 +32,11 @@ export abstract class FormStore<T extends Record<string, any>> {
     isSubmitting = false;
     isSubmitted = false;
 
-    private initialValues: T;
-    private validators: Validator<T>;
+    private initialValues: T = {} as T;
+    private validators: Validator<T> = {} as Validator<T>;
 
-    constructor(options: FormStoreOptions<T>) {
-        this.initialValues = options.initialValues;
-        this.values = { ...options.initialValues };
-        this.validators = options.validators || {};
+    constructor(options?: FormStoreOptions<T>) {
+        // this.initialValues = options.initialValues;
 
         makeObservable(this, {
             values: observable,
@@ -74,13 +73,19 @@ export abstract class FormStore<T extends Record<string, any>> {
      * Validate a single field using its validator (if provided).
      * Stores and returns the error message.
      */
-    validateField<K extends keyof T>(field: K): string | undefined {
+    validateField<K extends keyof T>(field: K) {
         const validator = this.validators[field];
         const value = this.values[field];
-        const error = validator ? validator(value, this.values) : undefined;
-        if (error) runInAction(() => { this.errors[field] = error; });
-        else runInAction(() => { delete this.errors[field]; });
-        return error;
+        const error = validator ? validator(value) : undefined;
+        if (error) {
+            runInAction(() => {
+                this.errors[field] = error;
+            });
+        } else {
+            runInAction(() => {
+                delete this.errors[field];
+            })
+        };
     }
 
     public get hasError() {
@@ -91,7 +96,8 @@ export abstract class FormStore<T extends Record<string, any>> {
      * Validate all fields. Returns true if no errors.
      */
     validateAll(): boolean {
-        (Object.keys(this.values) as (keyof T)[]).forEach((field) => {
+        const keys = Object.keys(this.validators) as (keyof T)[];
+        keys.forEach((field) => {
             this.validateField(field);
         });
         return Object.keys(this.errors).length === 0;
@@ -101,7 +107,7 @@ export abstract class FormStore<T extends Record<string, any>> {
      * Mark all fields as touched (e.g., on submit).
      */
     markAllTouched() {
-        (Object.keys(this.values) as (keyof T)[]).forEach((field) => {
+        (Object.keys(this.validators) as (keyof T)[]).forEach((field) => {
             runInAction(() => {
                 this.touched[field] = true;
             });
@@ -131,14 +137,22 @@ export abstract class FormStore<T extends Record<string, any>> {
         }
     }
 
+    protected async initValidation(validators: Partial<Validator<T>>) {
+        runInAction(() => {
+            this.validators = validators;
+        });
+    }
+
     /**
      * Reset form to initial values and clear errors/touched flags.
      */
     reset() {
-        this.values = { ...this.initialValues };
-        this.errors = {};
-        this.touched = {};
-        this.isSubmitting = false;
-        this.isSubmitted = false;
+        runInAction(() => {
+            this.values = { ...this.initialValues };
+            this.errors = {};
+            this.touched = {};
+            this.isSubmitting = false;
+            this.isSubmitted = false;
+        });
     }
 }

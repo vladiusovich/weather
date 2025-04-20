@@ -97,6 +97,14 @@
             "description": {
                 "geolocation": "Go to settings and allow access to geolocation"
             }
+        },
+        "fields": {
+            "errors": {
+                "required": "The field is required"
+            },
+            "invalid": {
+                "required": "The field is invalid"
+            }
         }
     }
 }
