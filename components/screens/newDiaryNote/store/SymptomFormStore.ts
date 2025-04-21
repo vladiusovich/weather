@@ -20,21 +20,17 @@ class SymptomFormStore extends LocalizedFormStore<SymptomFormFields> {
     ) {
         super(store, t);
 
-        const strengtOfPainValidation = ValidatorBuilder.create<number[]>()
-            .add('required', constraints.requiredRange)
-            .build({
-                required: this.t('common.fields.errors.required'),
-            });
-
-        const symptomValidation = ValidatorBuilder.create<string>()
-            .add('required', constraints.required)
-            .build({
-                required: this.t('common.fields.errors.required'),
-            });
-
         this.initValidation({
-            strengtOfPain: strengtOfPainValidation,
-            symptom: symptomValidation,
+            strengtOfPain: ValidatorBuilder.create<number[]>()
+                .add('required', constraints.requiredRange)
+                .build({
+                    required: this.t('common.fields.errors.required'),
+                }),
+            symptom: ValidatorBuilder.create<string>()
+                .add('required', constraints.required)
+                .build({
+                    required: this.t('common.fields.errors.required'),
+                }),
         });
 
         this.masterForm = masterForm;
