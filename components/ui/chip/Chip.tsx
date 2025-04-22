@@ -93,36 +93,31 @@ export const DeleteView = styled(View, {
     defaultVariants: { size: 'sm' },
 } as const);
 
-export const DeleteIcon = styled(Trash, {
-    variants: {
-        iconSize: {
-            sm: { size: 12 },
-            md: { size: 14 },
-            lg: { size: 16 },
-        },
-    },
-    defaultVariants: { iconSize: 'sm' },
-} as const);
-
-
 export interface ChipProps {
+    id: string;
     label: string | React.ReactNode;
     counter?: string | React.ReactNode;
     leftIcon?: React.ReactNode;
     size?: SizeVariant;
     variant?: Variant;
     pressable?: boolean;
-    onPress?: () => void;
-    onDelete?: () => void;
+    onPress?: (id: string) => void;
+    onDelete?: (id: string) => void;
 }
 
+const iconSizeMap = {
+    sm: 12,
+    md: 14,
+    lg: 16,
+};
+
 const Chip = ({
+    id,
     label,
     counter,
     leftIcon,
     size = 'sm',
     variant = 'solid',
-    // pressable = false,
     onPress,
     onDelete,
 }: ChipProps) => {
@@ -131,7 +126,7 @@ const Chip = ({
             // as={pressable ? Pressable : undefined}
             variant={variant}
             size={size}
-            onPress={onPress}
+            onPress={() => onPress?.(id)}
         >
             {leftIcon && (leftIcon)}
             <ChipText size={size}>{label}</ChipText>
@@ -143,11 +138,12 @@ const Chip = ({
                 </CounterView>
             )}
             {onDelete && (
-                <Pressable onPress={onDelete} hitSlop={4}>
+                <Pressable onPress={() => onDelete?.(id)}>
                     <DeleteView size={size}>
-                        <DeleteIcon iconSize={size} />
+                        <Trash size={iconSizeMap[size]} />
                     </DeleteView>
                 </Pressable>
+
             )}
         </StyledChip>
     )

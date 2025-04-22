@@ -1,5 +1,6 @@
 import { requiredDate } from './requiredDate';
 import { requiredRange } from './requiredRange';
+import { requiredSymptoms } from './requiredSymptoms';
 
 export const required = (value?: string): boolean => {
     return value == null || value.trim() === '';
@@ -12,6 +13,7 @@ const constraints = {
     required,
     requiredRange,
     requiredDate,
+    requiredSymptoms
 };
 
 export default constraints;

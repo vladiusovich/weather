@@ -36,9 +36,12 @@ const Field = observer(<
         form.setValue(name, newValue);
     };
 
+    const disabled = form.disabled[name];
+
     const componentProps = {
         [valueProp]: value,
         onValueChange: handler,
+        disabled: disabled,
         ...rest,
     };
 

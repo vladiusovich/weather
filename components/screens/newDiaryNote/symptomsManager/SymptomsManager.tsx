@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import UI from '@/components/ui';
-import AddSymptomItemSheet from './addSymptomItemSheet/AddSymptomItemSheet';
+import AddOrUpdateSymptomItemSheet from './addOrUpdateSymptomItemSheet/AddOrUpdateSymptomItemSheet';
 import CommentField from './fileds/commentField/CommentField';
 import useModalController from '@/hooks/useModalController';
 import { useTranslation } from 'react-i18next';
@@ -9,12 +9,12 @@ import SymptomChipsField from './fileds/symptomChipsField/SymptomChipsField';
 import Form from '@/form';
 
 const SymptomsManager: React.FC = () => {
-    const { open, onOpen, onClose } = useModalController();
     const { t } = useTranslation();
+    const { open, onOpen, onClose } = useModalController();
 
     return (
         <>
-            <AddSymptomItemSheet open={open} onClose={onClose} />
+            <AddOrUpdateSymptomItemSheet open={open} onClose={onClose} />
             <UI.Papper
                 p='$4'
                 bg={'$background02'}
@@ -22,14 +22,13 @@ const SymptomsManager: React.FC = () => {
             >
                 <UI.YStack gap={'$3'} flex={1}>
                     <UI.Typo.Text>{t('meteo.pages.newDiaryNote.symptomsList.header')}</UI.Typo.Text>
-                    <SymptomChipsField />
+                    <SymptomChipsField onPressOpen={onOpen} />
 
                     <UI.YStack gap={'$3'}>
                         <UI.Button size={'$3'} onPress={onOpen}>
                             {t('meteo.pages.newDiaryNote.symptomsList.buttons.addNew')}
                         </UI.Button>
                     </UI.YStack>
-
                     <CommentField />
                 </UI.YStack>
 

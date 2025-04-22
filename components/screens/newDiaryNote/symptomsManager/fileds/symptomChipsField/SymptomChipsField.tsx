@@ -4,17 +4,20 @@ import UI from '@/components/ui';
 import NewNoteFormStore from '../../../store/NewNoteFormStore';
 import { useTranslation } from 'react-i18next';
 import { useFormContext } from '@/store/formStore/FormContext';
+import Chip from '@/components/ui/chip/Chip';
 
-const SymptomChipsField: React.FC = () => {
+interface Props {
+    onPressOpen: () => void;
+}
+
+const SymptomChipsField: React.FC<Props> = ({ onPressOpen }) => {
     const form = useFormContext<NewNoteFormStore>();
     const { t } = useTranslation();
 
-    const onDelete = () => {
-        console.log("onDelete");
-    };
-
-    const onPressChip = () => {
-        console.log("onPressChip");
+    const onDelete = (id: string) => form.deleteSymptom(id);
+    const onPress = (id: string) => {
+        form.fillSymptom(id);
+        onPressOpen();
     };
 
     const symptoms = form.values?.symptoms ?? [];
@@ -31,12 +34,13 @@ const SymptomChipsField: React.FC = () => {
             )}
 
             {symptoms.map((i) => (
-                <UI.Chip
+                <Chip
                     key={i.id}
+                    id={i.id}
                     label={i.name}
                     counter={i.strengtOfPain}
-                // onPress={onPressChip}
-                // onDelete={onDelete}
+                    onPress={onPress}
+                    onDelete={onDelete}
                 />
             ))}
         </UI.XStack>

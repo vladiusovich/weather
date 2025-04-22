@@ -18,6 +18,7 @@ export interface ExSelectProps extends SelectProps {
     options?: SelectorOption[];
     label?: string;
     palceholder?: string;
+    disabled?: boolean;
 };
 
 /**
@@ -28,6 +29,7 @@ const Selector: React.FC<ExSelectProps> = ({
     options = [],
     palceholder,
     label,
+    disabled = false,
     ...props
 }) => {
     return (
@@ -36,7 +38,7 @@ const Selector: React.FC<ExSelectProps> = ({
             {...props}
         >
             {/* The trigger button for the select */}
-            <Select.Trigger width={220} iconAfter={ChevronDown}>
+            <Select.Trigger width={220} iconAfter={ChevronDown} disabled={disabled}>
                 <Select.Value placeholder={palceholder} />
             </Select.Trigger>
 

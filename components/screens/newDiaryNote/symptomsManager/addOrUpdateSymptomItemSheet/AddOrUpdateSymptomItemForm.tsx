@@ -13,7 +13,7 @@ interface Props {
     onClose: () => void;
 }
 
-const AddSymptomItemForm: React.FC<Props> = ({
+const AddOrUpdateSymptomItemForm: React.FC<Props> = ({
     onClose,
 }) => {
     const { t } = useTranslation();
@@ -25,11 +25,13 @@ const AddSymptomItemForm: React.FC<Props> = ({
         return () => form.reset();
     }, [form]);
 
+    const key = form.mode === 'add' ? 'addSymptom' : 'editSymptom';
+
     return (
         <Form.Provider form={form}>
             <UI.YStack gap={'$3'} flex={1}>
                 <UI.Typo.H6>
-                    {t('meteo.pages.newDiaryNote.addSymptom.header')}
+                    {t(`meteo.pages.newDiaryNote.${key}.header`)}
                 </UI.Typo.H6>
                 <UI.YStack items='stretch' gap='$4'>
                     <SymptomTypeField />
@@ -38,12 +40,12 @@ const AddSymptomItemForm: React.FC<Props> = ({
             </UI.YStack>
             <UI.YStack gap={'$3'}>
                 <Form.Submit size={'$4'}>
-                    {t('meteo.pages.newDiaryNote.addSymptom.submit')}
+                    {t(`meteo.pages.newDiaryNote.${key}.submit`)}
                 </Form.Submit>
             </UI.YStack>
         </Form.Provider>
     );
 };
 
-export default observer(AddSymptomItemForm);
+export default observer(AddOrUpdateSymptomItemForm);
 

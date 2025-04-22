@@ -4,14 +4,19 @@ import { TFunction } from 'i18next';
 import LocalizedFormStore from '@/store/formStore/LocalizedFormStore';
 import { ValidatorBuilder } from '@/validation';
 import constraints from '@/validation/constraints';
+import { makeObservable, observable, runInAction } from 'mobx';
 
 export type SymptomFormFields = {
     strengtOfPain: number[];
     symptom: string;
 }
 
+type FormModeType = 'add' | 'edit'
+
 class SymptomFormStore extends LocalizedFormStore<SymptomFormFields> {
     private masterForm: NewNoteFormStore;
+
+    public mode: FormModeType = 'add';
 
     constructor(
         store: AppStoreType,
@@ -19,6 +24,10 @@ class SymptomFormStore extends LocalizedFormStore<SymptomFormFields> {
         masterForm: NewNoteFormStore
     ) {
         super(store, t);
+
+        makeObservable(this, {
+            mode: observable,
+        });
 
         this.initValidation({
             strengtOfPain: ValidatorBuilder.create<number[]>()
@@ -36,8 +45,25 @@ class SymptomFormStore extends LocalizedFormStore<SymptomFormFields> {
         this.masterForm = masterForm;
     }
 
+    public fillSymptom(id: string, strengtOfPain: number) {
+        this.setValue('symptom', id);
+        this.setValue('strengtOfPain', [strengtOfPain]);
+        this.toggleFieldDisabled('symptom', true);
+    }
+
+    public switchMode(mode: FormModeType) {
+        runInAction(() => {
+            this.mode = mode;
+        });
+    }
+
     async submit(): Promise<void> {
-        this.masterForm.addSymptom(this.values);
+        this.masterForm.addOrUpdateSymptom(this.values);
+    }
+
+    public reset(): void {
+        super.reset();
+        this.switchMode('add');
     }
 }
 

@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import UI from '@/components/ui';
-import AddSymptomItemForm from './AddSymptomItemForm';
+import AddOrUpdateSymptomItemForm from './AddOrUpdateSymptomItemForm';
 import NewNoteFormStore from '../../store/NewNoteFormStore';
 import { useFormContext } from '@/store/formStore/FormContext';
 
@@ -10,7 +10,7 @@ interface Props {
     onClose: () => void;
 }
 
-const AddSymptomItemSheet: React.FC<Props> = ({
+const AddOrUpdateSymptomItemSheet: React.FC<Props> = ({
     open,
     onClose,
 }) => {
@@ -23,10 +23,10 @@ const AddSymptomItemSheet: React.FC<Props> = ({
             snapPoints={[40]}
             formStore={form.symptomForm}
         >
-            <AddSymptomItemForm onClose={onClose} />
+            <AddOrUpdateSymptomItemForm onClose={onClose} />
         </UI.SheetView >
     );
 };
 
-export default observer(AddSymptomItemSheet);
+export default observer(AddOrUpdateSymptomItemSheet);
 

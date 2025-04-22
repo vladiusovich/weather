@@ -86,6 +86,10 @@
                             "palceholder": "Select symptom"
                         }
                     }
+                },
+                "editSymptom": {
+                    "header": "Edit symptom",
+                    "submit": "Apply"
                 }
             }
         }

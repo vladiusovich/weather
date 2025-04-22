@@ -28,6 +28,9 @@ export abstract class FormStore<T extends Record<string, any>> {
     errors: Partial<Record<keyof T, string>> = {};
     /** Tracks touched fields */
     touched: Partial<Record<keyof T, boolean>> = {};
+
+    disabled: Partial<Record<keyof T, boolean>> = {};
+
     /** Submission state flags */
     isSubmitting = false;
     isSubmitted = false;
@@ -42,6 +45,7 @@ export abstract class FormStore<T extends Record<string, any>> {
             values: observable,
             errors: observable,
             touched: observable,
+            disabled: observable,
             hasError: computed,
             isSubmitting: observable,
             isSubmitted: observable,
@@ -60,6 +64,12 @@ export abstract class FormStore<T extends Record<string, any>> {
         });
 
         this.validateField(field);
+    }
+
+    toggleFieldDisabled<K extends keyof T>(field: K, state: boolean) {
+        runInAction(() => {
+            this.disabled[field] = state;
+        });
     }
 
     /**
@@ -151,6 +161,7 @@ export abstract class FormStore<T extends Record<string, any>> {
             this.values = { ...this.initialValues };
             this.errors = {};
             this.touched = {};
+            this.disabled = {};
             this.isSubmitting = false;
             this.isSubmitted = false;
         });

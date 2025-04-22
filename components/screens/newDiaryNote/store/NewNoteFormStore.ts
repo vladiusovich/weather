@@ -8,7 +8,7 @@ import constraints from '@/validation/constraints';
 
 type NewNoteFormFields = {
     date: Date[];
-    symptoms?: Symptom[];
+    symptoms: Symptom[];
 }
 
 class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
@@ -29,6 +29,11 @@ class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
                 .build({
                     required: this.t('common.fields.errors.required'),
                 }),
+            symptoms: ValidatorBuilder.create<Symptom[]>()
+                .add('required', constraints.requiredSymptoms)
+                .build({
+                    required: this.t('common.fields.errors.required'),
+                }),
         });
     }
 
@@ -37,7 +42,13 @@ class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
         await Promise.resolve();
     }
 
-    public addSymptom(values: SymptomFormFields) {
+    public addOrUpdateSymptom(values: SymptomFormFields) {
+        const exists = this.getSymptomValue(values.symptom);
+
+        if (exists) {
+            this.deleteSymptom(values.symptom);
+        }
+
         const symptom = this.findSymptom(values.symptom)!;
         const newSymptom: Symptom = {
             ...symptom,
@@ -45,6 +56,21 @@ class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
         };
 
         this.setValue('symptoms', [...this.values?.symptoms ?? [], newSymptom]);
+    }
+
+    public deleteSymptom(id: string) {
+        const symptoms = this.values.symptoms.filter(s => s.id !== id);
+        this.setValue('symptoms', [...symptoms]);
+    }
+
+    public fillSymptom(id: string) {
+        const symptom = this.getSymptomValue(id)!;
+        this.symptomForm.fillSymptom(symptom.id, symptom.strengtOfPain);
+        this.symptomForm.switchMode('edit');
+    }
+
+    private getSymptomValue(id: string) {
+        return this.values.symptoms?.find(s => s.id === id);
     }
 
     private findSymptom(id: string) {
