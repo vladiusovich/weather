@@ -9,6 +9,7 @@ import constraints from '@/validation/constraints';
 type NewNoteFormFields = {
     date: Date[];
     symptoms: Symptom[];
+    comment?: string;
 }
 
 class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
@@ -38,8 +39,12 @@ class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
     }
 
     async submit(): Promise<void> {
-        console.log(this.values);
-        await Promise.resolve();
+        this.store.diary.history.addNote({
+            id: new Date().valueOf().toString(),
+            date: this.values.date.toString(),
+            comment: this.values?.comment,
+            symptoms: this.values.symptoms,
+        });
     }
 
     public addOrUpdateSymptom(values: SymptomFormFields) {

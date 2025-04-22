@@ -38,7 +38,7 @@ const Selector: React.FC<ExSelectProps> = ({
             {...props}
         >
             {/* The trigger button for the select */}
-            <Select.Trigger width={220} iconAfter={ChevronDown} disabled={disabled}>
+            <Select.Trigger iconAfter={ChevronDown} disabled={disabled}>
                 <Select.Value placeholder={palceholder} />
             </Select.Trigger>
 

@@ -90,6 +90,10 @@
                 "editSymptom": {
                     "header": "Edit symptom",
                     "submit": "Apply"
+                },
+                "createdSuccess": {
+                    "header": "The note has been created",
+                    "submit": "Go to Diary history"
                 }
             }
         }
