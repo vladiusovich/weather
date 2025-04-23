@@ -1,18 +1,18 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import UI from '@/components/ui';
-import NewNoteFormStore from '../../../store/NewNoteFormStore';
 import { useTranslation } from 'react-i18next';
 import { useFormContext } from '@/store/formStore/FormContext';
 import Chip from '@/components/ui/chip/Chip';
+import NewNoteFormStore from '@/components/screens/newDiaryNote/store/NewNoteFormStore';
 
 interface Props {
     onPressOpen: () => void;
 }
 
 const SymptomChipsField: React.FC<Props> = ({ onPressOpen }) => {
-    const form = useFormContext<NewNoteFormStore>();
     const { t } = useTranslation();
+    const form = useFormContext<NewNoteFormStore>();
 
     const onDelete = (id: string) => form.deleteSymptom(id);
     const onPress = (id: string) => {

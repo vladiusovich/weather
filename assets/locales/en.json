@@ -69,7 +69,7 @@
                 "symptomsList": {
                     "header": "Symptoms",
                     "buttons": {
-                        "useFormHistory": "Use from prev note",
+                        "useFormHistory": "Use last symptoms",
                         "addNew": "Add symptom"
                     }
                 },
