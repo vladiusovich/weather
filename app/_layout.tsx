@@ -9,12 +9,14 @@ import i18n from '@/services/translations/i18n';
 import { useColorScheme } from 'react-native';
 import Router from '@/components/route';
 import BackgroundUpdateProvider from '@/theme/BackgroundUpdateProvider';
+import useDatabaseMigrations from '@/hooks/useDatabaseMigrations';
 
 i18n.init();
 
 const RootLayout = () => {
     const systemTheme = useColorScheme();
     const [theme] = useState(systemTheme || 'dark');
+    useDatabaseMigrations();
 
     return (
         <TamaguiProvider config={config} defaultTheme={theme}>
