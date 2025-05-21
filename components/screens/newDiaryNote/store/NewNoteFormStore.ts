@@ -36,6 +36,8 @@ class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
                     required: this.t('common.fields.errors.required'),
                 }),
         });
+
+        this.store.diary.symptoms.fetch();
     }
 
     async submit(): Promise<void> {

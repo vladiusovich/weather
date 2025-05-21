@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "4668be31-2378-4e83-81a4-4a31765d3c82",
+  "id": "178e9a8e-1f20-46f0-b45b-f615c33e400e",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "symptoms": {
@@ -9,10 +9,10 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "integer",
+          "type": "text",
           "primaryKey": true,
           "notNull": true,
-          "autoincrement": true
+          "autoincrement": false
         },
         "name": {
           "name": "name",

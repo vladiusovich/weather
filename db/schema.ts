@@ -1,8 +1,8 @@
-import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
+import { sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 export const symptoms = sqliteTable('symptoms', {
-    id: int().primaryKey({ autoIncrement: true }),
+    id: text().primaryKey().notNull(),
     name: text().notNull(),
 });
 
-// export type SymptomEntity = typeof symptoms.$inferSelect;
+export type SymptomEntity = typeof symptoms.$inferSelect;

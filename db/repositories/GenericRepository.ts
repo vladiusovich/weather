@@ -34,7 +34,7 @@ export class GenericRepository<
     }
 
     /** Insert a new record; returns the newly created model (requires SQLite >=3.35) */
-    async create(data: SQLiteInsertValue<TTable>) {
+    async create(data: SQLiteInsertValue<TTable>[]) {
         const [item] = await this.db
             .insert(this.table)
             .values(data)

@@ -1,3 +1,4 @@
+import { services } from '@/services';
 import DiaryHistoryStore from './DiaryHistoryStore';
 import SymptomsStore from './SymptomsStore';
 
@@ -7,7 +8,7 @@ class DiaryStore {
 
     constructor() {
         this.history = new DiaryHistoryStore();
-        this.symptoms = new SymptomsStore();
+        this.symptoms = new SymptomsStore(services.symptomsService);
     }
 }
 
