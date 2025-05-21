@@ -35,13 +35,12 @@ const Table = <T,>({ data, columns, isLoading = false }: TableProps<T>) => {
                         borderBottomWidth={'$1'}
                         borderColor={'$black5'}
                     >
-                        <H6>{col.title}</H6>
+                        <Text>{col.title}</Text>
                     </YStack>
                 ))}
             </XStack>
 
             {/* Table Rows */}
-
             {!hasData && <NoData />}
             {isLoading && !hasData && <Loader size='small' />}
             {hasData && data.map((row, rowIndex) => (
