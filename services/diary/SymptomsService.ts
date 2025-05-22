@@ -6,7 +6,7 @@ class SymptomsService {
 
     public async getList() {
         const repo = this.unitOfWork.getRepository('symptoms');
-        const result = await repo.findAll();
+        const result = await repo.getAll();
         return result.sort();
     }
 

@@ -19,7 +19,7 @@ export class GenericRepository<
     ) { }
 
     /** Fetch all records */
-    async findAll() {
+    async getAll() {
         return this.db.select().from(this.table);
     }
 

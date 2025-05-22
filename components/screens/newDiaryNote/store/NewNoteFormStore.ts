@@ -5,6 +5,7 @@ import AppStoreType from '@/store/AppStoreType';
 import { TFunction } from 'i18next';
 import { ValidatorBuilder } from '@/validation';
 import constraints from '@/validation/constraints';
+import { generateUUID } from '@/utils/generateUUID';
 
 type NewNoteFormFields = {
     date: Date[];
@@ -42,7 +43,7 @@ class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
 
     async submit(): Promise<void> {
         this.store.diary.history.addNote({
-            id: new Date().valueOf().toString(),
+            id: generateUUID(),
             date: this.values.date.toString(),
             comment: this.values?.comment,
             symptoms: this.values.symptoms,

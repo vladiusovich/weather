@@ -1,4 +1,4 @@
-import UI from '@/components/ui';
+import UI from '@/components/ui/';
 import { useFormContext } from '@/store/formStore/FormContext';
 import { observer } from 'mobx-react-lite';
 
