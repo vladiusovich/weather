@@ -8,7 +8,7 @@ import ScrollView from './scrollView/ScrollView';
 import Loader from './loader/Loader';
 
 // TODO: refactor it
-import { H1, H2, H3, H4, H5, H6, Paragraph, SizableText, Text, Separator, View } from 'tamagui';
+import Typo from './typo/Typo';
 import Table from './table/Table';
 import Fab from './fab/Fab';
 import DatePickerSelector from './datapicker/index';
@@ -20,23 +20,14 @@ import Selector from './selector/Selector';
 import Slider from './slider/Slider';
 import TextArea from './textArea/TextArea';
 import Chip from './chip/Chip';
+import { Separator, View } from 'tamagui';
 
 export * from './table/Table';
 export * from './datapicker/index';
 export * from './selector/Selector';
 
 const UI = {
-    Typo: {
-        H1,
-        H2,
-        H3,
-        H4,
-        H5,
-        H6,
-        Paragraph,
-        SizableText,
-        Text,
-    },
+    Typo: Typo,
     DatePicker: DatePickerSelector,
     NativeDateTimePicker, //Todo: remove
 

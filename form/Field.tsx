@@ -1,4 +1,5 @@
-import UI from '@/components/ui/';
+import YStack from '@/components/ui/stack/YStack';
+import Typo from '@/components/ui/typo/Typo';
 import { useFormContext } from '@/store/formStore/FormContext';
 import { observer } from 'mobx-react-lite';
 
@@ -49,12 +50,12 @@ const Field = observer(<
     const hasError = form.errors[name];
 
     return (
-        <UI.YStack gap='$2'>
+        <YStack gap='$2'>
             <Component {...componentProps} />
             {touched && hasError ? (
-                <UI.Typo.Text fontSize={'$1'} color='$red9'>{form.errors[name]}</UI.Typo.Text>
+                <Typo.Text fontSize={'$1'} color='$red9'>{form.errors[name]}</Typo.Text>
             ) : null}
-        </UI.YStack>
+        </YStack>
     );
 });
 
