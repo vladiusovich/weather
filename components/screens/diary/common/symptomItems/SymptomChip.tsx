@@ -11,6 +11,7 @@ const SymptomChip: React.FC<SymptomProps> = ({
 }) => {
     return (
         <UI.Chip
+            id={data.id}
             label={data.name}
             counter={data.strengtOfPain}
         />

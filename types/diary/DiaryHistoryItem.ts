@@ -1,3 +1,4 @@
+import { DiaryHistoryRecordsEntity } from '@/db/schema';
 
 
 export interface Symptom {
@@ -6,9 +7,6 @@ export interface Symptom {
     strengtOfPain: number;
 }
 
-export interface DiaryHistoryItem {
-    id: string;
-    date: string;
-    comment?: string;
+export interface DiaryHistoryItem extends DiaryHistoryRecordsEntity {
     symptoms: Symptom[];
 }

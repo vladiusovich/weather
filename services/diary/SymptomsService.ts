@@ -1,12 +1,11 @@
-import { UnitOfWork } from '@/db/repositories/UnitOfWork';
+import { UnitOfWork } from '@/db/repositories/unitOfWork';
 
 class SymptomsService {
     constructor(private unitOfWork: UnitOfWork) {
     }
 
     public async getList() {
-        const repo = this.unitOfWork.getRepository('symptoms');
-        const result = await repo.getAll();
+        const result = await this.unitOfWork.symptomRepository.getAll();
         return result.sort();
     }
 

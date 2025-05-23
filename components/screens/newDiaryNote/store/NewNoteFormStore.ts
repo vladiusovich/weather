@@ -45,7 +45,7 @@ class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
         this.store.diary.history.addNote({
             id: generateUUID(),
             date: this.values.date.toString(),
-            comment: this.values?.comment,
+            comment: this.values?.comment ?? '',
             symptoms: this.values.symptoms,
         });
     }

@@ -1,5 +1,5 @@
 import { SymptomEntity } from '@/db/schema';
-import SymptomsService from '@/services/diary/SymptomsService';
+import SymptomsService from '@/services/diary/symptomsService';
 import { makeObservable, observable, runInAction } from 'mobx';
 
 class SymptomsStore {

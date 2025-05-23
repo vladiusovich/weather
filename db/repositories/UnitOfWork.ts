@@ -1,49 +1,50 @@
-import { symptoms } from '../schema';
-import { DbClient } from './types/DbClient';
-import { GenericRepository } from './GenericRepository';
-import { InferSelectModel } from 'drizzle-orm';
+import { DbClient } from './types/dbClient';
+import { SymptomRepository } from './symptomRepository';
+import { DiaryHistoryRepository } from './diaryHistoryRepository';
 
-type TableNameType = 'symptoms' | 'another';
+/**
+
+type TableNameType = 'symptoms' | 'diaryHistoryRecords';
 
 type TableDefinitions = {
-    symptoms: typeof symptoms;
-    another: typeof symptoms; // TODO: заменить на другую таблицу
+symptoms: typeof schema.symptoms;
+diaryHistoryRecords: typeof schema.diaryHistoryRecords;
 };
 
 type TableModels = {
-    [K in keyof TableDefinitions]: InferSelectModel<TableDefinitions[K]>;
+[K in keyof TableDefinitions]: InferSelectModel<TableDefinitions[K]>;
 };
+ */
 
 export class UnitOfWork {
+    public readonly symptomRepository: SymptomRepository;
+    public readonly diaryHistoryRepository: DiaryHistoryRepository;
+
     private readonly context: DbClient;
 
+    /**
     private readonly tables: TableDefinitions = {
-        symptoms,
-        another: symptoms,
+        symptoms: schema.symptoms,
+        diaryHistoryRecords: schema.diaryHistoryRecords,
     };
-
-    private readonly repoCache: {
-        [K in TableNameType]?: GenericRepository<TableDefinitions[K], TableModels[K]>;
-    } = {};
+     */
 
     constructor(db: DbClient) {
         this.context = db;
+        this.symptomRepository = new SymptomRepository(db);
+        this.diaryHistoryRepository = new DiaryHistoryRepository(db);
     }
 
     /**
      * Get or create cached GenericRepository instance.
-     */
     getRepository<K extends TableNameType>(
         name: K,
         idField: keyof TableModels[K] = 'id'
-    ): GenericRepository<TableDefinitions[K], TableModels[K]> {
-        if (!this.repoCache[name]) {
-            const table = this.tables[name];
-            this.repoCache[name] = new GenericRepository(this.context, table, idField);
-        }
-
-        return this.repoCache[name]!;
+    ): BaseGenericRepository<TableDefinitions[K], TableModels[K]> {
+        const table = this.tables[name];
+        return new BaseGenericRepository(this.context, table, idField);
     }
+     */
 
     /**
      * Runs a function inside a database transaction, with a new UnitOfWork scoped to that transaction.

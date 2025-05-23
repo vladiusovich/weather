@@ -106,6 +106,9 @@
                 "geolocation": "Go to settings and allow access to geolocation"
             }
         },
+        "noData": {
+            "header": "No data"
+        },
         "fields": {
             "errors": {
                 "required": "The field is required"

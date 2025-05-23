@@ -1,9 +1,106 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "178e9a8e-1f20-46f0-b45b-f615c33e400e",
+  "id": "8f77d720-44c7-41fd-9636-ee849dbcce50",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
+    "diaryHistoryRecords": {
+      "name": "diaryHistoryRecords",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "date": {
+          "name": "date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "comment": {
+          "name": "comment",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "diaryHistoryRecords_to_symptoms": {
+      "name": "diaryHistoryRecords_to_symptoms",
+      "columns": {
+        "diaryHistoryRecord_id": {
+          "name": "diaryHistoryRecord_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "symptom_id": {
+          "name": "symptom_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "strengtOfPain": {
+          "name": "strengtOfPain",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "diaryHistoryRecords_to_symptoms_diaryHistoryRecord_id_diaryHistoryRecords_id_fk": {
+          "name": "diaryHistoryRecords_to_symptoms_diaryHistoryRecord_id_diaryHistoryRecords_id_fk",
+          "tableFrom": "diaryHistoryRecords_to_symptoms",
+          "tableTo": "diaryHistoryRecords",
+          "columnsFrom": [
+            "diaryHistoryRecord_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "diaryHistoryRecords_to_symptoms_symptom_id_symptoms_id_fk": {
+          "name": "diaryHistoryRecords_to_symptoms_symptom_id_symptoms_id_fk",
+          "tableFrom": "diaryHistoryRecords_to_symptoms",
+          "tableTo": "symptoms",
+          "columnsFrom": [
+            "symptom_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "diaryHistoryRecords_to_symptoms_diaryHistoryRecord_id_symptom_id_pk": {
+          "columns": [
+            "diaryHistoryRecord_id",
+            "symptom_id"
+          ],
+          "name": "diaryHistoryRecords_to_symptoms_diaryHistoryRecord_id_symptom_id_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
     "symptoms": {
       "name": "symptoms",
       "columns": {

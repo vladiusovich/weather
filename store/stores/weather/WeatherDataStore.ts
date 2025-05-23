@@ -7,11 +7,11 @@ import { MeteoData } from '@/services/weather/types/models/MeteoData';
 
 type ConstructorArgsType = {
     weatherSettings: WeatherSettingsStore;
+    openMeteoService: OpenMeteoService;
 };
 
 class WeatherDataStore {
     public data: MeteoData | null = null;
-    public openMeteoService: OpenMeteoService = new OpenMeteoService();
 
     constructor(protected args: ConstructorArgsType) {
         makeObservable(this, {
@@ -25,7 +25,7 @@ class WeatherDataStore {
     async fetch(location: LocationCoords): Promise<void> {
         const settings = this.args.weatherSettings.settings;
 
-        const weather = await this.openMeteoService.fetch({
+        const weather = await this.args.openMeteoService.fetch({
             ...settings,
             ...location,
             timezone: 'GMT',

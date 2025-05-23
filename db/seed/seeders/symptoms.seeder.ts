@@ -17,7 +17,7 @@ const symptomsSeed = [
 export default {
     name: 'Symptoms',
     run: async ({ force = false }) => {
-        const repo = unitOfWork.getRepository('symptoms');
+        const repo = unitOfWork.symptomRepository;
         const existing = await repo.getAll();
 
         if (existing.length > 0 && !force) return;

@@ -2,7 +2,7 @@ import UI from '@/components/ui';
 import React from 'react';
 
 interface CommentProps {
-    data?: string;
+    data?: string | null;
 }
 
 const Comment: React.FC<CommentProps> = ({

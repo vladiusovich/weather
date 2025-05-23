@@ -7,7 +7,7 @@ class DiaryStore {
     public symptoms: SymptomsStore;
 
     constructor() {
-        this.history = new DiaryHistoryStore();
+        this.history = new DiaryHistoryStore(services.diaryHistoryService);
         this.symptoms = new SymptomsStore(services.symptomsService);
     }
 }
