@@ -1,7 +1,7 @@
 import React from 'react';
 import YStack from '../stack/YStack';
 import XStack from '../stack/XStack';
-import { H6, Text } from 'tamagui';
+import { Text } from 'tamagui';
 import NoData from './NoData';
 import Loader from '../loader/Loader';
 

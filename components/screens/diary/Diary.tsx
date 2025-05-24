@@ -1,29 +1,28 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { RefreshControl, ScrollView } from 'react-native';
 import useAppStore from '@/hooks/useAppStore';
 import DiaryHistory from './diaryHistory/DiaryHistory';
 import NewNoteButton from './diaryHistory/actions/NewNoteButton';
 import UI from '@/components/ui';
+import useRefreshController from '@/hooks/useRefreshController';
 
 const Diary = observer(() => {
     const appStore = useAppStore();
-    const [refreshing, setRefreshing] = useState(false);
-
-    const onRefresh = useCallback(async () => {
-        setRefreshing(true);
-        setRefreshing(false);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     useEffect(() => {
-    }, []);
+        appStore.diary.history.fetch();
+    }, [appStore.diary.history]);
+
+    const { refreshing, handleRefresh } = useRefreshController(() => {
+        return appStore.diary.history.fetch();
+    });
 
     return (
         <UI.ScreenWrapper>
             <ScrollView
                 showsVerticalScrollIndicator={false}
-                refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+                refreshControl={<RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />}
             >
                 <DiaryHistory />
             </ScrollView>

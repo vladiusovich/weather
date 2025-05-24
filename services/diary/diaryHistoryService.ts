@@ -1,5 +1,6 @@
 import { UnitOfWork } from '@/db/repositories/unitOfWork';
 import { DiaryHistoryItem } from '@/types/diary/DiaryHistoryItem';
+import { sortBy } from '@/utils/array.helper';
 
 class DiaryHistoryService {
     constructor(private unitOfWork: UnitOfWork) {
@@ -17,7 +18,7 @@ class DiaryHistoryService {
             })),
         })) as DiaryHistoryItem[];
 
-        return historyItems.sort();
+        return sortBy(historyItems, 'date', 'desc');
     }
 
     public async addNote(item: DiaryHistoryItem) {

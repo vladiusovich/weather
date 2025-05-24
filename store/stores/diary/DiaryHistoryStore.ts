@@ -1,5 +1,6 @@
 import DiaryHistoryService from '@/services/diary/diaryHistoryService';
 import { DiaryHistoryItem } from '@/types/diary/DiaryHistoryItem';
+import { delay } from '@/utils/promise.helper';
 import { makeObservable, observable, runInAction } from 'mobx';
 
 class DiaryHistoryStore {
@@ -20,13 +21,13 @@ class DiaryHistoryStore {
 
         const history = await this.diaryHistoryService.getHistory();
 
+        await delay(2000);
         runInAction(() => {
             this.data = history;
             this.isLoading = false;
         });
     }
 
-    // eslint-disable-next-line class-methods-use-this
     public async addNote(item: DiaryHistoryItem) {
         await this.diaryHistoryService.addNote(item);
         this.fetch();

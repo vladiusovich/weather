@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { RefreshControl, ScrollView } from 'react-native';
 import * as Location from 'expo-location';
@@ -10,10 +10,10 @@ import CurrentWeatherStatus from './currentWeatherStatus/CurrentWeatherStatus';
 import HourlyForecast from './hourlyForecast/HourlyForecast';
 import DailyForecast from './dailyForecast/DailyForecast';
 import SolarTransitionInfo from './solarTransitionInfo/SolarTransitionInfo';
+import useRefreshController from '@/hooks/useRefreshController';
 
 const Weather = observer(() => {
     const appStore = useAppStore();
-    const [refreshing, setRefreshing] = useState(false);
     const [status, requestPermission] = Location.useForegroundPermissions();
 
     const fetchWeather = useCallback(async (location: LocationCoords) => {
@@ -23,12 +23,9 @@ const Weather = observer(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const onRefresh = useCallback(async () => {
-        setRefreshing(true);
+    const { refreshing, handleRefresh } = useRefreshController(async () => {
         await fetchWeather(appStore.weather.weatherSettings.currentLocation!);
-        setRefreshing(false);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    });
 
     useEffect(() => {
         (async () => {
@@ -60,7 +57,7 @@ const Weather = observer(() => {
         <UI.ScreenWrapper
             Component={ScrollView}
             showsVerticalScrollIndicator={false}
-            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />}
         >
             {isLoading && <UI.Loader />}
             {!isLoading && (

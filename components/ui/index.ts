@@ -6,6 +6,7 @@ import Button from './button/Button';
 import Modal from './modal/Modal';
 import ScrollView from './scrollView/ScrollView';
 import Loader from './loader/Loader';
+import Skeleton from './skeleton/Skeleton';
 
 // TODO: refactor it
 import Typo from './typo/Typo';
@@ -43,6 +44,7 @@ const UI = {
     Card,
     Slider,
     Loader,
+    Skeleton,
 
     Separator,
 

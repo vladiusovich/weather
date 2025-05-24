@@ -2,23 +2,16 @@ import { observer } from 'mobx-react-lite';
 import useAppStore from '@/hooks/useAppStore';
 import UI from '@/components/ui';
 import HistoryItem from './historyItem/HistoryItem';
-import { useEffect } from 'react';
 import NoData from '../common/noData/NoData';
 
 const DiaryHistory: React.FC = () => {
     const appStore = useAppStore();
-
-    useEffect(() => {
-        appStore.diary.history.fetch();
-    }, [appStore.diary.history]);
-
     const history = appStore.diary.history.data;
 
     return (
         <UI.YStack
             gap={'$2'}
         >
-            {appStore.diary.history.isLoading && <UI.Loader />}
             {history.length === 0 && <NoData />}
             {history.map((i) => {
                 return (
