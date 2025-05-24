@@ -2,12 +2,16 @@ import GetWeatherRequest from '@/api/rest/openMeteo/GetWeatherRequest';
 import { MeteoData } from './types/models/MeteoData';
 import { MeteoRequest } from '@/types/weather/MeteoRequest';
 import { MeteoResponse } from '@/types/weather/MeteoResponse';
+import { openMeteo } from './openMeteo.constants';
 
 class OpenMeteoService {
     private weatherRequest = new GetWeatherRequest();
 
     public async fetch(request: MeteoRequest): Promise<MeteoData | null> {
-        await this.weatherRequest.execute(request);
+        await this.weatherRequest.execute({
+            ...openMeteo.requestConfiguration,
+            ...request,
+        });
         return this.mapResponse(this.weatherRequest?.data);
     }
 

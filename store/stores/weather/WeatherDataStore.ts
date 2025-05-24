@@ -23,10 +23,7 @@ class WeatherDataStore {
     }
 
     async fetch(location: LocationCoords): Promise<void> {
-        const settings = this.args.weatherSettings.settings;
-
         const weather = await this.args.openMeteoService.fetch({
-            ...settings,
             ...location,
             timezone: 'GMT',
         });
