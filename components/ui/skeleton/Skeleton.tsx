@@ -1,58 +1,57 @@
 import React, { useEffect, useRef } from 'react';
-import { XStack } from 'tamagui';
-import { LinearGradient } from 'tamagui/linear-gradient'
-import { View, Animated, Easing } from 'react-native';
+import { Animated, Easing, StyleSheet } from 'react-native';
+import { Stack } from 'tamagui';
+import { LinearGradient } from 'tamagui/linear-gradient';
 
-// TODO
-const Skeleton: React.FC = (props) => {
-    const translateX = useRef(new Animated.Value(-1)).current;
+const Skeleton: React.FC<{ height?: number }> = ({ height = 80 }) => {
+    const shimmerAnim = useRef(new Animated.Value(0)).current;
 
     useEffect(() => {
-        const loopAnimation = () => {
-            translateX.setValue(-1);
-            Animated.timing(translateX, {
+        const loop = () => {
+            shimmerAnim.setValue(0);
+            Animated.timing(shimmerAnim, {
                 toValue: 1,
-                duration: 1200,
+                duration: 3000,
                 easing: Easing.linear,
                 useNativeDriver: true,
-            }).start(() => loopAnimation());
+            }).start(() => loop());
         };
 
-        loopAnimation();
-    }, [translateX]);
+        loop();
+    }, [shimmerAnim]);
 
-    const shimmerTranslate = translateX.interpolate({
-        inputRange: [-1, 1],
-        outputRange: ['-100%', '100%'],
+    const translateX = shimmerAnim.interpolate({
+        inputRange: [0, 1],
+        outputRange: [-200, 200], // можно настроить под нужную ширину
     });
 
     return (
-        <XStack
-            overflow="hidden"
+        <Stack
             width="100%"
-            height={80}
-            bg="$background"
+            height={height}
+            bg='$background04'
             rounded="$4"
-            {...props}
+            overflow="hidden"
+            position="relative"
+            borderWidth={1}
+            borderColor={'rgba(184, 184, 184, 0.1)'}
         >
             <Animated.View
-                style={{
-                    position: 'absolute',
-                    width: '100%',
-                    height: '100%',
-                    transform: [{ translateX: shimmerTranslate }],
-                    zIndex: 4
-                }}
+                style={[
+                    StyleSheet.absoluteFill,
+                    {
+                        transform: [{ translateX }],
+                    },
+                ]}
             >
                 <LinearGradient
-                    colors={['transparent', '$color', 'transparent']}
+                    colors={['transparent', '$background04', 'transparent']}
                     start={[0, 0]}
                     end={[1, 0]}
-                    width="100%"
-                    height="100%"
+                    style={StyleSheet.absoluteFill}
                 />
             </Animated.View>
-        </XStack>
+        </Stack>
     );
 };
 
