@@ -9,7 +9,7 @@ import i18n from '@/services/translations/i18n';
 import { useColorScheme } from 'react-native';
 import Router from '@/components/route';
 import BackgroundUpdateProvider from '@/theme/BackgroundUpdateProvider';
-import { AppService } from '@/services/AppService';
+import { AppService } from '@/services/appService';
 
 i18n.init();
 AppService.init();
