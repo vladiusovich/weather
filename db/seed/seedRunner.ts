@@ -1,19 +1,20 @@
-import symptoms from './seeders/symptoms.seeder';
+import { DbContextType } from '..';
+import { BaseSeederType, SeederOptionsType } from './baseSeedType';
+import { SymptomsSeed } from './seeders/symptoms.seeder';
 
-type Seeder = {
-    name: string;
-    run: (options: { force?: boolean }) => Promise<void>;
-};
+const seeders: BaseSeederType[] = [];
 
-const seeders: Seeder[] = [];
-
-export const registerSeeder = (seeder: Seeder) => {
+export const addSeeder = (seeder: BaseSeederType) => {
     seeders.push(seeder);
 };
 
-registerSeeder(symptoms);
+const registrateSeeders = (dbContext: DbContextType) => {
+    addSeeder(new SymptomsSeed(dbContext));
+}
 
-export const runSeeds = async (options: { force?: boolean } = {}) => {
+export const runSeeds = async (dbContext: DbContextType, options: SeederOptionsType) => {
+    registrateSeeders(dbContext);
+
     console.log(`🌱 Running seeders (count: ${seeders.length})...\n`);
 
     for (const seeder of seeders) {

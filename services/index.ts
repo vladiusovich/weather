@@ -1,11 +1,20 @@
-import { unitOfWork } from '@/db';
 import OpenMeteoService from './weather/openMeteoService';
 import SymptomsService from './diary/symptomsService';
 import DiaryHistoryService from './diary/diaryHistoryService';
+import { DbContextType } from '@/db';
 
-// Initialize servecies
-export const services = {
-    diaryHistoryService: new DiaryHistoryService(unitOfWork),
-    symptomsService: new SymptomsService(unitOfWork),
-    openMeteoService: new OpenMeteoService(),
+export interface ServicesRootType {
+    diaryHistoryService: DiaryHistoryService;
+    symptomsService: SymptomsService;
+    openMeteoService: OpenMeteoService;
+}
+
+export const initServices = async (dbContext: DbContextType): Promise<ServicesRootType> => {
+    const services = {
+        diaryHistoryService: new DiaryHistoryService(dbContext.unitOfWork),
+        symptomsService: new SymptomsService(dbContext.unitOfWork),
+        openMeteoService: new OpenMeteoService(),
+    };
+
+    return services;
 };

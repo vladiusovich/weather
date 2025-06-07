@@ -1,36 +1,43 @@
-import { unitOfWork } from '@/db';
+import { DbContextType } from '@/db';
 import { generateUUID } from '@/utils/generateUUID';
+import { BaseSeederType, SeederOptionsType } from '../baseSeedType';
 
-const symptomsSeed = [
-    'Headache',
-    'Migraine',
-    'Joint pain',
-    'Muscle ache',
-    'Back pain',
-    'Neck pain',
-    'Scarring pain',
-    'Toothache',
-    'Pressure in sinuses',
-    'Fatigue',
-];
+export class SymptomsSeed implements BaseSeederType {
+    public readonly name = 'Symptoms';
 
-export default {
-    name: 'Symptoms',
-    run: async ({ force = false }) => {
-        const repo = unitOfWork.symptomRepository;
+    /** Source data — keep it private so callers can’t mutate it. */
+    private static readonly symptoms = [
+        'Headache',
+        'Migraine',
+        'Joint pain',
+        'Muscle ache',
+        'Back pain',
+        'Neck pain',
+        'Scarring pain',
+        'Toothache',
+        'Pressure in sinuses',
+        'Fatigue',
+    ] as const;
+
+    constructor(private ctx: DbContextType) { }
+
+    // eslint-disable-next-line class-methods-use-this
+    async run({ force = false }: SeederOptionsType): Promise<void> {
+        const repo = this.ctx.unitOfWork.symptomRepository;
         const existing = await repo.getAll();
 
         if (existing.length > 0 && !force) return;
 
-        // if (force) {
-        //     await repo.deleteAll?.();
+        // Uncomment if you really need to wipe the table before reseeding.
+        // if (force && typeof repo.deleteAll === 'function') {
+        //   await repo.deleteAll();
         // }
 
         await repo.create(
-            symptomsSeed.map((name) => ({
+            SymptomsSeed.symptoms.map((name) => ({
                 id: generateUUID(),
                 name,
-            }))
+            })),
         );
-    },
-};
+    }
+}

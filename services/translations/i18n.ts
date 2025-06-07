@@ -17,7 +17,7 @@ const init = () => {
         deviceLanguage,
     });
 
-    i18n.use(initReactI18next) // Passes i18n down to react-i18next
+    return i18n.use(initReactI18next) // Passes i18n down to react-i18next
         .init({
             resources,
             lng: deviceLanguage, // Set the language based on the device

@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import type { SheetProps as NativeSheetProps } from '@tamagui/sheet';
 import { Sheet } from '@tamagui/sheet';
 import useBackHandler from '@/hooks/useBackHandler';
-import AppStoreProvider from '@/store/provider/AppStoreProvider';
+// import AppStoreProvider from '@/store/provider/AppStoreProvider';
 import { FormStore } from '@/store/formStore/FormStore';
 import Form from '@/form';
 
@@ -44,9 +44,10 @@ const SheetView = <T extends Record<string, any>>({
             wrapped = <Form.Provider form={formStore}>{wrapped}</Form.Provider>;
         }
 
-        if (useContexProvider) {
-            wrapped = <AppStoreProvider>{wrapped}</AppStoreProvider>;
-        }
+        // TODO: remove?
+        // if (useContexProvider) {
+        //     wrapped = <AppStoreProvider>{wrapped}</AppStoreProvider>;
+        // }
 
         return wrapped;
     }
