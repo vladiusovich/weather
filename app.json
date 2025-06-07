@@ -21,7 +21,13 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#25292e"
       },
-      "package": "com.uladzislau.usovich.weather"
+      "package": "com.uladzislau.usovich.weather",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -47,7 +53,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "7ffde99f-fe9f-4d3a-84b8-b9ad6d325cdb"
+        "projectId": "4f7a7db5-3016-4919-8ddb-00aea9141c27"
       }
     },
     "owner": "uladzislau.usovich"

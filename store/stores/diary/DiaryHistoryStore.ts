@@ -21,7 +21,6 @@ class DiaryHistoryStore {
 
         const history = await this.diaryHistoryService.getHistory();
 
-        await delay(2000);
         runInAction(() => {
             this.data = history;
             this.isLoading = false;
