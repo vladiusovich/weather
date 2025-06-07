@@ -1,6 +1,6 @@
 import { db } from '@/db';
 import migrations from '@/db/weatherSense/migrations';
-import { SeedService } from './SeedService';
+import { SeedService } from './seedService';
 import { migrate } from 'drizzle-orm/expo-sqlite/migrator';
 
 export class AppService {
