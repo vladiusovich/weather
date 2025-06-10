@@ -10,7 +10,7 @@ export interface AppStoreProviderProps {
 }
 
 /*
-    Async init in runtime. Avoid EAS's build time errors.
+    Async init in runtime. Avoid EAS's buildtime errors.
 */
 const AppStoreProvider: React.FC<AppStoreProviderProps> = ({ children }) => {
     const [appStore, setAppStore] = useState<AppStoreType | null>(null);
@@ -23,9 +23,9 @@ const AppStoreProvider: React.FC<AppStoreProviderProps> = ({ children }) => {
         });
 
         if (appStore) {
-            SplashScreen.hideAsync()
+            SplashScreen.hideAsync();
         } else {
-            init()
+            init();
         }
     }, [appStore]);
 

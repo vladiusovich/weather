@@ -23,7 +23,6 @@ export class AppContext {
     public appStore?: AppStoreType;
     public services?: ServicesRootType;
     public dbContext!: DbContextType;
-
     public stage: InitStageType = 'i18n';
 
     async init() {

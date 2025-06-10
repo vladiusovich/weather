@@ -3,15 +3,6 @@ import { Platform, View } from 'react-native';
 import * as MediaLibrary from 'expo-media-library';
 import { captureRef } from 'react-native-view-shot';
 
-// TODO: Implement saveFileAsync function
-const saveFileAsync = async (imageRef: React.RefObject<View>) => {
-    if (Platform.OS === 'web') {
-        saveFileWeb(imageRef?.current);
-    } else {
-        saveFileNative(imageRef);
-    }
-};
-
 const saveFileWeb = async (view: View | null) => {
     try {
         const dataUrl = await domtoimage.toJpeg(view, {
@@ -39,6 +30,15 @@ const saveFileNative = async (imageRef: React.RefObject<View>) => {
         await MediaLibrary.saveToLibraryAsync(localUri);
     } catch (e) {
         console.error(e);
+    }
+};
+
+// TODO: Implement saveFileAsync function
+const saveFileAsync = async (imageRef: React.RefObject<View>) => {
+    if (Platform.OS === 'web') {
+        saveFileWeb(imageRef?.current);
+    } else {
+        saveFileNative(imageRef);
     }
 };
 

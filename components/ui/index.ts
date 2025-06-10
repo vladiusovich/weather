@@ -13,7 +13,6 @@ import Typo from './typo/Typo';
 import Table from './table/Table';
 import Fab from './fab/Fab';
 import DatePickerSelector from './datapicker/index';
-import NativeDateTimePicker from './datapicker/nativeDateTimePicker/NativeDateTimePicker';
 import ScreenWrapper from './layoutWrapper/LayoutWrapper';
 import Papper from './paper/Paper';
 import SheetView from './sheet/SheetView';
@@ -30,7 +29,6 @@ export * from './selector/Selector';
 const UI = {
     Typo: Typo,
     DatePicker: DatePickerSelector,
-    NativeDateTimePicker, //Todo: remove
 
     Button,
     Fab,
