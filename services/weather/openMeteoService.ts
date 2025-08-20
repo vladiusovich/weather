@@ -26,11 +26,13 @@ class OpenMeteoService {
             longitude: response.longitude,
             timezone: response.timezone,
 
-            current: response.current ? {
-                weatherCode: response.current.weather_code ?? 0,
-                apparentTemperature: response.current.apparent_temperature ?? 0,
-                temperature2mMax: response.current.temperature_2m_max ?? 0,
-                temperature2mMin: response.current.temperature_2m_min ?? 0,
+            current: response?.current ? {
+                weatherCode: response?.current?.weather_code ?? undefined,
+                apparentTemperature: response.current.apparent_temperature ?? undefined,
+                temperature2mMax: response.current?.temperature_2m_max ?? undefined,
+                temperature2mMin: response.current?.temperature_2m_min ?? undefined,
+                relativeHumidity2m: response?.current?.relative_humidity_2m ?? undefined,
+                precipitation: response?.current?.precipitation ?? undefined,
                 timezone: response.timezone
             } : undefined,
 

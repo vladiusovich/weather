@@ -1,4 +1,4 @@
-import dayjs, { OpUnitType } from 'dayjs';
+import dayjs, { ManipulateType, OpUnitType } from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
@@ -59,11 +59,22 @@ export const formatDate = (utcTime: string, template: string): string | null => 
     return null;
 };
 
+const cutMsInIsoString = (date: string): string => {
+    return date.split('.')[0] + 'Z';
+};
+
 /**
- * Returns the current date and time (UTC) as a Date object.
+ * Returns the current date and time (UTC) as ISO string.
  */
 export const getNow = (): string => {
-    return dayjs().utc().toISOString();
+    return cutMsInIsoString(dayjs().utc().toISOString());
+};
+
+/**
+ * Returns the added datetime (UTC).
+ */
+export const add = (val: number, d: ManipulateType): string => {
+    return cutMsInIsoString(dayjs().add(val, d).utc().toISOString());
 };
 
 const isSame = (date1: string, date2: string, unit: OpUnitType): boolean => {

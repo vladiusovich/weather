@@ -11,7 +11,7 @@ type RequestConstructor<TRequest, TResponse> = new () => BaseRequest<
 type ApiInstanceType = Record<ApiUrlType, ClientApiEndpoint>;
 
 // TODO: dynamic init?
-const instancies = {
+const endpoints = {
     meteo: new AxiosClientApiEndpoint({
         baseURL: apiUrls.meteo,
         timeout: 10000,
@@ -23,18 +23,17 @@ const instancies = {
 };
 
 class RequestBuilder {
-    static instancies: ApiInstanceType = instancies;
+    static endpoints: ApiInstanceType = endpoints;
 
     static getType<RequestDataType, ResponseDataType>(
         apiType: ApiUrlType,
         options: RequestOptionsType,
     ): RequestConstructor<RequestDataType, ResponseDataType> {
-        const instance = RequestBuilder.instancies[apiType];
-
+        const endpoint = RequestBuilder.endpoints[apiType];
         return class extends BaseRequest<RequestDataType, ResponseDataType> {
             constructor() {
                 // Pass the instance and the provided options to the BaseRequest constructor
-                super(instance, options);
+                super(endpoint, options);
             }
         };
     }

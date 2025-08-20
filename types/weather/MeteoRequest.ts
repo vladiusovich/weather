@@ -18,7 +18,9 @@ const weatherVariables = [
     'apparent_temperature_min',
     'sunrise',
     'sunset',
-    'daylight_duration'
+    'daylight_duration',
+    'wind_speed_10m',
+    'wind_direction_10m',
 ] as const;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

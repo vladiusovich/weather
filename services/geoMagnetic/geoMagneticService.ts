@@ -1,13 +1,12 @@
 import GetGeoMagneticRequest from '@/api/rest/gfzGeoMagnetic/GetGeoMagneticRequest';
 import GfzGeoMagneticRequest from '@/types/geoMagnetic/gfzGeoMagneticRequest';
-import GfzGeoMagneticResponse from '@/types/geoMagnetic/gfzGeoMagneticResponse';
+import { GeoMagneticData } from '../weather/types/models/GeoMagneticData';
 
 class GeoMagneticService {
     private geoMagneticRequest = new GetGeoMagneticRequest();
 
-    public async fetch(request: GfzGeoMagneticRequest): Promise<GfzGeoMagneticResponse | null> {
+    public async fetch(request: GfzGeoMagneticRequest): Promise<GeoMagneticData | null> {
         await this.geoMagneticRequest.execute(request);
-
         return this.geoMagneticRequest.data;
     }
 }

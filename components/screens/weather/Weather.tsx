@@ -9,16 +9,20 @@ import { LocationCoords } from '@/types/LocationCoords';
 import CurrentWeatherStatus from './currentWeatherStatus/CurrentWeatherStatus';
 import HourlyForecast from './hourlyForecast/HourlyForecast';
 import DailyForecast from './dailyForecast/DailyForecast';
-import SolarTransitionInfo from './solarTransitionInfo/SolarTransitionInfo';
 import useRefreshController from '@/hooks/useRefreshController';
+import LocationStatus from './locationStatus/LocationStatus';
 
+// TODO: refactoring the module
 const Weather = observer(() => {
     const appStore = useAppStore();
     const [status, requestPermission] = Location.useForegroundPermissions();
 
     const fetchWeather = useCallback(async (location: LocationCoords) => {
         if (location) {
-            await appStore.weather.weatherData.fetch(location);
+            await Promise.allSettled([
+                appStore.weather.weatherData.fetch(location),
+                appStore.weather.geoMagneticStore.fetch(),
+            ]);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -61,11 +65,9 @@ const Weather = observer(() => {
         >
             {isLoading && <UI.Loader />}
             {!isLoading && (
-                <UI.YStack gap='$2.5'>
-                    <UI.XStack items='flex-start' gap='$2'>
-                        <CurrentWeatherStatus />
-                        <SolarTransitionInfo />
-                    </UI.XStack>
+                <UI.YStack gap='$2'>
+                    {/* <LocationStatus /> */}
+                    <CurrentWeatherStatus />
                     <HourlyForecast />
                     <DailyForecast />
                 </UI.YStack>

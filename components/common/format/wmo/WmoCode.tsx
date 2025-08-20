@@ -13,7 +13,7 @@ const WmoCode: React.FC<WmoCodeProps> = ({
 }) => {
     const { t } = useTranslation();
 
-    if (!value) {
+    if (!!value) {
         return null;
     }
 

@@ -35,7 +35,7 @@ export class AppContext {
             await this.runStep('stores', this.initStores);
 
             this.stage = 'ready';
-            console.info('[AppContext] ✅ init complete');
+            // console.info('[AppContext] ✅ init complete');
         } catch (err) {
             this.stage = 'failed';
             console.error('[AppContext] ❌ init failed:', err);
@@ -71,9 +71,9 @@ export class AppContext {
     }
 
     private async runStep(name: InitStageType, fn: () => Promise<void>) {
-        console.info(`[AppContext] ▶️ ${name}`);
+        // console.info(`[AppContext] ▶️ ${name}`);
         this.stage = name;
         await fn.call(this);
-        console.info(`[AppContext] ✔️ ${name}`);
+        // console.info(`[AppContext] ✔️ ${name}`);
     }
 }

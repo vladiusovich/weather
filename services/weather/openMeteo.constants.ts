@@ -9,6 +9,9 @@ const requestConfiguration: Settings = {
         'weather_code',
         'pressure_msl',
         'surface_pressure',
+        'wind_speed_10m',
+        'wind_direction_10m',
+        'relative_humidity_2m',
     ],
     daily: [
         'weather_code',

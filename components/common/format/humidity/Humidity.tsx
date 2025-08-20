@@ -11,7 +11,7 @@ type HumidityProps = {
 
 const Humidity: React.FC<HumidityProps> = ({ value, ...props }) => {
     return (
-        <UI.XStack gap='$1'>
+        <UI.XStack gap='$0.5' items={'center'}>
             <Droplet size={14} />
             <UI.XStack items={'baseline'}>
                 <UI.Typo.Text {...props}>{value ?? 'N/A'}</UI.Typo.Text>

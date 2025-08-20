@@ -10,7 +10,9 @@ class WeatherStore {
 
     constructor(services: ServicesRootType) {
         this.weatherSettings = new WeatherSettingsStore();
-        this.geoMagneticStore = new GeoMagneticStore();
+        this.geoMagneticStore = new GeoMagneticStore({
+            geoMagneticService: services.geoMagneticService,
+        });
         this.weatherData = new WeatherDataStore({
             weatherSettings: this.weatherSettings,
             openMeteoService: services.openMeteoService,

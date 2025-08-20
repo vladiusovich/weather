@@ -1,5 +1,4 @@
 import React from 'react';
-import { NamedExoticComponent } from 'react';
 import type { IconProps } from '@tamagui/helpers-icon';
 import {
     Sun,
@@ -11,7 +10,7 @@ import {
     CloudLightning
 } from '@tamagui/lucide-icons'
 
-const iconMapper: Record<number, NamedExoticComponent<IconProps>> = {
+const iconMapper: Record<number, typeof Sun> = {
     0: Sun,                      // Clear sky
     1: Cloudy,                    // Partly cloudy/Overcast
     2: Cloudy,                    // Partly cloudy/Overcast
@@ -50,15 +49,12 @@ const WmoIcon: React.FC<WmoCodeProps> = ({
     value,
     ...props
 }) => {
-    if (!value) {
-        return null;
-    }
+    if (value == null) return null;
 
     const Icon = iconMapper[value];
+    if (!Icon) return null;
 
-    return (
-        <Icon {...props} />
-    );
+    return <Icon {...props} />
 };
 
 export default WmoIcon;

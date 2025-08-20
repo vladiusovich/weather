@@ -15,13 +15,13 @@ const registrateSeeders = (dbContext: DbContextType) => {
 export const runSeeds = async (dbContext: DbContextType, options: SeederOptionsType) => {
     registrateSeeders(dbContext);
 
-    console.log(`🌱 Running seeders (count: ${seeders.length})...\n`);
+    // console.log(`🌱 Running seeders (count: ${seeders.length})...\n`);
 
     for (const seeder of seeders) {
         try {
-            console.log(`🔸 Seeding: ${seeder.name}`);
+            // console.log(`🔸 Seeding: ${seeder.name}`);
             await seeder.run(options);
-            console.log(`✅ Done: ${seeder.name}\n`);
+            // console.log(`✅ Done: ${seeder.name}\n`);
         } catch (err) {
             console.error(`❌ Failed: ${seeder.name}`, err);
         }
