@@ -8,7 +8,6 @@ import {
     YStack,
 } from 'tamagui';
 
-// TODO: does not work onPress by item (Google Pixel 8A, but it works in emulator). See issues on gitHub
 export interface SelectorOption {
     name: string;
     value: string;
@@ -48,6 +47,9 @@ const Selector: React.FC<ExSelectProps> = ({
                         enterStyle={{ opacity: 0 }}
                         exitStyle={{ opacity: 0 }}
                     />
+
+                    {/* The problem in Sheet.ScrollView. It does not work on real device (Pixel 8a) */}
+                    {/* I don't know why */}
                     <Sheet.Frame>
                         <Adapt.Contents />
                     </Sheet.Frame>
