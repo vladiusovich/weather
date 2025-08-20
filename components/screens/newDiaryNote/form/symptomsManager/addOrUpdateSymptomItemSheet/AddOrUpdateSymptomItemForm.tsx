@@ -1,13 +1,13 @@
 import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
 import UI from '@/components/ui';
-import SymptomFormStore from '../../store/SymptomFormStore';
 import useCallbackIf from '@/hooks/useCallbackIf';
 import PainStrengthField from './fields/painStrengthField/PainStrengthField';
 import { useTranslation } from 'react-i18next';
 import SymptomTypeField from './fields/SymptomTypeField';
 import Form from '@/form';
 import { useFormContext } from '@/store/formStore/FormContext';
+import SymptomFormStore from '../../../store/SymptomFormStore';
 
 interface Props {
     onClose: () => void;

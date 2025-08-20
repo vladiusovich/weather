@@ -11,8 +11,7 @@ const SymptomTypeField: React.FC = () => {
 
     useEffect(() => {
         appStore.diary.symptoms.fetch();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [appStore.diary.symptoms]);
 
     const options: SelectorOption[] = appStore.diary?.symptoms.data.map((s) => {
         return {

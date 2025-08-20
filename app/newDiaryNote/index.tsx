@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 
 const NewDiaryNoteScreen = () => {
     const { t } = useTranslation();
-
     return (
         <>
             <Stack.Screen

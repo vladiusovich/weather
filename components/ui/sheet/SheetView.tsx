@@ -72,10 +72,9 @@ const SheetView = <T extends Record<string, any>>({
             <Sheet.Handle />
 
             <Sheet.Frame
-                p="$4"
+                p="$5"
                 bg={'$background06'}
             >
-                {/* Content inside the main sheet */}
                 {wrapWithProviders(open && children)}
             </Sheet.Frame>
         </Sheet>

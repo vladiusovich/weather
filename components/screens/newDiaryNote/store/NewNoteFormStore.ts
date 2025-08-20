@@ -42,7 +42,7 @@ class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
     }
 
     async submit(): Promise<void> {
-        this.store.diary.history.addNote({
+        await this.store.diary.history.addNote({
             id: generateUUID(),
             date: this.values.date.toString(),
             comment: this.values?.comment ?? '',

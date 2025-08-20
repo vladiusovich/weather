@@ -33,10 +33,7 @@ const Selector: React.FC<ExSelectProps> = ({
     ...props
 }) => {
     return (
-        <Select
-            disablePreventBodyScroll
-            {...props}
-        >
+        <Select {...props}>
             {/* The trigger button for the select */}
             <Select.Trigger iconAfter={ChevronDown} disabled={disabled}>
                 <Select.Value placeholder={palceholder} />
@@ -44,23 +41,22 @@ const Selector: React.FC<ExSelectProps> = ({
 
             {/* Use Adapt to render a Sheet for touch platforms */}
             <Adapt platform="touch">
-                <Sheet modal dismissOnSnapToBottom animation='200ms'>
-                    <Sheet.Frame>
-                        <Sheet.ScrollView>
-                            <Adapt.Contents />
-                        </Sheet.ScrollView>
-                    </Sheet.Frame>
+                <Sheet modal dismissOnSnapToBottom animation='quickest'>
                     <Sheet.Overlay
                         bg="$shadowColor"
-                        animation="200ms"
+                        animation='quickest'
                         enterStyle={{ opacity: 0 }}
                         exitStyle={{ opacity: 0 }}
                     />
+                    <Sheet.Frame>
+                        <Adapt.Contents />
+                    </Sheet.Frame>
+
                 </Sheet>
             </Adapt>
 
             {/* Main select content including scroll buttons and list viewport */}
-            <Select.Content zIndex={200000}>
+            <Select.Content>
                 {/* Scroll Up Button with a gradient overlay */}
                 <Select.ScrollUpButton
                     items="center"

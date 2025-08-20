@@ -2,8 +2,8 @@ import { observer } from 'mobx-react-lite';
 import React from 'react';
 import UI from '@/components/ui';
 import AddOrUpdateSymptomItemForm from './AddOrUpdateSymptomItemForm';
-import NewNoteFormStore from '../../store/NewNoteFormStore';
 import { useFormContext } from '@/store/formStore/FormContext';
+import NewNoteFormStore from '../../../store/NewNoteFormStore';
 
 interface Props {
     open: boolean;
