@@ -5,6 +5,8 @@ import useBackHandler from '@/hooks/useBackHandler';
 // import AppStoreProvider from '@/store/provider/AppStoreProvider';
 import { FormStore } from '@/store/formStore/FormStore';
 import Form from '@/form';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useWindowDimensions } from 'react-native';
 
 export type SheetProps<T extends Record<string, any>> = {
     /** Content to render inside the main sheet */
@@ -22,7 +24,7 @@ export type SheetProps<T extends Record<string, any>> = {
 
 const SheetView = <T extends Record<string, any>>({
     children,
-    snapPoints = [50],
+    snapPoints = [30],
     open = false,
     onClose,
     useContexProvider = true,
@@ -52,13 +54,18 @@ const SheetView = <T extends Record<string, any>>({
         return wrapped;
     }
 
+    const { left, right } = useSafeAreaInsets();
+    const { width } = useWindowDimensions();
+    const mx = Math.max(5, left, right);
+    const my = Math.max(5, left, right);
+    const frameWidth = Math.max(mx, width - mx * 2); // ширина экрана − отступы
+
     return (
         <Sheet
             modal
             open={open}
             onOpenChange={onOpenChange}
             snapPoints={snapPoints}
-            zIndex={100_000}
             animation='100ms'
             {...sheetRest}
         >
@@ -73,7 +80,10 @@ const SheetView = <T extends Record<string, any>>({
 
             <Sheet.Frame
                 p="$5"
-                bg={'$background06'}
+                bg={'$background08'}
+                mx={mx}
+                width={frameWidth}
+            // alignSelf="center"
             >
                 {wrapWithProviders(open && children)}
             </Sheet.Frame>

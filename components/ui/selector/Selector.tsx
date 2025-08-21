@@ -7,6 +7,7 @@ import {
     Sheet,
     YStack,
 } from 'tamagui';
+// import useBackHandler from '@/hooks/useBackHandler';
 
 export interface SelectorOption {
     name: string;
@@ -29,8 +30,12 @@ const Selector: React.FC<ExSelectProps> = ({
     palceholder,
     label,
     disabled = false,
+    open = false,
+    onOpenChange,
     ...props
 }) => {
+    // useBackHandler(open, () => onOpenChange?.(false));
+
     return (
         <Select {...props}>
             {/* The trigger button for the select */}
@@ -39,8 +44,9 @@ const Selector: React.FC<ExSelectProps> = ({
             </Select.Trigger>
 
             {/* Use Adapt to render a Sheet for touch platforms */}
+            {/* TODO: snapPointsMode  */}
             <Adapt platform="touch">
-                <Sheet modal dismissOnSnapToBottom animation='quickest'>
+                <Sheet modal dismissOnSnapToBottom animation='quickest' snapPointsMode='mixed'>
                     <Sheet.Overlay
                         bg="$shadowColor"
                         animation='quickest'
@@ -57,7 +63,6 @@ const Selector: React.FC<ExSelectProps> = ({
                 </Sheet>
             </Adapt>
 
-            {/* Main select content including scroll buttons and list viewport */}
             <Select.Content>
                 {/* Scroll Up Button with a gradient overlay */}
                 <Select.ScrollUpButton
@@ -67,31 +72,27 @@ const Selector: React.FC<ExSelectProps> = ({
                     width="100%"
                     height="$3"
                 >
-                    <YStack z={10}>
+                    <YStack>
                         <ChevronUp size={20} />
                     </YStack>
                 </Select.ScrollUpButton>
 
                 {/* Viewport listing the select options */}
-                <Select.Viewport minW={200}>
+                <Select.Viewport>
                     <Select.Group>
                         <Select.Label>{label}</Select.Label>
-                        {React.useMemo(
-                            () =>
-                                options.map((item, i) => (
-                                    <Select.Item
-                                        index={i}
-                                        key={item.name}
-                                        value={item.value}
-                                    >
-                                        <Select.ItemText>{item.name}</Select.ItemText>
-                                        <Select.ItemIndicator marginLeft="auto">
-                                            <Check size={16} />
-                                        </Select.ItemIndicator>
-                                    </Select.Item>
-                                )),
-                            [options] // items are static; no dependencies needed here
-                        )}
+                        {options.map((item, i) => (
+                            <Select.Item
+                                index={i}
+                                key={item.name}
+                                value={item.value}
+                            >
+                                <Select.ItemText>{item.name}</Select.ItemText>
+                                <Select.ItemIndicator marginLeft="auto">
+                                    <Check size={16} />
+                                </Select.ItemIndicator>
+                            </Select.Item>
+                        ))}
                     </Select.Group>
                 </Select.Viewport>
 
@@ -103,7 +104,7 @@ const Selector: React.FC<ExSelectProps> = ({
                     width="100%"
                     height="$3"
                 >
-                    <YStack z={10}>
+                    <YStack>
                         <ChevronDown size={20} />
                     </YStack>
                 </Select.ScrollDownButton>

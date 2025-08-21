@@ -20,7 +20,6 @@ const AddOrUpdateSymptomItemSheet: React.FC<Props> = ({
         <UI.SheetView
             open={open}
             onClose={onClose}
-            snapPoints={[40]}
             formStore={form.symptomForm}
         >
             <AddOrUpdateSymptomItemForm onClose={onClose} />
