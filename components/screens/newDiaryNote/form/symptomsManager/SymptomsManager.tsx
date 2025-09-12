@@ -41,4 +41,3 @@ const SymptomsManager: React.FC = () => {
 };
 
 export default observer(SymptomsManager);
-

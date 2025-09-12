@@ -13,10 +13,6 @@ const resources = {
 };
 
 const init = () => {
-    console.log('i18n.init:', {
-        deviceLanguage,
-    });
-
     return i18n.use(initReactI18next) // Passes i18n down to react-i18next
         .init({
             resources,

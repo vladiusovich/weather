@@ -11,8 +11,8 @@ export interface DbContextType {
 };
 
 export const initDb = async (): Promise<DbContextType> => {
-    const expo = await SQLite.openDatabaseAsync('weatherSense.db');
-    const db = drizzle(expo, { schema });
+    const client = await SQLite.openDatabaseAsync('weatherSense.db');
+    const db = drizzle(client, { schema });
     const unitOfWork = new UnitOfWork(db);
 
     return { db, unitOfWork };

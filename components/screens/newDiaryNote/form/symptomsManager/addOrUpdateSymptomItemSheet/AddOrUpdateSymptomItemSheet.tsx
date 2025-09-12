@@ -28,4 +28,3 @@ const AddOrUpdateSymptomItemSheet: React.FC<Props> = ({
 };
 
 export default observer(AddOrUpdateSymptomItemSheet);
-
