@@ -12,7 +12,7 @@ export class SeedService {
         const isSeeded = await AsyncStorage.getItem(SEED_FLAG_KEY);
 
         if (isSeeded && !force) {
-            console.log('🌱 Seeds already applied — skipping');
+            // console.log('🌱 Seeds already applied — skipping');
             return;
         }
 
@@ -23,6 +23,6 @@ export class SeedService {
     // eslint-disable-next-line class-methods-use-this
     async reset() {
         await AsyncStorage.removeItem(SEED_FLAG_KEY);
-        console.log('🔄 Seed flag reset');
+        // console.log('🔄 Seed flag reset');
     }
 }
