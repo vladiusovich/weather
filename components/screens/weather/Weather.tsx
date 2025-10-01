@@ -63,7 +63,7 @@ const Weather = observer(() => {
             showsVerticalScrollIndicator={false}
             refreshControl={<RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />}
         >
-            {isLoading && <UI.Loader />}
+            <UI.Loader isloading={isLoading} />
             {!isLoading && (
                 <UI.YStack gap='$2'>
                     {/* <LocationStatus /> */}
