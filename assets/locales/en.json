@@ -95,6 +95,9 @@
                     "header": "The note has been created",
                     "submit": "Go to Diary history"
                 }
+            },
+            "healthStatistic": {
+                "header": "Health statistic"
             }
         }
     },

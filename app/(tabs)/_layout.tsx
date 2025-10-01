@@ -1,5 +1,5 @@
 import Router from '@/components/route';
-import { BookHeart, CloudSun } from '@tamagui/lucide-icons'
+import { BookHeart, CloudSun, ChartBar } from '@tamagui/lucide-icons'
 import { Tabs } from 'expo-router';
 import { GetThemeValueForKey } from 'tamagui';
 
@@ -21,6 +21,15 @@ const TabsLayout = () => {
                     title: 'Diary',
                     tabBarIcon: ({ color }: { color: string }) => (
                         <BookHeart color={color as GetThemeValueForKey<'color'>} strokeWidth={1} />
+                    ),
+                }}
+            />
+            <Tabs.Screen
+                name='healthStatistic'
+                options={{
+                    title: 'Statistic',
+                    tabBarIcon: ({ color }: { color: string }) => (
+                        <ChartBar color={color as GetThemeValueForKey<'color'>} strokeWidth={1} />
                     ),
                 }}
             />
