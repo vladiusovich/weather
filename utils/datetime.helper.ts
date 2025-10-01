@@ -11,6 +11,7 @@ const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const;
 type DaysOfWeek = typeof daysOfWeek[number];
 
 export const DATE_FORMAT = 'DD/MM/YYYY';
+export const SHORT_DATE_FORMAT = 'DD/MM';
 export const TIME_FORMAT = 'HH:mm';
 
 /**

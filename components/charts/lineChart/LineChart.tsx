@@ -61,6 +61,10 @@ const AppLineChartComponent: React.FC<LineChartProps> = ({
                     width={chartWidth}
                     isAnimated={animate}
                     animateOnDataChange={animate}
+                    focusEnabled
+                    showStripOnFocus
+                    showTextOnFocus
+
                     // axis and grid
                     hideRules={false}
                     rulesType={rulesType}
