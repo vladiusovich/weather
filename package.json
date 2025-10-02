@@ -20,6 +20,7 @@
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/native": "^7.0.14",
     "@rehookify/datepicker": "^6.6.8",
+    "@shopify/react-native-skia": "^2.2.12",
     "@tamagui/adapt": "^1.126.13",
     "@tamagui/animate-presence": "^1.126.13",
     "@tamagui/config": "^1.126.13",
@@ -72,7 +73,8 @@
     "react-native-svg": "15.11.2",
     "react-native-view-shot": "~4.0.3",
     "react-native-web": "^0.20.0",
-    "tamagui": "^1.126.13"
+    "tamagui": "^1.126.13",
+    "victory-native": "^41.20.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

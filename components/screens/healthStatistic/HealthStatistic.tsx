@@ -6,14 +6,10 @@ import { RefreshControl, ScrollView } from 'react-native';
 import useRefreshController from '@/hooks/useRefreshController';
 import useAppStore from '@/hooks/useAppStore';
 import Format from '@/components/common/format';
-import { range } from '@/utils/array.helper';
 import { delay } from '@/utils/promise.helper';
+import StackedAreaExample from './victoryCharts/StackedArea';
+import BaseExample from './victoryCharts/BaseExample';
 
-function getRandom(min: number, max: number) {
-    const minCeiled = Math.ceil(min);
-    const maxFloored = Math.floor(max);
-    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
-}
 
 const HealthStatistic = (() => {
     const appStore = useAppStore();
@@ -33,42 +29,41 @@ const HealthStatistic = (() => {
         };
     });
 
-    const precipitations: lineDataItem[] = daily.map((d) => {
-        return {
-            value: d.precipitationProbabilityMean,
-            // labelComponent: () => <Format.Date fontSize={'$1'} variant='shortDate' value={d.time} />,
-        };
-    });
+    const data = [
+        { day: 'Mon', temp: 20, humidity: 5 },
+        { day: 'Tue', temp: 22, humidity: 6 },
+        { day: 'Wed', temp: 18, humidity: 4 },
+        { day: 'Wed', temp: 18, humidity: 4 },
+        { day: 'Wed', temp: 18, humidity: 4 },
+        { day: 'Wed', temp: 18, humidity: 4 },
+    ];
 
-    const pain = daily.map((p) => {
-        return {
-            value: getRandom(1, 10),
-        };
-    })
     return (
         <UI.ScreenWrapper
             Component={ScrollView}
-            showsVerticalScrollIndicator={false}
-            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />}
+            // showsVerticalScrollIndicator={false}
+            // refreshControl={<RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />}
         >
             <UI.Papper>
-                <Charts.LineChart
-                    height={250}
-                    dataSet={[
-                        { data: tempDataSet },
-                    ]}
-                />
-                <Charts.LineChart
-                    height={200}
-                    dataSet={[
-                        {
-                            data: pain,
-                            color: 'dodgerblue',
-                            dataPointsColor: 'dodgerblue',
-                        },
-                    ]}
-                />
+                <BaseExample />
             </UI.Papper>
+            <UI.Separator />
+            {/* <UI.Papper>
+                <StackedAreaExample />
+            </UI.Papper>
+            <UI.Separator />
+            <UI.Papper>
+                <Charts.VictoryLineChart
+                    data={data}
+                    xKey="day"
+                    series={[
+                        { yKey: 'temp', color: '#5ac8fa' },
+                        { yKey: 'humidity', color: '#ff9f0a' },
+                    ]}
+                    showArea
+                />
+
+            </UI.Papper> */}
         </UI.ScreenWrapper >
     )
 });
