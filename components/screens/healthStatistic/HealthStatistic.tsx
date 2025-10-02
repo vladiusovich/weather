@@ -9,6 +9,7 @@ import Format from '@/components/common/format';
 import { delay } from '@/utils/promise.helper';
 import StackedAreaExample from './victoryCharts/StackedArea';
 import BaseExample from './victoryCharts/BaseExample';
+import SplitChartsExample from './victoryCharts/SplitChartsExample';
 
 
 const HealthStatistic = (() => {
@@ -41,13 +42,12 @@ const HealthStatistic = (() => {
     return (
         <UI.ScreenWrapper
             Component={ScrollView}
-            // showsVerticalScrollIndicator={false}
-            // refreshControl={<RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />}
+        // showsVerticalScrollIndicator={false}
+        // refreshControl={<RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />}
         >
-            <UI.Papper>
-                <BaseExample />
-            </UI.Papper>
-            <UI.Separator />
+            {/* <BaseExample /> */}
+            <SplitChartsExample />
+            {/* <UI.Separator /> */}
             {/* <UI.Papper>
                 <StackedAreaExample />
             </UI.Papper>
