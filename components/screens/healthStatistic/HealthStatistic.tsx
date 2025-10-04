@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import UI from '@/components/ui';
 import Charts, { lineDataItem } from '@/components/charts';
@@ -45,10 +45,12 @@ const HealthStatistic = (() => {
         // showsVerticalScrollIndicator={false}
         // refreshControl={<RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />}
         >
-            {/* <BaseExample /> */}
-            <SplitChartsExample />
-            {/* <UI.Separator /> */}
-            {/* <UI.Papper>
+            <UI.Papper>
+                <BaseExample />
+            </UI.Papper>
+            {/* <SplitChartsExample />
+            <UI.Separator />
+            <UI.Papper>
                 <StackedAreaExample />
             </UI.Papper>
             <UI.Separator />

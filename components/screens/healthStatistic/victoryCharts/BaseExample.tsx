@@ -1,10 +1,8 @@
-import { Circle, useFont } from '@shopify/react-native-skia';
+import { Path, useFont } from '@shopify/react-native-skia';
 import React from 'react';
 import { View } from 'react-native';
-import { CartesianChart, Line, useChartPressState, useChartTransformState } from 'victory-native';
+import { CartesianChart, PointsArray, useChartTransformState, useLinePath } from 'victory-native';
 import SpaceMono from '@/assets/fonts/SpaceMono-Regular.ttf';
-import { SharedValue } from 'react-native-reanimated';
-import { Gesture } from 'react-native-gesture-handler';
 
 function getRandom(min: number, max: number) {
     const minCeiled = Math.ceil(min);
@@ -14,39 +12,65 @@ function getRandom(min: number, max: number) {
 
 const generateData = (length: number) =>
     Array.from({ length }, (_, index) => {
-        const low = Math.round(-5 + getRandom(-5, 0));
-        const med = Math.round(low + getRandom(10, 15));
-        const high = Math.round(med + getRandom(5, 10));
+        const temp = Math.round(getRandom(-10, 15));
+        const pressure = Math.round(getRandom(650, 900));
 
         return {
             month: new Date(2020, index).toLocaleString('default', {
                 month: 'short',
             }),
-            // low,
-            med,
-            // high,
+            temp,
+            pressure,
             painValue: getRandom(1, 10)
         };
     });
 
-const data = generateData(30);
 
-const defaultState = {
-    low: 0,
-    med: 0,
-    high: 0,
+const MetricLine = ({ points, color }: { points: PointsArray, color?: string }) => {
+    const { path } = useLinePath(points, { curveType: 'cardinal' });
+
+    return <Path
+        path={path}
+        style="stroke"
+        color={color ?? '#c77415b0'}
+        strokeWidth={1}
+    />;
+}
+
+const PainLine = ({ points }: { points: PointsArray }) => {
+    const { path } = useLinePath(points, { curveType: 'cardinal' });
+    return <Path
+        path={path}
+        style="stroke"
+        color='#1db2c9cb'
+        strokeWidth={4}
+    />;
+}
+
+const defineDomainScale = (values: number[]): [number, number] => {
+    return [
+        Math.min(...values),
+        Math.max(...values),
+    ]
 };
 
-type TooltipPositionType = { x: SharedValue<number>; y: SharedValue<number> };
-
-const ToolTip = ({ position, color }: { position: TooltipPositionType; color: string }) => {
-    return <Circle cx={position.x} cy={position.y} r={4} color={color} />;
+const defineViewportScale = (values: number[], padding?: number): [number, number] => {
+    return [
+        Math.min(...values) - (padding ?? 0),
+        Math.max(...values) + (padding ?? 0),
+    ]
 }
+
+const data = generateData(12);
 
 const BaseExample = () => {
     const font = useFont(SpaceMono, 12);
-    const { state, isActive } = useChartPressState({ x: '', y: defaultState });
+    // const { state, isActive } = useChartPressState({ x: '', y: defaultState });
     const { state: transformState } = useChartTransformState();
+
+    const tempDomain = defineDomainScale(data.map((d) => d.temp));
+    const pressureDomain = defineDomainScale(data.map((d) => d.pressure));
+    const painDomain = defineDomainScale(data.map((d) => d.painValue));
 
     return (
         <View style={{ height: 350 }}>
@@ -54,48 +78,60 @@ const BaseExample = () => {
                 data={data}
                 xKey="month"
                 // yKeys={['low', 'med', 'high', 'painValue']} // specify data keys used for y-axis
-                yKeys={['med', 'painValue']} // specify data keys used for y-axis
+                yKeys={['temp', 'pressure', 'painValue']} // specify data keys used for y-axis
+                domainPadding={{
+                    // top: 10,
+                    // bottom: 10,
+                    // left: 10,
+                    // right: 15,
+                }}
+                viewport={{
+                }}
                 xAxis={{
-                    font,
-                    labelColor: '#ff9f0a',
-                    lineColor: '#cbcbcb32',
-                    lineWidth: 1,
-                    // labelPosition: 'outset'
                     labelRotate: 45,
                     // axisSide: 'top',
                     enableRescaling: true,
+                    labelColor: '#ff9f0a',
+                    lineColor: 'transparent',
+                    lineWidth: 1,
+                    font,
                 }}
                 yAxis={[
                     {
-                        font,
-                        // yKeys: ['low', 'med', 'high'],
-                        yKeys: ['med'],
-                        labelColor: '#ff9f0a',
-                        lineColor: '#cbcbcb32',
-                        lineWidth: 1,
-                        domain: [-20, 40],
+                        yKeys: ['temp'],
+                        domain: tempDomain,
                         // tickCount: 10
                         // labelPosition: 'outset'
                         // axisSide: 'right',
-                        // domain: [-15]
+                        // domain: [-15],
+                        labelColor: '#ff9f0a',
+                        lineColor: '#cbcbcb0d',
+                        lineWidth: 1,
+                        font,
                     },
                     {
-                        font,
-                        yKeys: ['painValue'],
-                        labelColor: '#ff9f0a',
-                        lineColor: '#cbcbcb32',
-                        lineWidth: 1,
-                        domain: [0, 10],
-                        axisSide: 'right',
+                        yKeys: ['pressure'],
+                        domain: pressureDomain,
+                        formatYLabel: (label) => (label.toFixed(0).toString()),
                         // tickCount: 10
-                        // labelPosition: 'outset'
+                        labelPosition: 'inset',
                         // axisSide: 'right',
-                        // domain: [-15]
+                        lineWidth: 1,
+                        // labelPosition: 'inset',
+                        labelColor: '#6f50b7ff',
+                        lineColor: '#cbcbcb0d',
+                        font,
+                    },
+                    {
+                        yKeys: ['painValue'],
+                        domain: painDomain,
+                        formatYLabel: (label) => (label < 0 ? '' : label.toString()),
+                        axisSide: 'right',
+                        labelColor: '#1db2c9cb',
+                        font,
                     },
                 ]}
-                frame={{
-                    // lineColor: 'red'
-                }}
+
                 // chartPressState={state}
                 chartPressConfig={{
                     pan: {
@@ -116,23 +152,31 @@ const BaseExample = () => {
                         // dimensions: 'x', // "x" | "y" | ("x" | "y")[]; // Control which dimensions can be zoomed
                     }
                 }}
-            // viewport={{ x: [0, 20] }}
             >
                 {/* render function exposes various data, such as points. */}
-                {({ points }) => (
+                {({ points, chartBounds }) => (
                     // 👇 and we'll use the Line component to render a line path.
                     <>
-                        {/* <Line points={points.high} color="#ff600aff" strokeWidth={1} curveType='basis' /> */}
-                        <Line points={points.med} color="#cfc01cff" strokeWidth={1} curveType='basis' />
+                        {/* <PainBars points={points.painValue} /> */}
+
+                        <MetricLine
+                            points={points.temp}
+                            color='#6f50b7ff'
+                        />
+                        <MetricLine
+                            points={points.pressure}
+                            color='#ff9f0a'
+                        />
+                        <PainLine
+                            points={points.painValue}
+                        />
+                        {/* <Line
+                            points={points.temp}
+                            color="#cfc01cff"
+                            strokeWidth={1}
+                            curveType='basis'
+                        /> */}
                         {/* <Line points={points.low} color="#0a99ffff" strokeWidth={1} curveType='basis' /> */}
-                        <Line points={points.painValue} color="#7715c7ff" strokeWidth={2} curveType='basis' />
-                        {isActive ? (
-                            <>
-                                <ToolTip position={{ x: state.x.position, y: state.y.high.position }} color='#ff600aff' />
-                                <ToolTip position={{ x: state.x.position, y: state.y.med.position }} color='#cfc01cff' />
-                                <ToolTip position={{ x: state.x.position, y: state.y.low.position }} color='#0a99ffff' />
-                            </>
-                        ) : null}
                     </>
                 )}
             </CartesianChart>
