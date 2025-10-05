@@ -31,6 +31,7 @@
     "@tamagui/themes": "^1.126.13",
     "axios": "^1.7.9",
     "babel-plugin-inline-import": "^3.0.0",
+    "d3": "^7.9.0",
     "dayjs": "^1.11.13",
     "dom-to-image": "^2.6.0",
     "drizzle-orm": "^0.43.1",
@@ -66,6 +67,7 @@
     "react-native-gifted-charts": "^1.4.64",
     "react-native-localize": "^3.4.1",
     "react-native-reanimated": "~3.17.4",
+    "react-native-redash": "^18.1.4",
     "react-native-responsive-fontsize": "^0.5.1",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.11.1",
@@ -76,6 +78,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@types/d3": "^7.4.3",
     "@types/jest": "^30.0.0",
     "@types/react": "~19.0.10",
     "@types/react-test-renderer": "^18.3.0",

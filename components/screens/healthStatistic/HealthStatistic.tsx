@@ -8,8 +8,10 @@ import useAppStore from '@/hooks/useAppStore';
 import Format from '@/components/common/format';
 import { range } from '@/utils/array.helper';
 import { delay } from '@/utils/promise.helper';
+import D3Chart from './examples/v1/D3Chart';
+import D3v2 from './examples/v2/D3v2';
 
-function getRandom(min: number, max: number) {
+const getRandom = (min: number, max: number) => {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
     return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
@@ -52,22 +54,7 @@ const HealthStatistic = (() => {
             refreshControl={<RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />}
         >
             <UI.Papper>
-                <Charts.LineChart
-                    height={250}
-                    dataSet={[
-                        { data: tempDataSet },
-                    ]}
-                />
-                <Charts.LineChart
-                    height={200}
-                    dataSet={[
-                        {
-                            data: pain,
-                            color: 'dodgerblue',
-                            dataPointsColor: 'dodgerblue',
-                        },
-                    ]}
-                />
+                <D3v2 />
             </UI.Papper>
         </UI.ScreenWrapper >
     )
