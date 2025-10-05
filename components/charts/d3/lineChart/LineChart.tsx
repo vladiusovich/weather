@@ -1,6 +1,4 @@
 import React, { useMemo } from 'react';
-import { Rect } from 'react-native-svg';
-import useChart from './context/useChart';
 import XAxis from './xAxis/XAxis';
 import Grid from './grid/Grid';
 import { SimpleLineChartProps } from './types';
@@ -15,21 +13,14 @@ import { Lines } from './lines/Lines';
 import YAxisList from './yAxis/YAxisList';
 import ChartRoot from './ChartRoot';
 
-
-// Helper overlay to capture gestures later (optional)
-export const HitRect: React.FC<{
-    onPress?: (x: number, y: number) => void
-} & React.ComponentProps<typeof Rect>> = ({ onPress, ...rest }) => {
-    const { innerW, innerH } = useChart();
-    return <Rect width={innerW} height={innerH} opacity={0} {...rest} />;
-};
-
-export const SimpleLineChart: React.FC<SimpleLineChartProps> = ({
+export const LineChart: React.FC<SimpleLineChartProps> = ({
     width,
     height,
     dataSet,
     xKind = 'linear',
-    padding
+    padding,
+    zoomPanConfig,
+    enableGestures,
 }) => {
     // Calculate X domain
     const xDomain = useMemo(() => {
@@ -61,6 +52,8 @@ export const SimpleLineChart: React.FC<SimpleLineChartProps> = ({
             dataDomain={{ x: xDomain }}
             kinds={{ x: xKind }}
             yDomains={yDomains}
+            enableGestures={enableGestures}
+            zoomPanConfig={zoomPanConfig}
         >
             <Grid yTicks={CHART_CONSTANTS.DEFAULT_TICKS} yAxisId={axisIds[0]} />
             <Lines dataSet={dataSet} />

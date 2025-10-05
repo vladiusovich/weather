@@ -74,7 +74,32 @@ export type ChartProps = PropsWithChildren<{
     yDomains: Record<string, [number, number]>;
     niceY?: boolean;
     theme?: Partial<ChartTheme>;
+    zoomPanConfig?: ZoomPanConfig;
+    enableGestures?: boolean;
 }>;
+
+export type ZoomPanState = {
+    scale: number;
+    translateX: number;
+    translateY: number;
+};
+
+export type ZoomPanActions = {
+    zoomIn: () => void;
+    zoomOut: () => void;
+    panLeft: () => void;
+    panRight: () => void;
+    panUp: () => void;
+    panDown: () => void;
+    reset: () => void;
+};
+
+export type ZoomPanConfig = {
+    minScale?: number;
+    maxScale?: number;
+    zoomStep?: number;
+    panStep?: number;
+};
 
 export type SimpleLineChartProps = {
     width?: number;
@@ -82,4 +107,6 @@ export type SimpleLineChartProps = {
     dataSet: DataSet[];
     xKind?: ScaleKind;
     padding?: Partial<Padding>;
+    zoomPanConfig?: ZoomPanConfig;
+    enableGestures?: boolean;
 };

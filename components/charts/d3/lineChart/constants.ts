@@ -1,4 +1,3 @@
-// Chart configuration constants
 export const CHART_CONSTANTS = {
     // Domain padding
     Y_DOMAIN_PADDING_RATIO: 0.05,
@@ -15,7 +14,7 @@ export const CHART_CONSTANTS = {
     DEFAULT_TICKS: 5,
 
     // Stroke widths
-    DEFAULT_STROKE_WIDTH: 2,
+    DEFAULT_STROKE_WIDTH: 1,
     AXIS_STROKE_WIDTH: 1,
     GRID_STROKE_WIDTH: 1,
 } as const;

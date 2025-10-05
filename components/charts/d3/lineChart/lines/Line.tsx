@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Path } from 'react-native-svg';
 import * as d3 from 'd3';
-import { DataSet } from './../types';
+import { DataSet } from '../types';
 import { CHART_CONSTANTS } from '../constants';
 import useChart from '../context/useChart';
 import { Point } from '../types';
@@ -35,9 +35,8 @@ export const Line: React.FC<DataSet> = ({
         return lineGenerator(data) ?? '';
     }, [data, xScale, yScale, isTime]);
 
-    const strokeColor = useMemo(() =>
-        color ?? theme.lineColor,
-    [color, theme.lineColor]
+    const strokeColor = useMemo(() => color ?? theme.lineColor,
+        [color, theme.lineColor]
     );
 
     return (

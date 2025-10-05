@@ -15,7 +15,7 @@ export const ChartContext = createContext<ChartContextType | null>(null);
 
 const useChart = () => {
     const ctx = useContext(ChartContext);
-    if (!ctx) throw new Error('useScales must be used within <Chart>');
+    if (!ctx) throw new Error('useChart must be used within <Chart>');
     return ctx;
 };
 

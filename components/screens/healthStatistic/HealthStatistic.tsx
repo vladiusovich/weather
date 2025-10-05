@@ -1,30 +1,30 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
 import UI from '@/components/ui';
-import Charts, { lineDataItem } from '@/components/charts';
-import { RefreshControl, ScrollView } from 'react-native';
-import useRefreshController from '@/hooks/useRefreshController';
+import { lineDataItem } from '@/components/charts';
+import { View } from 'react-native';
 import useAppStore from '@/hooks/useAppStore';
 import Format from '@/components/common/format';
-import { range } from '@/utils/array.helper';
-import { delay } from '@/utils/promise.helper';
-import D3Chart from './examples/v1/D3Chart';
-import D3v2 from './examples/v2/D3v2';
+import { LineChart } from '../../charts/d3/lineChart/LineChart';
 
-const getRandom = (min: number, max: number) => {
-    const minCeiled = Math.ceil(min);
-    const maxFloored = Math.floor(max);
-    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
-}
+const getRandom = (min: number, max: number) =>
+    Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1) + Math.ceil(min));
+
+const generateData = (daysCount: number, startDate: Date, min: number, max: number) =>
+    Array.from({ length: daysCount }, (_, i) => ({
+        x: new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + i),
+        y: getRandom(min, max),
+    }));
+
+const daysCount = 100;
+const startDate = new Date(2025, 9, 1);
+
+const dataH = generateData(daysCount, startDate, 15, 100);
+const dataL = generateData(daysCount, startDate, -105, 5);
+const dataL2 = generateData(daysCount, startDate, -105, 5);
 
 const HealthStatistic = (() => {
     const appStore = useAppStore();
-
-    const { refreshing, handleRefresh } = useRefreshController(async () => delay(300));
-
-    if (refreshing) {
-        return null;
-    }
 
     const daily = appStore.weather.weatherData.daily;
 
@@ -47,14 +47,34 @@ const HealthStatistic = (() => {
             value: getRandom(1, 10),
         };
     })
+
+    const sets = [
+        {
+            data: dataH,
+            color: '#de6060ff',
+        },
+        {
+            data: dataL,
+            color: '#3767b5ff',
+        },
+        {
+            data: dataL2,
+            color: '#76b537ff',
+        }
+    ];
+
     return (
         <UI.ScreenWrapper
-            Component={ScrollView}
-            showsVerticalScrollIndicator={false}
-            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />}
+            Component={View}
         >
             <UI.Papper>
-                <D3v2 />
+                <LineChart
+                    width={420}
+                    height={500}
+                    dataSet={sets}
+                    xKind='time'
+                    enableGestures={true}
+                />
             </UI.Papper>
         </UI.ScreenWrapper >
     )
