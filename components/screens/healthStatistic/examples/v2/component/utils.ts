@@ -142,3 +142,20 @@ export const calculateYDomains = (
 
     return domains;
 };
+
+export const calculateYAxisOffsets = (axisCount: number): number[] => {
+    const range = Array.from({ length: axisCount });
+
+    const r = range.map((_a, i) => {
+        const v = i + 1;
+        return v > 1
+            ? (v - 1) * CHART_CONSTANTS.AXIS_OFFSET_WIDTH
+            : 0;
+    });
+
+    return r;
+};
+
+export const calculateOffsets = (offsets: number[]): number => {
+    return offsets.reduce((value, acc) => acc + value, 0);
+};

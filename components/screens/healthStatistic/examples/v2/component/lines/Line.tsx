@@ -3,7 +3,7 @@ import { Path } from 'react-native-svg';
 import * as d3 from 'd3';
 import { DataSet } from './../types';
 import { CHART_CONSTANTS } from '../constants';
-import useScales from '../hooks/useScales';
+import useChart from '../hooks/useChart';
 import { Point } from '../types';
 import { isTimeScale } from '../utils';
 
@@ -13,7 +13,7 @@ export const Line: React.FC<DataSet> = ({
     strokeWidth = CHART_CONSTANTS.DEFAULT_STROKE_WIDTH,
     yAxisId,
 }) => {
-    const { xScale, yScales, theme } = useScales();
+    const { xScale, yScales, theme } = useChart();
 
     const yScale = useMemo(() => {
         const id = yAxisId ?? Object.keys(yScales)[0];

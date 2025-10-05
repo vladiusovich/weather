@@ -22,10 +22,10 @@ export const CHART_CONSTANTS = {
 
 // Default padding for chart
 export const DEFAULT_PADDING = {
-    top: 12,
-    right: 36,
-    bottom: 22,
-    left: 36,
+    top: 0,
+    right: 18,
+    bottom: 24,
+    left: 24,
 } as const;
 
 // Default theme

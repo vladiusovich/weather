@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import useScales from '../hooks/useScales';
+import useChart from '../hooks/useChart';
 import { G, Line as SvgLine, Text as SvgText } from 'react-native-svg';
 import { AxisProps } from '../types';
 import { isTimeScale, getDefaultAxisFormatter } from '../utils';
@@ -11,7 +11,7 @@ const XAxis: React.FC<AxisProps> = ({
     showTicks = true,
     showLine = true,
 }) => {
-    const { xScale, innerH, theme } = useScales();
+    const { xScale, innerH, theme } = useChart();
 
     const isTime = useMemo(() => isTimeScale(xScale), [xScale]);
 
@@ -22,10 +22,7 @@ const XAxis: React.FC<AxisProps> = ({
         return [];
     }, [xScale, ticks]);
 
-    const formatter = useMemo(() =>
-        getDefaultAxisFormatter(isTime, format),
-    [isTime, format]
-    );
+    const formatter = useMemo(() => getDefaultAxisFormatter(isTime, format), [isTime, format]);
 
     const xRange = useMemo(() => {
         const range = xScale.range() as [number, number];
@@ -38,8 +35,7 @@ const XAxis: React.FC<AxisProps> = ({
             value: t,
             x: (xScale as any)(t) as number,
             label: formatter(t),
-        })),
-    [values, xScale, formatter]
+        })), [values, xScale, formatter]
     );
 
     return (

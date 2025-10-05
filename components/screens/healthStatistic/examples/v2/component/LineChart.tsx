@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Rect } from 'react-native-svg';
-import useScales from './hooks/useScales';
+import useChart from './hooks/useChart';
 import XAxis from './xAxis/XAxis';
 import Grid from './grid/Grid';
 import { SimpleLineChartProps } from './types';
@@ -20,7 +20,7 @@ import ChartRoot from './ChartRoot';
 export const HitRect: React.FC<{
     onPress?: (x: number, y: number) => void
 } & React.ComponentProps<typeof Rect>> = ({ onPress, ...rest }) => {
-    const { innerW, innerH } = useScales();
+    const { innerW, innerH } = useChart();
     return <Rect width={innerW} height={innerH} opacity={0} {...rest} />;
 };
 

@@ -1,15 +1,16 @@
 import React, { useMemo } from 'react';
 import { View } from 'react-native';
 import Svg, { G } from 'react-native-svg';
-import { ScalesContext } from './hooks/useScales';
+import { ChartContext } from './hooks/useChart';
 import { ChartProps, Padding } from './types';
 import {
+    calculateOffsets,
+    calculateYAxisOffsets,
     createXScale,
     createYScales
 } from './utils';
 import { DEFAULT_PADDING, DEFAULT_THEME } from './constants';
-import useCalculateChartSize from '@/hooks/useCalculateChartSize';
-
+import useCalculateChartSize from './hooks/useCalculateChartSize';
 
 export const ChartRoot: React.FC<ChartProps> = ({
     dimensions,
@@ -28,10 +29,13 @@ export const ChartRoot: React.FC<ChartProps> = ({
         [dimensions.padding]
     );
 
+    const yAxisOffsets = calculateYAxisOffsets(Object.keys(yDomains).length);
+    const offsetsWidth = calculateOffsets(yAxisOffsets);
+
     const innerDimensions = useMemo(() => ({
         innerW: currentWidth - padding.left - padding.right,
         innerH: height - padding.top - padding.bottom,
-    }), [currentWidth, height, padding]);
+    }), [currentWidth, height, padding.bottom, padding.left, padding.right, padding.top]);
 
     const xScale = useMemo(() => createXScale(kinds.x, dataDomain.x, innerDimensions.innerW),
         [kinds.x, dataDomain.x, innerDimensions.innerW]
@@ -41,18 +45,21 @@ export const ChartRoot: React.FC<ChartProps> = ({
         [yDomains, innerDimensions.innerH, niceY]
     );
 
-    const themeFinal = useMemo(() => ({ ...DEFAULT_THEME, ...theme }),
-        [theme]
-    );
+    const themeFinal = useMemo(() => ({ ...DEFAULT_THEME, ...theme }), [theme]);
 
     const contextValue = useMemo(() => ({
         xScale,
         yScales,
+        yAxisOffsets,
         innerW: innerDimensions.innerW,
         innerH: innerDimensions.innerH,
         padding,
         theme: themeFinal,
-    }), [xScale, yScales, innerDimensions, padding, themeFinal]);
+    }), [xScale, yScales, yAxisOffsets, innerDimensions.innerW, innerDimensions.innerH, padding, themeFinal]);
+
+    const paddingLeft = yAxisOffsets.length <= 1
+        ? padding.left
+        : offsetsWidth;
 
     return (
         <View
@@ -60,10 +67,10 @@ export const ChartRoot: React.FC<ChartProps> = ({
             style={{ minHeight: height }}
         >
             <Svg width={currentWidth} height={height}>
-                <G x={padding.left} y={padding.top}>
-                    <ScalesContext.Provider value={contextValue}>
+                <G x={paddingLeft} y={padding.top}>
+                    <ChartContext.Provider value={contextValue}>
                         {children}
-                    </ScalesContext.Provider>
+                    </ChartContext.Provider>
                 </G>
             </Svg>
         </View>

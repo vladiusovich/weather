@@ -40,6 +40,7 @@ const D3v2 = () => {
     return (
         <View style={{ padding: 0 }}>
             <SimpleLineChart
+                width={420}
                 height={500}
                 dataSet={sets}
                 xKind='time'

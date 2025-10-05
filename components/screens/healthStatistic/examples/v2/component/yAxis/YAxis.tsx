@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 import React, { useMemo } from 'react';
-import useScales from '../hooks/useScales';
+import useChart from '../hooks/useChart';
 import { G, Line as SvgLine, Text as SvgText } from 'react-native-svg';
 import { YAxisProps } from '../types';
 import { getDefaultYFormatter } from '../utils';
@@ -15,7 +15,7 @@ export const YAxis: React.FC<YAxisProps> = ({
     side = 'left',
     offset = 0,
 }) => {
-    const { yScales, innerH, innerW, theme } = useScales();
+    const { yScales, innerH, innerW, theme } = useChart();
 
     const scale = useMemo(() => {
         const s = yScales[axisId];
