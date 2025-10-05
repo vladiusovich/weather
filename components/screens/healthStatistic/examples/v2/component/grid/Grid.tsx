@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import useChart from '../hooks/useChart';
+import useChart from '../context/useChart';
 import { Line as SvgLine } from 'react-native-svg';
 import { GridProps } from '../types';
 import { CHART_CONSTANTS } from '../constants';

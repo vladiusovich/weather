@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { View } from 'react-native';
 import Svg, { G } from 'react-native-svg';
-import { ChartContext } from './hooks/useChart';
+import { ChartContext } from './context/useChart';
 import { ChartProps, Padding } from './types';
 import {
     calculateOffsets,

@@ -3,7 +3,7 @@ import { Path } from 'react-native-svg';
 import * as d3 from 'd3';
 import { DataSet } from './../types';
 import { CHART_CONSTANTS } from '../constants';
-import useChart from '../hooks/useChart';
+import useChart from '../context/useChart';
 import { Point } from '../types';
 import { isTimeScale } from '../utils';
 

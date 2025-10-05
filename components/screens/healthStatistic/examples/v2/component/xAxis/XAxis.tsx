@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import useChart from '../hooks/useChart';
+import useChart from '../context/useChart';
 import { G, Line as SvgLine, Text as SvgText } from 'react-native-svg';
 import { AxisProps } from '../types';
 import { isTimeScale, getDefaultAxisFormatter } from '../utils';

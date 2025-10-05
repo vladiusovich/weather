@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 import React, { useMemo } from 'react';
-import useChart from '../hooks/useChart';
+import useChart from '../context/useChart';
 import { G, Line as SvgLine, Text as SvgText } from 'react-native-svg';
 import { YAxisProps } from '../types';
 import { getDefaultYFormatter } from '../utils';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { CHART_CONSTANTS } from '../constants';
 import YAxis from './YAxis';
-import useChart from '../hooks/useChart';
+import useChart from '../context/useChart';
 
 export const YAxisList: React.FC<{ axisIds: string[] }> = ({
     axisIds,

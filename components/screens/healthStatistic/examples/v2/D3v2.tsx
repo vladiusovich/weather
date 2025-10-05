@@ -12,7 +12,7 @@ const generateData = (daysCount: number, startDate: Date, min: number, max: numb
     }));
 
 const daysCount = 10;
-const startDate = new Date(2025, 9, 1); // октябрь 2025
+const startDate = new Date(2025, 9, 1);
 
 const dataH = generateData(daysCount, startDate, 15, 100);
 const dataL = generateData(daysCount, startDate, -105, 5);
@@ -21,17 +21,14 @@ const dataL2 = generateData(daysCount, startDate, -105, 5);
 const sets = [
     {
         data: dataH,
-        yAxisId: 'temp',
         color: '#de6060ff',
     },
     {
         data: dataL,
-        yAxisId: 'pressure',
         color: '#3767b5ff',
     },
     {
         data: dataL2,
-        yAxisId: 'aaa',
         color: '#76b537ff',
     }
 ];

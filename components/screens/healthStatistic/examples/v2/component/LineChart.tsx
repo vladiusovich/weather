@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Rect } from 'react-native-svg';
-import useChart from './hooks/useChart';
+import useChart from './context/useChart';
 import XAxis from './xAxis/XAxis';
 import Grid from './grid/Grid';
 import { SimpleLineChartProps } from './types';
