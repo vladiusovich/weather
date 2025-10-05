@@ -1,8 +1,17 @@
 import { PropsWithChildren } from 'react';
+import * as d3 from 'd3';
 
-export type Point = { x: number | Date; y: number };
+export type Point = {
+    x: number | Date;
+    y: number;
+};
 
-export type Padding = { top: number; right: number; bottom: number; left: number };
+export type Padding = {
+    top: number;
+    right: number;
+    bottom: number;
+    left: number;
+};
 
 export type ScaleKind = 'linear' | 'time';
 
@@ -14,14 +23,14 @@ export type ChartTheme = {
 };
 
 export type ChartDimensions = {
-    width: number;
+    width?: number;
     height: number;
-    padding?: Padding;
+    padding?: Partial<Padding>;
 };
-
 
 export type GridProps = {
     yTicks?: number;
+    yAxisId?: string;
 };
 
 export type AxisProps = {
@@ -29,6 +38,12 @@ export type AxisProps = {
     format?: (v: any) => string;
     showTicks?: boolean;
     showLine?: boolean;
+};
+
+export type YAxisProps = AxisProps & {
+    axisId: string;
+    side?: 'left' | 'right';
+    offset?: number;
 };
 
 export type DataSet = {
@@ -39,14 +54,32 @@ export type DataSet = {
     yAxisId?: string;
 };
 
+// Improved type definitions for scales
 export type XScale = d3.ScaleLinear<number, number> | d3.ScaleTime<number, number>;
 export type YScale = d3.ScaleLinear<number, number>;
+
+export type ScalesContextValue = {
+    xScale: XScale;
+    yScales: Record<string, YScale>;
+    innerW: number;
+    innerH: number;
+    padding: Padding;
+    theme: ChartTheme;
+};
 
 export type ChartProps = PropsWithChildren<{
     dimensions: ChartDimensions;
     dataDomain: { x: [number | Date, number | Date] };
     kinds?: { x: ScaleKind };
-    yDomains: Record<string, [number, number]>; // axisId -> domain
+    yDomains: Record<string, [number, number]>;
     niceY?: boolean;
     theme?: Partial<ChartTheme>;
 }>;
+
+export type SimpleLineChartProps = {
+    width?: number;
+    height: number;
+    dataSet: DataSet[];
+    xKind?: ScaleKind;
+    padding?: Partial<Padding>;
+};
