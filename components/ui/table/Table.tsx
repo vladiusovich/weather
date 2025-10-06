@@ -42,7 +42,7 @@ const Table = <T,>({ data, columns, isLoading = false }: TableProps<T>) => {
 
             {/* Table Rows */}
             {!hasData && <NoData />}
-            {isLoading && !hasData && <Loader size='small' />}
+            <Loader size='small' isloading={isLoading && !hasData} />
             {hasData && data.map((row, rowIndex) => (
                 <XStack
                     key={rowIndex}

@@ -11,7 +11,6 @@ import Skeleton from './skeleton/Skeleton';
 // TODO: refactor it
 import Typo from './typo/Typo';
 import Table from './table/Table';
-import Fab from './fab/Fab';
 import DatePickerSelector from './datapicker/index';
 import ScreenWrapper from './layoutWrapper/LayoutWrapper';
 import Papper from './paper/Paper';
@@ -31,7 +30,6 @@ const UI = {
     DatePicker: DatePickerSelector,
 
     Button,
-    Fab,
 
     XStack,
     YStack,

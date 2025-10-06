@@ -13,7 +13,7 @@ import { Lines } from './lines/Lines';
 import YAxisList from './yAxis/YAxisList';
 import ChartRoot from './ChartRoot';
 
-export const LineChart: React.FC<SimpleLineChartProps> = ({
+const LineChart: React.FC<SimpleLineChartProps> = ({
     width,
     height,
     dataSet,
@@ -62,3 +62,5 @@ export const LineChart: React.FC<SimpleLineChartProps> = ({
         </ChartRoot>
     );
 };
+
+export default LineChart;

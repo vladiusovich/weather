@@ -1,11 +1,9 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
 import UI from '@/components/ui';
-import { lineDataItem } from '@/components/charts';
 import { View } from 'react-native';
 import useAppStore from '@/hooks/useAppStore';
-import Format from '@/components/common/format';
-import { LineChart } from '../../charts/d3/lineChart/LineChart';
+import Charts from '@/components/charts';
 
 const getRandom = (min: number, max: number) =>
     Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1) + Math.ceil(min));
@@ -25,28 +23,6 @@ const dataL2 = generateData(daysCount, startDate, -105, 5);
 
 const HealthStatistic = (() => {
     const appStore = useAppStore();
-
-    const daily = appStore.weather.weatherData.daily;
-
-    const tempDataSet: lineDataItem[] = daily.map((d) => {
-        return {
-            value: d.temperature2mMax,
-            labelComponent: () => <Format.Date fontSize={'$1'} variant='shortDate' value={d.time} />,
-        };
-    });
-
-    const precipitations: lineDataItem[] = daily.map((d) => {
-        return {
-            value: d.precipitationProbabilityMean,
-            // labelComponent: () => <Format.Date fontSize={'$1'} variant='shortDate' value={d.time} />,
-        };
-    });
-
-    const pain = daily.map((p) => {
-        return {
-            value: getRandom(1, 10),
-        };
-    })
 
     const sets = [
         {
@@ -68,7 +44,7 @@ const HealthStatistic = (() => {
             Component={View}
         >
             <UI.Papper>
-                <LineChart
+                <Charts.LineChart
                     width={420}
                     height={500}
                     dataSet={sets}
