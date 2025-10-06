@@ -1,23 +1,23 @@
-import React, { useMemo } from 'react';
-import XAxis from './xAxis/XAxis';
-import Grid from './grid/Grid';
-import { SimpleLineChartProps } from './types';
+import React, { useMemo } from "react";
+import XAxis from "./xAxis/XAxis";
+import Grid from "./grid/Grid";
+import { SimpleLineChartProps } from "./types";
 import {
     extractXValues,
     groupYValuesByAxis,
     calculateYDomains,
     safeExtent1D
-} from './utils';
-import { CHART_CONSTANTS } from './constants';
-import { Lines } from './lines/Lines';
-import YAxisList from './yAxis/YAxisList';
-import ChartRoot from './ChartRoot';
+} from "./utils";
+import { CHART_CONSTANTS } from "./constants";
+import { Lines } from "./lines/Lines";
+import YAxisList from "./yAxis/YAxisList";
+import ChartRoot from "./ChartRoot";
 
 const LineChart: React.FC<SimpleLineChartProps> = ({
     width,
     height,
     dataSet,
-    xKind = 'linear',
+    xKind = "linear",
     padding,
     zoomPanConfig,
     enableGestures,
@@ -28,7 +28,7 @@ const LineChart: React.FC<SimpleLineChartProps> = ({
         const xValues = extractXValues(allPoints, xKind);
         const [xMin, xMax] = safeExtent1D(xValues);
 
-        return xKind === 'time'
+        return xKind === "time"
             ? [new Date(xMin), new Date(xMax)] as [Date, Date]
             : [xMin, xMax] as [number, number];
     }, [dataSet, xKind]);
@@ -43,7 +43,7 @@ const LineChart: React.FC<SimpleLineChartProps> = ({
 
     // Validate Y domains
     if (Object.keys(yDomains).length === 0) {
-        throw new Error('Chart requires at least one Y domain');
+        throw new Error("Chart requires at least one Y domain");
     }
 
     return (

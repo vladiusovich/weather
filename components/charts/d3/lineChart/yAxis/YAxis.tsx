@@ -1,10 +1,10 @@
 /* eslint-disable indent */
-import React, { useMemo } from 'react';
-import useChart from '../context/useChart';
-import { G, Line as SvgLine, Text as SvgText } from 'react-native-svg';
-import { YAxisProps } from '../types';
-import { getDefaultYFormatter } from '../utils';
-import { CHART_CONSTANTS } from '../constants';
+import React, { useMemo } from "react";
+import useChart from "../context/useChart";
+import { G, Line as SvgLine, Text as SvgText } from "react-native-svg";
+import { YAxisProps } from "../types";
+import { getDefaultYFormatter } from "../utils";
+import { CHART_CONSTANTS } from "../constants";
 
 export const YAxis: React.FC<YAxisProps> = ({
     axisId,
@@ -12,7 +12,7 @@ export const YAxis: React.FC<YAxisProps> = ({
     format,
     showTicks = true,
     showLine = true,
-    side = 'left',
+    side = "left",
     offset = 0,
 }) => {
     const { yScales, innerH, innerW, theme } = useChart();
@@ -35,16 +35,16 @@ export const YAxis: React.FC<YAxisProps> = ({
         [format]
     );
 
-    const xBase = useMemo(() => (side === 'left' ? -offset : innerW + offset),
+    const xBase = useMemo(() => (side === "left" ? -offset : innerW + offset),
         [side, offset, innerW]);
 
     const tickOffset = useMemo(() => ({
-        x1: side === 'left' ? -CHART_CONSTANTS.TICK_LENGTH : 0,
-        x2: side === 'left' ? 0 : CHART_CONSTANTS.TICK_LENGTH,
+        x1: side === "left" ? -CHART_CONSTANTS.TICK_LENGTH : 0,
+        x2: side === "left" ? 0 : CHART_CONSTANTS.TICK_LENGTH,
     }), [side]);
 
     const labelX = useMemo(() =>
-        side === 'left' ? -CHART_CONSTANTS.LABEL_OFFSET : CHART_CONSTANTS.LABEL_OFFSET,
+        side === "left" ? -CHART_CONSTANTS.LABEL_OFFSET : CHART_CONSTANTS.LABEL_OFFSET,
         [side]
     );
 
@@ -86,7 +86,7 @@ export const YAxis: React.FC<YAxisProps> = ({
                         x={labelX}
                         fontSize={CHART_CONSTANTS.FONT_SIZE}
                         fill={theme.labelColor}
-                        textAnchor={side === 'left' ? 'end' : 'start'}
+                        textAnchor={side === "left" ? "end" : "start"}
                         alignmentBaseline="middle"
                     >
                         {label}

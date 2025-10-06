@@ -1,6 +1,6 @@
-import { Tabs as NativeTabs } from 'expo-router';
-import React from 'react';
-import { useTheme } from 'tamagui';
+import { Tabs as NativeTabs } from "expo-router";
+import React from "react";
+import { useTheme } from "tamagui";
 
 interface StackProps {
     children?: React.ReactNode;

@@ -1,11 +1,11 @@
-import { useTranslation } from 'react-i18next';
-import { observer } from 'mobx-react-lite';
-import useAppStore from '@/hooks/useAppStore';
-import Format from '@/components/common/format';
-import ScrollableForecast from '../common/scrollableForecast/ScrollableForecast';
-import ForecastItem from '../common/scrollableForecast/ForecastItem';
-import { Calendar } from '@tamagui/lucide-icons';
-import { isSameDay, getNow } from '@/utils/datetime.helper';
+import { useTranslation } from "react-i18next";
+import { observer } from "mobx-react-lite";
+import useAppStore from "@/hooks/useAppStore";
+import Format from "@/components/common/format";
+import ScrollableForecast from "../common/scrollableForecast/ScrollableForecast";
+import ForecastItem from "../common/scrollableForecast/ForecastItem";
+import { Calendar } from "@tamagui/lucide-icons";
+import { isSameDay, getNow } from "@/utils/datetime.helper";
 
 const DailyForecast: React.FC = () => {
     const { t } = useTranslation();
@@ -15,7 +15,7 @@ const DailyForecast: React.FC = () => {
     const now = getNow();
     return (
         <ScrollableForecast
-            header={t('meteo.daily.nDayForecast.title')}
+            header={t("meteo.daily.nDayForecast.title")}
             headerIcon={<Calendar size={20} />}
         >
             {daily.map((i) => {

@@ -1,24 +1,24 @@
-import React, { useMemo } from 'react';
-import { View } from 'react-native';
-import Svg, { G } from 'react-native-svg';
-import { ChartContext } from './context/useChart';
-import { ChartProps, Padding } from './types';
+import React, { useMemo } from "react";
+import { View } from "react-native";
+import Svg, { G } from "react-native-svg";
+import { ChartContext } from "./context/useChart";
+import { ChartProps, Padding } from "./types";
 import {
     calculateOffsets,
     calculateYAxisOffsets,
     createXScale,
     createYScales
-} from './utils';
-import { DEFAULT_PADDING, DEFAULT_THEME } from './constants';
-import useCalculateChartSize from './hooks/useCalculateChartSize';
-import { useChartTransform } from './hooks/useChartTransform';
-import { GestureDetector, GestureHandlerRootView } from 'react-native-gesture-handler';
-import { useChartGestures } from './hooks/useChartGestures';
+} from "./utils";
+import { DEFAULT_PADDING, DEFAULT_THEME } from "./constants";
+import useCalculateChartSize from "./hooks/useCalculateChartSize";
+import { useChartTransform } from "./hooks/useChartTransform";
+import { GestureDetector, GestureHandlerRootView } from "react-native-gesture-handler";
+import { useChartGestures } from "./hooks/useChartGestures";
 
 export const ChartRoot: React.FC<ChartProps> = ({
     dimensions,
     dataDomain,
-    kinds = { x: 'linear' },
+    kinds = { x: "linear" },
     yDomains,
     niceY = true,
     theme,
@@ -66,8 +66,8 @@ export const ChartRoot: React.FC<ChartProps> = ({
     // Apply zoom and pan transformations to X domain
     const transformedXDomain = useMemo(() => {
         const [min, max] = dataDomain.x;
-        const minNum = kinds.x === 'time' ? +min : (min as number);
-        const maxNum = kinds.x === 'time' ? +max : (max as number);
+        const minNum = kinds.x === "time" ? +min : (min as number);
+        const maxNum = kinds.x === "time" ? +max : (max as number);
 
         const range = maxNum - minNum;
         const scaledRange = range / zoomPanState.scale;
@@ -80,7 +80,7 @@ export const ChartRoot: React.FC<ChartProps> = ({
         const newMin = adjustedCenter - scaledRange / 2;
         const newMax = adjustedCenter + scaledRange / 2;
 
-        return kinds.x === 'time'
+        return kinds.x === "time"
             ? [new Date(newMin), new Date(newMax)] as [Date, Date]
             : [newMin, newMax] as [number, number];
     }, [dataDomain.x, zoomPanState.scale, zoomPanState.translateX, kinds.x, innerDimensions.innerW]);
@@ -149,7 +149,7 @@ export const ChartRoot: React.FC<ChartProps> = ({
         <GestureHandlerRootView style={{ minHeight: height }}>
             <View
                 onLayout={e => onLayout(e.nativeEvent.layout)}
-                style={{ minHeight: height, position: 'relative' }}
+                style={{ minHeight: height, position: "relative" }}
             >
                 {enableGestures ? (
                     <GestureDetector gesture={gesture}>

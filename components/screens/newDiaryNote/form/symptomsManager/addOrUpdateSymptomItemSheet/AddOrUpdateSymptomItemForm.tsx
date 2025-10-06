@@ -1,13 +1,13 @@
-import { observer } from 'mobx-react-lite';
-import React, { useEffect } from 'react';
-import UI from '@/components/ui';
-import useCallbackIf from '@/hooks/useCallbackIf';
-import PainStrengthField from './fields/painStrengthField/PainStrengthField';
-import { useTranslation } from 'react-i18next';
-import SymptomTypeField from './fields/SymptomTypeField';
-import Form from '@/form';
-import { useFormContext } from '@/store/formStore/FormContext';
-import SymptomFormStore from '../../../store/SymptomFormStore';
+import { observer } from "mobx-react-lite";
+import React, { useEffect } from "react";
+import UI from "@/components/ui";
+import useCallbackIf from "@/hooks/useCallbackIf";
+import PainStrengthField from "./fields/painStrengthField/PainStrengthField";
+import { useTranslation } from "react-i18next";
+import SymptomTypeField from "./fields/SymptomTypeField";
+import Form from "@/form";
+import { useFormContext } from "@/store/formStore/FormContext";
+import SymptomFormStore from "../../../store/SymptomFormStore";
 
 interface Props {
     onClose: () => void;
@@ -25,11 +25,11 @@ const AddOrUpdateSymptomItemForm: React.FC<Props> = ({
         return () => form.reset();
     }, [form]);
 
-    const key = form.mode === 'add' ? 'addSymptom' : 'editSymptom';
+    const key = form.mode === "add" ? "addSymptom" : "editSymptom";
 
     return (
         <Form.Provider form={form}>
-            <UI.YStack gap={'$3'} flex={1}>
+            <UI.YStack gap={"$3"} flex={1}>
                 <UI.Typo.H6>
                     {t(`meteo.pages.newDiaryNote.${key}.header`)}
                 </UI.Typo.H6>
@@ -38,7 +38,7 @@ const AddOrUpdateSymptomItemForm: React.FC<Props> = ({
                     <PainStrengthField />
                 </UI.YStack>
             </UI.YStack>
-            <Form.Submit size={'$4'}>
+            <Form.Submit size={"$4"}>
                 {t(`meteo.pages.newDiaryNote.${key}.submit`)}
             </Form.Submit>
         </Form.Provider>

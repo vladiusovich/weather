@@ -1,12 +1,12 @@
-import SolarTransition from '@/components/screens/solarTransition/SolarTransition';
-import { Stack } from 'expo-router';
+import SolarTransition from "@/components/screens/solarTransition/SolarTransition";
+import { Stack } from "expo-router";
 
 const SolarTransitionScreen = () => {
     return (
         <>
             <Stack.Screen
                 options={{
-                    title: 'Sunrise and sunset',
+                    title: "Sunrise and sunset",
                 }}
             />
             <SolarTransition />

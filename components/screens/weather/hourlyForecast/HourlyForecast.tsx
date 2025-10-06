@@ -1,13 +1,13 @@
-import { useTranslation } from 'react-i18next';
-import { observer } from 'mobx-react-lite';
-import useAppStore from '@/hooks/useAppStore';
-import Format from '@/components/common/format';
-import ScrollableForecast from '../common/scrollableForecast/ScrollableForecast';
-import ForecastItem from '../common/scrollableForecast/ForecastItem';
+import { useTranslation } from "react-i18next";
+import { observer } from "mobx-react-lite";
+import useAppStore from "@/hooks/useAppStore";
+import Format from "@/components/common/format";
+import ScrollableForecast from "../common/scrollableForecast/ScrollableForecast";
+import ForecastItem from "../common/scrollableForecast/ForecastItem";
 import {
     Clock3,
-} from '@tamagui/lucide-icons'
-import { getNow, isSameHour } from '@/utils/datetime.helper';
+} from "@tamagui/lucide-icons"
+import { getNow, isSameHour } from "@/utils/datetime.helper";
 
 
 const HourlyForecast: React.FC = () => {
@@ -18,7 +18,7 @@ const HourlyForecast: React.FC = () => {
     const now = getNow();
     return (
         <ScrollableForecast
-            header={t('meteo.hourly.hourlyForecast.title')}
+            header={t("meteo.hourly.hourlyForecast.title")}
             headerIcon={<Clock3 size={20} />}
         >
             {hourly.map((i) => {

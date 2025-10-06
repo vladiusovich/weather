@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { LayoutRectangle } from 'react-native';
+import { useState } from "react";
+import { LayoutRectangle } from "react-native";
 
 export const useCalculateChartSize = () => {
     const [chartWidth, setChartWidth] = useState(0);

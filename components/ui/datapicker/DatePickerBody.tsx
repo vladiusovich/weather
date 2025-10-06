@@ -2,11 +2,11 @@ import {
     useDatePickerContext,
     type DatePickerProviderProps,
     type DPDay,
-} from '@rehookify/datepicker'
+} from "@rehookify/datepicker"
 
-import { ChevronLeft, ChevronRight } from '@tamagui/lucide-icons'
-import { useMemo, useState } from 'react'
-import { AnimatePresence, Button, H3, View } from 'tamagui'
+import { ChevronLeft, ChevronRight } from "@tamagui/lucide-icons"
+import { useMemo, useState } from "react"
+import { AnimatePresence, Button, H3, View } from "tamagui"
 
 import {
     HeaderTypeProvider,
@@ -18,8 +18,8 @@ import {
     CalendarHeader,
     type HeaderType,
     WeekView,
-} from './dateParts';
-import { useDateAnimation } from './useDateAnimation';
+} from "./dateParts";
+import { useDateAnimation } from "./useDateAnimation";
 
 const DateHeader = () => {
     const {
@@ -29,11 +29,11 @@ const DateHeader = () => {
     const { type: header, setHeader } = useHeaderType()
     const { year, month } = calendars[0]
 
-    if (header === 'year') {
+    if (header === "year") {
         return <YearRangeSlider />
     }
 
-    if (header === 'month') {
+    if (header === "month") {
         return (
             <H3 size="$7" self="center">
                 Select a month
@@ -69,7 +69,7 @@ const DayPicker = () => {
     const { days } = calendars[0]
 
     const { prevNextAnimation, prevNextAnimationKey } = useDateAnimation({
-        listenTo: 'month',
+        listenTo: "month",
     })
 
     // divide days array into sub arrays that each has 7 days, for better stylings
@@ -109,7 +109,7 @@ const DayPicker = () => {
                                         circular
                                         p={0}
                                         {...swapOnClick(dayButton(d))}
-                                        bg={d.selected ? '$background02' : 'transparent'}
+                                        bg={d.selected ? "$background02" : "transparent"}
                                         themeInverse={d.selected}
                                         disabled={!d.inCurrentMonth}
                                     >
@@ -117,7 +117,7 @@ const DayPicker = () => {
                                             fontWeight="500"
                                             fontSize="$4"
                                             color={
-                                                d.selected ? '$green9' : d.inCurrentMonth ? '$green9' : '$green6'
+                                                d.selected ? "$green9" : d.inCurrentMonth ? "$green9" : "$green6"
                                             }
                                         >
                                             {d.day}
@@ -133,8 +133,8 @@ const DayPicker = () => {
     )
 }
 
-const DatePickerBody = ({ config }: { config: DatePickerProviderProps['config'] }) => {
-    const [header, setHeader] = useState<HeaderType>('day')
+const DatePickerBody = ({ config }: { config: DatePickerProviderProps["config"] }) => {
+    const [header, setHeader] = useState<HeaderType>("day")
 
     return (
         <HeaderTypeProvider config={config} type={header} setHeader={setHeader}>
@@ -146,9 +146,9 @@ const DatePickerBody = ({ config }: { config: DatePickerProviderProps['config'] 
                 p="$4"
             >
                 <DateHeader />
-                {header === 'month' && <MonthPicker onChange={() => setHeader('day')} />}
-                {header === 'year' && <YearPicker onChange={() => setHeader('day')} />}
-                {header === 'day' && <DayPicker />}
+                {header === "month" && <MonthPicker onChange={() => setHeader("day")} />}
+                {header === "year" && <YearPicker onChange={() => setHeader("day")} />}
+                {header === "day" && <DayPicker />}
             </View>
         </HeaderTypeProvider>
     )

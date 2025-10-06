@@ -1,9 +1,9 @@
-import React from 'react';
-import UI from '@/components/ui';
-import { TextStyle } from 'tamagui';
+import React from "react";
+import UI from "@/components/ui";
+import { TextStyle } from "tamagui";
 import {
     Droplet,
-} from '@tamagui/lucide-icons'
+} from "@tamagui/lucide-icons"
 
 type HumidityProps = {
     value?: number | null;
@@ -11,10 +11,10 @@ type HumidityProps = {
 
 const Humidity: React.FC<HumidityProps> = ({ value, ...props }) => {
     return (
-        <UI.XStack gap='$0.5' items={'center'}>
+        <UI.XStack gap='$0.5' items={"center"}>
             <Droplet size={14} />
-            <UI.XStack items={'baseline'}>
-                <UI.Typo.Text {...props}>{value ?? 'N/A'}</UI.Typo.Text>
+            <UI.XStack items={"baseline"}>
+                <UI.Typo.Text {...props}>{value ?? "N/A"}</UI.Typo.Text>
                 <UI.Typo.Text fontSize='$1'>%</UI.Typo.Text>
             </UI.XStack>
         </UI.XStack>

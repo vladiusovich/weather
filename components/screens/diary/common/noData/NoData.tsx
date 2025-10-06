@@ -1,7 +1,7 @@
-import { observer } from 'mobx-react-lite';
-import UI from '@/components/ui';
-import { Annoyed } from '@tamagui/lucide-icons';
-import { useTranslation } from 'react-i18next';
+import { observer } from "mobx-react-lite";
+import UI from "@/components/ui";
+import { Annoyed } from "@tamagui/lucide-icons";
+import { useTranslation } from "react-i18next";
 
 const NoData: React.FC = () => {
     const { t } = useTranslation();
@@ -9,7 +9,7 @@ const NoData: React.FC = () => {
     return (
         <UI.Papper
             p='$4'
-            bg={'$background02'}
+            bg={"$background02"}
             flex={1}
             minH={250}
         >
@@ -22,7 +22,7 @@ const NoData: React.FC = () => {
                 >
                     <Annoyed size={60} />
                     <UI.Typo.Text>
-                        {t('common.noData.header')}
+                        {t("common.noData.header")}
                     </UI.Typo.Text>
                 </UI.YStack>
             </UI.YStack>

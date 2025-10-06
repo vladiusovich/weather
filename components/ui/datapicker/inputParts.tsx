@@ -1,8 +1,8 @@
-import { getFontSized } from '@tamagui/get-font-sized'
-import { getSpace } from '@tamagui/get-token'
-import { useState } from 'react'
-import type { SizeVariantSpreadFunction } from '@tamagui/web'
-import type { ColorTokens, FontSizeTokens } from 'tamagui'
+import { getFontSized } from "@tamagui/get-font-sized"
+import { getSpace } from "@tamagui/get-token"
+import { useState } from "react"
+import type { SizeVariantSpreadFunction } from "@tamagui/web"
+import type { ColorTokens, FontSizeTokens } from "tamagui"
 import {
     Label,
     Button as TButton,
@@ -18,10 +18,10 @@ import {
     useGetThemedIcon,
     useTheme,
     withStaticProperties,
-} from 'tamagui'
+} from "tamagui"
 
 const defaultContextValues = {
-    size: '$true',
+    size: "$true",
     scaleIcon: 1.2,
     color: undefined,
 } as const
@@ -33,34 +33,34 @@ export const InputContext = createStyledContext<{
 }>(defaultContextValues)
 
 export const defaultInputGroupStyles = {
-    size: '$true',
-    fontFamily: '$body',
+    size: "$true",
+    fontFamily: "$body",
     borderWidth: 1,
     outlineWidth: 0,
-    color: '$color',
+    color: "$color",
     ...(isWeb ? { tabIndex: 0 } : { focusable: true }),
-    borderColor: '$borderColor',
-    backgroundColor: '$color2',
+    borderColor: "$borderColor",
+    backgroundColor: "$color2",
     minWidth: 0,
-    hoverStyle: { borderColor: '$borderColorHover' },
+    hoverStyle: { borderColor: "$borderColorHover" },
     focusStyle: {
-        outlineColor: '$outlineColor',
+        outlineColor: "$outlineColor",
         outlineWidth: 2,
-        outlineStyle: 'solid',
-        borderColor: '$borderColorFocus',
+        outlineStyle: "solid",
+        borderColor: "$borderColorFocus",
     },
 } as const
 
 const InputGroupFrame = styled(XGroup, {
-    justify: 'space-between',
+    justify: "space-between",
     context: InputContext,
     variants: {
         unstyled: { false: defaultInputGroupStyles },
-        scaleIcon: { ':number': {} as any },
+        scaleIcon: { ":number": {} as any },
         applyFocusStyle: {
-            ':boolean': (val, { props }) => (val ? props.focusStyle || defaultInputGroupStyles.focusStyle : undefined),
+            ":boolean": (val, { props }) => (val ? props.focusStyle || defaultInputGroupStyles.focusStyle : undefined),
         },
-        size: { '...size': () => ({}) },
+        size: { "...size": () => ({}) },
     },
     defaultVariants: {
         // unstyled: process.env.TAMAGUI_HEADLESS === '1',
@@ -81,7 +81,7 @@ const InputGroupImpl = InputGroupFrame.styleable(({ children, ...rest }, ref) =>
     )
 })
 
-export const inputSizeVariant: SizeVariantSpreadFunction<any> = (val = '$true', extras) => {
+export const inputSizeVariant: SizeVariantSpreadFunction<any> = (val = "$true", extras) => {
     const paddingHorizontal = getSpace(val, { shift: -1, bounds: [2] })
     const fontStyle = getFontSized(val as any, extras)
     if (!isWeb && fontStyle) delete fontStyle.lineHeight
@@ -112,19 +112,19 @@ const InputImpl = InputFrame.styleable((props, ref) => {
 })
 
 const InputSection = styled(XGroup.Item, {
-    justify: 'center',
-    items: 'center',
+    justify: "center",
+    items: "center",
     context: InputContext,
 })
 
 const Button = styled(TButton, {
     context: InputContext,
-    justify: 'center',
-    items: 'center',
+    justify: "center",
+    items: "center",
     variants: {
         size: {
-            '...size': (val = '$true') =>
-                typeof val === 'number'
+            "...size": (val = "$true") =>
+                typeof val === "number"
                     ? { paddingHorizontal: 0, height: val, borderRadius: val * 0.2 }
                     : { paddingHorizontal: 0, height: val },
         },
@@ -132,12 +132,12 @@ const Button = styled(TButton, {
 })
 
 export const InputIconFrame = styled(View, {
-    justify: 'center',
-    items: 'center',
+    justify: "center",
+    items: "center",
     context: InputContext,
     variants: {
         size: {
-            '...size': (val, { tokens }) => {
+            "...size": (val, { tokens }) => {
                 return {
                     // paddingHorizontal: tokens.space[val],
                 }
@@ -147,16 +147,16 @@ export const InputIconFrame = styled(View, {
 })
 
 const getIconSize = (size: FontSizeTokens, scale: number) =>
-    (typeof size === 'number' ? size * 0.5 : getFontSize(size)) * scale
+    (typeof size === "number" ? size * 0.5 : getFontSize(size)) * scale
 
 const InputIcon = InputIconFrame.styleable<{
     scaleIcon?: number
     color?: ColorTokens | string
 }>(({ children, ...rest }, ref) => {
-    const { size = '$true', color: contextColor, scaleIcon = 1 } = InputContext.useStyledContext()
+    const { size = "$true", color: contextColor, scaleIcon = 1 } = InputContext.useStyledContext()
     const theme = useTheme()
     const color = getVariable(
-        contextColor || theme[contextColor as any]?.get('web') || theme.color10?.get('web')
+        contextColor || theme[contextColor as any]?.get("web") || theme.color10?.get("web")
     )
     const iconSize = getIconSize(size, scaleIcon)
     const getThemedIcon = useGetThemedIcon({ size: iconSize, color: color as any })
@@ -166,35 +166,35 @@ const InputIcon = InputIconFrame.styleable<{
 
 export const InputContainerFrame = styled(View, {
     context: InputContext,
-    flexDirection: 'column',
+    flexDirection: "column",
     variants: {
-        size: { '...size': () => ({}) },
-        color: { '...color': () => ({}) },
-        gapScale: { ':number': {} as any },
+        size: { "...size": () => ({}) },
+        color: { "...color": () => ({}) },
+        gapScale: { ":number": {} as any },
     },
     defaultVariants: {
-        size: '$4',
+        size: "$4",
     },
 })
 
 export const InputLabel = styled(Label, {
     context: InputContext,
     variants: {
-        size: { '...fontSize': getFontSized as any },
+        size: { "...fontSize": getFontSized as any },
     },
 })
 
 export const InputInfo = styled(Text, {
     context: InputContext,
-    color: '$color10',
+    color: "$color10",
     variants: {
         size: {
-            '...fontSize': (val, { font }) => {
+            "...fontSize": (val, { font }) => {
                 if (!font) return
                 return {
                     fontSize: font.size[val].val * 0.8,
                     lineHeight: font.lineHeight?.[val].val * 0.8,
-                    fontWeight: font.weight?.['$2'],
+                    fontWeight: font.weight?.["$2"],
                     letterSpacing: font.letterSpacing?.[val],
                     textTransform: font.transform?.[val],
                     fontStyle: font.style?.[val],

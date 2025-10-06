@@ -1,9 +1,9 @@
-import React, { useMemo } from 'react';
-import useChart from '../context/useChart';
-import { G, Line as SvgLine, Text as SvgText } from 'react-native-svg';
-import { AxisProps } from '../types';
-import { isTimeScale, getDefaultAxisFormatter } from '../utils';
-import { CHART_CONSTANTS } from '../constants';
+import React, { useMemo } from "react";
+import useChart from "../context/useChart";
+import { G, Line as SvgLine, Text as SvgText } from "react-native-svg";
+import { AxisProps } from "../types";
+import { isTimeScale, getDefaultAxisFormatter } from "../utils";
+import { CHART_CONSTANTS } from "../constants";
 
 const XAxis: React.FC<AxisProps> = ({
     ticks = CHART_CONSTANTS.DEFAULT_TICKS,
@@ -16,7 +16,7 @@ const XAxis: React.FC<AxisProps> = ({
     const isTime = useMemo(() => isTimeScale(xScale), [xScale]);
 
     const values = useMemo(() => {
-        if ('ticks' in xScale && typeof xScale.ticks === 'function') {
+        if ("ticks" in xScale && typeof xScale.ticks === "function") {
             return xScale.ticks(ticks);
         }
         return [];

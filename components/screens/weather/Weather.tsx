@@ -1,16 +1,16 @@
-import React, { useCallback, useEffect } from 'react';
-import { observer } from 'mobx-react-lite';
-import { RefreshControl, ScrollView } from 'react-native';
-import * as Location from 'expo-location';
-import useAppStore from '@/hooks/useAppStore';
-import UI from '@/components/ui';
-import AccessDenied from '../../common/accessDenied/AccessDenied';
-import { LocationCoords } from '@/types/LocationCoords';
-import CurrentWeatherStatus from './currentWeatherStatus/CurrentWeatherStatus';
-import HourlyForecast from './hourlyForecast/HourlyForecast';
-import DailyForecast from './dailyForecast/DailyForecast';
-import useRefreshController from '@/hooks/useRefreshController';
-import LocationStatus from './locationStatus/LocationStatus';
+import React, { useCallback, useEffect } from "react";
+import { observer } from "mobx-react-lite";
+import { RefreshControl, ScrollView } from "react-native";
+import * as Location from "expo-location";
+import useAppStore from "@/hooks/useAppStore";
+import UI from "@/components/ui";
+import AccessDenied from "../../common/accessDenied/AccessDenied";
+import { LocationCoords } from "@/types/LocationCoords";
+import CurrentWeatherStatus from "./currentWeatherStatus/CurrentWeatherStatus";
+import HourlyForecast from "./hourlyForecast/HourlyForecast";
+import DailyForecast from "./dailyForecast/DailyForecast";
+import useRefreshController from "@/hooks/useRefreshController";
+import LocationStatus from "./locationStatus/LocationStatus";
 
 // TODO: refactoring the module
 const Weather = observer(() => {
@@ -33,7 +33,7 @@ const Weather = observer(() => {
 
     useEffect(() => {
         (async () => {
-            if (status?.status !== 'granted') {
+            if (status?.status !== "granted") {
                 const result = await requestPermission();
                 if (!result.granted) {
                     return;
@@ -53,7 +53,7 @@ const Weather = observer(() => {
 
     if (status === null) return null;
 
-    if (status.status === 'denied') {
+    if (status.status === "denied") {
         return <AccessDenied type='geolocation' />
     };
 

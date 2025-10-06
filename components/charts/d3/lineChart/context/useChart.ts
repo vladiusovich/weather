@@ -1,5 +1,5 @@
-import { createContext, useContext } from 'react';
-import { XScale, YScale, Padding, ChartTheme } from '../types';
+import { createContext, useContext } from "react";
+import { XScale, YScale, Padding, ChartTheme } from "../types";
 
 type ChartContextType = {
     xScale: XScale;
@@ -15,7 +15,7 @@ export const ChartContext = createContext<ChartContextType | null>(null);
 
 const useChart = () => {
     const ctx = useContext(ChartContext);
-    if (!ctx) throw new Error('useChart must be used within <Chart>');
+    if (!ctx) throw new Error("useChart must be used within <Chart>");
     return ctx;
 };
 

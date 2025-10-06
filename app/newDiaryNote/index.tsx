@@ -1,6 +1,6 @@
-import NewDiaryNote from '@/components/screens/newDiaryNote/NewDiaryNote';
-import { Stack } from 'expo-router';
-import { useTranslation } from 'react-i18next';
+import NewDiaryNote from "@/components/screens/newDiaryNote/NewDiaryNote";
+import { Stack } from "expo-router";
+import { useTranslation } from "react-i18next";
 
 const NewDiaryNoteScreen = () => {
     const { t } = useTranslation();
@@ -8,7 +8,7 @@ const NewDiaryNoteScreen = () => {
         <>
             <Stack.Screen
                 options={{
-                    title: t('meteo.pages.newDiaryNote.header'),
+                    title: t("meteo.pages.newDiaryNote.header"),
                 }}
             />
             <NewDiaryNote />

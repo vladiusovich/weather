@@ -1,8 +1,8 @@
-import React, { useMemo } from 'react';
-import useChart from '../context/useChart';
-import { Line as SvgLine } from 'react-native-svg';
-import { GridProps } from '../types';
-import { CHART_CONSTANTS } from '../constants';
+import React, { useMemo } from "react";
+import useChart from "../context/useChart";
+import { Line as SvgLine } from "react-native-svg";
+import { GridProps } from "../types";
+import { CHART_CONSTANTS } from "../constants";
 
 export const Grid: React.FC<GridProps> = ({
     yTicks = CHART_CONSTANTS.DEFAULT_TICKS,

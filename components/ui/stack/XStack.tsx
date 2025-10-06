@@ -1,3 +1,3 @@
-import { XStack } from 'tamagui';
+import { XStack } from "tamagui";
 
 export default XStack;

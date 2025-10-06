@@ -7,10 +7,10 @@ import {
     DialogClose,
     XStack,
     YStack,
-} from 'tamagui';
-import { ReactNode } from 'react';
-import { Portal } from '@tamagui/portal';
-import Button from '../button/Button';
+} from "tamagui";
+import { ReactNode } from "react";
+import { Portal } from "@tamagui/portal";
+import Button from "../button/Button";
 
 // TODO: bad implementation
 type ModalDialogProps = {
@@ -30,8 +30,8 @@ const Modal = ({
     title,
     description,
     children,
-    cancelText = 'Cancel',
-    confirmText = 'OK',
+    cancelText = "Cancel",
+    confirmText = "OK",
     onCancel,
     onConfirm,
     showFooter = true,

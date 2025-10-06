@@ -1,5 +1,5 @@
-import { useState, useCallback, useMemo } from 'react';
-import { ZoomPanConfig, ZoomPanState, ZoomPanActions } from '../types';
+import { useState, useCallback, useMemo } from "react";
+import { ZoomPanConfig, ZoomPanState, ZoomPanActions } from "../types";
 
 const DEFAULT_CONFIG = {
     minScale: 0.5,

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Spinner, SpinnerProps } from 'tamagui';
-import YStack from '../stack/YStack';
+import React from "react";
+import { Spinner, SpinnerProps } from "tamagui";
+import YStack from "../stack/YStack";
 
 interface LoaderProps extends SpinnerProps {
     isloading: boolean;
@@ -8,8 +8,8 @@ interface LoaderProps extends SpinnerProps {
 
 const Loader: React.FC<LoaderProps> = ({
     isloading = false,
-    size = 'large',
-    color = '$green10',
+    size = "large",
+    color = "$green10",
     ...props
 }) => {
     if (!isloading) return null;

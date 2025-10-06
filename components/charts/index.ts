@@ -1,4 +1,4 @@
-import LineChart from './d3/lineChart/LineChart';
+import LineChart from "./d3/lineChart/LineChart";
 
 const Charts = {
     LineChart,

@@ -1,3 +1,3 @@
-import { YStack } from 'tamagui';
+import { YStack } from "tamagui";
 
 export default YStack;

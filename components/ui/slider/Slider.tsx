@@ -1,5 +1,5 @@
-import React from 'react';
-import { Slider as SliderComponent, SliderProps } from 'tamagui';
+import React from "react";
+import { Slider as SliderComponent, SliderProps } from "tamagui";
 
 const Slider: React.FC<SliderProps> = (props) => (
     <SliderComponent {...props}>

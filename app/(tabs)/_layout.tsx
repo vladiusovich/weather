@@ -1,7 +1,7 @@
-import Router from '@/components/route';
-import { BookHeart, CloudSun, ChartBar } from '@tamagui/lucide-icons'
-import { Tabs } from 'expo-router';
-import { GetThemeValueForKey } from 'tamagui';
+import Router from "@/components/route";
+import { BookHeart, CloudSun, ChartBar } from "@tamagui/lucide-icons"
+import { Tabs } from "expo-router";
+import { GetThemeValueForKey } from "tamagui";
 
 const TabsLayout = () => {
     return (
@@ -9,27 +9,27 @@ const TabsLayout = () => {
             <Tabs.Screen
                 name='index'
                 options={{
-                    title: 'Weather',
+                    title: "Weather",
                     tabBarIcon: ({ color }: { color: string }) => (
-                        <CloudSun color={color as GetThemeValueForKey<'color'>} strokeWidth={1} />
+                        <CloudSun color={color as GetThemeValueForKey<"color">} strokeWidth={1} />
                     ),
                 }}
             />
             <Tabs.Screen
                 name='diary'
                 options={{
-                    title: 'Diary',
+                    title: "Diary",
                     tabBarIcon: ({ color }: { color: string }) => (
-                        <BookHeart color={color as GetThemeValueForKey<'color'>} strokeWidth={1} />
+                        <BookHeart color={color as GetThemeValueForKey<"color">} strokeWidth={1} />
                     ),
                 }}
             />
             <Tabs.Screen
                 name='healthStatistic'
                 options={{
-                    title: 'Statistic',
+                    title: "Statistic",
                     tabBarIcon: ({ color }: { color: string }) => (
-                        <ChartBar color={color as GetThemeValueForKey<'color'>} strokeWidth={1} />
+                        <ChartBar color={color as GetThemeValueForKey<"color">} strokeWidth={1} />
                     ),
                 }}
             />

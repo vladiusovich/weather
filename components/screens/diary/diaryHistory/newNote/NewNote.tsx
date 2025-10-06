@@ -1,6 +1,6 @@
-import { observer } from 'mobx-react-lite';
-import useAppStore from '@/hooks/useAppStore';
-import React from 'react';
+import { observer } from "mobx-react-lite";
+import useAppStore from "@/hooks/useAppStore";
+import React from "react";
 
 // TODO: #44 implement create note
 const NewNote: React.FC = () => {

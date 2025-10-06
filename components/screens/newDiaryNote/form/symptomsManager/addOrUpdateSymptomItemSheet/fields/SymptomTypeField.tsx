@@ -1,9 +1,9 @@
-import UI, { SelectorOption } from '@/components/ui';
-import useAppStore from '@/hooks/useAppStore';
-import { useTranslation } from 'react-i18next';
-import { observer } from 'mobx-react-lite';
-import Form from '@/form';
-import { useEffect } from 'react';
+import UI, { SelectorOption } from "@/components/ui";
+import useAppStore from "@/hooks/useAppStore";
+import { useTranslation } from "react-i18next";
+import { observer } from "mobx-react-lite";
+import Form from "@/form";
+import { useEffect } from "react";
 
 const SymptomTypeField: React.FC = () => {
     const appStore = useAppStore();
@@ -25,8 +25,8 @@ const SymptomTypeField: React.FC = () => {
             name="symptom"
             component={UI.Selector}
             options={options}
-            label={t('meteo.pages.newDiaryNote.addSymptom.fields.symptom.title')}
-            palceholder={t('meteo.pages.newDiaryNote.addSymptom.fields.symptom.palceholder')}
+            label={t("meteo.pages.newDiaryNote.addSymptom.fields.symptom.title")}
+            palceholder={t("meteo.pages.newDiaryNote.addSymptom.fields.symptom.palceholder")}
         />
     );
 };

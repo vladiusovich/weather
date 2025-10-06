@@ -1,5 +1,5 @@
-import { PropsWithChildren } from 'react';
-import * as d3 from 'd3';
+import { PropsWithChildren } from "react";
+import * as d3 from "d3";
 
 export type Point = {
     x: number | Date;
@@ -13,7 +13,7 @@ export type Padding = {
     left: number;
 };
 
-export type ScaleKind = 'linear' | 'time';
+export type ScaleKind = "linear" | "time";
 
 export type ChartTheme = {
     axisColor: string;
@@ -42,7 +42,7 @@ export type AxisProps = {
 
 export type YAxisProps = AxisProps & {
     axisId: string;
-    side?: 'left' | 'right';
+    side?: "left" | "right";
     offset?: number;
 };
 

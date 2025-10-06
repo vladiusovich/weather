@@ -1,9 +1,9 @@
-import React from 'react';
-import YStack from '../stack/YStack';
-import XStack from '../stack/XStack';
-import { Text } from 'tamagui';
-import NoData from './NoData';
-import Loader from '../loader/Loader';
+import React from "react";
+import YStack from "../stack/YStack";
+import XStack from "../stack/XStack";
+import { Text } from "tamagui";
+import NoData from "./NoData";
+import Loader from "../loader/Loader";
 
 export type Column<T> = {
     key: keyof T;
@@ -22,7 +22,7 @@ const Table = <T,>({ data, columns, isLoading = false }: TableProps<T>) => {
 
     return (
         <YStack
-            minH={'$12'}
+            minH={"$12"}
         >
             {/* Table Header */}
             <XStack>
@@ -30,10 +30,10 @@ const Table = <T,>({ data, columns, isLoading = false }: TableProps<T>) => {
                     <YStack
                         key={index}
                         flex={1}
-                        items={'center'}
-                        paddingBlock={'$2'}
-                        borderBottomWidth={'$1'}
-                        borderColor={'$black5'}
+                        items={"center"}
+                        paddingBlock={"$2"}
+                        borderBottomWidth={"$1"}
+                        borderColor={"$black5"}
                     >
                         <Text>{col.title}</Text>
                     </YStack>
@@ -51,10 +51,10 @@ const Table = <T,>({ data, columns, isLoading = false }: TableProps<T>) => {
                         <YStack
                             key={colIndex}
                             flex={1}
-                            items={'center'}
-                            paddingBlock={'$2'}
-                            borderBottomWidth={'$1'}
-                            borderColor={'$black3'}
+                            items={"center"}
+                            paddingBlock={"$2"}
+                            borderBottomWidth={"$1"}
+                            borderColor={"$black3"}
                         >
                             {col.render
                                 ? col.render(row)

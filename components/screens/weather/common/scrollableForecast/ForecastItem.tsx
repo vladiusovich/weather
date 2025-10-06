@@ -1,6 +1,6 @@
-import UI from '@/components/ui';
-import { observer } from 'mobx-react-lite';
-import React from 'react';
+import UI from "@/components/ui";
+import { observer } from "mobx-react-lite";
+import React from "react";
 
 interface ForecastItemProps {
     children: React.ReactNode;
@@ -14,7 +14,7 @@ const ForecastItem: React.FC<ForecastItemProps> = ({
     return (
         <UI.View
             flex={1}
-            bg={current ? '$accent11' : '$background04'}
+            bg={current ? "$accent11" : "$background04"}
             rounded={40}
             px={16}
             py={16}

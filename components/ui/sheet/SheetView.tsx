@@ -1,12 +1,12 @@
-import React, { ReactNode } from 'react';
-import type { SheetProps as NativeSheetProps } from '@tamagui/sheet';
-import { Sheet } from '@tamagui/sheet';
-import useBackHandler from '@/hooks/useBackHandler';
+import React, { ReactNode } from "react";
+import type { SheetProps as NativeSheetProps } from "@tamagui/sheet";
+import { Sheet } from "@tamagui/sheet";
+import useBackHandler from "@/hooks/useBackHandler";
 // import AppStoreProvider from '@/store/provider/AppStoreProvider';
-import { FormStore } from '@/store/formStore/FormStore';
-import Form from '@/form';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useWindowDimensions } from 'react-native';
+import { FormStore } from "@/store/formStore/FormStore";
+import Form from "@/form";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useWindowDimensions } from "react-native";
 
 export type SheetProps<T extends Record<string, any>> = {
     /** Content to render inside the main sheet */
@@ -20,7 +20,7 @@ export type SheetProps<T extends Record<string, any>> = {
     /**  For Android you need to manually re-propagate any context when using modal. This is because React Native doesn't support portals yet */
     useContexProvider?: boolean
     formStore?: FormStore<T>,
-} & Omit<NativeSheetProps, 'snapPoints' | 'onOpenChange' | 'modal'>;
+} & Omit<NativeSheetProps, "snapPoints" | "onOpenChange" | "modal">;
 
 const SheetView = <T extends Record<string, any>>({
     children,
@@ -80,7 +80,7 @@ const SheetView = <T extends Record<string, any>>({
 
             <Sheet.Frame
                 p="$5"
-                bg={'$background08'}
+                bg={"$background08"}
                 mx={mx}
                 width={frameWidth}
             // alignSelf="center"

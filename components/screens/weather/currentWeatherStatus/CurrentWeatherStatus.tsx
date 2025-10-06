@@ -1,9 +1,9 @@
-import { useTranslation } from 'react-i18next';
-import UI from '@/components/ui';
-import { observer } from 'mobx-react-lite';
-import useAppStore from '@/hooks/useAppStore';
-import Format from '@/components/common/format';
-import SolarTransitionInfo from '../solarTransitionInfo/SolarTransitionInfo';
+import { useTranslation } from "react-i18next";
+import UI from "@/components/ui";
+import { observer } from "mobx-react-lite";
+import useAppStore from "@/hooks/useAppStore";
+import Format from "@/components/common/format";
+import SolarTransitionInfo from "../solarTransitionInfo/SolarTransitionInfo";
 
 const CurrentWeatherStatus: React.FC = () => {
     const { t } = useTranslation();
@@ -12,17 +12,17 @@ const CurrentWeatherStatus: React.FC = () => {
     const currentKpIndex = appStore.weather.geoMagneticStore.currentKpIndex;
 
     return (
-        <UI.Card padding='$4' bg={'$background02'}>
-            <UI.XStack gap={'$1'} justify={'space-between'}>
-                <UI.YStack justify={'space-between'} gap={'$2'}>
-                    <UI.YStack gap={'$1'}>
-                        <Format.WmoCode fontSize={'$1'} value={current?.weatherCode} />
-                        <Format.Temp fontSize={'$10'} value={current?.apparentTemperature} />
+        <UI.Card padding='$4' bg={"$background02"}>
+            <UI.XStack gap={"$1"} justify={"space-between"}>
+                <UI.YStack justify={"space-between"} gap={"$2"}>
+                    <UI.YStack gap={"$1"}>
+                        <Format.WmoCode fontSize={"$1"} value={current?.weatherCode} />
+                        <Format.Temp fontSize={"$10"} value={current?.apparentTemperature} />
                     </UI.YStack>
 
-                    <UI.XStack gap={'$2'}>
+                    <UI.XStack gap={"$2"}>
                         <UI.Typo.Text>
-                            {t('meteo.glossary.apparent_temperature')}
+                            {t("meteo.glossary.apparent_temperature")}
                         </UI.Typo.Text>
                         <Format.Temp value={current?.apparentTemperature} />
                     </UI.XStack>
@@ -32,14 +32,14 @@ const CurrentWeatherStatus: React.FC = () => {
                             {current?.temperature2mMax && (
                                 <UI.XStack>
                                     <UI.Typo.Text>
-                                        {t('meteo.glossary.temperature_2m_max')}
+                                        {t("meteo.glossary.temperature_2m_max")}
                                     </UI.Typo.Text><Format.Temp value={current?.temperature2mMax} />
                                 </UI.XStack>
                             )}
                             {current?.temperature2mMax && (
                                 <UI.XStack>
                                     <UI.Typo.Text>
-                                        {t('meteo.glossary.temperature_2m_min')}
+                                        {t("meteo.glossary.temperature_2m_min")}
                                     </UI.Typo.Text>
                                     <Format.Temp value={current?.temperature2mMin} />
                                 </UI.XStack>
@@ -48,7 +48,7 @@ const CurrentWeatherStatus: React.FC = () => {
                     )}
                 </UI.YStack>
 
-                <UI.YStack gap={'$2'} items={'flex-end'}>
+                <UI.YStack gap={"$2"} items={"flex-end"}>
                     <Format.KIndex
                         value={currentKpIndex}
                     />

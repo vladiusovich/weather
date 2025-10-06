@@ -1,7 +1,7 @@
-import Format from '@/components/common/format';
-import UI, { Column } from '@/components/ui';
-import useAppStore from '@/hooks/useAppStore';
-import { observer } from 'mobx-react-lite';
+import Format from "@/components/common/format";
+import UI, { Column } from "@/components/ui";
+import useAppStore from "@/hooks/useAppStore";
+import { observer } from "mobx-react-lite";
 
 type RenderType = { time: string; sunrise: string; sunset: string; daylight: string; };
 
@@ -19,23 +19,23 @@ const SolarTransition = () => {
 
     const columns: Column<RenderType>[] = [
         {
-            key: 'time',
-            title: 'Date',
+            key: "time",
+            title: "Date",
             render: (i => <Format.Date value={i.time} variant='date' />)
         },
         {
-            key: 'sunrise',
-            title: 'Sunrise',
+            key: "sunrise",
+            title: "Sunrise",
             render: (i => <Format.Date value={i.sunrise} variant='time' />)
         },
         {
-            key: 'sunset',
-            title: 'Sunset',
+            key: "sunset",
+            title: "Sunset",
             render: (i => <Format.Date value={i.sunset} variant='time' />)
         },
         {
-            key: 'daylight',
-            title: 'Daylight',
+            key: "daylight",
+            title: "Daylight",
         },
     ];
 

@@ -1,7 +1,7 @@
-import { useCallback } from 'react';
-import { Gesture } from 'react-native-gesture-handler';
-import { runOnJS, useSharedValue } from 'react-native-reanimated';
-import { ZoomPanState } from '../types';
+import { useCallback } from "react";
+import { Gesture } from "react-native-gesture-handler";
+import { runOnJS, useSharedValue } from "react-native-reanimated";
+import { ZoomPanState } from "../types";
 
 type UseChartGesturesProps = {
     zoomPanState: ZoomPanState;

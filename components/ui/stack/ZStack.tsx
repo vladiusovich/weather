@@ -1,3 +1,3 @@
-import { ZStack } from 'tamagui';
+import { ZStack } from "tamagui";
 
 export default ZStack;

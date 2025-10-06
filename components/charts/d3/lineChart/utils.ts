@@ -1,6 +1,6 @@
-import * as d3 from 'd3';
-import { XScale, YScale, ScaleKind } from './types';
-import { CHART_CONSTANTS } from './constants';
+import * as d3 from "d3";
+import { XScale, YScale, ScaleKind } from "./types";
+import { CHART_CONSTANTS } from "./constants";
 
 /**
  * Type guard to check if scale is a time scale
@@ -46,7 +46,7 @@ export const getDefaultAxisFormatter = (
     customFormat?: (v: any) => string
 ): (v: any) => string => {
     if (customFormat) return customFormat;
-    return isTime ? d3.timeFormat('%d.%m') : (v: number) => String(v);
+    return isTime ? d3.timeFormat("%d.%m") : (v: number) => String(v);
 };
 
 /**
@@ -67,7 +67,7 @@ export const createXScale = (
     domain: [number | Date, number | Date],
     rangeWidth: number
 ): XScale => {
-    if (kind === 'time') {
+    if (kind === "time") {
         const timeDomain = domain.map(v =>
             v instanceof Date ? v : new Date(v)
         ) as [Date, Date];
@@ -106,7 +106,7 @@ export const extractXValues = (
     kind: ScaleKind
 ): number[] => {
     return points.map(p =>
-        kind === 'time' ? +new Date(p.x as any) : (p.x as number)
+        kind === "time" ? +new Date(p.x as any) : (p.x as number)
     );
 };
 
@@ -119,7 +119,7 @@ export const groupYValuesByAxis = (
     const groups: Record<string, number[]> = {};
 
     dataSets.forEach(dataSet => {
-        const id = dataSet.yAxisId ?? 'y0';
+        const id = dataSet.yAxisId ?? "y0";
         if (!groups[id]) groups[id] = [];
         dataSet.data.forEach(point => groups[id].push(point.y));
     });

@@ -1,7 +1,7 @@
-import { observer } from 'mobx-react-lite';
-import React from 'react';
-import UI from '@/components/ui';
-import Form from '@/form';
+import { observer } from "mobx-react-lite";
+import React from "react";
+import UI from "@/components/ui";
+import Form from "@/form";
 
 const CommentField: React.FC = () => {
     return (

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Line } from './Line';
-import { DataSet } from '../types';
+import React from "react";
+import { Line } from "./Line";
+import { DataSet } from "../types";
 
 export const Lines: React.FC<{ dataSet: DataSet[] }> = ({ dataSet }) => (
     <>

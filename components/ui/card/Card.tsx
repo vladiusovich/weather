@@ -1,3 +1,3 @@
-import { Card } from 'tamagui';
+import { Card } from "tamagui";
 
 export default Card;

@@ -1,12 +1,12 @@
-import React from 'react';
-import { Check, ChevronDown, ChevronUp } from '@tamagui/lucide-icons';
-import type { SelectProps } from 'tamagui';
+import React from "react";
+import { Check, ChevronDown, ChevronUp } from "@tamagui/lucide-icons";
+import type { SelectProps } from "tamagui";
 import {
     Adapt,
     Select,
     Sheet,
     YStack,
-} from 'tamagui';
+} from "tamagui";
 // import useBackHandler from '@/hooks/useBackHandler';
 
 export interface SelectorOption {

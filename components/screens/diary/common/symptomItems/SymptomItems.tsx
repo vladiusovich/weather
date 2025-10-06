@@ -1,8 +1,8 @@
-import UI from '@/components/ui';
-import { Symptom } from '@/types/diary/DiaryHistoryItem';
-import React from 'react';
-import SymptomChip from './SymptomChip';
-import FeelingGood from './FeelingGood';
+import UI from "@/components/ui";
+import { Symptom } from "@/types/diary/DiaryHistoryItem";
+import React from "react";
+import SymptomChip from "./SymptomChip";
+import FeelingGood from "./FeelingGood";
 
 interface SymptomItemsProps {
     data: Symptom[];

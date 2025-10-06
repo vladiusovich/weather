@@ -1,5 +1,5 @@
-import React from 'react';
-import type { IconProps } from '@tamagui/helpers-icon';
+import React from "react";
+import type { IconProps } from "@tamagui/helpers-icon";
 import {
     Sun,
     Cloudy,
@@ -8,7 +8,7 @@ import {
     CloudRain,
     CloudSnow,
     CloudLightning
-} from '@tamagui/lucide-icons'
+} from "@tamagui/lucide-icons"
 
 const iconMapper: Record<number, typeof Sun> = {
     0: Sun,                      // Clear sky

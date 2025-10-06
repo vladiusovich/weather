@@ -1,9 +1,9 @@
-import type { DatePickerProviderProps } from '@rehookify/datepicker'
-import { DatePickerProvider, useDatePickerContext } from '@rehookify/datepicker'
-import { getFontSized } from '@tamagui/get-font-sized'
-import { Calendar, ChevronLeft, ChevronRight, X } from '@tamagui/lucide-icons'
-import type { GestureReponderEvent, ViewProps } from '@tamagui/web'
-import type { PopoverProps } from 'tamagui'
+import type { DatePickerProviderProps } from "@rehookify/datepicker"
+import { DatePickerProvider, useDatePickerContext } from "@rehookify/datepicker"
+import { getFontSized } from "@tamagui/get-font-sized"
+import { Calendar, ChevronLeft, ChevronRight, X } from "@tamagui/lucide-icons"
+import type { GestureReponderEvent, ViewProps } from "@tamagui/web"
+import type { PopoverProps } from "tamagui"
 import {
     Adapt,
     AnimatePresence,
@@ -15,11 +15,11 @@ import {
     isWeb,
     styled,
     withStaticProperties,
-} from 'tamagui'
-import { ReactNode, useEffect, useRef } from 'react'
+} from "tamagui"
+import { ReactNode, useEffect, useRef } from "react"
 
-import { Input } from './inputParts'
-import { useDateAnimation } from './useDateAnimation'
+import { Input } from "./inputParts"
+import { useDateAnimation } from "./useDateAnimation"
 
 //
 // Helper to swap the native `onClick` to `onPress` (avoiding mutation)
@@ -31,11 +31,11 @@ export function swapOnClick<D extends { onClick?: any }>(d: D): D & { onPress?: 
 //
 // Header Context and Provider
 //
-export type HeaderType = 'day' | 'month' | 'year'
+export type HeaderType = "day" | "month" | "year"
 
 export const { Provider: HeaderStyleTypeProvider, useStyledContext: useHeaderType } =
     createStyledContext({
-        type: 'day',
+        type: "day",
         setHeader: (_: HeaderType) => { },
     })
 
@@ -46,7 +46,7 @@ export const HeaderTypeProvider = ({
     children,
     ...rest
 }: {
-    config: DatePickerProviderProps['config']
+    config: DatePickerProviderProps["config"]
     type: HeaderType
     setHeader: (type: HeaderType) => void
     children: ReactNode
@@ -71,7 +71,7 @@ const DatePickerImpl = (props: DatePickerProps) => {
             const controller = new AbortController()
             const handleScroll = () => popoverRef.current?.close()
 
-            document.body.addEventListener('scroll', handleScroll, {
+            document.body.addEventListener("scroll", handleScroll, {
                 signal: controller.signal,
             })
 
@@ -104,13 +104,13 @@ const DatePickerImpl = (props: DatePickerProps) => {
 // Popover Content styling
 //
 const DatePickerContent = styled(Popover.Content, {
-    animation: 'quick',
+    animation: "quick",
     variants: {
         unstyled: {
             false: {
                 padding: 12,
                 borderWidth: 1,
-                borderColor: '$borderColor',
+                borderColor: "$borderColor",
                 enterStyle: { y: -10, opacity: 0 },
                 exitStyle: { y: -10, opacity: 0 },
                 elevate: true,
@@ -118,7 +118,7 @@ const DatePickerContent = styled(Popover.Content, {
         },
     } as const,
     defaultVariants: {
-        unstyled: process.env.TAMAGUI_HEADLESS === '1',
+        unstyled: process.env.TAMAGUI_HEADLESS === "1",
     },
 })
 
@@ -127,7 +127,7 @@ export const DatePicker = withStaticProperties(DatePickerImpl, {
     Content: withStaticProperties(DatePickerContent, {
         Arrow: styled(Popover.Arrow, {
             borderWidth: 1,
-            borderColor: '$borderColor',
+            borderColor: "$borderColor",
         }),
     }),
 })
@@ -142,7 +142,7 @@ type DatePickerInputProps = {
 
 export const DatePickerInput = Input.Area.styleable<DatePickerInputProps>(
     (props, ref) => {
-        const { value, onButtonPress, size = '$3', onReset, ...rest } = props
+        const { value, onButtonPress, size = "$3", onReset, ...rest } = props
         return (
             <View minW="100%">
                 <Input cursor="pointer" onPress={onButtonPress} size={size}>
@@ -177,15 +177,15 @@ export const DatePickerInput = Input.Area.styleable<DatePickerInputProps>(
 // Sizable Text component
 //
 export const SizableText = styled(Text, {
-    name: 'SizableText',
-    fontFamily: '$body',
+    name: "SizableText",
+    fontFamily: "$body",
     variants: {
         size: {
-            '...fontSize': getFontSized,
+            "...fontSize": getFontSized,
         },
     } as const,
     defaultVariants: {
-        size: '$true',
+        size: "$true",
     },
 })
 
@@ -203,7 +203,7 @@ export const MonthPicker = ({
     } = useDatePickerContext()
 
     const { prevNextAnimation, prevNextAnimationKey } = useDateAnimation({
-        listenTo: 'year',
+        listenTo: "year",
     })
 
     return (
@@ -222,12 +222,12 @@ export const MonthPicker = ({
                         key={month.$date.toString()}
                         themeInverse={month.active}
                         flexBasis={90}
-                        bg={month.active ? '$background02' : 'transparent'}
+                        bg={month.active ? "$background02" : "transparent"}
                         chromeless
                         p={0}
                         {...swapOnClick(monthButton(month, { onClick: onChange as any }))}
                     >
-                        <Button.Text color={'$green9'}>
+                        <Button.Text color={"$green9"}>
                             {month.month}
                         </Button.Text>
                     </Button>
@@ -252,7 +252,7 @@ export const YearPicker = ({
     const selectedYear = calendars[0].year
 
     const { prevNextAnimation, prevNextAnimationKey } = useDateAnimation({
-        listenTo: 'years',
+        listenTo: "years",
     })
 
     return (
@@ -272,12 +272,12 @@ export const YearPicker = ({
                         themeInverse={year.year === Number(selectedYear)}
                         flexBasis="30%"
                         grow={1}
-                        bg={year.year === Number(selectedYear) ? '$background02' : 'transparent'}
+                        bg={year.year === Number(selectedYear) ? "$background02" : "transparent"}
                         chromeless
                         p={0}
                         {...swapOnClick(yearButton(year, { onClick: onChange as any }))}
                     >
-                        <Button.Text color={'$green9'}>
+                        <Button.Text color={"$green9"}>
                             {year.year}
                         </Button.Text>
                     </Button>
@@ -336,13 +336,13 @@ export const YearSlider = () => {
                 </Button.Icon>
             </Button>
             <SizableText
-                onPress={() => setHeader('year')}
+                onPress={() => setHeader("year")}
                 selectable
                 tabIndex={0}
                 size="$6"
                 cursor="pointer"
                 color="$color11"
-                hoverStyle={{ color: '$color12' }}
+                hoverStyle={{ color: "$color12" }}
             >
                 {year}
             </SizableText>
@@ -365,27 +365,27 @@ export const CalendarHeader = ({
 }: {
     year: string
     month: string
-    setHeader: (header: 'year' | 'month') => void
+    setHeader: (header: "year" | "month") => void
 }) => (
     <View flexDirection="column" height={50} items="center">
         <SizableText
-            onPress={() => setHeader('year')}
+            onPress={() => setHeader("year")}
             tabIndex={0}
             size="$4"
             cursor="pointer"
             color="$color11"
-            hoverStyle={{ color: '$color12' }}
+            hoverStyle={{ color: "$color12" }}
         >
             {year}
         </SizableText>
         <SizableText
-            onPress={() => setHeader('month')}
+            onPress={() => setHeader("month")}
             tabIndex={0}
             cursor="pointer"
             size="$6"
             color="$green9"
             fontWeight="bold"
-            hoverStyle={{ color: '$green10' }}
+            hoverStyle={{ color: "$green10" }}
         >
             {month}
         </SizableText>
@@ -413,5 +413,5 @@ export const WeekView = ({
 
 // Type for DatePicker component props
 type DatePickerProps = PopoverProps & {
-    config: DatePickerProviderProps['config']
+    config: DatePickerProviderProps["config"]
 }

@@ -1,7 +1,7 @@
-import React from 'react';
-import UI from '@/components/ui';
-import { useTranslation } from 'react-i18next';
-import { TextStyle } from 'tamagui';
+import React from "react";
+import UI from "@/components/ui";
+import { useTranslation } from "react-i18next";
+import { TextStyle } from "tamagui";
 
 type WmoCodeProps = {
     value?: number | null;

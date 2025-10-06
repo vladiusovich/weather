@@ -1,21 +1,21 @@
-import { useState } from 'react';
-import { DatePicker, DatePickerInput } from './dateParts';
-import DatePickerBody from './DatePickerBody';
-import { DatePickerProviderProps } from '@rehookify/datepicker';
-import { DATE_FORMAT, formatDate, toDate } from '@/utils/datetime.helper';
-import useBackHandler from '@/hooks/useBackHandler';
-import useModalController from '@/hooks/useModalController';
+import { useState } from "react";
+import { DatePicker, DatePickerInput } from "./dateParts";
+import DatePickerBody from "./DatePickerBody";
+import { DatePickerProviderProps } from "@rehookify/datepicker";
+import { DATE_FORMAT, formatDate, toDate } from "@/utils/datetime.helper";
+import useBackHandler from "@/hooks/useBackHandler";
+import useModalController from "@/hooks/useModalController";
 
 
 interface DatePickerProps {
     value?: string;
     onValueChange: (d: Date[]) => void;
-    config?: DatePickerProviderProps['config'];
+    config?: DatePickerProviderProps["config"];
 }
 
 
 export const DatePickerSelector: React.FC<DatePickerProps> = ({
-    value = '',
+    value = "",
     onValueChange,
     config,
 }) => {
@@ -36,7 +36,7 @@ export const DatePickerSelector: React.FC<DatePickerProps> = ({
         onValueChange([]);
     }
 
-    const initConfig: DatePickerProviderProps['config'] = {
+    const initConfig: DatePickerProviderProps["config"] = {
         selectedDates,
         onDatesChange,
         calendar: {
@@ -52,7 +52,7 @@ export const DatePickerSelector: React.FC<DatePickerProps> = ({
             <DatePicker.Trigger asChild>
                 <DatePickerInput
                     placeholder="Select Date"
-                    value={formated ?? ''}
+                    value={formated ?? ""}
                     onReset={onReset}
                     onButtonPress={onOpen}
                 />

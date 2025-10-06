@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
-import { Animated, Easing, StyleSheet } from 'react-native';
-import { Stack } from 'tamagui';
-import { LinearGradient } from 'tamagui/linear-gradient';
+import React, { useEffect, useRef } from "react";
+import { Animated, Easing, StyleSheet } from "react-native";
+import { Stack } from "tamagui";
+import { LinearGradient } from "tamagui/linear-gradient";
 
 const Skeleton: React.FC<{ height?: number }> = ({ height = 80 }) => {
     const shimmerAnim = useRef(new Animated.Value(0)).current;
@@ -34,7 +34,7 @@ const Skeleton: React.FC<{ height?: number }> = ({ height = 80 }) => {
             overflow="hidden"
             position="relative"
             borderWidth={1}
-            borderColor={'rgba(184, 184, 184, 0.1)'}
+            borderColor={"rgba(184, 184, 184, 0.1)"}
         >
             <Animated.View
                 style={[
@@ -45,7 +45,7 @@ const Skeleton: React.FC<{ height?: number }> = ({ height = 80 }) => {
                 ]}
             >
                 <LinearGradient
-                    colors={['transparent', '$background04', 'transparent']}
+                    colors={["transparent", "$background04", "transparent"]}
                     start={[0, 0]}
                     end={[1, 0]}
                     style={StyleSheet.absoluteFill}

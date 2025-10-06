@@ -29,8 +29,8 @@ export const DEFAULT_PADDING = {
 
 // Default theme
 export const DEFAULT_THEME = {
-    axisColor: '#bcbcbc8e',
-    gridColor: '#ffffff21',
-    lineColor: '#2563eb',
-    labelColor: '#c5c5c5ff',
+    axisColor: "#bcbcbc8e",
+    gridColor: "#ffffff21",
+    lineColor: "#2563eb",
+    labelColor: "#c5c5c5ff",
 } as const;

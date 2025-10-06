@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button as UiButton, ButtonProps } from 'tamagui';
+import React from "react";
+import { Button as UiButton, ButtonProps } from "tamagui";
 
 const Button: React.FC<ButtonProps> = ({
     disabled = false,
@@ -8,8 +8,8 @@ const Button: React.FC<ButtonProps> = ({
 
     return <UiButton
         {...props}
-        bg={disabled ? '$black3' : undefined}
-        color={disabled ? '$white10' : undefined}
+        bg={disabled ? "$black3" : undefined}
+        color={disabled ? "$white10" : undefined}
         disabled={disabled}
     />
 };

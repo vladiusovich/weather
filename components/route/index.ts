@@ -1,5 +1,5 @@
-import Stack from './Stack';
-import Tabs from './Tabs';
+import Stack from "./Stack";
+import Tabs from "./Tabs";
 
 const Router = {
     Stack,

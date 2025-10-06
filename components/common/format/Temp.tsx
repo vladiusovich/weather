@@ -1,13 +1,13 @@
-import React from 'react';
-import UI from '@/components/ui';
-import { TextStyle } from 'tamagui';
+import React from "react";
+import UI from "@/components/ui";
+import { TextStyle } from "tamagui";
 
 type TempProps = {
     value?: string | number | null;
     unit?: string;
 } & TextStyle;
 
-const TEMP_SYMBOL = '°';
+const TEMP_SYMBOL = "°";
 
 const Temp: React.FC<TempProps> = ({ unit, value, ...props }) => {
     if (!value) {

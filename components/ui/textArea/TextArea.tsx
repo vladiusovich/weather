@@ -1,6 +1,6 @@
-import { TextArea as UITextArea, TextAreaProps } from 'tamagui'
+import { TextArea as UITextArea, TextAreaProps } from "tamagui"
 
-interface TextAreaPropsEx extends Omit<TextAreaProps, 'onChangeText'> {
+interface TextAreaPropsEx extends Omit<TextAreaProps, "onChangeText"> {
     onValueChange: () => void;
 }
 

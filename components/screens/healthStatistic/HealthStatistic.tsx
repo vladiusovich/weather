@@ -1,9 +1,9 @@
-import React from 'react';
-import { observer } from 'mobx-react-lite';
-import UI from '@/components/ui';
-import { View } from 'react-native';
-import useAppStore from '@/hooks/useAppStore';
-import Charts from '@/components/charts';
+import React from "react";
+import { observer } from "mobx-react-lite";
+import UI from "@/components/ui";
+import { View } from "react-native";
+import useAppStore from "@/hooks/useAppStore";
+import Charts from "@/components/charts";
 
 const getRandom = (min: number, max: number) =>
     Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1) + Math.ceil(min));
@@ -27,15 +27,15 @@ const HealthStatistic = (() => {
     const sets = [
         {
             data: dataH,
-            color: '#de6060ff',
+            color: "#de6060ff",
         },
         {
             data: dataL,
-            color: '#3767b5ff',
+            color: "#3767b5ff",
         },
         {
             data: dataL2,
-            color: '#76b537ff',
+            color: "#76b537ff",
         }
     ];
 
