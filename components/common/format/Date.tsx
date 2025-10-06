@@ -24,7 +24,7 @@ const format = (date: string, variant: DateVariantType) => {
         case "dayOfWeek":
             return getDayOfWeek(date);
     }
-}
+};
 
 const Date: React.FC<DateProps> = ({
     value,

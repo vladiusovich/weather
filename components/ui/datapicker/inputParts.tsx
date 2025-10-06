@@ -1,8 +1,8 @@
-import { getFontSized } from "@tamagui/get-font-sized"
-import { getSpace } from "@tamagui/get-token"
-import { useState } from "react"
-import type { SizeVariantSpreadFunction } from "@tamagui/web"
-import type { ColorTokens, FontSizeTokens } from "tamagui"
+import { getFontSized } from "@tamagui/get-font-sized";
+import { getSpace } from "@tamagui/get-token";
+import { useState } from "react";
+import type { SizeVariantSpreadFunction } from "@tamagui/web";
+import type { ColorTokens, FontSizeTokens } from "tamagui";
 import {
     Label,
     Button as TButton,
@@ -18,19 +18,19 @@ import {
     useGetThemedIcon,
     useTheme,
     withStaticProperties,
-} from "tamagui"
+} from "tamagui";
 
 const defaultContextValues = {
     size: "$true",
     scaleIcon: 1.2,
     color: undefined,
-} as const
+} as const;
 
 export const InputContext = createStyledContext<{
     size: FontSizeTokens
     scaleIcon: number
     color?: ColorTokens | string
-}>(defaultContextValues)
+}>(defaultContextValues);
 
 export const defaultInputGroupStyles = {
     size: "$true",
@@ -49,7 +49,7 @@ export const defaultInputGroupStyles = {
         outlineStyle: "solid",
         borderColor: "$borderColorFocus",
     },
-} as const
+} as const;
 
 const InputGroupFrame = styled(XGroup, {
     justify: "space-between",
@@ -65,39 +65,39 @@ const InputGroupFrame = styled(XGroup, {
     defaultVariants: {
         // unstyled: process.env.TAMAGUI_HEADLESS === '1',
     },
-})
+});
 
 const FocusContext = createStyledContext({
     setFocused: (_val: boolean) => { },
     focused: false,
-})
+});
 
 const InputGroupImpl = InputGroupFrame.styleable(({ children, ...rest }, ref) => {
-    const [focused, setFocused] = useState(false)
+    const [focused, setFocused] = useState(false);
     return (
         <FocusContext.Provider focused={focused} setFocused={setFocused}>
             <InputGroupFrame ref={ref} {...rest}>{children}</InputGroupFrame>
         </FocusContext.Provider>
-    )
-})
+    );
+});
 
 export const inputSizeVariant: SizeVariantSpreadFunction<any> = (val = "$true", extras) => {
-    const paddingHorizontal = getSpace(val, { shift: -1, bounds: [2] })
-    const fontStyle = getFontSized(val as any, extras)
-    if (!isWeb && fontStyle) delete fontStyle.lineHeight
+    const paddingHorizontal = getSpace(val, { shift: -1, bounds: [2] });
+    const fontStyle = getFontSized(val as any, extras);
+    if (!isWeb && fontStyle) delete fontStyle.lineHeight;
     return {
         ...fontStyle,
         height: val,
         borderRadius: 100_000,
         paddingHorizontal,
-    }
-}
+    };
+};
 
-const InputFrame = styled(TInput, { unstyled: true, context: InputContext })
+const InputFrame = styled(TInput, { unstyled: true, context: InputContext });
 
 const InputImpl = InputFrame.styleable((props, ref) => {
-    const { setFocused } = FocusContext.useStyledContext()
-    const { size } = InputContext.useStyledContext()
+    const { setFocused } = FocusContext.useStyledContext();
+    const { size } = InputContext.useStyledContext();
     return (
         <View flex={1}>
             <InputFrame
@@ -108,14 +108,14 @@ const InputImpl = InputFrame.styleable((props, ref) => {
                 {...props}
             />
         </View>
-    )
-})
+    );
+});
 
 const InputSection = styled(XGroup.Item, {
     justify: "center",
     items: "center",
     context: InputContext,
-})
+});
 
 const Button = styled(TButton, {
     context: InputContext,
@@ -129,7 +129,7 @@ const Button = styled(TButton, {
                     : { paddingHorizontal: 0, height: val },
         },
     },
-})
+});
 
 export const InputIconFrame = styled(View, {
     justify: "center",
@@ -140,29 +140,29 @@ export const InputIconFrame = styled(View, {
             "...size": (val, { tokens }) => {
                 return {
                     // paddingHorizontal: tokens.space[val],
-                }
+                };
             },
         },
     },
-})
+});
 
 const getIconSize = (size: FontSizeTokens, scale: number) =>
-    (typeof size === "number" ? size * 0.5 : getFontSize(size)) * scale
+    (typeof size === "number" ? size * 0.5 : getFontSize(size)) * scale;
 
 const InputIcon = InputIconFrame.styleable<{
     scaleIcon?: number
     color?: ColorTokens | string
 }>(({ children, ...rest }, ref) => {
-    const { size = "$true", color: contextColor, scaleIcon = 1 } = InputContext.useStyledContext()
-    const theme = useTheme()
+    const { size = "$true", color: contextColor, scaleIcon = 1 } = InputContext.useStyledContext();
+    const theme = useTheme();
     const color = getVariable(
         contextColor || theme[contextColor as any]?.get("web") || theme.color10?.get("web")
-    )
-    const iconSize = getIconSize(size, scaleIcon)
-    const getThemedIcon = useGetThemedIcon({ size: iconSize, color: color as any })
+    );
+    const iconSize = getIconSize(size, scaleIcon);
+    const getThemedIcon = useGetThemedIcon({ size: iconSize, color: color as any });
 
-    return <InputIconFrame ref={ref} {...rest}>{getThemedIcon(children)}</InputIconFrame>
-})
+    return <InputIconFrame ref={ref} {...rest}>{getThemedIcon(children)}</InputIconFrame>;
+});
 
 export const InputContainerFrame = styled(View, {
     context: InputContext,
@@ -175,14 +175,14 @@ export const InputContainerFrame = styled(View, {
     defaultVariants: {
         size: "$4",
     },
-})
+});
 
 export const InputLabel = styled(Label, {
     context: InputContext,
     variants: {
         size: { "...fontSize": getFontSized as any },
     },
-})
+});
 
 export const InputInfo = styled(Text, {
     context: InputContext,
@@ -190,7 +190,7 @@ export const InputInfo = styled(Text, {
     variants: {
         size: {
             "...fontSize": (val, { font }) => {
-                if (!font) return
+                if (!font) return;
                 return {
                     fontSize: font.size[val].val * 0.8,
                     lineHeight: font.lineHeight?.[val].val * 0.8,
@@ -198,13 +198,13 @@ export const InputInfo = styled(Text, {
                     letterSpacing: font.letterSpacing?.[val],
                     textTransform: font.transform?.[val],
                     fontStyle: font.style?.[val],
-                }
+                };
             },
         },
     },
-})
+});
 
-const InputXGroup = styled(XGroup, { context: InputContext })
+const InputXGroup = styled(XGroup, { context: InputContext });
 
 export const Input = withStaticProperties(InputContainerFrame, {
     Box: InputGroupImpl,
@@ -215,5 +215,5 @@ export const Input = withStaticProperties(InputContainerFrame, {
     Info: InputInfo,
     Label: InputLabel,
     XGroup: withStaticProperties(InputXGroup, { Item: XGroup.Item }),
-})
+});
 

@@ -111,6 +111,6 @@ const Selector: React.FC<ExSelectProps> = ({
             </Select.Content>
         </Select>
     );
-}
+};
 
 export default Selector;

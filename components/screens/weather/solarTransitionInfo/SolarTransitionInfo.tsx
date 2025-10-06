@@ -10,8 +10,8 @@ const SolarTransitionInfo: React.FC = () => {
     const router = useRouter();
 
     const onPress = () => {
-        router.push("/solarTransition")
-    }
+        router.push("/solarTransition");
+    };
 
     const daily = appStore.weather.weatherData.daily;
     return (

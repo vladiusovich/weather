@@ -17,7 +17,7 @@ const SymptomTypeField: React.FC = () => {
         return {
             name: s.name,
             value: s.id,
-        }
+        };
     }) ?? [];
 
     return (

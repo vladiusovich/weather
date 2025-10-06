@@ -20,7 +20,7 @@ export const DatePickerSelector: React.FC<DatePickerProps> = ({
     config,
 }) => {
     const date = toDate(value);
-    const [selectedDates, setSelectedDates] = useState<Date[]>([date])
+    const [selectedDates, setSelectedDates] = useState<Date[]>([date]);
     const { open, onOpen, onClose } = useModalController();
 
     useBackHandler(open, onClose);
@@ -29,12 +29,12 @@ export const DatePickerSelector: React.FC<DatePickerProps> = ({
         setSelectedDates(d);
         onValueChange(d);
         onClose();
-    }
+    };
 
     const onReset = () => {
         setSelectedDates([]);
         onValueChange([]);
-    }
+    };
 
     const initConfig: DatePickerProviderProps["config"] = {
         selectedDates,
@@ -43,7 +43,7 @@ export const DatePickerSelector: React.FC<DatePickerProps> = ({
             startDay: 1,
         },
         ...config,
-    }
+    };
 
     const formated = formatDate(value, DATE_FORMAT);
 
@@ -63,7 +63,7 @@ export const DatePickerSelector: React.FC<DatePickerProps> = ({
                 <DatePickerBody config={initConfig} />
             </DatePicker.Content>
         </DatePicker>
-    )
-}
+    );
+};
 
 export default DatePickerSelector;

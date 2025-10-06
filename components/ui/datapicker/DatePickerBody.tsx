@@ -2,11 +2,11 @@ import {
     useDatePickerContext,
     type DatePickerProviderProps,
     type DPDay,
-} from "@rehookify/datepicker"
+} from "@rehookify/datepicker";
 
-import { ChevronLeft, ChevronRight } from "@tamagui/lucide-icons"
-import { useMemo, useState } from "react"
-import { AnimatePresence, Button, H3, View } from "tamagui"
+import { ChevronLeft, ChevronRight } from "@tamagui/lucide-icons";
+import { useMemo, useState } from "react";
+import { AnimatePresence, Button, H3, View } from "tamagui";
 
 import {
     HeaderTypeProvider,
@@ -25,12 +25,12 @@ const DateHeader = () => {
     const {
         data: { calendars },
         propGetters: { subtractOffset },
-    } = useDatePickerContext()
-    const { type: header, setHeader } = useHeaderType()
-    const { year, month } = calendars[0]
+    } = useDatePickerContext();
+    const { type: header, setHeader } = useHeaderType();
+    const { year, month } = calendars[0];
 
     if (header === "year") {
-        return <YearRangeSlider />
+        return <YearRangeSlider />;
     }
 
     if (header === "month") {
@@ -38,7 +38,7 @@ const DateHeader = () => {
             <H3 size="$7" self="center">
                 Select a month
             </H3>
-        )
+        );
     }
 
     return (
@@ -57,33 +57,33 @@ const DateHeader = () => {
                 </Button.Icon>
             </Button>
         </View>
-    )
-}
+    );
+};
 
 const DayPicker = () => {
     const {
         data: { calendars, weekDays },
         propGetters: { dayButton },
-    } = useDatePickerContext()
+    } = useDatePickerContext();
 
-    const { days } = calendars[0]
+    const { days } = calendars[0];
 
     const { prevNextAnimation, prevNextAnimationKey } = useDateAnimation({
         listenTo: "month",
-    })
+    });
 
     // divide days array into sub arrays that each has 7 days, for better stylings
     const subDays = useMemo(
         () =>
             days.reduce((acc, day, i) => {
                 if (i % 7 === 0) {
-                    acc.push([])
+                    acc.push([]);
                 }
-                acc[acc.length - 1].push(day)
-                return acc
+                acc[acc.length - 1].push(day);
+                return acc;
             }, [] as DPDay[][]),
         [days]
-    )
+    );
 
     return (
         <AnimatePresence key={prevNextAnimationKey}>
@@ -125,16 +125,16 @@ const DayPicker = () => {
                                     </Button>
                                 ))}
                             </View>
-                        )
+                        );
                     })}
                 </View>
             </View>
         </AnimatePresence>
-    )
-}
+    );
+};
 
 const DatePickerBody = ({ config }: { config: DatePickerProviderProps["config"] }) => {
-    const [header, setHeader] = useState<HeaderType>("day")
+    const [header, setHeader] = useState<HeaderType>("day");
 
     return (
         <HeaderTypeProvider config={config} type={header} setHeader={setHeader}>
@@ -151,7 +151,7 @@ const DatePickerBody = ({ config }: { config: DatePickerProviderProps["config"] 
                 {header === "day" && <DayPicker />}
             </View>
         </HeaderTypeProvider>
-    )
-}
+    );
+};
 
 export default DatePickerBody;

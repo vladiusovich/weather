@@ -13,7 +13,7 @@ export const useCalculateChartSize = () => {
         },
         chartWidth,
         isReady
-    }
+    };
 };
 
 export default useCalculateChartSize;

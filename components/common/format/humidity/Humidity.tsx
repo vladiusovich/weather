@@ -3,7 +3,7 @@ import UI from "@/components/ui";
 import { TextStyle } from "tamagui";
 import {
     Droplet,
-} from "@tamagui/lucide-icons"
+} from "@tamagui/lucide-icons";
 
 type HumidityProps = {
     value?: number | null;

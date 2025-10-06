@@ -15,7 +15,7 @@ const NewDiaryNote = (() => {
                 ? <NoteCreatedSuccess />
                 : <NewDiaryNoteForm form={newNoteFormStore} />}
         </UI.ScreenWrapper>
-    )
+    );
 });
 
 export default observer(NewDiaryNote);

@@ -6,7 +6,7 @@ import ScrollableForecast from "../common/scrollableForecast/ScrollableForecast"
 import ForecastItem from "../common/scrollableForecast/ForecastItem";
 import {
     Clock3,
-} from "@tamagui/lucide-icons"
+} from "@tamagui/lucide-icons";
 import { getNow, isSameHour } from "@/utils/datetime.helper";
 
 

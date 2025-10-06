@@ -28,6 +28,6 @@ const NotFoundScreen = () => {
             </View>
         </>
     );
-}
+};
 
 export default NotFoundScreen;

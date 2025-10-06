@@ -7,7 +7,7 @@ const TestField: React.FC = () => {
         return {
             name: `Test val ${s}`,
             value: s.toString(),
-        }
+        };
     });
 
     return (

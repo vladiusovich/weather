@@ -53,7 +53,7 @@ const HealthStatistic = (() => {
                 />
             </UI.Papper>
         </UI.ScreenWrapper >
-    )
+    );
 });
 
 export default observer(HealthStatistic);

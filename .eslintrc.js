@@ -6,6 +6,7 @@ module.exports = {
         "indent": ["error", 4, { "SwitchCase": 1 }],
         "quotes": ["warn", "double", { "avoidEscape": true }],
         "max-len": ["error", { "code": 140, "tabWidth": 4, "ignoreComments": true }],
+        "semi": ["error", "always"],
         "no-unused-vars": "off",
         "no-shadow": "off",
         "no-debugger": 1,

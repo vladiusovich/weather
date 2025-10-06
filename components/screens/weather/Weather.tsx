@@ -54,7 +54,7 @@ const Weather = observer(() => {
     if (status === null) return null;
 
     if (status.status === "denied") {
-        return <AccessDenied type='geolocation' />
+        return <AccessDenied type='geolocation' />;
     };
 
     return (

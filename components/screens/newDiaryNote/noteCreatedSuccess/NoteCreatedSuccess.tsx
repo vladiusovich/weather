@@ -11,7 +11,7 @@ const NoteCreatedSuccess = (() => {
 
     const onPress = () => {
         router.replace("/diary");
-    }
+    };
 
     return (
         <UI.Papper
@@ -36,7 +36,7 @@ const NoteCreatedSuccess = (() => {
                 </UI.Button>
             </UI.YStack>
         </UI.Papper>
-    )
+    );
 });
 
 export default observer(NoteCreatedSuccess);

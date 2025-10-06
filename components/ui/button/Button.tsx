@@ -11,7 +11,7 @@ const Button: React.FC<ButtonProps> = ({
         bg={disabled ? "$black3" : undefined}
         color={disabled ? "$white10" : undefined}
         disabled={disabled}
-    />
+    />;
 };
 
 export default Button;

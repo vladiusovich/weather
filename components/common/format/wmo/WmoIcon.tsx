@@ -8,7 +8,7 @@ import {
     CloudRain,
     CloudSnow,
     CloudLightning
-} from "@tamagui/lucide-icons"
+} from "@tamagui/lucide-icons";
 
 const iconMapper: Record<number, typeof Sun> = {
     0: Sun,                      // Clear sky
@@ -39,7 +39,7 @@ const iconMapper: Record<number, typeof Sun> = {
     95: CloudLightning,          // Thunderstorm
     96: CloudLightning,          // Thunderstorm with light hail
     99: CloudLightning,          // Thunderstorm with heavy hail
-}
+};
 
 type WmoCodeProps = {
     value?: number | null;
@@ -54,7 +54,7 @@ const WmoIcon: React.FC<WmoCodeProps> = ({
     const Icon = iconMapper[value];
     if (!Icon) return null;
 
-    return <Icon {...props} />
+    return <Icon {...props} />;
 };
 
 export default WmoIcon;

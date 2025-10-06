@@ -52,7 +52,7 @@ const SheetView = <T extends Record<string, any>>({
         // }
 
         return wrapped;
-    }
+    };
 
     const { left, right } = useSafeAreaInsets();
     const { width } = useWindowDimensions();

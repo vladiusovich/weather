@@ -20,7 +20,7 @@ const NewDiaryNoteForm: React.FC<PropsType> = (({
                 <SymptomsManager />
             </UI.YStack>
         </Form.Provider>
-    )
+    );
 });
 
 export default observer(NewDiaryNoteForm);

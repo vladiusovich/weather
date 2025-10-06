@@ -1,6 +1,6 @@
-import React from "react"
-import { Pressable } from "react-native"
-import { styled, Text, View, XStack } from "tamagui"
+import React from "react";
+import { Pressable } from "react-native";
+import { styled, Text, View, XStack } from "tamagui";
 import { Trash } from "@tamagui/lucide-icons";
 
 // Define size and style mappings
@@ -8,7 +8,7 @@ const sizeStyles = {
     sm: { px: "$3", py: "$2", fontSize: "$2", iconSize: 12 },
     md: { px: "$3", py: "$2", fontSize: "$3", iconSize: 16 },
     lg: { px: "$5", py: "$3", fontSize: "$4", iconSize: 20 },
-}
+};
 
 type SizeVariant = keyof typeof sizeStyles;
 type Variant = "solid" | "outline" | "ghost";
@@ -146,7 +146,7 @@ const Chip = ({
 
             )}
         </StyledChip>
-    )
-}
+    );
+};
 
 export default Chip;

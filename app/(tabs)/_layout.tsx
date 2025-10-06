@@ -1,5 +1,5 @@
 import Router from "@/components/route";
-import { BookHeart, CloudSun, ChartBar } from "@tamagui/lucide-icons"
+import { BookHeart, CloudSun, ChartBar } from "@tamagui/lucide-icons";
 import { Tabs } from "expo-router";
 import { GetThemeValueForKey } from "tamagui";
 
