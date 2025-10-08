@@ -43,14 +43,14 @@ const HealthStatistic = (() => {
         <UI.ScreenWrapper
             Component={View}
         >
-            <UI.Papper>
+            <UI.Paper>
                 <Charts.LineChart
                     height={500}
                     dataSet={sets}
                     xKind='time'
                     enableGestures={true}
                 />
-            </UI.Papper>
+            </UI.Paper>
         </UI.ScreenWrapper >
     );
 });

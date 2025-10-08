@@ -13,7 +13,7 @@ import Typo from "./typo/Typo";
 import Table from "./table/Table";
 import DatePickerSelector from "./datapicker/index";
 import ScreenWrapper from "./layoutWrapper/LayoutWrapper";
-import Papper from "./paper/Paper";
+import Paper from "./paper/Paper";
 import SheetView from "./sheet/SheetView";
 import Selector from "./selector/Selector";
 import Slider from "./slider/Slider";
@@ -47,7 +47,7 @@ const UI = {
     TextArea,
     Slider,
 
-    Papper,
+    Paper,
     SheetView,
     Modal,
     ScrollView,

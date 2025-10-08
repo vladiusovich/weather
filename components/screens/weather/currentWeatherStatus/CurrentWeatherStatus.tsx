@@ -12,7 +12,7 @@ const CurrentWeatherStatus: React.FC = () => {
     const currentKpIndex = appStore.weather.geoMagneticStore.currentKpIndex;
 
     return (
-        <UI.Card padding='$4' bg={"$background02"}>
+        <UI.Paper>
             <UI.XStack gap={"$1"} justify={"space-between"}>
                 <UI.YStack justify={"space-between"} gap={"$2"}>
                     <UI.YStack gap={"$1"}>
@@ -58,7 +58,7 @@ const CurrentWeatherStatus: React.FC = () => {
                     <SolarTransitionInfo />
                 </UI.YStack>
             </UI.XStack>
-        </UI.Card>
+        </UI.Paper>
     );
 };
 

@@ -16,7 +16,7 @@ import Chips from "./chips/Chips";
 const Uikit = (() => {
     return (
         <UI.ScreenWrapper Component={ScrollView}>
-            <UI.YStack gap={"$2"}>
+            <UI.YStack gap={"$4"}>
                 <Buttons />
                 <Chips />
                 <Selectors />

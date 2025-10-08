@@ -16,7 +16,7 @@ const NewNoteButton: React.FC = () => {
     return (
         <UI.Button
             position="absolute"
-            theme='green'
+            theme="dark_accent"
             size="$6"
             b={insets.bottom + 20}
             r={15}

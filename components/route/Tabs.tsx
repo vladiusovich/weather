@@ -15,17 +15,21 @@ const Tabs: React.FC<StackProps> = ({
         <NativeTabs
             screenOptions={{
                 headerShown: false,
-                tabBarActiveTintColor: theme.green10.val,
+                tabBarActiveTintColor: theme.accentColor.val,
                 headerStyle: {
-                    backgroundColor: theme.black4.val,
+                    backgroundColor: theme.background.val,
                 },
                 sceneStyle: {
-                    backgroundColor: theme.black4.val,
+                    backgroundColor: theme.background.val,
                 },
                 headerShadowVisible: false,
                 headerTintColor: theme.color.val,
                 tabBarStyle: {
-                    backgroundColor: theme.black3.val,
+                    backgroundColor: theme.color2.val,
+                    shadowColor: theme.accentColor.val,
+                    paddingTop: 4,
+                    height: 75,
+                    // borderColor: theme.accentColor.val,
                     borderTopWidth: 0, // Removes the top border
                     elevation: 0, // Removes Android shadow
                     shadowOpacity: 0, // Removes iOS shadow

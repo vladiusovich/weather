@@ -64,7 +64,7 @@ const Weather = observer(() => {
         >
             <UI.Loader isLoading={isLoading} />
             {!isLoading && (
-                <UI.YStack gap='$2'>
+                <UI.YStack gap='$4'>
                     {/* <LocationStatus /> */}
                     <CurrentWeatherStatus />
                     <HourlyForecast />

@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
-import { createTamagui } from '@tamagui/core';
-import { defaultConfig } from '@tamagui/config/v4';
-
-// const settings = defaultConfig.settings;
+import { createTamagui } from "tamagui";
+import { themes } from "./themes";
+import { defaultConfig } from "@tamagui/config/v4";
 
 // const actual = {
 //     ...defaultConfig,
@@ -12,11 +10,16 @@ import { defaultConfig } from '@tamagui/config/v4';
 //     }
 // };
 
-const tamaguiConfig = createTamagui(defaultConfig);
+// const config = createTamagui(defaultConfig);
 
-export type AppConfig = typeof tamaguiConfig;
-declare module 'tamagui' {
+const config = createTamagui({
+    ...defaultConfig,
+    themes,
+});
+
+export type AppConfig = typeof config;
+declare module "tamagui" {
     interface TamaguiCustomConfig extends AppConfig { }
 }
 
-export default tamaguiConfig;
+export default config;

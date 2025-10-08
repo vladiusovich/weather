@@ -14,7 +14,7 @@ const NoteCreatedSuccess = (() => {
     };
 
     return (
-        <UI.Papper
+        <UI.Paper
             p='$4'
             bg={"$background02"}
             flex={1}
@@ -35,7 +35,7 @@ const NoteCreatedSuccess = (() => {
                     {t("meteo.pages.newDiaryNote.createdSuccess.submit")}
                 </UI.Button>
             </UI.YStack>
-        </UI.Papper>
+        </UI.Paper>
     );
 });
 

@@ -4,7 +4,7 @@ const radius = 15;
 
 const Papper = styled(View, {
     p: "$4",
-    bg: "$background02",
+    bg: "$color3",
     borderTopStartRadius: radius,
     borderTopEndRadius: radius,
     borderBottomStartRadius: radius,

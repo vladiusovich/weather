@@ -12,14 +12,14 @@ const UiSection: React.FC<BlockProps> = (({
     children,
 }) => {
     return (
-        <UI.Papper>
+        <UI.Paper>
             <UI.YStack gap={"$2"}>
                 <UI.Typo.H6>
                     {header}
                 </UI.Typo.H6>
                 {children}
             </UI.YStack>
-        </UI.Papper>
+        </UI.Paper>
     );
 });
 

@@ -24,11 +24,11 @@ const Stack: React.FC<StackProps> = ({
                     </Pressable>
                 ),
                 headerStyle: {
-                    backgroundColor: theme.black4.val,
+                    backgroundColor: theme.background.val,
                 },
                 headerTintColor: theme.color.val,
                 contentStyle: {
-                    backgroundColor: theme.black4.val,
+                    backgroundColor: theme.background.val,
                 },
                 headerShadowVisible: false,
             }}

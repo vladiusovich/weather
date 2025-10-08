@@ -16,10 +16,7 @@ const ScrollableForecast: React.FC<ScrollableForecastProps> = ({
     isLoading = false,
 }) => {
     return (
-        <UI.Card
-            padding='$4'
-            bg={"$background02"}
-        >
+        <UI.Paper>
             <UI.Loader isLoading={isLoading} />
             {!isLoading && (
                 <>
@@ -46,7 +43,7 @@ const ScrollableForecast: React.FC<ScrollableForecastProps> = ({
                     </UI.ScrollView>
                 </>
             )}
-        </UI.Card>
+        </UI.Paper>
     );
 };
 

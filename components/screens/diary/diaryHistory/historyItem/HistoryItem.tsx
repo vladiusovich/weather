@@ -14,10 +14,7 @@ const HistoryItem: React.FC<HistoryItemProps> = ({
     data,
 }) => {
     return (
-        <UI.Card
-            padding='$4'
-            bg={"$background02"}
-        >
+        <UI.Paper>
             <UI.Card.Header size={"$0.5"}>
                 <UI.XStack gap={"$2"} items={"center"}>
                     <Format.Date value={data.date} variant='datetime' />
@@ -29,7 +26,7 @@ const HistoryItem: React.FC<HistoryItemProps> = ({
                 <SymptomItems data={data.symptoms} />
                 <Comment data={data?.comment} />
             </UI.YStack>
-        </UI.Card>
+        </UI.Paper>
     );
 };
 

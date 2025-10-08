@@ -7,8 +7,8 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
     return <UiButton
         {...props}
-        bg={disabled ? "$black3" : undefined}
-        color={disabled ? "$white10" : undefined}
+        bg={disabled ? "$background0" : undefined}
+        color={disabled ? "$accent1" : undefined}
         disabled={disabled}
     />;
 };

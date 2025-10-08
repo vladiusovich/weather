@@ -15,9 +15,8 @@ const SymptomsManager: React.FC = () => {
     return (
         <>
             <AddOrUpdateSymptomItemSheet open={open} onClose={onClose} />
-            <UI.Papper
+            <UI.Paper
                 p='$4'
-                bg={"$background02"}
                 flex={1}
             >
                 <UI.YStack gap={"$3"} flex={1}>
@@ -35,7 +34,7 @@ const SymptomsManager: React.FC = () => {
                 <Form.Submit size={"$5"}>
                     {t("meteo.pages.newDiaryNote.submit")}
                 </Form.Submit>
-            </UI.Papper>
+            </UI.Paper>
         </>
     );
 };

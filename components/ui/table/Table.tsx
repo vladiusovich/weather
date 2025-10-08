@@ -33,7 +33,7 @@ const Table = <T,>({ data, columns, isLoading = false }: TableProps<T>) => {
                         items={"center"}
                         paddingBlock={"$2"}
                         borderBottomWidth={"$1"}
-                        borderColor={"$black5"}
+                        borderColor={"$borderColor"}
                     >
                         <Text>{col.title}</Text>
                     </YStack>
@@ -54,7 +54,7 @@ const Table = <T,>({ data, columns, isLoading = false }: TableProps<T>) => {
                             items={"center"}
                             paddingBlock={"$2"}
                             borderBottomWidth={"$1"}
-                            borderColor={"$black3"}
+                            borderColor={"$borderColor"}
                         >
                             {col.render
                                 ? col.render(row)

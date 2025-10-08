@@ -22,7 +22,7 @@ const AccessDenied: React.FC<AccessDeniedProps> = ({ type }) => {
                         {t("common.accessDenied.header")}
                     </UI.Typo.H6>
 
-                    <UI.Typo.Text color={"$black11"}>
+                    <UI.Typo.Text color={"black"}>
                         {t(`common.accessDenied.description.${type}`)}
                     </UI.Typo.Text>
 

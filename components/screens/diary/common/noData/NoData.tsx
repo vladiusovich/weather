@@ -7,7 +7,7 @@ const NoData: React.FC = () => {
     const { t } = useTranslation();
 
     return (
-        <UI.Papper
+        <UI.Paper
             p='$4'
             bg={"$background02"}
             flex={1}
@@ -26,7 +26,7 @@ const NoData: React.FC = () => {
                     </UI.Typo.Text>
                 </UI.YStack>
             </UI.YStack>
-        </UI.Papper>
+        </UI.Paper>
     );
 };
 
