@@ -1,7 +1,7 @@
-import Button from '@/components/ui/button/Button';
-import { useFormContext } from '@/store/formStore/FormContext';
-import { observer } from 'mobx-react-lite';
-import { ButtonProps } from 'tamagui';
+import Button from "@/components/ui/button/Button";
+import { useFormContext } from "@/store/formStore/FormContext";
+import { observer } from "mobx-react-lite";
+import { ButtonProps } from "tamagui";
 
 /**
     * A generic wrapper for Submit button attached to a form.

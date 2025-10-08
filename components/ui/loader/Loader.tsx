@@ -3,11 +3,11 @@ import { Spinner, SpinnerProps } from "tamagui";
 import YStack from "../stack/YStack";
 
 interface LoaderProps extends SpinnerProps {
-    isloading: boolean;
+    isLoading: boolean;
 }
 
 const Loader: React.FC<LoaderProps> = ({
-    isloading = false,
+    isLoading: isloading = false,
     size = "large",
     color = "$green10",
     ...props

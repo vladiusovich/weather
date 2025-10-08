@@ -1,6 +1,5 @@
 import React from "react";
-import { SafeAreaView } from "react-native";
-import { styled } from "tamagui";
+import { styled, View } from "tamagui";
 
 type BaseWrapperProps = {
     children: React.ReactNode;
@@ -10,7 +9,7 @@ interface OwnProps<T extends React.ElementType> {
     Component?: T;
 }
 
-export type ScreenWrapperProps<T extends React.ElementType = typeof SafeAreaView> =
+export type ScreenWrapperProps<T extends React.ElementType = typeof View> =
     OwnProps<T> & Omit<React.ComponentProps<T>, keyof BaseWrapperProps | "Component"> & BaseWrapperProps;
 
 const baseStyle = {
@@ -19,12 +18,12 @@ const baseStyle = {
     py: "$2",
 } as const;
 
-export const ScreenWrapper = <T extends React.ElementType = typeof SafeAreaView>({
+export const ScreenWrapper = <T extends React.ElementType = typeof View>({
     Component,
     children,
     ...rest
 }: ScreenWrapperProps<T>): React.ReactElement => {
-    const WrapperComponent = Component || SafeAreaView;
+    const WrapperComponent = Component || View;
 
     const Styled = React.useMemo(() => styled(WrapperComponent as any, baseStyle), [WrapperComponent]);
 

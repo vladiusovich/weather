@@ -1,6 +1,7 @@
 import { View, StyleSheet } from "react-native";
 import { Link, Stack } from "expo-router";
 import React from "react";
+import UI from "@/components/ui";
 
 const styles = StyleSheet.create({
     container: {
@@ -11,19 +12,23 @@ const styles = StyleSheet.create({
     },
 
     button: {
-        fontSize: 20,
+        fontSize: 16,
         textDecorationLine: "underline",
-        color: "#fff",
+        color: "#d1d1d1ff",
     },
 });
 
+// TODO
 const NotFoundScreen = () => {
     return (
         <>
-            <Stack.Screen options={{ title: "Oops! Not Found" }} />
+            <Stack.Screen options={{ headerShown: false }} />
             <View style={styles.container}>
-                <Link href='/' style={styles.button}>
-                    Go back to Home screen!
+                <UI.Typo.Paragraph>
+                    Oops! Not Found
+                </UI.Typo.Paragraph>
+                <Link href='/' replace style={styles.button} >
+                    Go back
                 </Link>
             </View>
         </>

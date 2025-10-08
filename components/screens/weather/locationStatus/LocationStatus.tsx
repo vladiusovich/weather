@@ -1,10 +1,8 @@
-import { useTranslation } from "react-i18next";
 import UI from "@/components/ui";
 import { observer } from "mobx-react-lite";
 import useAppStore from "@/hooks/useAppStore";
 
 const LocationStatus: React.FC = () => {
-    const { t } = useTranslation();
     const appStore = useAppStore();
     const currentLocation = appStore.weather.weatherSettings.currentLocation;
 

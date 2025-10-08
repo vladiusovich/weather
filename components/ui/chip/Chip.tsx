@@ -10,8 +10,8 @@ const sizeStyles = {
     lg: { px: "$5", py: "$3", fontSize: "$4", iconSize: 20 },
 };
 
-type SizeVariant = keyof typeof sizeStyles;
-type Variant = "solid" | "outline" | "ghost";
+export type SizeVariantType = keyof typeof sizeStyles;
+export type ChipVariantType = "solid" | "outline" | "ghost";
 
 // Base styled chip container
 const StyledChip = styled(XStack, {
@@ -27,7 +27,7 @@ const StyledChip = styled(XStack, {
         },
         size: Object.fromEntries(
             Object.entries(sizeStyles).map(([key, style]) => [key, style])
-        ) as Record<SizeVariant, any>,
+        ) as Record<SizeVariantType, any>,
     },
     defaultVariants: {
         variant: "solid",
@@ -98,8 +98,8 @@ export interface ChipProps {
     label: string | React.ReactNode;
     counter?: string | React.ReactNode;
     leftIcon?: React.ReactNode;
-    size?: SizeVariant;
-    variant?: Variant;
+    size?: SizeVariantType;
+    variant?: ChipVariantType;
     pressable?: boolean;
     onPress?: (id: string) => void;
     onDelete?: (id: string) => void;

@@ -9,8 +9,8 @@ const CommentField: React.FC = () => {
             gap='$2'
         >
             <Form.Field
-                name='comment'
                 component={UI.TextArea}
+                name='comment'
                 placeholder='Type comment here if you want...'
                 maxLength={150}
             />

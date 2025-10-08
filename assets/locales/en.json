@@ -119,6 +119,11 @@
             "invalid": {
                 "required": "The field is invalid"
             }
+        },
+        "pages": {
+            "settings": {
+                "header": "Settings"
+            }
         }
     }
 }

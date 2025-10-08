@@ -57,7 +57,7 @@ const SheetView = <T extends Record<string, any>>({
     const { left, right } = useSafeAreaInsets();
     const { width } = useWindowDimensions();
     const mx = Math.max(5, left, right);
-    const my = Math.max(5, left, right);
+    // const my = Math.max(5, left, right);
     const frameWidth = Math.max(mx, width - mx * 2); // ширина экрана − отступы
 
     return (

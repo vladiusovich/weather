@@ -23,7 +23,7 @@ const AddOrUpdateSymptomItemSheet: React.FC<Props> = ({
             formStore={form.symptomForm}
         >
             <AddOrUpdateSymptomItemForm onClose={onClose} />
-        </UI.SheetView >
+        </UI.SheetView>
     );
 };
 

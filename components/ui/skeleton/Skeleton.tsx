@@ -3,6 +3,7 @@ import { Animated, Easing, StyleSheet } from "react-native";
 import { Stack } from "tamagui";
 import { LinearGradient } from "tamagui/linear-gradient";
 
+// TODO
 const Skeleton: React.FC<{ height?: number }> = ({ height = 80 }) => {
     const shimmerAnim = useRef(new Animated.Value(0)).current;
 
@@ -11,8 +12,8 @@ const Skeleton: React.FC<{ height?: number }> = ({ height = 80 }) => {
             shimmerAnim.setValue(0);
             Animated.timing(shimmerAnim, {
                 toValue: 1,
-                duration: 3000,
-                easing: Easing.linear,
+                duration: 1500,
+                easing: Easing.ease,
                 useNativeDriver: true,
             }).start(() => loop());
         };
@@ -22,7 +23,7 @@ const Skeleton: React.FC<{ height?: number }> = ({ height = 80 }) => {
 
     const translateX = shimmerAnim.interpolate({
         inputRange: [0, 1],
-        outputRange: [-200, 200], // можно настроить под нужную ширину
+        outputRange: [-200, 200],
     });
 
     return (
@@ -33,7 +34,6 @@ const Skeleton: React.FC<{ height?: number }> = ({ height = 80 }) => {
             rounded="$4"
             overflow="hidden"
             position="relative"
-            borderWidth={1}
             borderColor={"rgba(184, 184, 184, 0.1)"}
         >
             <Animated.View

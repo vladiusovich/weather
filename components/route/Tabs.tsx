@@ -14,6 +14,7 @@ const Tabs: React.FC<StackProps> = ({
     return (
         <NativeTabs
             screenOptions={{
+                headerShown: false,
                 tabBarActiveTintColor: theme.green10.val,
                 headerStyle: {
                     backgroundColor: theme.black4.val,

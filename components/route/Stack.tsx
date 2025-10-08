@@ -1,7 +1,8 @@
-import { Stack as NativeStack } from "expo-router";
+import { Stack as NativeStack, router } from "expo-router";
 import React from "react";
+import { Pressable } from "react-native";
+import { Settings } from "@tamagui/lucide-icons";
 import { useTheme } from "tamagui";
-// type NativeStackProps = typeof NativeStack;
 
 interface StackProps {
     children?: React.ReactNode;
@@ -16,6 +17,12 @@ const Stack: React.FC<StackProps> = ({
         <NativeStack
             screenOptions={{
                 animation: "default",
+                title: "",
+                headerRight: () => (
+                    <Pressable hitSlop={10} onPress={() => router.push("/settings")}>
+                        <Settings size={20} />
+                    </Pressable>
+                ),
                 headerStyle: {
                     backgroundColor: theme.black4.val,
                 },

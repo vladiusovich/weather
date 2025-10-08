@@ -10,7 +10,6 @@ import CurrentWeatherStatus from "./currentWeatherStatus/CurrentWeatherStatus";
 import HourlyForecast from "./hourlyForecast/HourlyForecast";
 import DailyForecast from "./dailyForecast/DailyForecast";
 import useRefreshController from "@/hooks/useRefreshController";
-import LocationStatus from "./locationStatus/LocationStatus";
 
 // TODO: refactoring the module
 const Weather = observer(() => {
@@ -63,7 +62,7 @@ const Weather = observer(() => {
             showsVerticalScrollIndicator={false}
             refreshControl={<RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />}
         >
-            <UI.Loader isloading={isLoading} />
+            <UI.Loader isLoading={isLoading} />
             {!isLoading && (
                 <UI.YStack gap='$2'>
                     {/* <LocationStatus /> */}

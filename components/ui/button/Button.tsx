@@ -5,7 +5,6 @@ const Button: React.FC<ButtonProps> = ({
     disabled = false,
     ...props
 }) => {
-
     return <UiButton
         {...props}
         bg={disabled ? "$black3" : undefined}

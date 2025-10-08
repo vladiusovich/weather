@@ -38,7 +38,6 @@ const UI = {
     Chip,
 
     Card,
-    Slider,
     Loader,
     Skeleton,
 
@@ -46,6 +45,7 @@ const UI = {
 
     Selector,
     TextArea,
+    Slider,
 
     Papper,
     SheetView,

@@ -45,7 +45,6 @@ const HealthStatistic = (() => {
         >
             <UI.Papper>
                 <Charts.LineChart
-                    width={420}
                     height={500}
                     dataSet={sets}
                     xKind='time'

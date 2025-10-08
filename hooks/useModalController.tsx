@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export const useModalController = () => {
     const [open, setOpen] = useState(false);
@@ -15,7 +15,7 @@ export const useModalController = () => {
         open,
         onOpen,
         onClose,
-    }
+    };
 };
 
 export default useModalController;
