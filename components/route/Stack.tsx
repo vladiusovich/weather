@@ -16,20 +16,24 @@ const Stack: React.FC<StackProps> = ({
     return (
         <NativeStack
             screenOptions={{
-                animation: "default",
-                title: "",
+                animation: "simple_push",
+                title: "Weather app",
+                // headerShown: false,
                 headerRight: () => (
                     <Pressable hitSlop={10} onPress={() => router.push("/settings")}>
                         <Settings size={20} />
                     </Pressable>
                 ),
                 headerStyle: {
+                    // backgroundColor: theme.color2.val,
                     backgroundColor: theme.background.val,
                 },
                 headerTintColor: theme.color.val,
                 contentStyle: {
                     backgroundColor: theme.background.val,
+
                 },
+                // headerShadowVisible: true,
                 headerShadowVisible: false,
             }}
         >

@@ -1,9 +1,9 @@
 /* eslint-disable max-len */
-import { createThemes } from "@tamagui/theme-builder";
+import { createThemes, defaultComponentThemes } from "@tamagui/theme-builder";
 import * as Colors from "@tamagui/colors";
 
-const darkPalette = ["hsla(222, 16%, 16%, 1)", "hsla(222, 16%, 20%, 1)", "hsla(222, 16%, 23%, 1)", "hsla(222, 16%, 27%, 1)", "hsla(222, 16%, 31%, 1)", "hsla(222, 16%, 35%, 1)", "hsla(222, 16%, 39%, 1)", "hsla(222, 16%, 42%, 1)", "hsla(222, 16%, 46%, 1)", "hsla(222, 16%, 50%, 1)", "hsla(0, 15%, 93%, 1)", "hsla(240, 60%, 99%, 1)"];
-const lightPalette = ["hsla(222, 16%, 82%, 1)", "hsla(222, 16%, 78%, 1)", "hsla(222, 16%, 75%, 1)", "hsla(222, 16%, 71%, 1)", "hsla(222, 16%, 68%, 1)", "hsla(222, 16%, 64%, 1)", "hsla(222, 16%, 61%, 1)", "hsla(222, 16%, 57%, 1)", "hsla(222, 16%, 54%, 1)", "hsla(222, 16%, 50%, 1)", "hsla(0, 15%, 15%, 1)", "hsla(240, 60%, 1%, 1)"];
+const darkPalette = ["hsla(0, 15%, 1%, 1)", "hsla(0, 15%, 6%, 1)", "hsla(0, 15%, 12%, 1)", "hsla(0, 15%, 17%, 1)", "hsla(0, 15%, 23%, 1)", "hsla(0, 15%, 28%, 1)", "hsla(0, 15%, 34%, 1)", "hsla(0, 15%, 39%, 1)", "hsla(0, 15%, 45%, 1)", "hsla(0, 15%, 50%, 1)", "hsla(0, 15%, 93%, 1)", "hsla(0, 15%, 99%, 1)"];
+const lightPalette = ["hsla(0, 15%, 99%, 1)", "hsla(0, 15%, 94%, 1)", "hsla(0, 15%, 88%, 1)", "hsla(0, 15%, 83%, 1)", "hsla(0, 15%, 77%, 1)", "hsla(0, 15%, 72%, 1)", "hsla(0, 15%, 66%, 1)", "hsla(0, 15%, 61%, 1)", "hsla(0, 15%, 55%, 1)", "hsla(0, 15%, 50%, 1)", "hsla(0, 15%, 15%, 1)", "hsla(0, 15%, 1%, 1)"];
 
 const lightShadows = {
     shadow1: "rgba(0,0,0,0.04)",
@@ -26,11 +26,14 @@ const darkShadows = {
 // we're adding some example sub-themes for you to show how they are done, "success" "warning", "error":
 
 const builtThemes = createThemes({
+    componentThemes: defaultComponentThemes,
+
     base: {
         palette: {
             dark: darkPalette,
             light: lightPalette,
         },
+
         extra: {
             light: {
                 ...Colors.green,
@@ -51,8 +54,8 @@ const builtThemes = createThemes({
 
     accent: {
         palette: {
-            dark: ["hsla(186, 52%, 35%, 1)", "hsla(187, 52%, 38%, 1)", "hsla(188, 52%, 41%, 1)", "hsla(188, 52%, 43%, 1)", "hsla(189, 52%, 46%, 1)", "hsla(190, 52%, 49%, 1)", "hsla(191, 52%, 52%, 1)", "hsla(191, 52%, 54%, 1)", "hsla(192, 52%, 57%, 1)", "hsla(193, 52%, 60%, 1)", "hsla(0, 0%, 90%, 1)", "hsla(0, 0%, 95%, 1)"],
-            light: ["hsla(186, 52%, 70%, 1)", "hsla(187, 52%, 73%, 1)", "hsla(188, 52%, 76%, 1)", "hsla(188, 52%, 78%, 1)", "hsla(189, 52%, 81%, 1)", "hsla(190, 52%, 84%, 1)", "hsla(191, 52%, 87%, 1)", "hsla(191, 52%, 90%, 1)", "hsla(192, 52%, 92%, 1)", "hsla(193, 52%, 95%, 1)", "hsla(0, 0%, 96%, 1)", "hsla(0, 0%, 100%, 1)"],
+            dark: ["hsla(173, 49%, 44%, 1)", "hsla(173, 49%, 46%, 1)", "hsla(173, 49%, 48%, 1)", "hsla(173, 49%, 49%, 1)", "hsla(173, 49%, 51%, 1)", "hsla(173, 49%, 53%, 1)", "hsla(173, 49%, 55%, 1)", "hsla(173, 49%, 56%, 1)", "hsla(173, 49%, 58%, 1)", "hsla(173, 49%, 60%, 1)", "hsla(250, 50%, 90%, 1)", "hsla(250, 50%, 95%, 1)"],
+            light: ["hsla(173, 49%, 51%, 1)", "hsla(173, 49%, 53%, 1)", "hsla(173, 49%, 54%, 1)", "hsla(173, 49%, 56%, 1)", "hsla(173, 49%, 57%, 1)", "hsla(173, 49%, 59%, 1)", "hsla(173, 49%, 60%, 1)", "hsla(173, 49%, 62%, 1)", "hsla(173, 49%, 63%, 1)", "hsla(173, 49%, 65%, 1)", "hsla(250, 50%, 95%, 1)", "hsla(250, 50%, 95%, 1)"],
         },
     },
 

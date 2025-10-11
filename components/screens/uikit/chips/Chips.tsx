@@ -13,14 +13,13 @@ const Chips: React.FC = () => {
             <UI.YStack gap="$4">
                 {variants.map((variant) => (
                     <UI.YStack key={variant} gap="$2">
-                        <UI.Typo.Paragraph>{variant}</UI.Typo.Paragraph>
                         <UI.XStack gap="$2" flexWrap="wrap">
                             {sizies.map((size, i) => (
                                 <UI.Chip
                                     key={`${variant}-${size}-${i}`}
                                     id={`${variant}-${size}-${i}`}
-                                    label={`${variant} ${size}`}
-                                    counter={i}
+                                    label={<UI.Typo.Text>{`${variant} ${size}`}</UI.Typo.Text>}
+                                    counter={i.toString()}
                                     variant={variant}
                                     size={size}
                                 />
