@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { BackHandler } from 'react-native';
+import { useEffect } from "react";
+import { BackHandler } from "react-native";
 
 /**
  * Custom hook to handle the Android hardware back button behavior.
@@ -22,7 +22,7 @@ const useBackHandler = (condition: boolean, callback?: () => void) => {
         };
 
         const backHandler = BackHandler.addEventListener(
-            'hardwareBackPress',
+            "hardwareBackPress",
             onHardwareBackPress,
         );
 

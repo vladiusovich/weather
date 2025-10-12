@@ -3,11 +3,11 @@ import { Check, ChevronDown, ChevronUp } from "@tamagui/lucide-icons";
 import type { SelectProps } from "tamagui";
 import {
     Adapt,
+    ScrollView,
     Select,
     Sheet,
     YStack,
 } from "tamagui";
-// import useBackHandler from '@/hooks/useBackHandler';
 
 export interface SelectorOption {
     name: string;
@@ -34,8 +34,6 @@ const Selector: React.FC<ExSelectProps> = ({
     onOpenChange,
     ...props
 }) => {
-    // useBackHandler(open, () => onOpenChange?.(false));
-
     return (
         <Select {...props}>
             {/* The trigger button for the select */}
@@ -46,20 +44,23 @@ const Selector: React.FC<ExSelectProps> = ({
             {/* Use Adapt to render a Sheet for touch platforms */}
             {/* TODO: snapPointsMode  */}
             <Adapt platform="touch">
-                <Sheet modal dismissOnSnapToBottom animation='quickest' snapPointsMode='mixed'>
+                <Sheet modal animation='quickest' snapPointsMode="percent" snapPoints={[50]}>
                     <Sheet.Overlay
-                        bg="$shadowColor"
                         animation='quickest'
+                        bg="$shadowColor"
                         enterStyle={{ opacity: 0 }}
                         exitStyle={{ opacity: 0 }}
                     />
+                    {/* <Sheet.Handle />
 
                     {/* The problem in Sheet.ScrollView. It does not work on real device (Pixel 8a) */}
                     {/* I don't know why */}
                     <Sheet.Frame>
-                        <Adapt.Contents />
+                        {/* ScrollView insted of Sheet.ScrollView. It works fine */}
+                        <ScrollView>
+                            <Adapt.Contents />
+                        </ScrollView>
                     </Sheet.Frame>
-
                 </Sheet>
             </Adapt>
 
@@ -78,18 +79,23 @@ const Selector: React.FC<ExSelectProps> = ({
                 </Select.ScrollUpButton>
 
                 {/* Viewport listing the select options */}
-                <Select.Viewport>
+                <Select.Viewport
+                >
                     <Select.Group>
-                        <Select.Label>{label}</Select.Label>
+                        <Select.Label
+                            title={label}
+                            backgroundColor={"$background"}
+                        />
                         {options.map((item, i) => (
                             <Select.Item
                                 index={i}
                                 key={item.name}
                                 value={item.value}
+                                p={"$4"}
                             >
-                                <Select.ItemText>{item.name}</Select.ItemText>
-                                <Select.ItemIndicator marginLeft="auto">
-                                    <Check size={16} />
+                                <Select.ItemText fontSize={"$5"}>{item.name}</Select.ItemText>
+                                <Select.ItemIndicator>
+                                    <Check size={"$1"} />
                                 </Select.ItemIndicator>
                             </Select.Item>
                         ))}

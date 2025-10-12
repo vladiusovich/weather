@@ -14,10 +14,13 @@ export type SheetProps<T extends Record<string, any>> = {
     /**
      * Snap points for the main sheet.
      * Default is percentage-based snap points.
-     */
+    */
     snapPoints?: (number | string)[];
     onClose?: () => void;
-    /**  For Android you need to manually re-propagate any context when using modal. This is because React Native doesn't support portals yet */
+    /**
+     * For Android you need to manually re-propagate any context when using modal.
+     * This is because React Native doesn't support portals yet
+    */
     useContexProvider?: boolean
     formStore?: FormStore<T>,
 } & Omit<NativeSheetProps, "snapPoints" | "onOpenChange" | "modal">;
@@ -58,7 +61,7 @@ const SheetView = <T extends Record<string, any>>({
     const { width } = useWindowDimensions();
     const mx = Math.max(5, left, right);
     // const my = Math.max(5, left, right);
-    const frameWidth = Math.max(mx, width - mx * 2); // ширина экрана − отступы
+    const frameWidth = Math.max(mx, width - mx * 2);
 
     return (
         <Sheet
@@ -83,7 +86,6 @@ const SheetView = <T extends Record<string, any>>({
                 bg={"$background08"}
                 mx={mx}
                 width={frameWidth}
-            // alignSelf="center"
             >
                 {wrapWithProviders(open && children)}
             </Sheet.Frame>

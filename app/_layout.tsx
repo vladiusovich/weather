@@ -11,8 +11,8 @@ import BackgroundUpdateProvider from "@/theme/BackgroundUpdateProvider";
 
 SplashScreen.preventAutoHideAsync();
 const RootLayout = () => {
-    const systemTheme = useColorScheme();
-    const [theme] = useState(systemTheme ?? "dark");
+    const colorScheme = useColorScheme();
+    const [theme] = useState(colorScheme ?? "dark");
 
     return (
         <AppStoreProvider>
