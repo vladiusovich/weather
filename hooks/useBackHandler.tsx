@@ -4,14 +4,14 @@ import { BackHandler } from "react-native";
 /**
  * Custom hook to handle the Android hardware back button behavior.
  *
- * @param condition - If true, the custom back handler will be triggered.
+ * @param useCustomBack - If true, the custom back handler will be triggered.
  * @param callback - Optional function to run when the back button is pressed and the condition is met.
  */
-const useBackHandler = (condition: boolean, callback?: () => void) => {
+const useBackHandler = (useCustomBack: boolean, callback?: () => void) => {
     useEffect(() => {
         // Function that will be called on hardware back button press
         const onHardwareBackPress = () => {
-            if (condition ?? callback) {
+            if (useCustomBack ?? callback) {
                 callback?.();
                 // Prevent default behavior (exit app)
                 return true;
@@ -27,7 +27,7 @@ const useBackHandler = (condition: boolean, callback?: () => void) => {
         );
 
         return () => backHandler.remove();
-    }, [callback, condition]);
+    }, [callback, useCustomBack]);
 };
 
 export default useBackHandler;

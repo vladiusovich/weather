@@ -14,7 +14,7 @@ export interface SelectorOption {
     value: string;
 };
 
-export interface ExSelectProps extends SelectProps {
+export interface SelectorProps extends SelectProps {
     options?: SelectorOption[];
     label?: string;
     palceholder?: string;
@@ -25,7 +25,7 @@ export interface ExSelectProps extends SelectProps {
  * SelectDemoItem is a reusable component wrapping a customized Select.
  * It supports both custom and native modes based on the `native` prop.
  */
-const Selector: React.FC<ExSelectProps> = ({
+const Selector: React.FC<SelectorProps> = ({
     options = [],
     palceholder,
     label,
@@ -53,7 +53,7 @@ const Selector: React.FC<ExSelectProps> = ({
                     />
                     {/* <Sheet.Handle />
 
-                    {/* The problem in Sheet.ScrollView. It does not work on real device (Pixel 8a) */}
+                    {/* The problem in Sheet.ScrollView. It does not work on real device (Pixel 8a\4a) */}
                     {/* I don't know why */}
                     <Sheet.Frame>
                         {/* ScrollView insted of Sheet.ScrollView. It works fine */}

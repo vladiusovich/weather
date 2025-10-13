@@ -7,10 +7,13 @@ import {
     DialogClose,
     XStack,
     YStack,
+    Text,
+    Unspaced,
 } from "tamagui";
 import { ReactNode } from "react";
 import { Portal } from "@tamagui/portal";
 import Button from "../button/Button";
+import { X } from "@tamagui/lucide-icons";
 
 // TODO: bad implementation
 type ModalDialogProps = {
@@ -36,48 +39,79 @@ const Modal = ({
     onConfirm,
     showFooter = true,
 }: ModalDialogProps) => {
-    if (!open) {
-        return null;
-    }
+    const onOpenChange = (isOpen: boolean) => {
+        if (!isOpen && onCancel) {
+            onCancel();
+        }
+    };
 
     return (
-        <Portal>
-            <Dialog modal>
+        <Dialog modal open={open} onOpenChange={onOpenChange}>
+            <Dialog.Portal>
                 <DialogOverlay
                     key="overlay"
                     bg="$shadow6"
-                    animation='100ms'
+                    animateOnly={["transform", "opacity"]}
+                    animation={[
+                        "quicker",
+                        {
+                            opacity: {
+                                overshootClamping: true,
+                            },
+                        },
+                    ]}
                     enterStyle={{ opacity: 0 }}
                     exitStyle={{ opacity: 0 }}
                 />
 
-                <DialogContent bordered elevate>
-                    {title && <DialogTitle>{title}</DialogTitle>}
-                    {description && (
-                        <DialogDescription mt="$2">
-                            {description}
-                        </DialogDescription>
-                    )}
+                <Dialog.FocusScope focusOnIdle>
+                    <DialogContent
+                        bordered
+                        elevate
+                        minW={300}
+                        animation={[
+                            "quicker",
+                            {
+                                opacity: {
+                                    overshootClamping: true,
+                                },
+                            },
+                        ]}
+                        enterStyle={{ x: 0, y: 20, opacity: 0 }}
+                        exitStyle={{ x: 0, y: 10, opacity: 0, scale: 0.95 }}
+                    >
+                        {title && <Dialog.Title size={"$6"}>{title}</Dialog.Title>}
+                        {description && (
+                            <Dialog.Description>
+                                {description}
+                            </Dialog.Description>
+                        )}
 
-                    {children && <YStack mt="$4">{children}</YStack>}
+                        {children}
+                        {showFooter && (
+                            <XStack justify="flex-end" gap="$2" mt="$4">
+                                <Dialog.Close asChild>
+                                    <Button onPress={onCancel}>
+                                        {cancelText}
+                                    </Button>
+                                </Dialog.Close>
+                                <Dialog.Close asChild>
+                                    <Button onPress={onConfirm}>
+                                        {confirmText}
+                                    </Button>
+                                </Dialog.Close>
+                            </XStack>
+                        )}
 
-                    {showFooter && (
-                        <XStack justify="flex-end" gap="$2" mt="$4">
-                            <DialogClose asChild>
-                                <Button onPress={onCancel}>
-                                    {cancelText}
-                                </Button>
-                            </DialogClose>
-                            <DialogClose asChild>
-                                <Button onPress={onConfirm}>
-                                    {confirmText}
-                                </Button>
-                            </DialogClose>
-                        </XStack>
-                    )}
-                </DialogContent>
-            </Dialog>
-        </Portal>
+                        {/* <Unspaced>
+                            <Dialog.Close asChild>
+                                <Button position="absolute" r={0} size="$2" icon={X} />
+                            </Dialog.Close>
+                        </Unspaced> */}
+                    </DialogContent>
+                </Dialog.FocusScope>
+            </Dialog.Portal>
+        </Dialog>
     );
 };
 

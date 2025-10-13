@@ -12,11 +12,11 @@ const Buttons: React.FC = () => {
         <UiSection header="Buttons">
             <UI.YStack gap="$2">
                 <UI.Button onPress={onOpen}>
-                    Open Sheet
+                    Sheet
                 </UI.Button>
 
                 <UI.Button onPress={onOpenModal}>
-                    Open Modal
+                    Modal
                 </UI.Button>
             </UI.YStack>
 
@@ -34,7 +34,8 @@ const Buttons: React.FC = () => {
                 onConfirm={onCloseModal}
                 onCancel={onCloseModal}
             >
-                <UI.Typo.H5>Modal view</UI.Typo.H5>
+                {/* <UI.Typo.H5>Modal view test123123123 test123123123 test123123123 test123123123 </UI.Typo.H5> */}
+                <UI.Typo.H5>Modal view test</UI.Typo.H5>
             </UI.Modal>
         </UiSection>
     );
