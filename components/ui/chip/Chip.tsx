@@ -18,7 +18,7 @@ const StyledChip = styled(XStack, {
     items: "center",
     justify: "center",
     gap: "$2",
-    rounded: 999,
+    rounded: 8,
     variants: {
         variant: {
             solid: { bg: "$background04", },
@@ -50,7 +50,6 @@ const ChipText = styled(Text, {
 
 export const CounterView = styled(View, {
     bg: "$red9",
-    opacity: 0.8,
     justify: "center",
     items: "center",
     rounded: 999,
@@ -97,7 +96,7 @@ export interface ChipProps {
     id: string;
     label: string | React.ReactNode;
     counter?: string | React.ReactNode;
-    leftIcon?: React.ReactNode;
+    icon?: React.ReactNode;
     size?: SizeVariantType;
     variant?: ChipVariantType;
     pressable?: boolean;
@@ -115,7 +114,7 @@ const Chip = ({
     id,
     label,
     counter,
-    leftIcon,
+    icon,
     size = "sm",
     variant = "solid",
     onPress,
@@ -128,7 +127,7 @@ const Chip = ({
             size={size}
             onPress={() => onPress?.(id)}
         >
-            {leftIcon && (leftIcon)}
+            {icon}
             <ChipText size={size}>{label}</ChipText>
             {counter && (
                 <CounterView size={size}>
@@ -143,7 +142,6 @@ const Chip = ({
                         <Trash size={iconSizeMap[size]} />
                     </DeleteView>
                 </Pressable>
-
             )}
         </StyledChip>
     );

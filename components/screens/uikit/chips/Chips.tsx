@@ -22,6 +22,7 @@ const Chips: React.FC = () => {
                                     counter={i.toString()}
                                     variant={variant}
                                     size={size}
+                                    // icon={<Eye size={16}/>}
                                 />
                             ))}
                         </UI.XStack>

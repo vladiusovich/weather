@@ -19,11 +19,15 @@ import Selector from "./selector/Selector";
 import Slider from "./slider/Slider";
 import TextArea from "./textArea/TextArea";
 import Chip from "./chip/Chip";
+import Input from "./input/Input";
+import Searchbar from "./searchbar/Searchbar";
 import { Separator, View } from "tamagui";
 
 export * from "./table/Table";
 export * from "./datapicker/index";
 export * from "./selector/Selector";
+export * from "./input/Input";
+export * from "./searchbar/Searchbar";
 
 const UI = {
     Typo: Typo,
@@ -45,6 +49,8 @@ const UI = {
 
     Selector,
     TextArea,
+    Input,
+    Searchbar,
     Slider,
 
     Paper,

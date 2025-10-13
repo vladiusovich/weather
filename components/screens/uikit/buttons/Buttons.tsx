@@ -18,6 +18,13 @@ const Buttons: React.FC = () => {
                 <UI.Button onPress={onOpenModal}>
                     Modal
                 </UI.Button>
+
+                <UI.Button loading>
+                    Loading
+                </UI.Button>
+
+                <UI.Button size={"$6"}>Normal Button</UI.Button>
+                <UI.Button size={"$5"} circular>A</UI.Button>
             </UI.YStack>
 
             <UI.SheetView
@@ -34,7 +41,6 @@ const Buttons: React.FC = () => {
                 onConfirm={onCloseModal}
                 onCancel={onCloseModal}
             >
-                {/* <UI.Typo.H5>Modal view test123123123 test123123123 test123123123 test123123123 </UI.Typo.H5> */}
                 <UI.Typo.H5>Modal view test</UI.Typo.H5>
             </UI.Modal>
         </UiSection>

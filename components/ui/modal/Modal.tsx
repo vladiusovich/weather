@@ -2,18 +2,10 @@ import {
     Dialog,
     DialogOverlay,
     DialogContent,
-    DialogTitle,
-    DialogDescription,
-    DialogClose,
     XStack,
-    YStack,
-    Text,
-    Unspaced,
 } from "tamagui";
 import { ReactNode } from "react";
-import { Portal } from "@tamagui/portal";
 import Button from "../button/Button";
-import { X } from "@tamagui/lucide-icons";
 
 // TODO: bad implementation
 type ModalDialogProps = {

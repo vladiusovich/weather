@@ -12,6 +12,7 @@ import Buttons from "./buttons/Buttons";
 import TextAreas from "./textAreas/TextAreas";
 import Sliders from "./sliders/Sliders";
 import Chips from "./chips/Chips";
+import Inputs from "./inputs/Inputs";
 
 const Uikit = (() => {
     return (
@@ -21,6 +22,7 @@ const Uikit = (() => {
                 <Chips />
                 <Selectors />
                 <TextAreas />
+                <Inputs />
                 <Sliders />
                 <Loaders />
                 <Skeletons />

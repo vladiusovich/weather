@@ -27,12 +27,6 @@ const SymptomChipsField: React.FC<Props> = ({ onPressOpen }) => {
             gap='$1'
             flexWrap='wrap'
         >
-            {symptoms.length === 0 && (
-                <UI.Button size={"$3"} variant='outlined'>
-                    {t("meteo.pages.newDiaryNote.symptomsList.buttons.useFormHistory")}
-                </UI.Button>
-            )}
-
             {symptoms.map((i) => (
                 <Chip
                     key={i.id}
@@ -41,6 +35,7 @@ const SymptomChipsField: React.FC<Props> = ({ onPressOpen }) => {
                     counter={i.strengtOfPain}
                     onPress={onPress}
                     onDelete={onDelete}
+                    size="lg"
                 />
             ))}
         </UI.XStack>

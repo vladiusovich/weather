@@ -24,7 +24,7 @@ const SymptomsManager: React.FC = () => {
                     <SymptomChipsField onPressOpen={onOpen} />
 
                     <UI.YStack gap={"$3"}>
-                        <UI.Button size={"$3"} onPress={onOpen}>
+                        <UI.Button size={"$4"} onPress={onOpen}>
                             {t("meteo.pages.newDiaryNote.symptomsList.buttons.addNew")}
                         </UI.Button>
                     </UI.YStack>
