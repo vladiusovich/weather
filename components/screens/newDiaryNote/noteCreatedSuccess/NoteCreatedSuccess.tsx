@@ -26,7 +26,7 @@ const NoteCreatedSuccess = (() => {
                     gap='$4'
                     flex={1}
                 >
-                    <Smile size={80} color='$green10' />
+                    <Smile size={80} />
                     <UI.Typo.H5>
                         {t("meteo.pages.newDiaryNote.createdSuccess.header")}
                     </UI.Typo.H5>

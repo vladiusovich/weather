@@ -16,15 +16,14 @@ const NewNoteButton: React.FC = () => {
     return (
         <UI.Button
             position="absolute"
-            theme="dark_accent"
-            size="$6"
+            size="$7"
             b={insets.bottom + 20}
             r={15}
-            icon={PlusSquare}
-            circular
-            elevate
+            square
             onPress={onPressHandle}
-        />
+        >
+            <PlusSquare />
+        </UI.Button>
     );
 };
 

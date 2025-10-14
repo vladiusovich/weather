@@ -6,6 +6,8 @@ import DiaryHistory from "./diaryHistory/DiaryHistory";
 import NewNoteButton from "./diaryHistory/actions/NewNoteButton";
 import UI from "@/components/ui";
 import useRefreshController from "@/hooks/useRefreshController";
+import { View } from "tamagui";
+import NoData from "./common/noData/NoData";
 
 const Diary = observer(() => {
     const appStore = useAppStore();
@@ -17,6 +19,19 @@ const Diary = observer(() => {
     const { refreshing, handleRefresh } = useRefreshController(() => {
         return appStore.diary.history.fetch();
     });
+
+    const history = appStore.diary.history.data;
+
+    if (history.length === 0) {
+        return (
+            <UI.ScreenWrapper>
+                <View flex={1}>
+                    <NoData />
+                </View>
+                <NewNoteButton />
+            </UI.ScreenWrapper>
+        );
+    }
 
     return (
         <UI.ScreenWrapper>
