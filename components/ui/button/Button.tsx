@@ -69,7 +69,6 @@ const Button = (props: IMnButtonProps) => {
     return (
         <UiButton
             size={size}
-            {...rest}
             disabled={loading}
             {...(loading
                 ? loadingIconAligment === "left"
@@ -77,6 +76,7 @@ const Button = (props: IMnButtonProps) => {
                     : { iconAfter: loadingIcon, opacity: 0.5 }
                 : {})}
             {...(square && shapeSize)}
+            {...rest}
         >
             {children}
         </UiButton>

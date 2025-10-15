@@ -61,9 +61,9 @@ const InputGroupFrame = styled(XGroup, {
             ":boolean": (val, { props }) => (val ? props.focusStyle || defaultInputGroupStyles.focusStyle : undefined),
         },
         size: { "...size": () => ({}) },
-    },
+    } as const,
     defaultVariants: {
-        // unstyled: process.env.TAMAGUI_HEADLESS === '1',
+        unstyled: process.env.TAMAGUI_HEADLESS === "1",
     },
 });
 
@@ -139,7 +139,7 @@ export const InputIconFrame = styled(View, {
         size: {
             "...size": (val, { tokens }) => {
                 return {
-                    // paddingHorizontal: tokens.space[val],
+                    paddingHorizontal: tokens.space[val as keyof typeof tokens.space] ?? val,
                 };
             },
         },
