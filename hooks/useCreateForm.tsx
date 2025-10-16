@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import useAppStore from './useAppStore';
-import { useTranslation } from 'react-i18next';
-import AppStoreType from '@/store/AppStoreType';
-import { TFunction } from 'i18next';
+import { useState } from "react";
+import useAppStore from "./useAppStore";
+import { useTranslation } from "react-i18next";
+import AppStoreType from "@/store/AppStoreType";
+import { TFunction } from "i18next";
 
 type Constructor<T, Args extends unknown[] = any[]> =
     new (store: AppStoreType, t: TFunction, ...args: Args) => T;

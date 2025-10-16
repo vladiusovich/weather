@@ -1,4 +1,4 @@
-import { WeatherPeriod, WeatherVariable } from './MeteoRequest';
+import { WeatherPeriod, WeatherVariable } from "./MeteoRequest";
 
 type Time = {
     time: string | string[];

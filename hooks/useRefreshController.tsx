@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export const useRefreshController = (
     refreshCallback: () => Promise<void>
@@ -9,12 +9,12 @@ export const useRefreshController = (
         setRefreshing(true);
         await refreshCallback();
         setRefreshing(false);
-    }
+    };
 
     return {
         refreshing,
         handleRefresh,
-    }
+    };
 };
 
 export default useRefreshController;

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { observer } from 'mobx-react-lite';
-import AppStoreContext from './AppStoreContext';
-import { AppContext } from '@/services/appContext';
-import AppStoreType from '../AppStoreType';
-import { SplashScreen } from 'expo-router';
+import React, { useEffect, useState } from "react";
+import { observer } from "mobx-react-lite";
+import AppStoreContext from "./AppStoreContext";
+import { AppContext } from "@/services/appContext";
+import AppStoreType from "../AppStoreType";
+import { SplashScreen } from "expo-router";
 
 export interface AppStoreProviderProps {
     children: React.ReactNode;

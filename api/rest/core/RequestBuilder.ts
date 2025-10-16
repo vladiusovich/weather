@@ -1,7 +1,7 @@
-import apiUrls, { ApiUrlType } from './apiUrls';
-import AxiosClientApiEndpoint from './AxiosClientApiEndpoint';
-import BaseRequest, { RequestOptionsType } from './BaseRequest';
-import { ClientApiEndpoint } from './ClientApiEndpoint';
+import apiUrls, { ApiUrlType } from "./apiUrls";
+import AxiosClientApiEndpoint from "./AxiosClientApiEndpoint";
+import BaseRequest, { RequestOptionsType } from "./BaseRequest";
+import { ClientApiEndpoint } from "./ClientApiEndpoint";
 
 type RequestConstructor<TRequest, TResponse> = new () => BaseRequest<
     TRequest,

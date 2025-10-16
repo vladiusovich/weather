@@ -8,7 +8,7 @@ import constraints from "@/validation/constraints";
 import { generateUUID } from "@/utils/generateUUID";
 
 type NewNoteFormFields = {
-    date: Date[];
+    date: Date;
     symptoms: Symptom[];
     comment?: string;
 }
@@ -23,10 +23,10 @@ class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
         super(store, t);
         this.symptomForm = new SymptomFormStore(store, t, this);
 
-        this.values.date = [new Date()];
+        this.values.date = new Date();
 
         this.initValidation({
-            date: ValidatorBuilder.create<Date[]>()
+            date: ValidatorBuilder.create<Date>()
                 .add("required", constraints.requiredDate)
                 .build({
                     required: this.t("common.fields.errors.required"),
@@ -44,7 +44,7 @@ class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
     async submit(): Promise<void> {
         await this.store.diary.history.addNote({
             id: generateUUID(),
-            date: this.values.date.toString(),
+            date: this.values.date.toString(), // TODO
             comment: this.values?.comment ?? "",
             symptoms: this.values.symptoms,
         });

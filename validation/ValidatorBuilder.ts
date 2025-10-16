@@ -1,4 +1,4 @@
-type RuleName = 'required' | 'invalid';
+type RuleName = "required" | "invalid";
 
 type ValidatorFn<T, K extends string> = (value?: T) => K | undefined;
 

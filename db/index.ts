@@ -1,7 +1,7 @@
-import * as SQLite from 'expo-sqlite';
-import * as schema from './schema';
-import { drizzle, ExpoSQLiteDatabase } from 'drizzle-orm/expo-sqlite';
-import { UnitOfWork } from './repositories/unitOfWork';
+import * as SQLite from "expo-sqlite";
+import * as schema from "./schema";
+import { drizzle, ExpoSQLiteDatabase } from "drizzle-orm/expo-sqlite";
+import { UnitOfWork } from "./repositories/unitOfWork";
 
 export interface DbContextType {
     db: ExpoSQLiteDatabase<typeof schema> & {
@@ -11,7 +11,7 @@ export interface DbContextType {
 };
 
 export const initDb = async (): Promise<DbContextType> => {
-    const client = await SQLite.openDatabaseAsync('weatherSense.db');
+    const client = await SQLite.openDatabaseAsync("weatherSense.db");
     const db = drizzle(client, { schema });
     const unitOfWork = new UnitOfWork(db);
 

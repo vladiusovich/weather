@@ -1,4 +1,4 @@
-import { computed, makeObservable, observable, runInAction, toJS } from 'mobx';
+import { computed, makeObservable, observable, runInAction, toJS } from "mobx";
 
 /**
  * Validator functions map. Each function returns an error message or undefined if valid.
@@ -94,7 +94,7 @@ export abstract class FormStore<T extends Record<string, any>> {
         } else {
             runInAction(() => {
                 delete this.errors[field];
-            })
+            });
         };
     }
 

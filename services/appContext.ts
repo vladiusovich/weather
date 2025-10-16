@@ -1,21 +1,21 @@
-import migrations from '@/db/weatherSense/migrations';
-import { SeedService } from './seedService';
-import { migrate } from 'drizzle-orm/expo-sqlite/migrator';
-import { DbContextType, initDb } from '@/db';
-import i18n from '@/services/translations/i18n';
-import { initServices, ServicesRootType } from '.';
-import { initAppStories } from '@/store/initStore';
-import AppStoreType from '@/store/AppStoreType';
+import migrations from "@/db/weatherSense/migrations";
+import { SeedService } from "./seedService";
+import { migrate } from "drizzle-orm/expo-sqlite/migrator";
+import { DbContextType, initDb } from "@/db";
+import i18n from "@/services/translations/i18n";
+import { initServices, ServicesRootType } from ".";
+import { initAppStories } from "@/store/initStore";
+import AppStoreType from "@/store/AppStoreType";
 
 type InitStageType =
-    | 'i18n'
-    | 'db'
-    | 'migrations'
-    | 'seeding'
-    | 'services'
-    | 'stores'
-    | 'ready'
-    | 'failed';
+    | "i18n"
+    | "db"
+    | "migrations"
+    | "seeding"
+    | "services"
+    | "stores"
+    | "ready"
+    | "failed";
 
 
 // TODO: status?: ready | inProgress | fail
@@ -23,22 +23,22 @@ export class AppContext {
     public appStore?: AppStoreType;
     public services?: ServicesRootType;
     public dbContext!: DbContextType;
-    public stage: InitStageType = 'i18n';
+    public stage: InitStageType = "i18n";
 
     async init() {
         try {
-            await this.runStep('i18n', this.initI18n);
-            await this.runStep('db', this.initDb);
-            await this.runStep('migrations', this.runMigrations);
-            await this.runStep('seeding', this.seedData);
-            await this.runStep('services', this.initServices);
-            await this.runStep('stores', this.initStores);
+            await this.runStep("i18n", this.initI18n);
+            await this.runStep("db", this.initDb);
+            await this.runStep("migrations", this.runMigrations);
+            await this.runStep("seeding", this.seedData);
+            await this.runStep("services", this.initServices);
+            await this.runStep("stores", this.initStores);
 
-            this.stage = 'ready';
+            this.stage = "ready";
             // console.info('[AppContext] ✅ init complete');
         } catch (err) {
-            this.stage = 'failed';
-            console.error('[AppContext] ❌ init failed:', err);
+            this.stage = "failed";
+            console.error("[AppContext] ❌ init failed:", err);
             throw err;                      // пробрасываем выше, если нужно
         }
     }
@@ -66,7 +66,7 @@ export class AppContext {
     }
 
     private async initStores() {
-        if (!this.services) throw new Error('Services not ready');
+        if (!this.services) throw new Error("Services not ready");
         this.appStore = await initAppStories(this.services);
     }
 

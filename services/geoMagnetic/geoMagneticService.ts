@@ -1,6 +1,6 @@
-import GetGeoMagneticRequest from '@/api/rest/gfzGeoMagnetic/GetGeoMagneticRequest';
-import GfzGeoMagneticRequest from '@/types/geoMagnetic/gfzGeoMagneticRequest';
-import { GeoMagneticData } from '../weather/types/models/GeoMagneticData';
+import GetGeoMagneticRequest from "@/api/rest/gfzGeoMagnetic/GetGeoMagneticRequest";
+import GfzGeoMagneticRequest from "@/types/geoMagnetic/gfzGeoMagneticRequest";
+import { GeoMagneticData } from "../weather/types/models/GeoMagneticData";
 
 class GeoMagneticService {
     private geoMagneticRequest = new GetGeoMagneticRequest();

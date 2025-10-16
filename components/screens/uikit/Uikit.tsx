@@ -13,6 +13,7 @@ import TextAreas from "./textAreas/TextAreas";
 import Sliders from "./sliders/Sliders";
 import Chips from "./chips/Chips";
 import Inputs from "./inputs/Inputs";
+import Datepicker from "./inputs/Datepicker";
 
 const Uikit = (() => {
     return (
@@ -23,6 +24,7 @@ const Uikit = (() => {
                 <Selectors />
                 <TextAreas />
                 <Inputs />
+                <Datepicker />
                 <Sliders />
                 <Loaders />
                 <Skeletons />

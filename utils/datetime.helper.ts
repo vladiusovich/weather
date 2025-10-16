@@ -1,18 +1,20 @@
-import dayjs, { ManipulateType, OpUnitType } from 'dayjs';
-import duration from 'dayjs/plugin/duration';
-import utc from 'dayjs/plugin/utc';
-import timezone from 'dayjs/plugin/timezone';
+import dayjs, { ManipulateType, OpUnitType } from "dayjs";
+import duration from "dayjs/plugin/duration";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 
 dayjs.extend(duration);
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const;
+const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as const;
 type DaysOfWeek = typeof daysOfWeek[number];
 
-export const DATE_FORMAT = 'DD/MM/YYYY';
-export const SHORT_DATE_FORMAT = 'DD/MM';
-export const TIME_FORMAT = 'HH:mm';
+export const DATE_FORMAT = "DD/MM/YYYY";
+export const SHORT_DATE_FORMAT = "DD/MM";
+export const TIME_FORMAT = "HH:mm";
+
+export type DateVariantType = "date" | "shortDate" | "time" | "datetime" | "dayOfWeek";
 
 /**
  * Converts a date string to a Date object using dayjs.
@@ -39,7 +41,7 @@ function parseUtcDate(dateStr: string) {
     try {
         return dayjs.utc(dateStr);
     } catch (e: any) {
-        console.error(dateStr, e)
+        console.error(dateStr, e);
     }
 }
 
@@ -61,7 +63,7 @@ export const formatDate = (utcTime: string, template: string): string | null => 
 };
 
 const cutMsInIsoString = (date: string): string => {
-    return date.split('.')[0] + 'Z';
+    return date.split(".")[0] + "Z";
 };
 
 /**
@@ -90,15 +92,15 @@ const isSame = (date1: string, date2: string, unit: OpUnitType): boolean => {
  * @returns true if both dates are on the same day, false otherwise.
  */
 export const isSameDay = (date1: string, date2: string): boolean => {
-    return isSame(date1, date2, 'day');
+    return isSame(date1, date2, "day");
 };
 
 export const isSameHour = (date1: string, date2: string): boolean => {
-    return isSame(date1, date2, 'hours');
+    return isSame(date1, date2, "hours");
 };
 
 export const getDaylightDuration = (sunrise: string | Date, sunset: string | Date): string => {
-    const diff = dayjs(sunset).diff(dayjs(sunrise), 'millisecond');
+    const diff = dayjs(sunset).diff(dayjs(sunrise), "millisecond");
     return dayjs.duration(diff).format();
 };
 
@@ -106,8 +108,28 @@ export const formatSecondsToTime = (seconds: number) => {
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
     // Format with leading zeros
-    const formattedHours = hours.toString().padStart(2, '0');
-    const formattedMinutes = minutes.toString().padStart(2, '0');
+    const formattedHours = hours.toString().padStart(2, "0");
+    const formattedMinutes = minutes.toString().padStart(2, "0");
 
     return `${formattedHours}:${formattedMinutes}`;
 };
+
+const formatterFunc = (date: string, variant: DateVariantType) => {
+    switch (variant) {
+        case "date":
+            return formatDate(date, DATE_FORMAT);
+        case "shortDate":
+            return formatDate(date, SHORT_DATE_FORMAT);
+        case "time":
+            return formatDate(date, TIME_FORMAT);
+        case "datetime":
+            return formatDate(date, `${DATE_FORMAT} ${TIME_FORMAT}`);
+        case "dayOfWeek":
+            return getDayOfWeek(date);
+    }
+};
+
+export const getDatetimeFormatter = (variant: DateVariantType) => {
+    return (value: string) => formatterFunc(value, variant);
+};
+

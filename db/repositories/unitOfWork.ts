@@ -1,6 +1,6 @@
-import { DbClient } from './types/dbClient';
-import { SymptomRepository } from './symptomRepository';
-import { DiaryHistoryRepository } from './diaryHistoryRepository';
+import { DbClient } from "./types/dbClient";
+import { SymptomRepository } from "./symptomRepository";
+import { DiaryHistoryRepository } from "./diaryHistoryRepository";
 
 /**
 

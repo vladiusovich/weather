@@ -1,8 +1,8 @@
-import OpenMeteoService from './weather/openMeteoService';
-import SymptomsService from './diary/symptomsService';
-import DiaryHistoryService from './diary/diaryHistoryService';
-import { DbContextType } from '@/db';
-import GeoMagneticService from './geoMagnetic/geoMagneticService';
+import OpenMeteoService from "./weather/openMeteoService";
+import SymptomsService from "./diary/symptomsService";
+import DiaryHistoryService from "./diary/diaryHistoryService";
+import { DbContextType } from "@/db";
+import GeoMagneticService from "./geoMagnetic/geoMagneticService";
 
 export interface ServicesRootType {
     diaryHistoryService: DiaryHistoryService;

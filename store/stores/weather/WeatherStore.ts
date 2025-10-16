@@ -1,7 +1,7 @@
-import { ServicesRootType } from '@/services';
-import GeoMagneticStore from './GeoMagneticStore';
-import WeatherDataStore from './WeatherDataStore';
-import WeatherSettingsStore from './WeatherSettingsStore';
+import { ServicesRootType } from "@/services";
+import GeoMagneticStore from "./GeoMagneticStore";
+import WeatherDataStore from "./WeatherDataStore";
+import WeatherSettingsStore from "./WeatherSettingsStore";
 
 class WeatherStore {
     public weatherData: WeatherDataStore;

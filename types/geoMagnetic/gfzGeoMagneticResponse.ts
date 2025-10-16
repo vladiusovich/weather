@@ -1,4 +1,4 @@
-import GeoIndexType from './geoIndex';
+import GeoIndexType from "./geoIndex";
 
 type GeoIndexResultType = Partial<Record<GeoIndexType, number[]>>;
 

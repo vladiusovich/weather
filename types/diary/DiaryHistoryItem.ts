@@ -1,4 +1,4 @@
-import { DiaryHistoryRecordsEntity } from '@/db/schema';
+import { DiaryHistoryRecordsEntity } from "@/db/schema";
 
 
 export interface Symptom {

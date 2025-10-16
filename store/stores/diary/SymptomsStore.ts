@@ -1,6 +1,6 @@
-import { SymptomEntity } from '@/db/schema';
-import SymptomsService from '@/services/diary/symptomsService';
-import { makeObservable, observable, runInAction } from 'mobx';
+import { SymptomEntity } from "@/db/schema";
+import SymptomsService from "@/services/diary/symptomsService";
+import { makeObservable, observable, runInAction } from "mobx";
 
 class SymptomsStore {
     public data: SymptomEntity[] = [];

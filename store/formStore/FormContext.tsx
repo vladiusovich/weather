@@ -1,5 +1,5 @@
-import { createContext, useContext } from 'react';
-import { FormStore } from './FormStore';
+import { createContext, useContext } from "react";
+import { FormStore } from "./FormStore";
 
 /**
     * Context for FormStore.
@@ -15,7 +15,7 @@ export function useFormContext<Store extends FormStore<any>>(): Store;
 export function useFormContext() {
     const form = useContext(FormContext);
     if (!form) {
-        throw new Error('useFormContext must be used within a FormProvider');
+        throw new Error("useFormContext must be used within a FormProvider");
     }
     return form;
 }

@@ -1,9 +1,7 @@
 import React from "react";
 import UI from "@/components/ui";
-import { DATE_FORMAT, formatDate, getDayOfWeek, SHORT_DATE_FORMAT, TIME_FORMAT } from "@/utils/datetime.helper";
+import { DateVariantType, getDatetimeFormatter } from "@/utils/datetime.helper";
 import { TextStyle } from "tamagui";
-
-type DateVariantType = "date" | "shortDate" | "time" | "datetime" | "dayOfWeek";
 
 type DateProps = {
     value: string | undefined;
@@ -11,31 +9,18 @@ type DateProps = {
     variant: DateVariantType;
 } & TextStyle;
 
-const format = (date: string, variant: DateVariantType) => {
-    switch (variant) {
-        case "date":
-            return formatDate(date, DATE_FORMAT);
-        case "shortDate":
-            return formatDate(date, SHORT_DATE_FORMAT);
-        case "time":
-            return formatDate(date, TIME_FORMAT);
-        case "datetime":
-            return formatDate(date, `${DATE_FORMAT} ${TIME_FORMAT}`);
-        case "dayOfWeek":
-            return getDayOfWeek(date);
-    }
-};
-
 const Date: React.FC<DateProps> = ({
     value,
     asDayOfWeek,
     variant = "date",
-    ...props }) => {
+    ...props
+}) => {
     if (!value) {
         return null;
     }
 
-    const formatedValue = format(value, variant);
+    const format = getDatetimeFormatter(variant);
+    const formatedValue = format(value);
 
     if (formatedValue === null) {
         return null;

@@ -10,7 +10,7 @@
     "web": "expo start --web",
     "test": "jest",
     "lint": "expo lint",
-    "lint:fix": "expo lint -- --fix"
+    "lint:fix": "expo lint -- --ext .ts,.tsx,.js,.jsx . --fix"
   },
   "jest": {
     "preset": "jest-expo"
@@ -71,6 +71,7 @@
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.11.1",
     "react-native-svg": "15.11.2",
+    "react-native-ui-datepicker": "^3.1.2",
     "react-native-view-shot": "~4.0.3",
     "react-native-web": "^0.20.0",
     "tamagui": "^1.135.0"

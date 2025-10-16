@@ -1,7 +1,7 @@
-import { generateUUID } from '@/utils/generateUUID';
-import { diaryHistoryRecords, diaryHistoryRecordsToSymptoms } from '../schema';
-import { DbClient } from './types/dbClient';
-import { DiaryHistoryItem } from '@/types/diary/DiaryHistoryItem';
+import { generateUUID } from "@/utils/generateUUID";
+import { diaryHistoryRecords, diaryHistoryRecordsToSymptoms } from "../schema";
+import { DbClient } from "./types/dbClient";
+import { DiaryHistoryItem } from "@/types/diary/DiaryHistoryItem";
 
 export class DiaryHistoryRepository {
     constructor(

@@ -1,9 +1,9 @@
-import { computed, makeObservable, observable, runInAction } from 'mobx';
-import WeatherSettingsStore from './WeatherSettingsStore';
-import OpenMeteoService from '@/services/weather/openMeteoService';
-import { LocationCoords } from '@/types/LocationCoords';
-import { getNow, isSameHour, formatSecondsToTime } from '@/utils/datetime.helper';
-import { MeteoData } from '@/services/weather/types/models/MeteoData';
+import { computed, makeObservable, observable, runInAction } from "mobx";
+import WeatherSettingsStore from "./WeatherSettingsStore";
+import OpenMeteoService from "@/services/weather/openMeteoService";
+import { LocationCoords } from "@/types/LocationCoords";
+import { getNow, isSameHour, formatSecondsToTime } from "@/utils/datetime.helper";
+import { MeteoData } from "@/services/weather/types/models/MeteoData";
 
 type ConstructorArgsType = {
     weatherSettings: WeatherSettingsStore;
@@ -25,7 +25,7 @@ class WeatherDataStore {
     async fetch(location: LocationCoords): Promise<void> {
         const weather = await this.args.openMeteoService.fetch({
             ...location,
-            timezone: 'GMT',
+            timezone: "GMT",
         });
 
         runInAction(() => {
