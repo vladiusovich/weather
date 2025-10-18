@@ -1,56 +1,63 @@
-import React, { useEffect, useRef } from "react";
-import { Animated, Easing, StyleSheet } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
+import { Animated, Easing, StyleSheet, LayoutChangeEvent } from "react-native";
 import { Stack } from "tamagui";
 import { LinearGradient } from "tamagui/linear-gradient";
 
-// TODO
 const Skeleton: React.FC<{ height?: number }> = ({ height = 80 }) => {
-    const shimmerAnim = useRef(new Animated.Value(0)).current;
+    const [w, setW] = useState(0);
+    const anim = useRef(new Animated.Value(0)).current;
 
     useEffect(() => {
-        const loop = () => {
-            shimmerAnim.setValue(0);
-            Animated.timing(shimmerAnim, {
+        const loop = Animated.loop(
+            Animated.timing(anim, {
                 toValue: 1,
-                duration: 1500,
-                easing: Easing.ease,
+                duration: 1400,
+                easing: Easing.linear,
                 useNativeDriver: true,
-            }).start(() => loop());
-        };
+            })
+        );
+        loop.start();
+        return () => loop.stop();
+    }, [anim]);
 
-        loop();
-    }, [shimmerAnim]);
+    const onLayout = (e: LayoutChangeEvent) => setW(e.nativeEvent.layout.width);
 
-    const translateX = shimmerAnim.interpolate({
+    const bandWidth = Math.max(60, Math.round(w * 0.55));
+
+    const translateX = anim.interpolate({
         inputRange: [0, 1],
-        outputRange: [-200, 200],
+        outputRange: [-bandWidth, w + bandWidth], // reset outside visible area
     });
 
     return (
         <Stack
+            onLayout={onLayout}
             width="100%"
             height={height}
-            bg='$background04'
+            bg="$background02"
             rounded="$4"
             overflow="hidden"
             position="relative"
-            borderColor={"rgba(184, 184, 184, 0.1)"}
         >
-            <Animated.View
-                style={[
-                    StyleSheet.absoluteFill,
-                    {
-                        transform: [{ translateX }],
-                    },
-                ]}
-            >
-                <LinearGradient
-                    colors={["transparent", "$background04", "transparent"]}
-                    start={[0, 0]}
-                    end={[1, 0]}
-                    style={StyleSheet.absoluteFill}
-                />
-            </Animated.View>
+            {w > 0 && (
+                <Animated.View
+                    pointerEvents="none"
+                    style={[
+                        StyleSheet.absoluteFill,
+                        { transform: [{ translateX, }] },
+                    ]}
+                >
+                    <LinearGradient
+                        colors={["transparent", "$background06", "transparent"]}
+                        start={[0, 0]}
+                        end={[1, 0]}
+                        style={{
+                            height: "100%",
+                            width: bandWidth,
+                        }}
+                    />
+                </Animated.View>
+            )}
         </Stack>
     );
 };

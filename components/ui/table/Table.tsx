@@ -32,10 +32,10 @@ const Table = <T,>({ data, columns, isLoading = false }: TableProps<T>) => {
                         flex={1}
                         items={"center"}
                         paddingBlock={"$2"}
-                        borderBottomWidth={"$1"}
+                        borderBottomWidth={"$0.5"}
                         borderColor={"$borderColor"}
                     >
-                        <Text>{col.title}</Text>
+                        <Text fontSize={"$7"}>{col.title}</Text>
                     </YStack>
                 ))}
             </XStack>
@@ -52,8 +52,8 @@ const Table = <T,>({ data, columns, isLoading = false }: TableProps<T>) => {
                             key={colIndex}
                             flex={1}
                             items={"center"}
-                            paddingBlock={"$2"}
-                            borderBottomWidth={"$1"}
+                            paddingBlock={"$3"}
+                            borderBottomWidth={"$0.25"}
                             borderColor={"$borderColor"}
                         >
                             {col.render

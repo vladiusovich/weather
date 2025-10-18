@@ -10,7 +10,7 @@ import Button from "../button/Button";
 import { getDatetimeFormatter } from "@/utils/datetime.helper";
 
 // TODO: props
-// open\close, click outside of form
+// single, range, multiple
 export interface DatepickerPropsType {
     value?: string;
     onValueChange?: (value: string) => void;

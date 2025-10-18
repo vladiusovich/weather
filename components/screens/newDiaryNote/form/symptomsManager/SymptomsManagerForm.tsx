@@ -7,9 +7,9 @@ import useModalController from "@/hooks/useModalController";
 import { useTranslation } from "react-i18next";
 import SymptomChipsField from "./fileds/symptomChipsField/SymptomChipsField";
 import Form from "@/form";
+import Date from "./fileds/date/Date";
 
-// TODO
-const SymptomsManager: React.FC = () => {
+const SymptomsManagerForm: React.FC = () => {
     const { t } = useTranslation();
     const { open, onOpen, onClose } = useModalController();
 
@@ -19,14 +19,11 @@ const SymptomsManager: React.FC = () => {
             <UI.YStack flex={1}>
                 <UI.Paper>
                     <UI.YStack gap={"$3"}>
-                        <UI.Typo.Text>{t("meteo.pages.newDiaryNote.symptomsList.header")}</UI.Typo.Text>
+                        <Date />
+                        <UI.Typo.Text>
+                            {t("meteo.pages.newDiaryNote.symptomsList.header")}
+                        </UI.Typo.Text>
                         <SymptomChipsField onPressOpen={onOpen} />
-
-                        <UI.YStack gap={"$3"}>
-                            <UI.Button size={"$4"} onPress={onOpen}>
-                                {t("meteo.pages.newDiaryNote.symptomsList.buttons.addNew")}
-                            </UI.Button>
-                        </UI.YStack>
                         <CommentField />
                     </UI.YStack>
                 </UI.Paper>
@@ -39,4 +36,4 @@ const SymptomsManager: React.FC = () => {
     );
 };
 
-export default observer(SymptomsManager);
+export default observer(SymptomsManagerForm);

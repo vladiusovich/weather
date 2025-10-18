@@ -53,7 +53,7 @@ const Field = observer(<
         <YStack gap='$2'>
             <Component {...componentProps} />
             {touched && hasError ? (
-                <Typo.Text fontSize={"$1"} color='$red9'>{form.errors[name]}</Typo.Text>
+                <Typo.Text fontSize={"$4"} color='$red9'>{form.errors[name]}</Typo.Text>
             ) : null}
         </YStack>
     );

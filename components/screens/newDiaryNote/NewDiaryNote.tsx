@@ -9,6 +9,7 @@ import NoteCreatedSuccess from "./noteCreatedSuccess/NoteCreatedSuccess";
 const NewDiaryNote = (() => {
     const newNoteFormStore = useCreateForm(NewNoteFormStore);
 
+    // TODO: routing, result screen, header problem
     return (
         <UI.ScreenWrapper>
             {newNoteFormStore.isSubmitted
