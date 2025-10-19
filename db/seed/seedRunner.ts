@@ -1,6 +1,6 @@
-import { DbContextType } from '..';
-import { BaseSeederType, SeederOptionsType } from './baseSeedType';
-import { SymptomsSeed } from './seeders/symptoms.seeder';
+import { DbContextType } from "..";
+import { BaseSeederType, SeederOptionsType } from "./baseSeedType";
+import { SymptomsSeed } from "./seeders/symptoms.seeder";
 
 const seeders: BaseSeederType[] = [];
 
@@ -10,7 +10,7 @@ export const addSeeder = (seeder: BaseSeederType) => {
 
 const registrateSeeders = (dbContext: DbContextType) => {
     addSeeder(new SymptomsSeed(dbContext));
-}
+};
 
 export const runSeeds = async (dbContext: DbContextType, options: SeederOptionsType) => {
     registrateSeeders(dbContext);
@@ -27,5 +27,5 @@ export const runSeeds = async (dbContext: DbContextType, options: SeederOptionsT
         }
     }
 
-    console.log('🌿 Seeding complete.');
+    // console.log("🌿 Seeding complete.");
 };

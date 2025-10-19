@@ -1,22 +1,22 @@
-import { DbContextType } from '@/db';
-import { generateUUID } from '@/utils/generateUUID';
-import { BaseSeederType, SeederOptionsType } from '../baseSeedType';
+import { DbContextType } from "@/db";
+import { generateUUID } from "@/utils/generateUUID";
+import { BaseSeederType, SeederOptionsType } from "../baseSeedType";
 
 export class SymptomsSeed implements BaseSeederType {
-    public readonly name = 'Symptoms';
+    public readonly name = "Symptoms";
 
     /** Source data — keep it private so callers can’t mutate it. */
     private static readonly symptoms = [
-        'Headache',
-        'Migraine',
-        'Joint pain',
-        'Muscle ache',
-        'Back pain',
-        'Neck pain',
-        'Scarring pain',
-        'Toothache',
-        'Pressure in sinuses',
-        'Fatigue',
+        "Headache",
+        "Migraine",
+        "Joint pain",
+        "Muscle ache",
+        "Back pain",
+        "Neck pain",
+        "Scarring pain",
+        "Toothache",
+        "Pressure in sinuses",
+        "Fatigue",
     ] as const;
 
     constructor(private ctx: DbContextType) { }

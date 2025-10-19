@@ -1,7 +1,7 @@
-import GeoMagneticService from '@/services/geoMagnetic/geoMagneticService';
-import { GeoMagneticData } from '@/services/weather/types/models/GeoMagneticData';
-import { add, getNow } from '@/utils/datetime.helper';
-import { makeObservable, observable, runInAction } from 'mobx';
+import GeoMagneticService from "@/services/geoMagnetic/geoMagneticService";
+import { GeoMagneticData } from "@/services/weather/types/models/GeoMagneticData";
+import { add, getNow } from "@/utils/datetime.helper";
+import { makeObservable, observable, runInAction } from "mobx";
 
 type ConstructorArgsType = {
     geoMagneticService: GeoMagneticService;
@@ -24,9 +24,9 @@ class GeoMagneticStore {
     // 2025-03-14T00:00:00Z&end=2025-03-20T23:59:59Z&index=Kp
     async fetch() {
         const data = await this.args.geoMagneticService.fetch({
-            start: add(-12, 'hour'),
+            start: add(-12, "hour"),
             end: getNow(),
-            index: 'Kp'
+            index: "Kp"
         });
 
 

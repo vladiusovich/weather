@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import { AppState, AppStateStatus } from 'react-native';
+import { useState, useEffect } from "react";
+import { AppState, AppStateStatus } from "react-native";
 
 const useAppStateChange = (onChange: (newState: AppStateStatus) => Promise<void>): AppStateStatus => {
     const [appState, setAppState] = useState<AppStateStatus>(AppState.currentState);
 
     useEffect(() => {
-        const subscription = AppState.addEventListener('change', async (nextState: AppStateStatus) => {
+        const subscription = AppState.addEventListener("change", async (nextState: AppStateStatus) => {
             setAppState(nextState);
             await onChange(nextState);
         });
@@ -16,6 +16,6 @@ const useAppStateChange = (onChange: (newState: AppStateStatus) => Promise<void>
     }, [onChange]);
 
     return appState;
-}
+};
 
 export default useAppStateChange;

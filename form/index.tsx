@@ -1,6 +1,6 @@
-import Field from './Field';
-import Provider from './FormProvider';
-import Submit from './Submit';
+import Field from "./Field";
+import Provider from "./FormProvider";
+import Submit from "./Submit";
 
 const Form = {
     Field,

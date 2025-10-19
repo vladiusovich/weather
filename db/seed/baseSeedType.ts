@@ -4,9 +4,9 @@ export interface SeederOptionsType {
 };
 
 export abstract class BaseSeederType {
-    name: string = 'unnamed';
+    name: string = "unnamed";
     // eslint-disable-next-line class-methods-use-this
     run(options: SeederOptionsType): Promise<void> {
-        throw 'implement the method'
+        throw "implement the method";
     }
 }

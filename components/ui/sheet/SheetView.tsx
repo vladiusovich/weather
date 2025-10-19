@@ -84,6 +84,8 @@ const SheetView = <T extends Record<string, any>>({
             <Sheet.Frame
                 p="$5"
                 bg={"$background08"}
+                backgroundBlendMode=""
+                opacity={1}
                 mx={mx}
                 width={frameWidth}
             >

@@ -1,10 +1,9 @@
-import DiaryHistoryService from '@/services/diary/diaryHistoryService';
-import { DiaryHistoryItem } from '@/types/diary/DiaryHistoryItem';
-import { delay } from '@/utils/promise.helper';
-import { makeObservable, observable, runInAction } from 'mobx';
+import DiaryHistoryService from "@/services/diary/diaryHistoryService";
+import { DiaryHistoryItem } from "@/types/diary/DiaryHistoryItem";
+import { makeObservable, observable, runInAction } from "mobx";
 
 class DiaryHistoryStore {
-    public data: DiaryHistoryItem[] = []
+    public data: DiaryHistoryItem[] = [];
     public isLoading: boolean = false;
 
     constructor(protected diaryHistoryService: DiaryHistoryService) {

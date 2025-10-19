@@ -1,8 +1,8 @@
-import { DbContextType } from '@/db';
-import { runSeeds } from '@/db/seed/seedRunner';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { DbContextType } from "@/db";
+import { runSeeds } from "@/db/seed/seedRunner";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const SEED_FLAG_KEY = 'app:seeded:v1';
+const SEED_FLAG_KEY = "app:seeded:v1";
 
 export class SeedService {
     constructor(private dbContext: DbContextType) {
@@ -17,7 +17,7 @@ export class SeedService {
         }
 
         await runSeeds(this.dbContext, { force });
-        await AsyncStorage.setItem(SEED_FLAG_KEY, '1');
+        await AsyncStorage.setItem(SEED_FLAG_KEY, "1");
     }
 
     // eslint-disable-next-line class-methods-use-this

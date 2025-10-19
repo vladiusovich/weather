@@ -1,4 +1,4 @@
-import { UnitOfWork } from '@/db/repositories/unitOfWork';
+import { UnitOfWork } from "@/db/repositories/unitOfWork";
 
 class SymptomsService {
     constructor(private unitOfWork: UnitOfWork) {

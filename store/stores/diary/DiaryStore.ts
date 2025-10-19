@@ -1,6 +1,6 @@
-import { ServicesRootType } from '@/services';
-import DiaryHistoryStore from './DiaryHistoryStore';
-import SymptomsStore from './SymptomsStore';
+import { ServicesRootType } from "@/services";
+import DiaryHistoryStore from "./DiaryHistoryStore";
+import SymptomsStore from "./SymptomsStore";
 
 class DiaryStore {
     public history: DiaryHistoryStore;

@@ -11,6 +11,7 @@ const TextArea: React.FC<TextAreaPropsEx> = ({
 
     return <UITextArea
         onChangeText={onValueChange}
+        borderBlockWidth={0}
         {...props}
     />;
 };

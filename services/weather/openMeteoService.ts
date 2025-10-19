@@ -1,8 +1,8 @@
-import GetWeatherRequest from '@/api/rest/openMeteo/GetWeatherRequest';
-import { MeteoData } from './types/models/MeteoData';
-import { MeteoRequest } from '@/types/weather/MeteoRequest';
-import { MeteoResponse } from '@/types/weather/MeteoResponse';
-import { openMeteo } from './openMeteo.constants';
+import GetWeatherRequest from "@/api/rest/openMeteo/GetWeatherRequest";
+import { MeteoData } from "./types/models/MeteoData";
+import { MeteoRequest } from "@/types/weather/MeteoRequest";
+import { MeteoResponse } from "@/types/weather/MeteoResponse";
+import { openMeteo } from "./openMeteo.constants";
 
 class OpenMeteoService {
     private weatherRequest = new GetWeatherRequest();

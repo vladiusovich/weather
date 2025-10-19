@@ -1,7 +1,7 @@
-import { CurrentMeteoData } from './CurrentMeteoData';
-import { DailyMeteoData } from './DailyMeteoData';
-import { HourlyMeteoData } from './HourlyMeteoData';
-import { CurrentMeteoUnitsData, DailyMeteoUnitsData, HourlyMeteoUnitsData } from './MeteoUnitsData';
+import { CurrentMeteoData } from "./CurrentMeteoData";
+import { DailyMeteoData } from "./DailyMeteoData";
+import { HourlyMeteoData } from "./HourlyMeteoData";
+import { CurrentMeteoUnitsData, DailyMeteoUnitsData, HourlyMeteoUnitsData } from "./MeteoUnitsData";
 
 export interface MeteoData {
     latitude: number;

@@ -1,7 +1,7 @@
-import { ClientApiEndpoint } from './ClientApiEndpoint';
+import { ClientApiEndpoint } from "./ClientApiEndpoint";
 
 export type RequestOptionsType = {
-    method: 'get' | 'post' | 'put' | 'delete';
+    method: "get" | "post" | "put" | "delete";
     url: string;
     useParams?: boolean;
     cacheTimeInSeconds?: number;

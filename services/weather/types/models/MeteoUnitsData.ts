@@ -1,6 +1,6 @@
-import { CurrentMeteoData } from './CurrentMeteoData';
-import { DailyMeteoData } from './DailyMeteoData';
-import { HourlyMeteoData } from './HourlyMeteoData';
+import { CurrentMeteoData } from "./CurrentMeteoData";
+import { DailyMeteoData } from "./DailyMeteoData";
+import { HourlyMeteoData } from "./HourlyMeteoData";
 
 type CurrentMeteoDataKeys = keyof CurrentMeteoData;
 type HourlyMeteoDataKeys = keyof HourlyMeteoData;

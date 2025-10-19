@@ -1,6 +1,6 @@
-import { symptoms } from '../schema';
-import { DbClient } from './types/dbClient';
-import { SQLiteInsertValue } from 'drizzle-orm/sqlite-core';
+import { symptoms } from "../schema";
+import { DbClient } from "./types/dbClient";
+import { SQLiteInsertValue } from "drizzle-orm/sqlite-core";
 
 export class SymptomRepository {
     constructor(

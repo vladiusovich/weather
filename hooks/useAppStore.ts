@@ -1,5 +1,5 @@
-import { useContext } from 'react';
-import AppStoreContext from '../store/provider/AppStoreContext';
+import { useContext } from "react";
+import AppStoreContext from "../store/provider/AppStoreContext";
 
 const useAppStore = () => useContext(AppStoreContext);
 

@@ -1,8 +1,8 @@
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosInstance } from "axios";
 import {
     ClientApiEndpoint,
     ClientApiEndpointOptions,
-} from './ClientApiEndpoint';
+} from "./ClientApiEndpoint";
 
 class AxiosClientApiEndpoint implements ClientApiEndpoint {
     private instance: AxiosInstance;

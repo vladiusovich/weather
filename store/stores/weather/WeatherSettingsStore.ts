@@ -1,5 +1,5 @@
-import { makeObservable, observable, runInAction } from 'mobx';
-import { LocationCoords } from '@/types/LocationCoords';
+import { makeObservable, observable, runInAction } from "mobx";
+import { LocationCoords } from "@/types/LocationCoords";
 
 // Add DB support for weather settings.
 class WeatherSettingsStore {

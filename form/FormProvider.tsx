@@ -1,5 +1,5 @@
-import { FormContext } from '@/store/formStore/FormContext';
-import { FormStore } from '@/store/formStore/FormStore';
+import { FormContext } from "@/store/formStore/FormContext";
+import { FormStore } from "@/store/formStore/FormStore";
 
 /**
     * Form Provider for UI-forms.

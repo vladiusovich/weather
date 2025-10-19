@@ -40,11 +40,7 @@ const Table: React.FC = () => {
 
     return (
         <UiSection header="Table" >
-            <UI.Card
-                padded
-            >
-                <UI.Table data={data} columns={columns} />
-            </UI.Card>
+            <UI.Table data={data} columns={columns} />
         </UiSection>
     );
 };

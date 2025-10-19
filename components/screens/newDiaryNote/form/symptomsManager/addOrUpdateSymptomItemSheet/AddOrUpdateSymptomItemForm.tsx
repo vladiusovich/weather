@@ -38,7 +38,7 @@ const AddOrUpdateSymptomItemForm: React.FC<Props> = ({
                     <PainStrengthField />
                 </UI.YStack>
             </UI.YStack>
-            <Form.Submit size={"$4"}>
+            <Form.Submit size={"$5"}>
                 {t(`meteo.pages.newDiaryNote.${key}.submit`)}
             </Form.Submit>
         </Form.Provider>

@@ -11,7 +11,7 @@ import Skeleton from "./skeleton/Skeleton";
 // TODO: refactor it
 import Typo from "./typo/Typo";
 import Table from "./table/Table";
-import DatePickerSelector from "./datapicker/index";
+import Datepicker from "./datepicker/Datepicker";
 import ScreenWrapper from "./layoutWrapper/LayoutWrapper";
 import Paper from "./paper/Paper";
 import SheetView from "./sheet/SheetView";
@@ -24,14 +24,14 @@ import Searchbar from "./searchbar/Searchbar";
 import { Separator, View } from "tamagui";
 
 export * from "./table/Table";
-export * from "./datapicker/index";
 export * from "./selector/Selector";
 export * from "./input/Input";
 export * from "./searchbar/Searchbar";
+export * from "./datepicker/Datepicker";
 
 const UI = {
     Typo: Typo,
-    DatePicker: DatePickerSelector,
+    DatePicker: Datepicker,
 
     Button,
 
