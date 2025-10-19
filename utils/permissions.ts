@@ -1,54 +1,54 @@
-import * as Linking from 'expo-linking';
-import { Platform } from 'react-native';
+import * as Linking from "expo-linking";
+import { Platform } from "react-native";
 
-type PermissionType =
-    | 'geolocation'
-    | 'camera'
-    | 'microphone'
-    | 'notifications'
-    | 'bluetooth'
-    | 'photos'
-    | 'contacts'
-    | 'calendar'
-    | 'unknown';
+export type SystemPermissionType =
+    | "geolocation"
+    | "camera"
+    | "microphone"
+    | "notifications"
+    | "bluetooth"
+    | "photos"
+    | "contacts"
+    | "calendar"
+    | "unknown";
 
-type PlatformType = 'ios' | 'android';
+type PlatformType = "ios" | "android";
 
 type PermissionLinkMap = {
-    [key in PermissionType]?: {
+    [key in SystemPermissionType]?: {
         [platform in PlatformType]?: string | (() => Promise<void> | void);
     };
 };
 
 const permissionLinks: PermissionLinkMap = {
     geolocation: {
-        ios: 'app-settings:',
+        ios: "app-settings:",
         android: () => Linking.openSettings(),
     },
     camera: {
-        ios: 'app-settings:',
+        ios: "app-settings:",
         android: () => Linking.openSettings(),
     },
     notifications: {
-        ios: 'app-settings:',
+        ios: "app-settings:",
         android: () => Linking.openSettings(),
     },
     unknown: {
-        ios: 'app-settings:',
+        ios: "app-settings:",
         android: () => Linking.openSettings(),
     },
 };
 
-export async function openAppPermissionSettings(type: PermissionType = 'unknown') {
+export async function openAppPermissionSettings(type: SystemPermissionType = "unknown") {
     const platform: PlatformType = Platform.OS as PlatformType;
-    const entry = permissionLinks[type] ?? permissionLinks['unknown'];
+    const entry = permissionLinks[type] ?? permissionLinks["unknown"];
 
     const action = entry?.[platform];
 
     try {
-        if (typeof action === 'string') {
+        if (typeof action === "string") {
             await Linking.openURL(action);
-        } else if (typeof action === 'function') {
+        } else if (typeof action === "function") {
             await action();
         } else {
             // fallback

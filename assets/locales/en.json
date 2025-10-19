@@ -105,8 +105,8 @@
         "accessDenied": {
             "header": "Access denied",
             "submit": "Open Settings",
-            "description": {
-                "geolocation": "Go to settings and allow access to geolocation"
+            "geolocation": {
+                "description": "Go to settings and allow access to geolocation"
             }
         },
         "noData": {

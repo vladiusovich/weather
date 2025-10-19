@@ -4,12 +4,13 @@ import { RefreshControl, ScrollView } from "react-native";
 import * as Location from "expo-location";
 import useAppStore from "@/hooks/useAppStore";
 import UI from "@/components/ui";
-import AccessDenied from "../../common/accessDenied/AccessDenied";
+import AccessDeniedStatic from "../../common/accessDeniedStatic/AccessDeniedStatic";
 import { LocationCoords } from "@/types/LocationCoords";
 import CurrentWeatherStatus from "./currentWeatherStatus/CurrentWeatherStatus";
 import HourlyForecast from "./hourlyForecast/HourlyForecast";
 import DailyForecast from "./dailyForecast/DailyForecast";
 import useRefreshController from "@/hooks/useRefreshController";
+import { View } from "tamagui";
 
 // TODO: refactoring the module
 const Weather = observer(() => {
@@ -39,8 +40,7 @@ const Weather = observer(() => {
                 }
             }
 
-            const location = await Location.getCurrentPositionAsync();
-            const { coords } = location;
+            const { coords } = await Location.getCurrentPositionAsync();
 
             appStore.weather.weatherSettings.saveLocation(coords);
             await fetchWeather(coords);
@@ -50,10 +50,18 @@ const Weather = observer(() => {
 
     const isLoading = !appStore.weather.weatherData?.current;
 
-    if (status === null) return null;
+    if (isLoading || status === null) {
+        return (
+            <UI.ScreenWrapper
+                Component={View}
+            >
+                <UI.Loader isLoading={isLoading} size="large" />
+            </UI.ScreenWrapper>
+        );
+    }
 
     if (status.status === "denied") {
-        return <AccessDenied type='geolocation' />;
+        return <AccessDeniedStatic permission="geolocation" />;
     };
 
     return (
