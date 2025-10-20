@@ -50,7 +50,11 @@ const Weather = observer(() => {
 
     const isLoading = !appStore.weather.weatherData?.current;
 
-    if (isLoading || status === null) {
+    if (status?.status === "denied") {
+        return <AccessDeniedStatic permission="geolocation" />;
+    };
+
+    if (isLoading) {
         return (
             <UI.ScreenWrapper
                 Component={View}
@@ -59,10 +63,6 @@ const Weather = observer(() => {
             </UI.ScreenWrapper>
         );
     }
-
-    if (status.status === "denied") {
-        return <AccessDeniedStatic permission="geolocation" />;
-    };
 
     return (
         <UI.ScreenWrapper

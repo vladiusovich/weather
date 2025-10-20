@@ -1,7 +1,7 @@
 import { SplashScreen, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { TamaguiProvider, Spinner } from "tamagui";
+import { TamaguiProvider } from "tamagui";
 import config from "@/tamagui.config";
 import { PortalProvider } from "@tamagui/portal";
 import AppStoreProvider from "@/store/provider/AppStoreProvider";
