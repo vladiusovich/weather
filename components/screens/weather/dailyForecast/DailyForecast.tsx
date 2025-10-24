@@ -16,7 +16,7 @@ const DailyForecast: React.FC = () => {
     return (
         <ScrollableForecast
             header={t("meteo.daily.nDayForecast.title")}
-            headerIcon={<Calendar size={20} />}
+            headerIcon={<Calendar size={"$1"} />}
         >
             {daily.map((i) => {
                 const isCurrent = isSameDay(now, i.time);

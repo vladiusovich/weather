@@ -19,7 +19,7 @@ const HourlyForecast: React.FC = () => {
     return (
         <ScrollableForecast
             header={t("meteo.hourly.hourlyForecast.title")}
-            headerIcon={<Clock3 size={20} />}
+            headerIcon={<Clock3 size={"$1"} />}
         >
             {hourly.map((i) => {
                 const isCurrent = isSameHour(now, i.time);

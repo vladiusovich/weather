@@ -6,16 +6,17 @@ import {
 } from "@tamagui/lucide-icons";
 
 type HumidityProps = {
-    value?: number | null;
+    value?: number;
+    hideIcon?: boolean;
 } & TextStyle;
 
-const Humidity: React.FC<HumidityProps> = ({ value, ...props }) => {
+const Humidity: React.FC<HumidityProps> = ({ value, hideIcon = false, ...props }) => {
     return (
         <UI.XStack gap='$0.5' items={"center"}>
-            <Droplet size={14} />
+            {!hideIcon && <Droplet size={14} />}
             <UI.XStack items={"baseline"}>
                 <UI.Typo.Text {...props}>{value ?? "N/A"}</UI.Typo.Text>
-                <UI.Typo.Text fontSize='$1'>%</UI.Typo.Text>
+                <UI.Typo.Text {...props}>%</UI.Typo.Text>
             </UI.XStack>
         </UI.XStack>
     );

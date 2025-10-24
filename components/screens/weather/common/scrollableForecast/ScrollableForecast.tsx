@@ -23,9 +23,9 @@ const ScrollableForecast: React.FC<ScrollableForecastProps> = ({
                     <UI.Card.Header size={"$0.5"}>
                         <UI.XStack gap={"$2"} items={"center"}>
                             {headerIcon}
-                            <UI.Typo.H6>
+                            <UI.Typo.Text>
                                 {header}
-                            </UI.Typo.H6>
+                            </UI.Typo.Text>
                         </UI.XStack>
                     </UI.Card.Header>
 
@@ -35,7 +35,7 @@ const ScrollableForecast: React.FC<ScrollableForecastProps> = ({
                         <UI.XStack
                             items='stretch'
                             justify='space-between'
-                            gap='$3'
+                            gap='$2'
                             flex={1}
                         >
                             {children}

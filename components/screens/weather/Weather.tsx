@@ -6,14 +6,14 @@ import useAppStore from "@/hooks/useAppStore";
 import UI from "@/components/ui";
 import AccessDeniedStatic from "../../common/accessDeniedStatic/AccessDeniedStatic";
 import { LocationCoords } from "@/types/LocationCoords";
-import CurrentWeatherStatus from "./currentWeatherStatus/CurrentWeatherStatus";
+import CurrentWeatherStatus from "./commonWeatherStatus/CommonWeatherStatus";
 import HourlyForecast from "./hourlyForecast/HourlyForecast";
 import DailyForecast from "./dailyForecast/DailyForecast";
 import useRefreshController from "@/hooks/useRefreshController";
 import { View } from "tamagui";
 
 // TODO: refactoring the module
-const Weather = observer(() => {
+const Weather = () => {
     const appStore = useAppStore();
     const [status, requestPermission] = Location.useForegroundPermissions();
 
@@ -72,7 +72,7 @@ const Weather = observer(() => {
         >
             <UI.Loader isLoading={isLoading} />
             {!isLoading && (
-                <UI.YStack gap='$4'>
+                <UI.YStack gap='$3'>
                     {/* <LocationStatus /> */}
                     <CurrentWeatherStatus />
                     <HourlyForecast />
@@ -81,6 +81,6 @@ const Weather = observer(() => {
             )}
         </UI.ScreenWrapper>
     );
-});
+};
 
-export default Weather;
+export default observer(Weather);

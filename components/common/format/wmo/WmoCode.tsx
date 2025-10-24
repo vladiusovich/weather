@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { TextStyle } from "tamagui";
 
 type WmoCodeProps = {
-    value?: number | null;
+    value?: number;
 } & TextStyle;
 
 const WmoCode: React.FC<WmoCodeProps> = ({

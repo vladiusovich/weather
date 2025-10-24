@@ -17,7 +17,7 @@ const Stack: React.FC<StackProps> = ({
     return (
         <NativeStack
             screenOptions={{
-                animation: "simple_push",
+                animation: "none",
                 title: "Weather app",
                 // headerShown: false,
                 headerRight: () => (
