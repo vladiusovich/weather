@@ -20,9 +20,6 @@ const SymptomsManagerForm: React.FC = () => {
                 <UI.Paper>
                     <UI.YStack gap={"$3"}>
                         <Date />
-                        <UI.Typo.Text>
-                            {t("meteo.pages.newDiaryNote.symptomsList.header")}
-                        </UI.Typo.Text>
                         <SymptomChipsField onPressOpen={onOpen} />
                         <CommentField />
                     </UI.YStack>

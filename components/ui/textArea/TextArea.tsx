@@ -9,11 +9,13 @@ const TextArea: React.FC<TextAreaPropsEx> = ({
     ...props
 }) => {
 
-    return <UITextArea
-        onChangeText={onValueChange}
-        borderBlockWidth={0}
-        {...props}
-    />;
+    return (
+        <UITextArea
+            onChangeText={onValueChange}
+            borderBlockColor={"transparent"}
+            {...props}
+        />
+    );
 };
 
 export default TextArea;

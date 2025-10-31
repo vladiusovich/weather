@@ -40,7 +40,6 @@ const SymptomChipsField: React.FC<Props> = ({ onPressOpen }) => {
 
     return (
         <UI.Paper
-            // bg={hasError ? "$red4" : "$background02"}
             bg={"$background02"}
             minH={80}
             borderWidth={"$1"}

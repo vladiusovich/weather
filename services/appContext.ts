@@ -45,7 +45,7 @@ export class AppContext {
 
     // eslint-disable-next-line class-methods-use-this
     private async initI18n() {
-        await i18n.init();
+        await i18n.initResources();
     }
 
     private async initDb() {

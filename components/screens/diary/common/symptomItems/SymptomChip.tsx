@@ -1,3 +1,4 @@
+import Format from "@/components/common/format";
 import UI from "@/components/ui";
 import { Symptom } from "@/types/diary/DiaryHistoryItem";
 import React from "react";
@@ -12,7 +13,7 @@ const SymptomChip: React.FC<SymptomProps> = ({
     return (
         <UI.Chip
             id={data.id}
-            label={data.name}
+            label={<Format.Symptom {...data} />}
             counter={data.strengtOfPain}
         />
     );

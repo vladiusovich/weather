@@ -29,7 +29,6 @@ class GeoMagneticStore {
             index: "Kp"
         });
 
-
         runInAction(() => {
             this.data = data;
         });

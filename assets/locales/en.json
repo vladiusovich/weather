@@ -101,6 +101,11 @@
             }
         }
     },
+    "pages": {
+        "settings": {
+            "header": "Settings"
+        }
+    },
     "common": {
         "accessDenied": {
             "header": "Access denied",
@@ -120,10 +125,6 @@
                 "required": "The field is invalid"
             }
         },
-        "pages": {
-            "settings": {
-                "header": "Settings"
-            }
-        }
+        "symptomCodes": {}
     }
 }

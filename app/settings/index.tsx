@@ -9,7 +9,7 @@ const SettingsScreen = () => {
     return (
         <>
             <Stack.Screen options={{
-                title: t("common.pages.settings.header"),
+                title: t("pages.settings.header"),
                 headerRight: () => null,
             }} />
             <Settings />

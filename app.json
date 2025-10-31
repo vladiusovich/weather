@@ -18,7 +18,6 @@
     },
     "android": {
       "adaptiveIcon": {
-        // "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#25292e"
       },
       "package": "com.uladzislau.usovich.weather",
@@ -45,7 +44,8 @@
       ],
       "expo-sqlite",
       "expo-font",
-      "expo-web-browser"
+      "expo-web-browser",
+      "expo-localization"
     ],
     "experiments": {
       "typedRoutes": true

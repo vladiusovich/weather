@@ -9,7 +9,7 @@ const HumidityCard: React.FC<Props> = ({ value }) => {
     return (
         <UI.Paper flex={1}>
             <UI.YStack gap='$2' items={"center"} justify={"center"}>
-                <Droplet size={"$4"} />
+                <Droplet size={"$4"} strokeWidth={1} />
                 <Format.Humidity
                     fontSize={"$9"}
                     value={value}
