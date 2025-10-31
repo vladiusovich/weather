@@ -12,10 +12,10 @@
         },
         "glossary": {
             "temperature_2m": "Температура",
-            "relative_humidity_2m": "Относительная влажность",
+            "relative_humidity_2m": "Отн. влажность",
             "temperature_2m_max": "Макс.",
             "temperature_2m_min": "Мин.",
-            "apparent_temperature": "Ощущается как",
+            "apparent_temperature": "Ощ. как",
             "weather_code": "Погодные условия",
             "time": "Время"
         },
@@ -104,9 +104,17 @@
     "pages": {
         "settings": {
             "header": "Настройки"
+        },
+        "languages": {
+            "header": "Язык"
         }
     },
     "common": {
+        "tabsScreen": {
+            "weather": "Погода",
+            "diary": "Дневник",
+            "healthStatistic": "Статистика"
+        },
         "accessDenied": {
             "header": "Доступ запрещён",
             "submit": "Открыть настройки",
@@ -126,16 +134,16 @@
             }
         },
         "symptomCodes": {
-            "Headache": "Головная боль (цефалгия)",
+            "Headache": "Головная боль",
             "Migraine": "Мигрень",
-            "Joint pain": "Боль в суставах (артралгия)",
-            "Muscle ache": "Мышечная боль (миалгия)",
-            "Back pain": "Боль в спине (дорсалгия)",
-            "Neck pain": "Боль в шее (цервикалгия)",
-            "Scarring pain": "Жгучая/невралгическая боль",
+            "Joint pain": "Боль в суставах",
+            "Muscle ache": "Мышечная боль",
+            "Back pain": "Боль в спине",
+            "Neck pain": "Боль в шее",
+            "Scarring pain": "Жгучая боль",
             "Toothache": "Зубная боль",
-            "Pressure in sinuses": "Давление в пазухах (синусная боль)",
-            "Fatigue": "Утомляемость (астения)"
+            "Pressure in sinuses": "Давление в пазухах",
+            "Fatigue": "Утомляемость"
         }
     }
 }

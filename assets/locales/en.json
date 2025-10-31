@@ -104,9 +104,17 @@
     "pages": {
         "settings": {
             "header": "Settings"
+        },
+        "languages": {
+            "header": "Language"
         }
     },
     "common": {
+        "tabsScreen": {
+            "weather": "Weather",
+            "diary": "Diary",
+            "healthStatistic": "Statistic"
+        },
         "accessDenied": {
             "header": "Access denied",
             "submit": "Open Settings",

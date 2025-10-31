@@ -22,12 +22,14 @@ import Chip from "./chip/Chip";
 import Input from "./input/Input";
 import Searchbar from "./searchbar/Searchbar";
 import { Separator, View } from "tamagui";
+import List from "./list/List";
 
 export * from "./table/Table";
 export * from "./selector/Selector";
 export * from "./input/Input";
 export * from "./searchbar/Searchbar";
 export * from "./datepicker/Datepicker";
+export * from "./list/List";
 
 const UI = {
     Typo: Typo,
@@ -52,6 +54,7 @@ const UI = {
     Input,
     Searchbar,
     Slider,
+    List,
 
     Paper,
     SheetView,

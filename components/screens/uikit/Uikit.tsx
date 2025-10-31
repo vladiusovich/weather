@@ -14,6 +14,7 @@ import Sliders from "./sliders/Sliders";
 import Chips from "./chips/Chips";
 import Inputs from "./inputs/Inputs";
 import Datepicker from "./inputs/Datepicker";
+import List from "./list/List";
 
 const Uikit = (() => {
     return (
@@ -28,11 +29,12 @@ const Uikit = (() => {
                 <Sliders />
                 <Loaders />
                 <Skeletons />
+                <List />
                 <Cards />
                 <Typography />
                 <Table />
             </UI.YStack>
-        </UI.ScreenWrapper >
+        </UI.ScreenWrapper>
     );
 });
 

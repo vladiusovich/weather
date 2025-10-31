@@ -26,6 +26,7 @@
     "@tamagui/core": "^1.135.0",
     "@tamagui/dialog": "^1.135.0",
     "@tamagui/linear-gradient": "^1.135.0",
+    "@tamagui/list-item": "^1.135.7",
     "@tamagui/lucide-icons": "^1.135.0",
     "@tamagui/portal": "^1.135.0",
     "@tamagui/themes": "^1.135.0",

@@ -2,7 +2,7 @@ import migrations from "@/db/weatherSense/migrations";
 import { SeedService } from "./seedService";
 import { migrate } from "drizzle-orm/expo-sqlite/migrator";
 import { DbContextType, initDb } from "@/db";
-import i18n from "@/services/translations/i18n";
+import { initResources } from "@/services/translations/i18n";
 import { initServices, ServicesRootType } from ".";
 import { initAppStories } from "@/store/initStore";
 import AppStoreType from "@/store/AppStoreType";
@@ -45,7 +45,7 @@ export class AppContext {
 
     // eslint-disable-next-line class-methods-use-this
     private async initI18n() {
-        await i18n.initResources();
+        await initResources();
     }
 
     private async initDb() {

@@ -1,18 +1,23 @@
 import React from "react";
 import { Spinner, SpinnerProps } from "tamagui";
 import YStack from "../stack/YStack";
+import FullScreenLoader from "./FullScreenLoader";
 
-interface LoaderProps extends SpinnerProps {
+export interface LoaderProps extends SpinnerProps {
     isLoading: boolean;
+    fullScreen?: boolean;
 }
 
 const Loader: React.FC<LoaderProps> = ({
-    isLoading: isloading = false,
-    size = "large",
-    color = "$green10",
+    isLoading = false,
+    fullScreen = false,
     ...props
 }) => {
-    if (!isloading) return null;
+    if (!isLoading) return null;
+
+    if (fullScreen) {
+        return <FullScreenLoader {...props} />;
+    }
 
     return (
         <YStack
@@ -22,8 +27,6 @@ const Loader: React.FC<LoaderProps> = ({
         >
             <Spinner
                 {...props}
-                size={size}
-                color={color}
             />
         </YStack>
     );
