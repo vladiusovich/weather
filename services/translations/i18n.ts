@@ -15,6 +15,7 @@ const resources = {
     ru: { translation: ru },
 } as const;
 
+
 const resolveInitialLanguage = async (): Promise<LangCode> => {
     const savedLang = await AsyncStorage.getItem("appLang") as LangCode;
 

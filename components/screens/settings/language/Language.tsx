@@ -3,7 +3,7 @@ import { ScrollView } from "tamagui";
 import UI, { ListItemProps } from "@/components/ui";
 import { currentLanguage, SUPPORTED_LANGS } from "@/services/translations/i18n";
 import useChangeLanguage from "@/hooks/useChangeLanguage";
-import { Earth } from "@tamagui/lucide-icons";
+import { Check } from "@tamagui/lucide-icons";
 import { useTranslation } from "react-i18next";
 
 const Language = observer(() => {
@@ -17,8 +17,8 @@ const Language = observer(() => {
         return {
             title: lang,
             onPress: () => changeLanguage(lang),
-            iconAfter: currentLang ? Earth : null,
-            disabled: currentLang,
+            iconAfter: currentLang ? Check : null,
+            // disabled: currentLang,
         };
     });
 

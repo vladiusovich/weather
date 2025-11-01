@@ -9,13 +9,13 @@ export interface ListProps {
 
 const defaultProps = {
     size: "$6",
-    hoverTheme: true,
-    pressTheme: true,
+    // hoverTheme: true,
+    // pressTheme: true,
 } as const;
 
 const List: React.FC<ListProps> = ({ items = [] }) => {
     return (
-        <YGroup>
+        <YGroup rounded={"$7"}>
             {items.map((i) => {
                 return (
                     <YGroup.Item>
