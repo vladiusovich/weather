@@ -1,20 +1,19 @@
-/* eslint-disable max-len */
 import { createThemes, defaultComponentThemes } from "@tamagui/theme-builder";
 import * as Colors from "@tamagui/colors";
 
 const darkPalette = [
-    "hsla(0, 15%, 1%, 1)",
-    "hsla(0, 15%, 6%, 1)",
-    "hsla(0, 15%, 12%, 1)",
-    "hsla(0, 15%, 17%, 1)",
-    "hsla(0, 15%, 23%, 1)",
-    "hsla(0, 15%, 28%, 1)",
-    "hsla(0, 15%, 34%, 1)",
-    "hsla(0, 15%, 39%, 1)",
-    "hsla(0, 15%, 45%, 1)",
-    "hsla(0, 15%, 50%, 1)",
-    "hsla(0, 15%, 93%, 1)",
-    "hsla(0, 15%, 99%, 1)",
+    "hsla(0, 0%, 5%, 1.00)",
+    "hsla(0, 0%, 10%, 1)",
+    "hsla(0, 0%, 15%, 1)",
+    "hsla(0, 0%, 20%, 1)",
+    "hsla(0, 0%, 25%, 1)",
+    "hsla(0, 0%, 30%, 1)",
+    "hsla(0, 0%, 35%, 1)",
+    "hsla(0, 0%, 40%, 1)",
+    "hsla(0, 0%, 45%, 1)",
+    "hsla(0, 0%, 50%, 1)",
+    "hsla(0, 0%, 55%, 1)",
+    "hsla(0, 0%, 60%, 1)",
 ];
 
 const lightPalette = [

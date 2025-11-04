@@ -9,8 +9,9 @@ export interface ListProps {
 
 const defaultProps = {
     size: "$6",
+    bg: "$background04",
     // hoverTheme: true,
-    // pressTheme: true,
+    pressTheme: true,
 } as const;
 
 const List: React.FC<ListProps> = ({ items = [] }) => {
