@@ -4,11 +4,11 @@ import { inputVariants } from "./StyledInput";
 export const IconContainer = styled(ThemeableStack, {
     name: "IconContainer",
     justify: "center",
+    bg: "$background02",
     variants: {
         unstyled: {
             false: {
                 size: "$true",
-                backgroundColor: "$background",
                 borderRadius: 0,
             },
         },

@@ -9,7 +9,7 @@ import {
 
 const CustomListItemFrame = styled(ListItemFrame, {
     // size: "$6",
-    bg: "$color3",
+    bg: "$background0",
     // hoverTheme: true,
     // pressTheme: true,
 });

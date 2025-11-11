@@ -14,7 +14,7 @@ const ForecastItem: React.FC<ForecastItemProps> = ({
     return (
         <UI.View
             flex={1}
-            bg={current ? "$background08" : "$background04"}
+            bg={current ? "$background08" : "$background02"}
             rounded={40}
             px={16}
             py={16}

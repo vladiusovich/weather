@@ -15,11 +15,13 @@ import Chips from "./chips/Chips";
 import Inputs from "./inputs/Inputs";
 import Datepicker from "./inputs/Datepicker";
 import List from "./list/List";
+import Colors from "./colors/Colors";
 
 const Uikit = (() => {
     return (
         <UI.ScreenWrapper Component={ScrollView}>
             <UI.YStack gap={"$4"}>
+                <Colors />
                 <Buttons />
                 <Chips />
                 <Selectors />

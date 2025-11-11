@@ -40,10 +40,9 @@ const SymptomChipsField: React.FC<Props> = ({ onPressOpen }) => {
 
     return (
         <UI.Paper
-            bg={"$background02"}
             minH={80}
             borderWidth={"$1"}
-            borderColor={hasError ? "$red4" : "transparent"}
+            borderColor={hasError ? "$red4" : "$borderColor"}
         >
             <UI.YStack
                 gap={"$3"}

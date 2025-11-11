@@ -6,7 +6,7 @@ import UiSection from "../UiSection";
 const Cards: React.FC = () => {
     return (
         <UiSection header="Cards" >
-            <UI.Card padding="$4" bg="$background02">
+            <UI.Card padding="$4">
                 <UI.Card.Header padded>
                     <UI.Typo.H6>Sony A7IV</UI.Typo.H6>
                     <UI.Typo.Text color={"$color11"} >Now available</UI.Typo.Text>

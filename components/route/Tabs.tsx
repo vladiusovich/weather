@@ -20,7 +20,7 @@ const Tabs: React.FC<StackProps> = ({
                 },
                 tabBarActiveTintColor: theme.accentColor.val,
                 tabBarStyle: {
-                    backgroundColor: theme.color2.val,
+                    backgroundColor: theme.background.val,
                     shadowColor: theme.accentColor.val,
                     height: 75,
                     borderTopWidth: 0, // Removes the top border

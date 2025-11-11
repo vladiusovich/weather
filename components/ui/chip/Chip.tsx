@@ -21,7 +21,7 @@ const StyledChip = styled(XStack, {
     rounded: 8,
     variants: {
         variant: {
-            solid: { bg: "$background04", },
+            solid: { bg: "$background02", },
             outline: { bg: "transparent", borderWidth: 1, borderColor: "$color6" },
             ghost: { bg: "transparent" },
         },

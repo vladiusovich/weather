@@ -12,7 +12,7 @@ export const StyledInput = styled(Input, {
     borderColor: "transparent",
     flex: 1,
     rounded: 12,
-
+    bg: "$background02",
     focusVisibleStyle: {
         outlineColor: "$outlineColor",
         outlineWidth: 0,

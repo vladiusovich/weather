@@ -9,7 +9,7 @@ export interface ListProps {
 
 const defaultProps = {
     size: "$6",
-    bg: "$background04",
+    bg: "$background0",
     // hoverTheme: true,
     pressTheme: true,
 } as const;

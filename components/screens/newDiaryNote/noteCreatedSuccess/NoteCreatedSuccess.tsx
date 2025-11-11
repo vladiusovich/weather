@@ -10,7 +10,8 @@ const NoteCreatedSuccess = (() => {
     const router = useRouter();
 
     const onPress = () => {
-        router.replace("/diary");
+        router.dismissAll();
+        router.replace("/(tabs)/diary");
     };
 
     return (
@@ -21,7 +22,7 @@ const NoteCreatedSuccess = (() => {
 
             <UI.Paper
                 p='$4'
-                bg={"$background02"}
+                bg={"transparent"}
                 flex={1}
             >
                 <UI.YStack flex={1}>

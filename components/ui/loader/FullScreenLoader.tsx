@@ -4,7 +4,6 @@ import { Spinner, SpinnerProps, YStack } from "tamagui";
 type FullScreenLoaderProps = SpinnerProps;
 
 const FullScreenLoader: React.FC<FullScreenLoaderProps> = ({ ...props }) => {
-
     return (
         <YStack
             position="absolute"
@@ -12,22 +11,14 @@ const FullScreenLoader: React.FC<FullScreenLoaderProps> = ({ ...props }) => {
             l={0}
             r={0}
             b={0}
-            bg="$background02"
             items="center"
             justify="center"
-            z={9999}
+            // bg={"$background"}
+            // opacity={0.1}
             pointerEvents="auto"
+            z={1}
         >
-            <YStack
-                p="$4"
-                rounded="$4"
-                bg="$color1"
-                items="center"
-                justify="center"
-                gap="$2"
-            >
-                <Spinner size="large" {...props} />
-            </YStack>
+            <Spinner size="large" color={"$accentColor"} {...props} />
         </YStack>
     );
 };

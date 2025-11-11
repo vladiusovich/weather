@@ -84,7 +84,7 @@ const Selector: React.FC<SelectorProps> = ({
                     <Select.Group>
                         <Select.Label
                             title={label}
-                            backgroundColor={"$background"}
+                            bg={"$background"}
                         />
                         {options.map((item, i) => (
                             <Select.Item

@@ -2,18 +2,18 @@ import { createThemes, defaultComponentThemes } from "@tamagui/theme-builder";
 import * as Colors from "@tamagui/colors";
 
 const darkPalette = [
-    "hsla(0, 0%, 5%, 1.00)",
+    "hsla(0, 0%, 2%, 1.00)",
+    "hsla(0, 0%, 7%, 1)",
     "hsla(0, 0%, 10%, 1)",
-    "hsla(0, 0%, 15%, 1)",
+    "hsla(0, 0%, 13%, 1)",
+    "hsla(0, 0%, 16%, 1)",
     "hsla(0, 0%, 20%, 1)",
     "hsla(0, 0%, 25%, 1)",
     "hsla(0, 0%, 30%, 1)",
     "hsla(0, 0%, 35%, 1)",
-    "hsla(0, 0%, 40%, 1)",
     "hsla(0, 0%, 45%, 1)",
     "hsla(0, 0%, 50%, 1)",
     "hsla(0, 0%, 55%, 1)",
-    "hsla(0, 0%, 60%, 1)",
 ];
 
 const lightPalette = [
@@ -67,7 +67,13 @@ const builtThemes = createThemes({
                 ...Colors.yellow,
                 ...lightShadows,
                 shadowColor: lightShadows.shadow1,
-                bottomSheetBg: "hsla(0, 15%, 99%, 1)",
+                bottomSheetBg: lightPalette[2],
+                background: lightPalette[0],
+                background0: lightPalette[1],
+                background02: lightPalette[2],
+                background04: lightPalette[3],
+                background06: lightPalette[4],
+                background08: lightPalette[5],
             },
             dark: {
                 ...Colors.greenDark,
@@ -75,7 +81,13 @@ const builtThemes = createThemes({
                 ...Colors.yellowDark,
                 ...darkShadows,
                 shadowColor: darkShadows.shadow1,
-                bottomSheetBg: "hsla(0, 15%, 5%, 1.00)",
+                bottomSheetBg: darkPalette[2],
+                background: darkPalette[0],
+                background0: darkPalette[1],
+                background02: darkPalette[2],
+                background04: darkPalette[3],
+                background06: darkPalette[4],
+                background08: darkPalette[5],
             },
         },
     },
