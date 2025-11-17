@@ -49,10 +49,10 @@ const ChipText = styled(Text, {
 } as const);
 
 export const CounterView = styled(View, {
-    bg: "$red9",
+    bg: "$background08",
     justify: "center",
     items: "center",
-    rounded: 999,
+    rounded: 5,
     variants: {
         size: {
             sm: { width: 14, height: 14 },

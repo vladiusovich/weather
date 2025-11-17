@@ -1,9 +1,20 @@
 import { Stack as NativeStack, router } from "expo-router";
 import React from "react";
-import { Pressable } from "react-native";
+import { Pressable, PressableProps } from "react-native";
 import { Settings, CodeSquare } from "@tamagui/lucide-icons";
 import { useTheme } from "tamagui";
 import UI from "../ui";
+
+const PressableHeaderIcon: React.FC<PressableProps> = ({ children, ...rest }) => {
+    return (
+        <Pressable
+            hitSlop={8}
+            {...rest}
+        >
+            {children}
+        </Pressable>
+    );
+};
 
 interface StackProps {
     children?: React.ReactNode;
@@ -21,13 +32,13 @@ const Stack: React.FC<StackProps> = ({
                 title: "Weather app",
                 // headerShown: false,
                 headerRight: () => (
-                    <UI.XStack gap="$3">
-                        <Pressable onPress={() => router.push("/dev")}>
+                    <UI.XStack gap="$4">
+                        <PressableHeaderIcon onPress={() => router.push("/dev")}>
                             <CodeSquare size={20} />
-                        </Pressable>
-                        <Pressable onPress={() => router.push("/settings")}>
-                            <Settings size={20} />
-                        </Pressable>
+                        </PressableHeaderIcon>
+                        <PressableHeaderIcon onPress={() => router.push("/settings")}>
+                            <Settings hitSlop={10} size={20} />
+                        </PressableHeaderIcon>
                     </UI.XStack>
                 ),
                 headerStyle: {

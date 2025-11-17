@@ -12,7 +12,6 @@ const TextArea: React.FC<TextAreaPropsEx> = ({
     return (
         <UITextArea
             onChangeText={onValueChange}
-            borderBlockColor={"transparent"}
             {...props}
         />
     );
