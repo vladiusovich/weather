@@ -1,6 +1,6 @@
 import { Stack, useRouter } from "expo-router";
 import React from "react";
-import UI from "@/components/ui";
+import UI from "@components/ui";
 import { useTranslation } from "react-i18next";
 import { AlertCircle } from "@tamagui/lucide-icons";
 

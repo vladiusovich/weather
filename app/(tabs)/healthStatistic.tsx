@@ -1,4 +1,4 @@
-import HealthStatistic from "@/components/screens/healthStatistic/HealthStatistic";
+import HealthStatistic from "@components/screens/healthStatistic/HealthStatistic";
 
 const HealthStatisticScreen = () => {
     return (<HealthStatistic />);

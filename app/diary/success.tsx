@@ -1,5 +1,5 @@
 import { Stack } from "expo-router";
-import NoteCreatedSuccess from "@/components/screens/newDiaryNote/noteCreatedSuccess/NoteCreatedSuccess";
+import NoteCreatedSuccess from "@components/screens/newDiaryNote/noteCreatedSuccess/NoteCreatedSuccess";
 
 const SuccessDiaryCreationScreen = () => {
     return (

@@ -1,4 +1,4 @@
-import Router from "@/components/route";
+import Router from "@components/route";
 import { BookHeart, CloudSun, ChartBar } from "@tamagui/lucide-icons";
 import { Tabs } from "expo-router";
 import { useTranslation } from "react-i18next";
