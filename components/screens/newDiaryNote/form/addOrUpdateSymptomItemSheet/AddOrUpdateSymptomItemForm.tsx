@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import SymptomTypeField from "./fields/SymptomTypeField";
 import Form from "@/form";
 import { useFormContext } from "@/store/formStore/FormContext";
-import SymptomFormStore from "../../../store/SymptomFormStore";
+import SymptomFormStore from "../../store/SymptomFormStore";
 
 interface Props {
     onClose: () => void;

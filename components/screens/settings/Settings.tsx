@@ -15,7 +15,7 @@ const Settings = () => {
                 items={[
                     {
                         icon: Languages,
-                        title: t("pages.languages.header"),
+                        title: t("screens.languages.title"),
                         iconAfter: ChevronRight,
                         onPress: () => router.push("/settings/language"),
                     },

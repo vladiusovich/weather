@@ -3,18 +3,22 @@ import { observer } from "mobx-react-lite";
 import UI from "@/components/ui";
 import useCreateForm from "@/hooks/useCreateForm";
 import NewNoteFormStore from "./store/NewNoteFormStore";
-import NewDiaryNoteForm from "./form/NewDiaryNoteForm";
-import NoteCreatedSuccess from "./noteCreatedSuccess/NoteCreatedSuccess";
+import { useRouter } from "expo-router";
+import useCallbackIf from "@/hooks/useCallbackIf";
+import Form from "@/form";
+import SymptomsManagerForm from "./form/SymptomsManagerForm";
 
 const NewDiaryNote = (() => {
     const newNoteFormStore = useCreateForm(NewNoteFormStore);
+    const router = useRouter();
 
-    // TODO: routing, result screen, header problem
+    useCallbackIf(newNoteFormStore.isSubmitted, () => router.replace("/diary/success"));
+
     return (
         <UI.ScreenWrapper>
-            {newNoteFormStore.isSubmitted
-                ? <NoteCreatedSuccess />
-                : <NewDiaryNoteForm form={newNoteFormStore} />}
+            <Form.Provider form={newNoteFormStore}>
+                <SymptomsManagerForm />
+            </Form.Provider>
         </UI.ScreenWrapper>
     );
 });

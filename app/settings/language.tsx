@@ -8,7 +8,7 @@ const LanguagesScreen = () => {
     return (
         <>
             <Stack.Screen options={{
-                title: t("pages.languages.header"),
+                title: t("screens.languages.title"),
                 headerRight: () => null,
             }} />
             <Language />

@@ -9,10 +9,6 @@ const NewNoteButton: React.FC = () => {
     const router = useRouter();
     const insets = useSafeAreaInsets();
 
-    const onPressHandle = () => {
-        router.push("/newDiaryNote");
-    };
-
     return (
         <UI.Button
             position="absolute"
@@ -20,7 +16,7 @@ const NewNoteButton: React.FC = () => {
             b={insets.bottom + 20}
             r={15}
             square
-            onPress={onPressHandle}
+            onPress={() => router.push("/diary/newDiary")}
         >
             <PlusSquare />
         </UI.Button>

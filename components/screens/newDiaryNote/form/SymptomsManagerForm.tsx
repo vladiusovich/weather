@@ -14,7 +14,7 @@ const SymptomsManagerForm: React.FC = () => {
     const { open, onOpen, onClose } = useModalController();
 
     return (
-        <UI.YStack gap={"$3"} flex={1} marginBlockEnd={25}>
+        <UI.YStack gap={"$3"} flex={1}>
             <AddOrUpdateSymptomItemSheet open={open} onClose={onClose} />
             <UI.YStack flex={1}>
                 <UI.Paper>

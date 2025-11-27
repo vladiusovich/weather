@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import UI from "@/components/ui";
 import { useTranslation } from "react-i18next";
 import { Smile } from "@tamagui/lucide-icons";
-import { Stack, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 
 const NoteCreatedSuccess = (() => {
     const { t } = useTranslation();
@@ -15,11 +15,7 @@ const NoteCreatedSuccess = (() => {
     };
 
     return (
-        <>
-            <Stack.Screen options={{
-                headerShown: false
-            }} />
-
+        <UI.ScreenWrapper>
             <UI.Paper
                 p='$4'
                 bg={"transparent"}
@@ -42,8 +38,7 @@ const NoteCreatedSuccess = (() => {
                     </UI.Button>
                 </UI.YStack>
             </UI.Paper>
-        </>
-
+        </UI.ScreenWrapper>
     );
 });
 

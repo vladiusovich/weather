@@ -1,36 +1,30 @@
-import { View, StyleSheet } from "react-native";
-import { Link, Stack } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 import React from "react";
 import UI from "@/components/ui";
+import { useTranslation } from "react-i18next";
+import { AlertCircle } from "@tamagui/lucide-icons";
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#25292e",
-        justifyContent: "center",
-        alignItems: "center",
-    },
-
-    button: {
-        fontSize: 16,
-        textDecorationLine: "underline",
-        color: "#d1d1d1ff",
-    },
-});
-
-// TODO
 const NotFoundScreen = () => {
+    const { t } = useTranslation();
+    const router = useRouter();
+
     return (
         <>
             <Stack.Screen options={{ headerShown: false }} />
-            <View style={styles.container}>
-                <UI.Typo.Paragraph>
-                    Oops! Not Found
-                </UI.Typo.Paragraph>
-                <Link href='/' replace style={styles.button} >
-                    Go back
-                </Link>
-            </View>
+            <UI.YStack
+                flex={1}
+                justify='center'
+                items='center'
+                gap={"$3"}
+            >
+                <AlertCircle size={80} />
+                <UI.Typo.H5>
+                    {t("screens.notFound.header")}
+                </UI.Typo.H5>
+                <UI.Button size={"$4"} onPress={() => router.back()}>
+                    {t("screens.notFound.submit")}
+                </UI.Button>
+            </UI.YStack>
         </>
     );
 };
