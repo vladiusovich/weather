@@ -19,17 +19,15 @@ const ScrollableForecast: React.FC<ScrollableForecastProps> = ({
         <UI.Paper>
             <UI.Loader isLoading={isLoading} />
             {!isLoading && (
-                <>
-                    <UI.Card.Header size={"$0.5"}>
+                <UI.YStack gap={"$3"}>
+                    <UI.Typo.H5>
                         <UI.XStack gap={"$2"} items={"center"}>
                             {headerIcon}
                             <UI.Typo.Text>
                                 {header}
                             </UI.Typo.Text>
                         </UI.XStack>
-                    </UI.Card.Header>
-
-                    <UI.Separator marginBlock={"$2"} />
+                    </UI.Typo.H5>
 
                     <UI.ScrollView horizontal showsHorizontalScrollIndicator={false}>
                         <UI.XStack
@@ -41,7 +39,7 @@ const ScrollableForecast: React.FC<ScrollableForecastProps> = ({
                             {children}
                         </UI.XStack>
                     </UI.ScrollView>
-                </>
+                </UI.YStack>
             )}
         </UI.Paper>
     );

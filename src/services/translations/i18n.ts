@@ -67,6 +67,7 @@ export const currentLanguage = () => (i18n.language);
 // user manual switch
 export const setLanguage = async (lang: LangCode) => {
     if (!SUPPORTED_LANGS.includes(lang)) return;
+
     try {
         await i18n.changeLanguage(lang);
         await AsyncStorage.setItem("appLang", lang);

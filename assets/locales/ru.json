@@ -101,12 +101,16 @@
             }
         }
     },
-    "pages": {
+    "screens": {
         "settings": {
-            "header": "Настройки"
+            "title": "Настройки"
         },
         "languages": {
-            "header": "Язык"
+            "title": "Язык"
+        },
+        "notFound": {
+            "header": "Ой! Не могу найти путь",
+            "submit": "Назад"
         }
     },
     "common": {
