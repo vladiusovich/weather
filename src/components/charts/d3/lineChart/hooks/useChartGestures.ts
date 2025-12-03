@@ -65,7 +65,5 @@ export const useChartGestures = ({
         });
 
     // Combine gestures - allow simultaneous pan and pinch
-    const composedGesture = Gesture.Simultaneous(panGesture, pinchGesture);
-
-    return composedGesture;
+    return Gesture.Simultaneous(panGesture, pinchGesture);
 };

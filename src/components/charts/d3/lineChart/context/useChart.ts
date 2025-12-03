@@ -3,7 +3,7 @@ import { XScale, YScale, Padding, ChartTheme } from "../types";
 
 type ChartContextType = {
     xScale: XScale;
-    yScales: Record<string, YScale>; // несколько осей Y по id
+    yScales: Record<string, YScale>;
     innerW: number;
     innerH: number;
     yAxisOffsets: number[],
