@@ -46,4 +46,4 @@ const Diary = observer(() => {
     );
 });
 
-export default Diary;
+export default observer(Diary);
