@@ -9,7 +9,7 @@ import useRefreshController from "@hooks/useRefreshController";
 import { View } from "tamagui";
 import NoData from "./common/noData/NoData";
 
-const Diary = observer(() => {
+const Diary = () => {
     const appStore = useAppStore();
 
     useEffect(() => {
@@ -44,6 +44,6 @@ const Diary = observer(() => {
             <NewNoteButton />
         </UI.ScreenWrapper>
     );
-});
+};
 
 export default observer(Diary);
