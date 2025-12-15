@@ -1,18 +1,12 @@
 import { styled, Input } from "tamagui";
 
-export const inputVariants = {
-    isError: {
-        true: {
-            bg: "$red4",
-        },
-    },
-} as const;
-
 export const StyledInput = styled(Input, {
     borderColor: "transparent",
     flex: 1,
-    rounded: 12,
-    bg: "$background02",
+    bg: "transparent",
+    px: "$3",
+    py: "$3",
+    height: "auto",
     focusVisibleStyle: {
         outlineColor: "$outlineColor",
         outlineWidth: 0,
@@ -24,6 +18,4 @@ export const StyledInput = styled(Input, {
     hoverStyle: {
         borderColor: "transparent",
     },
-
-    variants: { ...inputVariants }
 });

@@ -41,9 +41,7 @@ const SolarTransition = () => {
 
     return (
         <UI.ScreenWrapper>
-            <UI.Card
-                padded
-            >
+            <UI.Card padded>
                 <UI.Table data={solarData} columns={columns} />
             </UI.Card>
         </UI.ScreenWrapper>

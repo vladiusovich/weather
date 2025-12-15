@@ -70,7 +70,7 @@
                     "header": "Symptoms",
                     "buttons": {
                         "useFormHistory": "Use last symptoms",
-                        "addNew": "Add symptom"
+                        "addNew": "More..."
                     }
                 },
                 "submit": "Create note",
@@ -79,7 +79,7 @@
                     "submit": "Add",
                     "fields": {
                         "painPower": {
-                            "title": "The power of pain:"
+                            "title": "Intensity"
                         },
                         "symptom": {
                             "title": "Type of symptom",

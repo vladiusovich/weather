@@ -21,9 +21,7 @@ const RootLayout = () => {
                     <BackgroundUpdateProvider />
                     <StatusBar style={theme === "dark" ? "light" : "dark"} />
                     <Router.Stack>
-                        <Stack.Screen
-                            name='(tabs)'
-                        />
+                        <Stack.Screen name='(tabs)' />
                         <Stack.Screen name='+not-found' options={{ headerShown: false }} />
                     </Router.Stack>
                 </PortalProvider>

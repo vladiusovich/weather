@@ -33,7 +33,7 @@ export class SymptomsSeed implements BaseSeederType {
         //   await repo.deleteAll();
         // }
 
-        await repo.create(
+        await repo.createRange(
             SymptomsSeed.symptoms.map((name) => ({
                 id: generateUUID(),
                 name,

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { YStack } from "tamagui";
 import DateTimePicker, { DateType, useDefaultStyles } from "react-native-ui-datepicker";
 import useModalController from "@hooks/useModalController";
-import Input from "../input/Input";
+import Input, { InputProps } from "../input/Input";
 import { CalendarDays } from "@tamagui/lucide-icons";
 import SheetView from "../sheet/SheetView";
 import { NativeSyntheticEvent, NativeTouchEvent, Pressable } from "react-native";
@@ -11,7 +11,7 @@ import { getDatetimeFormatter } from "@utils/datetime.helper";
 
 // TODO: props
 // single, range, multiple
-export interface DatepickerPropsType {
+export interface DatepickerPropsType extends InputProps {
     value?: string;
     onValueChange?: (value: string) => void;
     disabled?: boolean;
@@ -42,17 +42,15 @@ const Datepicker: React.FC<DatepickerPropsType> = ({
 
     return (
         <>
-            <YStack gap="$4">
-                <Pressable onPress={onPressOpen}>
-                    <Input
-                        value={inputReadOnlyValue}
-                        iconRight={CalendarDays}
-                        editable={false}
-                        pointerEvents="none"
-                        {...props}
-                    />
-                </Pressable>
-            </YStack>
+            <Pressable onPress={onPressOpen}>
+                <Input
+                    value={inputReadOnlyValue}
+                    iconRight={CalendarDays}
+                    editable={false}
+                    pointerEvents="none"
+                    {...props}
+                />
+            </Pressable>
 
             <SheetView
                 open={open}

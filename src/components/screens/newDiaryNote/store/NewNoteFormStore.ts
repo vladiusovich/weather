@@ -1,4 +1,3 @@
-import SymptomFormStore, { SymptomFormFields } from "./SymptomFormStore";
 import { Symptom } from "@appTypes/diary/DiaryHistoryItem";
 import LocalizedFormStore from "@store/formStore/LocalizedFormStore";
 import AppStoreType from "@store/AppStoreType";
@@ -14,14 +13,11 @@ type NewNoteFormFields = {
 }
 
 class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
-    public symptomForm: SymptomFormStore;
-
     constructor(
         store: AppStoreType,
         t: TFunction,
     ) {
         super(store, t);
-        this.symptomForm = new SymptomFormStore(store, t, this);
 
         this.values.date = new Date();
 
@@ -41,6 +37,18 @@ class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
         this.store.diary.symptoms.fetch();
     }
 
+    public get allSymptoms() {
+        return this.store.diary.symptoms.all;
+    }
+
+    public get popularSymptoms() {
+        return this.store.diary.symptoms.popular;
+    }
+
+    public get selectedSymptoms() {
+        return this.values.symptoms ?? [];
+    }
+
     async submit(): Promise<void> {
         await this.store.diary.history.addNote({
             id: generateUUID(),
@@ -50,20 +58,26 @@ class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
         });
     }
 
-    public addOrUpdateSymptom(values: SymptomFormFields) {
-        const exists = this.getSymptomValue(values.symptom);
+    public updateSymptom(s: Symptom) {
+        const newState = (this.values?.symptoms ?? []).map(i =>
+            i.id === s.id ? s : i
+        );
 
-        if (exists) {
-            this.deleteSymptom(values.symptom);
+        this.setValue("symptoms", newState);
+    }
+
+    public addOrDeleteSymptom(id: string) {
+        if (this.isSymptomAdded(id)) {
+            this.deleteSymptom(id);
+            return;
         }
 
-        const symptom = this.findSymptom(values.symptom)!;
-        const newSymptom: Symptom = {
-            ...symptom,
-            strengtOfPain: values.strengtOfPain[0],
-        };
+        const symptom = this.findSymptom(id);
 
-        this.setValue("symptoms", [...this.values?.symptoms ?? [], newSymptom]);
+        if (symptom) {
+            const v = this.values.symptoms ?? [];
+            this.setValue("symptoms", [...v, { ...symptom, strengtOfPain: 5 }]);
+        }
     }
 
     public deleteSymptom(id: string) {
@@ -71,18 +85,12 @@ class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
         this.setValue("symptoms", [...symptoms]);
     }
 
-    public fillSymptom(id: string) {
-        const symptom = this.getSymptomValue(id)!;
-        this.symptomForm.fillSymptom(symptom.id, symptom.strengtOfPain);
-        this.symptomForm.switchMode("edit");
-    }
-
-    private getSymptomValue(id: string) {
-        return this.values.symptoms?.find(s => s.id === id);
+    private isSymptomAdded(id: string) {
+        return this.values?.symptoms?.some(s => s.id === id);
     }
 
     private findSymptom(id: string) {
-        return this.store.diary.symptoms.data.find(s => s.id === id);
+        return this.store.diary.symptoms.all.find(s => s.id === id);
     }
 }
 
