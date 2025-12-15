@@ -17,9 +17,9 @@ const SymptomItems: React.FC<SymptomItemsProps> = ({
 
     return (
         <UI.XStack
-            items='stretch'
-            gap='$1'
-            flexWrap='wrap'
+            items="stretch"
+            gap="$1.5"
+            flexWrap="wrap"
         >
             {data.map((i) => <SymptomChip key={i.id} data={i} />)}
         </UI.XStack>

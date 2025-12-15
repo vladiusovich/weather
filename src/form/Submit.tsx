@@ -1,13 +1,12 @@
-import Button from "@components/ui/button/Button";
+import Button, { IMnButtonProps } from "@components/ui/button/Button";
 import { useFormContext } from "@store/formStore/FormContext";
 import { observer } from "mobx-react-lite";
-import { ButtonProps } from "tamagui";
 
 /**
     * A generic wrapper for Submit button attached to a form.
  */
 
-type SubmitButtonProps = ButtonProps;
+type SubmitButtonProps = IMnButtonProps;
 
 export const Submit = observer(<
     T extends Record<string, any>>(props: SubmitButtonProps) => {

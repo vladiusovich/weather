@@ -13,11 +13,17 @@ const Comment: React.FC<CommentProps> = ({
     }
 
     return (
-        <UI.XStack>
-            <UI.Typo.Text fontSize={"$1"} color={"$color11"}>
-                {data}
+        <UI.YStack gap={"$1"}>
+            <UI.Typo.Text fontSize={"$3"} color={"$color10"}>
+                Comment:
             </UI.Typo.Text>
-        </UI.XStack>
+            <UI.Paper py={8} px={8} rounded={8} bg="$background02">
+                <UI.Typo.Text fontSize={"$2"} color={"$color11"}>
+                    {data.trim()}
+                </UI.Typo.Text>
+            </UI.Paper>
+
+        </UI.YStack>
     );
 };
 

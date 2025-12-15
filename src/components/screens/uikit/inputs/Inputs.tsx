@@ -12,12 +12,12 @@ const Inputs: React.FC = () => {
             <UI.YStack gap="$4">
                 <UI.Searchbar
                     value={val}
-                    onChangeText={(text: string) => setVal(text)}
+                    onValueChange={(text: string) => setVal(text)}
                     placeholder="Searchbar"
                 />
 
                 <UI.Input />
-                <UI.Input iconLeft={User2} />
+                <UI.Input iconLeft={User2} bg={"$green4"} />
                 <UI.Input iconRight={Eye} />
                 <UI.Input placeholder="Placeholder" />
                 <UI.Input placeholder="Placeholder" error />

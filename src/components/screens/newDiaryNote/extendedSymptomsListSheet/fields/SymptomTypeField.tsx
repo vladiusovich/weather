@@ -13,7 +13,7 @@ const SymptomTypeField: React.FC = () => {
         appStore.diary.symptoms.fetch();
     }, [appStore.diary.symptoms]);
 
-    const options: SelectorOption[] = appStore.diary?.symptoms.data.map((s) => {
+    const options: SelectorOption[] = appStore.diary?.symptoms.all.map((s) => {
         return {
             name: s.name,
             value: s.id,

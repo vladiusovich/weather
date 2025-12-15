@@ -6,8 +6,10 @@ import Form from "@form/index";
 const Date: React.FC = () => {
     return (
         <Form.Field
-            name='date'
             component={UI.DatePicker}
+            name='date'
+            size={"$5"}
+            scaleIcon={1.4}
         />
     );
 };

@@ -4,7 +4,7 @@ import UI from "@components/ui";
 import UiSection from "../UiSection";
 import { ChipVariantType, SizeVariantType } from "@components/ui/chip/Chip";
 
-const variants: ChipVariantType[] = ["solid", "outline", "ghost"];
+const variants: ChipVariantType[] = ["solid", "outline"];
 const sizies: SizeVariantType[] = ["sm", "md", "lg"] as SizeVariantType[];
 
 const Chips: React.FC = () => {

@@ -14,6 +14,7 @@ const SymptomChip: React.FC<SymptomProps> = ({
         <UI.Chip
             id={data.id}
             label={<Format.Symptom {...data} />}
+            size="sm"
             counter={data.strengtOfPain}
         />
     );
