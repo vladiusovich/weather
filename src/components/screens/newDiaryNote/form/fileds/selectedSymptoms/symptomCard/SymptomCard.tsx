@@ -8,6 +8,7 @@ import { X } from "@tamagui/lucide-icons";
 import PainIntensity from "./painStrengthField/PainIntensity";
 import { Pressable } from "react-native";
 import NewNoteFormStore from "../../../../store/NewNoteFormStore";
+import Format from "@./src/components/common/format";
 
 const SymptomCard: React.FC<Symptom> = ({
     ...props
@@ -24,7 +25,7 @@ const SymptomCard: React.FC<Symptom> = ({
             <UI.YStack gap='$2'>
                 <UI.XStack gap='$3' justify={"space-between"}>
                     <UI.Typo.H5>
-                        {props.name}
+                        <Format.Symptom {...props} />
                     </UI.Typo.H5>
                     <Pressable hitSlop={8} onPress={onPressDelete}>
                         <X size={"$1"} />

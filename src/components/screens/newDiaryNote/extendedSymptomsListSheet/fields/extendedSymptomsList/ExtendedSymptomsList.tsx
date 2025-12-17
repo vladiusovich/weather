@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useFormContext } from "@store/formStore/FormContext";
 import Chip from "@components/ui/chip/Chip";
 import NewNoteFormStore from "../../../store/NewNoteFormStore";
+import Format from "@./src/components/common/format";
 
 interface Props {
     searchingValue?: string;
@@ -31,7 +32,7 @@ const ExtendedSymptomsList: React.FC<Props> = ({ searchingValue }) => {
             {noData && (
                 <UI.YStack justify={"center"} items={"center"}>
                     <UI.Typo.Paragraph>
-                        Can't find symptoms
+                        {t("screens.newDiaryNote.extendedSymptomsList.emptySyptomsList")}
                     </UI.Typo.Paragraph>
                 </UI.YStack>
             )}
@@ -46,7 +47,7 @@ const ExtendedSymptomsList: React.FC<Props> = ({ searchingValue }) => {
                     <Chip
                         key={i.id}
                         id={i.id}
-                        label={i.name}
+                        label={<Format.Symptom {...i} />}
                         onPress={onPress}
                         size="md"
                         variant="outline"

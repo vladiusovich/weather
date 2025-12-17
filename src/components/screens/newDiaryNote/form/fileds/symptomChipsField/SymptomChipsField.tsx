@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useFormContext } from "@store/formStore/FormContext";
 import Chip from "@components/ui/chip/Chip";
 import NewNoteFormStore from "@components/screens/newDiaryNote/store/NewNoteFormStore";
+import Format from "@./src/components/common/format";
 
 interface Props {
     onPressOpen: () => void;
@@ -23,16 +24,16 @@ const SymptomChipsField: React.FC<Props> = ({ onPressOpen }) => {
             <UI.YStack gap={"$2"}>
                 <UI.YStack gap={"$1"}>
                     <UI.Typo.H5 color={"$color12"} fontWeight={900}>
-                        How do you feel?
+                        {t("screens.newDiaryNote.symptomsSection.howAreYou")}
                     </UI.Typo.H5>
 
                     <UI.Typo.SizableText size={"$3"} color={"$color08"}>
-                        Select what is bothering you today
+                        {t("screens.newDiaryNote.symptomsSection.description")}
                     </UI.Typo.SizableText>
                 </UI.YStack>
 
                 <UI.Typo.Text color={"$color08"} fontWeight={900}>
-                    Most popular
+                    {t("screens.newDiaryNote.symptomsSection.popularSymptoms")}
                 </UI.Typo.Text>
 
                 <UI.XStack
@@ -44,7 +45,7 @@ const SymptomChipsField: React.FC<Props> = ({ onPressOpen }) => {
                         <Chip
                             key={i.id}
                             id={i.id}
-                            label={i.name}
+                            label={<Format.Symptom {...i} />}
                             onPress={onPress}
                             size="md"
                             variant="outline"
@@ -58,7 +59,7 @@ const SymptomChipsField: React.FC<Props> = ({ onPressOpen }) => {
                 size={"$4"}
                 onPress={onPressOpen}
             >
-                {t("meteo.pages.newDiaryNote.symptomsList.buttons.addNew")}
+                {t("screens.newDiaryNote.symptomsSection.buttons.addNew")}
             </UI.Button>
         </UI.YStack>
     );

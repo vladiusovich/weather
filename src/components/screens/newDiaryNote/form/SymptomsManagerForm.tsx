@@ -29,7 +29,7 @@ const SymptomsManagerForm: React.FC = () => {
                 </UI.YStack>
 
                 <Form.Submit size={"$5"} mt={"$2"}>
-                    {t("meteo.pages.newDiaryNote.submit")}
+                    {t("screens.newDiaryNote.submit")}
                 </Form.Submit>
             </UI.Paper>
         </UI.YStack>

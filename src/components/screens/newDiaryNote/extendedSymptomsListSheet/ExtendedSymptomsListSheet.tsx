@@ -31,11 +31,11 @@ const ExtendedSymptomsListSheet: React.FC<Props> = ({
             <Form.Provider form={form}>
                 <UI.YStack gap={"$3"} flex={1}>
                     <UI.Typo.H6>
-                        {t("meteo.pages.newDiaryNote.addSymptom.header")}
+                        {t("screens.newDiaryNote.extendedSymptomsList.header")}
                     </UI.Typo.H6>
                     <UI.YStack items='stretch' gap='$4'>
                         <UI.Searchbar
-                            placeholder="Search by name"
+                            placeholder={t("screens.newDiaryNote.fields.searchSymptom.placeholder")}
                             onValueChange={onChangeSearchBar}
                             value={searchingValue}
                             bg={"$background06"}

@@ -8,7 +8,7 @@ const NewDiaryNoteScreen = () => {
         <>
             <Stack.Screen
                 options={{
-                    title: t("meteo.pages.newDiaryNote.header"),
+                    title: t("screens.newDiaryNote.header"),
                 }}
             />
             <NewDiaryNote />

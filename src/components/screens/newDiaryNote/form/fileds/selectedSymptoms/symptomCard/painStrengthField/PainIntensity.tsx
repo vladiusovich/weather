@@ -22,7 +22,7 @@ const PainIntensity: React.FC<Symptom> = ({
         <UI.YStack gap='$2'>
             <UI.XStack items='center' gap="$2">
                 <UI.Typo.Text>
-                    {t("meteo.pages.newDiaryNote.addSymptom.fields.painPower.title")}
+                    {t("screens.newDiaryNote.fields.painPower.title")}
                 </UI.Typo.Text>
                 <UI.Typo.Paragraph size='$5' fontWeight={900}>
                     {strengtOfPain}

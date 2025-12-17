@@ -30,11 +30,11 @@ const NoteCreatedSuccess = (() => {
                     >
                         <Smile size={80} />
                         <UI.Typo.H5>
-                            {t("meteo.pages.newDiaryNote.createdSuccess.header")}
+                            {t("screens.newDiaryNote.createdSuccess.header")}
                         </UI.Typo.H5>
                     </UI.YStack>
                     <UI.Button size={"$5"} onPress={onPress}>
-                        {t("meteo.pages.newDiaryNote.createdSuccess.submit")}
+                        {t("screens.newDiaryNote.createdSuccess.submit")}
                     </UI.Button>
                 </UI.YStack>
             </UI.Paper>

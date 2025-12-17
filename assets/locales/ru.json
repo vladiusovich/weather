@@ -62,43 +62,6 @@
             "Thu": "Четверг",
             "Fri": "Пятница",
             "Sat": "Суббота"
-        },
-        "pages": {
-            "newDiaryNote": {
-                "header": "Новая запись",
-                "symptomsList": {
-                    "header": "Симптомы",
-                    "buttons": {
-                        "useFormHistory": "Использовать последние симптомы",
-                        "addNew": "Добавить симптом"
-                    }
-                },
-                "submit": "Создать запись",
-                "addSymptom": {
-                    "header": "Добавление симптома",
-                    "submit": "Добавить",
-                    "fields": {
-                        "painPower": {
-                            "title": "Сила боли:"
-                        },
-                        "symptom": {
-                            "title": "Тип симптома",
-                            "palceholder": "Выберите симптом"
-                        }
-                    }
-                },
-                "editSymptom": {
-                    "header": "Редактирование симптома",
-                    "submit": "Применить"
-                },
-                "createdSuccess": {
-                    "header": "Запись создана",
-                    "submit": "Перейти к истории дневника"
-                }
-            },
-            "healthStatistic": {
-                "header": "Статистика здоровья"
-            }
         }
     },
     "screens": {
@@ -107,6 +70,57 @@
         },
         "languages": {
             "title": "Язык"
+        },
+        "newDiaryNote": {
+            "header": "Новая запись",
+            "submit": "Создать запись",
+            "symptomsSection": {
+                "header": "Симптомы",
+                "howAreYou": "Как вы себя чувствуете?",
+                "description": "Укажите что вас беспокоит сегодня",
+                "popularSymptoms": "Самые популярные",
+                "buttons": {
+                    "useFormHistory": "Использовать последние симптомы",
+                    "addNew": "Еще..."
+                }
+            },
+            "selectedSymptomsSection": {
+                "header": "Оценка",
+                "emptyList": "Пожалуйста, выберите симптомы, перечисленные выше"
+            },
+            "addSymptom": {
+                "header": "Ваш симптом",
+                "submit": "Добавить"
+            },
+            "extendedSymptomsList": {
+                "header": "Все симптомы",
+                "emptySyptomsList": "Не могу ничего найти"
+            },
+            "createdSuccess": {
+                "header": "Запись создана",
+                "submit": "Перейти к истории дневника"
+            },
+            "fields": {
+                "painPower": {
+                    "title": "Сила боли:"
+                },
+                "symptom": {
+                    "title": "Тип симптома",
+                    "palceholder": "Выберите симптом"
+                },
+                "comment": {
+                    "placeholder": "Дополнительные пометки"
+                },
+                "searchSymptom": {
+                    "placeholder": "Поиск по названию"
+                },
+                "symptomName": {
+                    "placeholder": "Например: \"Головная боль\""
+                }
+            }
+        },
+        "healthStatistic": {
+            "header": "Статистика здоровья"
         },
         "notFound": {
             "header": "Ой! Не могу найти путь",

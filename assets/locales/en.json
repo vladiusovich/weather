@@ -62,43 +62,6 @@
             "Thu": "Thursday",
             "Fri": "Friday",
             "Sat": "Saturday"
-        },
-        "pages": {
-            "newDiaryNote": {
-                "header": "New note",
-                "symptomsList": {
-                    "header": "Symptoms",
-                    "buttons": {
-                        "useFormHistory": "Use last symptoms",
-                        "addNew": "More..."
-                    }
-                },
-                "submit": "Create note",
-                "addSymptom": {
-                    "header": "Add symptom",
-                    "submit": "Add",
-                    "fields": {
-                        "painPower": {
-                            "title": "Intensity"
-                        },
-                        "symptom": {
-                            "title": "Type of symptom",
-                            "palceholder": "Select symptom"
-                        }
-                    }
-                },
-                "editSymptom": {
-                    "header": "Edit symptom",
-                    "submit": "Apply"
-                },
-                "createdSuccess": {
-                    "header": "The note has been created",
-                    "submit": "Go to Diary history"
-                }
-            },
-            "healthStatistic": {
-                "header": "Health statistic"
-            }
         }
     },
     "screens": {
@@ -107,6 +70,57 @@
         },
         "languages": {
             "title": "Language"
+        },
+        "newDiaryNote": {
+            "header": "New note",
+            "submit": "Create note",
+            "symptomsSection": {
+                "header": "Symptoms",
+                "howAreYou": "How do you feel?",
+                "description": "Select what is bothering you today",
+                "popularSymptoms": "Most popular",
+                "buttons": {
+                    "useFormHistory": "Use last symptoms",
+                    "addNew": "More..."
+                }
+            },
+            "selectedSymptomsSection": {
+                "header": "Score",
+                "emptyList": "Please select the symptoms listed above"
+            },
+            "addSymptom": {
+                "header": "You symptom",
+                "submit": "Add"
+            },
+            "extendedSymptomsList": {
+                "header": "All symptoms",
+                "emptySyptomsList": "Can't find symptoms"
+            },
+            "createdSuccess": {
+                "header": "The note has been created",
+                "submit": "Go to Diary history"
+            },
+            "fields": {
+                "painPower": {
+                    "title": "Intensity"
+                },
+                "symptom": {
+                    "title": "Type of symptom",
+                    "palceholder": "Select symptom"
+                },
+                "comment": {
+                    "placeholder": "Type comment here if you want..."
+                },
+                "searchSymptom": {
+                    "placeholder": "Search by name"
+                },
+                "symptomName": {
+                    "placeholder": "Example: \"Headache\""
+                }
+            }
+        },
+        "healthStatistic": {
+            "header": "Health statistic"
         },
         "notFound": {
             "header": "Oops! Can't find the path",

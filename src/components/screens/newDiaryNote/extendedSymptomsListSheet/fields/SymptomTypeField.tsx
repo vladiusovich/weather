@@ -25,8 +25,8 @@ const SymptomTypeField: React.FC = () => {
             name="symptom"
             component={UI.Selector}
             options={options}
-            label={t("meteo.pages.newDiaryNote.addSymptom.fields.symptom.title")}
-            palceholder={t("meteo.pages.newDiaryNote.addSymptom.fields.symptom.palceholder")}
+            label={t("screens.newDiaryNote.fields.symptom.title")}
+            palceholder={t("screens.newDiaryNote.fields.symptom.palceholder")}
         />
     );
 };
