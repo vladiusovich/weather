@@ -5,11 +5,11 @@ import { Settings, CodeSquare } from "@tamagui/lucide-icons";
 import { useTheme } from "tamagui";
 import UI from "../ui";
 
-const PressableHeaderIcon: React.FC<PressableProps> = ({ children, ...rest }) => {
+const PressableHeaderIcon: React.FC<PressableProps> = ({ children, ...props }) => {
     return (
         <Pressable
             hitSlop={8}
-            {...rest}
+            {...props}
         >
             {children}
         </Pressable>
@@ -34,10 +34,10 @@ const Stack: React.FC<StackProps> = ({
                 headerRight: () => (
                     <UI.XStack gap="$4">
                         <PressableHeaderIcon onPress={() => router.push("/dev")}>
-                            <CodeSquare size={20} />
+                            <CodeSquare size={24} />
                         </PressableHeaderIcon>
                         <PressableHeaderIcon onPress={() => router.push("/settings")}>
-                            <Settings hitSlop={10} size={20} />
+                            <Settings size={24} />
                         </PressableHeaderIcon>
                     </UI.XStack>
                 ),

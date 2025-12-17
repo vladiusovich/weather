@@ -5,7 +5,7 @@ import Precipitation from "./Precipitation";
 import WmoIcon from "./wmo/WmoIcon";
 import Humidity from "./humidity/Humidity";
 import KIndex from "./KIndex";
-import Symptom from "./Symptom";
+import Symptom from "./symptom/Symptom";
 
 const Format = {
     Temp,

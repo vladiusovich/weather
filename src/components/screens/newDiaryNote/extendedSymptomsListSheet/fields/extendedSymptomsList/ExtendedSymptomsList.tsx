@@ -6,6 +6,7 @@ import { useFormContext } from "@store/formStore/FormContext";
 import Chip from "@components/ui/chip/Chip";
 import NewNoteFormStore from "../../../store/NewNoteFormStore";
 import Format from "@./src/components/common/format";
+import useSymptomTranslation from "@./src/components/common/format/symptom/useSymptomTranslation";
 
 interface Props {
     searchingValue?: string;
@@ -14,6 +15,7 @@ interface Props {
 const ExtendedSymptomsList: React.FC<Props> = ({ searchingValue }) => {
     const { t } = useTranslation();
     const form = useFormContext<NewNoteFormStore>();
+    const { getTranslate } = useSymptomTranslation();
 
     const onPress = (id: string) => {
         form.addOrDeleteSymptom(id);
@@ -22,7 +24,10 @@ const ExtendedSymptomsList: React.FC<Props> = ({ searchingValue }) => {
     const symptoms = form.allSymptoms ?? [];
     const selectedSymptoms = form.selectedSymptoms;
 
-    const filtered = symptoms.filter(s => searchingValue ? s.name.includes(searchingValue) : true);
+    const filtered = symptoms.filter(s => searchingValue
+        ? getTranslate({ name: s.name, code: s.name }).includes(searchingValue)
+        : true);
+
     const noData = searchingValue && filtered.length === 0;
 
     return (
@@ -42,7 +47,6 @@ const ExtendedSymptomsList: React.FC<Props> = ({ searchingValue }) => {
                 gap='$2'
                 flexWrap='wrap'
             >
-
                 {filtered.map((i) => (
                     <Chip
                         key={i.id}

@@ -1,7 +1,6 @@
 import React from "react";
 import Typo from "@components/ui/typo/Typo";
-import { useTranslation } from "react-i18next";
-import { findTranslation } from "@utils/i18n/resolveI18nFallback";
+import useSymptomTranslation from "./useSymptomTranslation";
 
 type BaseSymptomProps = {
     name: string;
@@ -16,18 +15,13 @@ type PolymorphicSymptomProps<TAs extends React.ElementType> =
 const Symptom = <TAs extends React.ElementType = typeof Typo.Text>(
     props: PolymorphicSymptomProps<TAs>,
 ) => {
-    const { name, code, as, ...rest } = props;
-
-    const { t, i18n } = useTranslation();
+    const { getTranslate } = useSymptomTranslation();
+    const { name, code, as } = props;
     const Component = as || Typo.Text;
 
-    const text = findTranslation(
-        i18n, t,
-        [`common.symptomCodes.${code}`, `common.symptomCodes.${name}`],
-        name
-    );
+    const text = getTranslate({ name, code });
 
-    return <Component {...rest}>{text}</Component>;
+    return <Component {...props}>{text}</Component>;
 };
 
 export default Symptom;
