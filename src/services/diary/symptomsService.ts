@@ -1,5 +1,5 @@
-import { generateUUID } from "@./src/utils/generateUUID";
 import { UnitOfWork } from "@db/repositories/unitOfWork";
+import { generateUUID } from "@utils/generateUUID";
 
 class SymptomsService {
     constructor(private unitOfWork: UnitOfWork) {

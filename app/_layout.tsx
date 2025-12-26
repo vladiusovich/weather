@@ -2,12 +2,12 @@ import { SplashScreen, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { TamaguiProvider } from "tamagui";
-import config from "@./tamagui.config";
+import config from "../tamagui.config";
 import { PortalProvider } from "@tamagui/portal";
 import AppStoreProvider from "@store/provider/AppStoreProvider";
 import { useColorScheme } from "react-native";
-import Router from "@components/route";
 import BackgroundUpdateProvider from "@theme/BackgroundUpdateProvider";
+import Router from "@shared/route";
 
 SplashScreen.preventAutoHideAsync();
 const RootLayout = () => {

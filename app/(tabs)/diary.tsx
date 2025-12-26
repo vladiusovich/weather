@@ -1,4 +1,4 @@
-import Diary from "@components/screens/diary/Diary";
+import Diary from "@features/diary/Diary";
 
 const DiaryScreen = () => {
     return (<Diary />);

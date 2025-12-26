@@ -4,9 +4,7 @@
         "strict": true,
         "baseUrl": ".",
         "paths": {
-            "@./*": ["./*"],
             "@api/*": ["./src/api/*"],
-            "@components/*": ["./src/components/*"],
             "@services/*": ["./src/services/*"],
             "@store/*": ["./src/store/*"],
             "@appTypes/*": ["./src/types/*"],
@@ -17,6 +15,9 @@
             "@db/*": ["./src/db/*"],
             "@theme/*": ["./src/theme/*"],
             "@assets/*": ["./assets/*"],
+            "@features/*": ["./src/components/features/*"],
+            "@shared/*": ["./src/components/shared/*"],
+            "@ui": ["./src/components/shared/components/ui/index.ts"],
         }
     },
     "include": [

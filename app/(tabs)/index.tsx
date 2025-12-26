@@ -1,4 +1,4 @@
-import Weather from "@components/screens/weather/Weather";
+import Weather from "@features/weather/Weather";
 import React from "react";
 
 const WeatherScreen = () => {

@@ -1,4 +1,4 @@
-import Button, { IMnButtonProps } from "@components/ui/button/Button";
+import Button, { IMnButtonProps } from "@shared/components/ui/button/Button";
 import { useFormContext } from "@store/formStore/FormContext";
 import { observer } from "mobx-react-lite";
 

@@ -1,5 +1,4 @@
-// app/settings/index.tsx
-import Settings from "@components/screens/settings/Settings";
+import Settings from "@features/settings/Settings";
 import { Stack } from "expo-router";
 import { useTranslation } from "react-i18next";
 

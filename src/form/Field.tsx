@@ -1,5 +1,5 @@
-import YStack from "@components/ui/stack/YStack";
-import Typo from "@components/ui/typo/Typo";
+import YStack from "@shared/components/ui/stack/YStack";
+import Typo from "@shared/components/ui/typo/Typo";
 import { useFormContext } from "@store/formStore/FormContext";
 import { observer } from "mobx-react-lite";
 
