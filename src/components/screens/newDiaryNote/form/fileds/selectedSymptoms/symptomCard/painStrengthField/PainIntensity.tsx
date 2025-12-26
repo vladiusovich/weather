@@ -39,9 +39,7 @@ const PainIntensity: React.FC<Symptom> = ({
                 onValueChange={onValueChange}
             />
         </UI.YStack>
-
     );
 };
 
 export default observer(PainIntensity);
-

@@ -65,7 +65,6 @@ class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
 
         this.setValue("symptoms", newState);
     }
-
     public addOrDeleteSymptom(id: string) {
         if (this.isSymptomAdded(id)) {
             this.deleteSymptom(id);
@@ -79,16 +78,13 @@ class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
             this.setValue("symptoms", [...v, { ...symptom, strengtOfPain: 5 }]);
         }
     }
-
     public deleteSymptom(id: string) {
         const symptoms = this.values.symptoms.filter(s => s.id !== id);
         this.setValue("symptoms", [...symptoms]);
     }
-
     private isSymptomAdded(id: string) {
         return this.values?.symptoms?.some(s => s.id === id);
     }
-
     private findSymptom(id: string) {
         return this.store.diary.symptoms.all.find(s => s.id === id);
     }

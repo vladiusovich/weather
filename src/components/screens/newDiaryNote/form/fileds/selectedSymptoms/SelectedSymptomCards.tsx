@@ -5,14 +5,14 @@ import { useFormContext } from "@store/formStore/FormContext";
 import SymptomCard from "./symptomCard/SymptomCard";
 import NewNoteFormStore from "../../../store/NewNoteFormStore";
 import { useTranslation } from "react-i18next";
+import EmptySymptomsList from "./emptyList/EmptySymptomsList";
 
 const SelectedSymptomCards: React.FC = () => {
-    const form = useFormContext<NewNoteFormStore>();
-    const symptoms = form.values.symptoms ?? [];
     const { t } = useTranslation();
+    const form = useFormContext<NewNoteFormStore>();
 
+    const symptoms = form.values.symptoms ?? [];
     const isEmpty = symptoms.length === 0;
-    const error = form.errors.symptoms;
 
     return (
         <UI.ScrollView showsVerticalScrollIndicator={false} >
@@ -20,22 +20,10 @@ const SelectedSymptomCards: React.FC = () => {
                 <UI.Typo.H6 color={"$color08"} fontWeight={900}>
                     {t("screens.newDiaryNote.selectedSymptomsSection.header")}
                 </UI.Typo.H6>
-
-                {isEmpty && (
-                    <UI.Paper
-                        minH={120}
-                        borderWidth={"$1"}
-                        borderColor={error ? "$red4" : "$borderColor"}
-                        borderStyle="dotted"
-                    >
-                        <UI.YStack flex={1} justify={"center"} items={"center"}>
-                            <UI.Typo.Text color={error ? "$red9" : "$color9"}>
-                                {t("screens.newDiaryNote.selectedSymptomsSection.emptyList")}
-                            </UI.Typo.Text>
-                        </UI.YStack>
-                    </UI.Paper>
-                )}
-                {!isEmpty && symptoms.map(s => (<SymptomCard key={s.id} {...s} />))}
+                {isEmpty
+                    ? <EmptySymptomsList />
+                    : symptoms.map(s => (<SymptomCard key={s.id} {...s} />))
+                }
             </UI.YStack>
         </UI.ScrollView>
     );

@@ -21,14 +21,14 @@ const SymptomCard: React.FC<Symptom> = ({
     };
 
     return (
-        <UI.Paper bg="$background02">
-            <UI.YStack gap='$2'>
+        <UI.Paper p="$3" bg="$background02">
+            <UI.YStack gap='$1'>
                 <UI.XStack gap='$3' justify={"space-between"}>
-                    <UI.Typo.H5>
+                    <UI.Typo.H6>
                         <Format.Symptom {...props} />
-                    </UI.Typo.H5>
+                    </UI.Typo.H6>
                     <Pressable hitSlop={8} onPress={onPressDelete}>
-                        <X size={"$1"} />
+                        <X size={"$1"} color={"$color04"}/>
                     </Pressable>
                 </UI.XStack>
 
