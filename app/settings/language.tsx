@@ -1,4 +1,4 @@
-import Language from "@features/settings/language/Language";
+import Language from "src/features/settings/language/Language";
 import { Stack } from "expo-router";
 import { useTranslation } from "react-i18next";
 

@@ -1,7 +1,7 @@
 import { BookHeart, CloudSun, ChartBar } from "@tamagui/lucide-icons";
 import { Tabs } from "expo-router";
 import { useTranslation } from "react-i18next";
-import Router from "@shared/route";
+import Router from "src/shared/route";
 
 const tabBarIcon = (Icon: React.ElementType, strokeWidth = 1) => {
     const TabBarIcon = ({

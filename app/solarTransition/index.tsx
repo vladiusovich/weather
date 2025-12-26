@@ -1,4 +1,4 @@
-import SolarTransition from "@features/solarTransition/SolarTransition";
+import SolarTransition from "src/features/solarTransition/SolarTransition";
 import { Stack } from "expo-router";
 
 const SolarTransitionScreen = () => {

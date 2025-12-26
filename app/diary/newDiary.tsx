@@ -1,4 +1,4 @@
-import NewDiaryNote from "@features/newDiaryNote/NewDiaryNote";
+import NewDiaryNote from "src/features/newDiaryNote/NewDiaryNote";
 import { Stack } from "expo-router";
 import { useTranslation } from "react-i18next";
 

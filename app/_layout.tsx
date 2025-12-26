@@ -4,10 +4,10 @@ import React, { useState } from "react";
 import { TamaguiProvider } from "tamagui";
 import config from "../tamagui.config";
 import { PortalProvider } from "@tamagui/portal";
-import AppStoreProvider from "@store/provider/AppStoreProvider";
 import { useColorScheme } from "react-native";
 import BackgroundUpdateProvider from "@theme/BackgroundUpdateProvider";
-import Router from "@shared/route";
+import Router from "src/shared/route";
+import AppContextProvider from "src/appInit/appContext/AppContextProvider";
 
 SplashScreen.preventAutoHideAsync();
 const RootLayout = () => {
@@ -15,7 +15,7 @@ const RootLayout = () => {
     const [theme] = useState(colorScheme ?? "dark");
 
     return (
-        <AppStoreProvider>
+        <AppContextProvider>
             <TamaguiProvider config={config} defaultTheme={theme}>
                 <PortalProvider shouldAddRootHost>
                     <BackgroundUpdateProvider />
@@ -26,7 +26,7 @@ const RootLayout = () => {
                     </Router.Stack>
                 </PortalProvider>
             </TamaguiProvider>
-        </AppStoreProvider>
+        </AppContextProvider>
     );
 };
 

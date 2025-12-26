@@ -1,4 +1,4 @@
-import Settings from "@features/settings/Settings";
+import Settings from "src/features/settings/Settings";
 import { Stack } from "expo-router";
 import { useTranslation } from "react-i18next";
 

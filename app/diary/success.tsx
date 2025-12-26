@@ -1,4 +1,4 @@
-import NoteCreatedSuccess from "@features/newDiaryNote/noteCreatedSuccess/NoteCreatedSuccess";
+import NoteCreatedSuccess from "src/features/newDiaryNote/noteCreatedSuccess/NoteCreatedSuccess";
 import { Stack } from "expo-router";
 
 const SuccessDiaryCreationScreen = () => {

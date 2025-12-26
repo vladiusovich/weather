@@ -1,4 +1,4 @@
-import GetGeoMagneticRequest from "@api/rest/gfzGeoMagnetic/GetGeoMagneticRequest";
+import GetGeoMagneticRequest from "src/core/api/rest/gfzGeoMagnetic/GetGeoMagneticRequest";
 import GfzGeoMagneticRequest from "@appTypes/geoMagnetic/gfzGeoMagneticRequest";
 import { GeoMagneticData } from "../weather/types/models/GeoMagneticData";
 

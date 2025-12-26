@@ -1,4 +1,4 @@
-import Uikit from "@features/uikit/Uikit";
+import Uikit from "src/features/uikit/Uikit";
 import { Stack } from "expo-router";
 
 const SettingsScreen = () => {

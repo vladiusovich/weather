@@ -1,4 +1,4 @@
-import HealthStatistic from "@features/healthStatistic/HealthStatistic";
+import HealthStatistic from "src/features/healthStatistic/HealthStatistic";
 
 const HealthStatisticScreen = () => {
     return (<HealthStatistic />);

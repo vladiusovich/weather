@@ -1,4 +1,4 @@
-import GetWeatherRequest from "@api/rest/openMeteo/GetWeatherRequest";
+import GetWeatherRequest from "src/core/api/rest/openMeteo/GetWeatherRequest";
 import { MeteoData } from "./types/models/MeteoData";
 import { MeteoRequest } from "@appTypes/weather/MeteoRequest";
 import { MeteoResponse } from "@appTypes/weather/MeteoResponse";
