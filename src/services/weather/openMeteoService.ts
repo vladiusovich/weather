@@ -1,18 +1,19 @@
-import GetWeatherRequest from "src/core/api/rest/openMeteo/GetWeatherRequest";
 import { MeteoData } from "./types/models/MeteoData";
 import { MeteoRequest } from "@appTypes/weather/MeteoRequest";
 import { MeteoResponse } from "@appTypes/weather/MeteoResponse";
 import { openMeteo } from "./openMeteo.constants";
+import OpenMeteoApi from "@api/rest/openMeteo/OpenMeteoApi";
 
 class OpenMeteoService {
-    private weatherRequest = new GetWeatherRequest();
+    constructor(private openMeteoApi: OpenMeteoApi) { }
 
     public async fetch(request: MeteoRequest): Promise<MeteoData | null> {
-        await this.weatherRequest.execute({
+        const data = await this.openMeteoApi.fetchData({
             ...openMeteo.requestConfiguration,
             ...request,
         });
-        return this.mapResponse(this.weatherRequest?.data);
+
+        return this.mapResponse(data);
     }
 
     // eslint-disable-next-line class-methods-use-this

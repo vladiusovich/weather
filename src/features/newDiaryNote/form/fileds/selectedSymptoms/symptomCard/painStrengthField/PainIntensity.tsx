@@ -2,7 +2,6 @@ import { observer } from "mobx-react-lite";
 import React from "react";
 import UI from "src/shared/components/ui";
 import { useTranslation } from "react-i18next";
-import { Gesture, GestureHandlerRootView } from "react-native-gesture-handler";
 import { Symptom } from "@appTypes/diary/DiaryHistoryItem";
 import NewNoteFormStore from "src/features/newDiaryNote/store/NewNoteFormStore";
 import { useFormContext } from "@form/formStore/FormContext";

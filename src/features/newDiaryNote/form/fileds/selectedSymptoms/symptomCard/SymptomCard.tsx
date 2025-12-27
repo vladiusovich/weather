@@ -1,7 +1,6 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
 import UI from "src/shared/components/ui";
-import { useTranslation } from "react-i18next";
 import { X } from "@tamagui/lucide-icons";
 import PainIntensity from "./painStrengthField/PainIntensity";
 import { Pressable } from "react-native";
@@ -13,7 +12,6 @@ import { useFormContext } from "@form/formStore/FormContext";
 const SymptomCard: React.FC<Symptom> = ({
     ...props
 }) => {
-    const { t } = useTranslation();
     const form = useFormContext<NewNoteFormStore>();
 
     const onPressDelete = () => {

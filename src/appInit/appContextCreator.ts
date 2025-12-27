@@ -5,12 +5,15 @@ import initAppServices from "./appServices.init";
 import AppStoreType from "src/appStore/AppStoreType";
 import { AppServicesRootType } from "../services/AppServicesRootType";
 import initAppStore from "./appStore.init";
+import { AppApiLayer } from "@api/rest/AppApiLayer";
+import initApiLayer from "./apiLayer.init";
 
 type InitStageType =
     | "i18n"
     | "db"
     | "migrations"
     | "seeding"
+    | "api"
     | "services"
     | "stores"
     | "ready"
@@ -21,15 +24,17 @@ type InitStageType =
 export class AppContextCreator {
     public appStore?: AppStoreType;
     public services?: AppServicesRootType;
+    public api!: AppApiLayer;
     public dbContext!: DbContextType;
     public stage: InitStageType = "i18n";
 
     async init() {
         try {
-            await this.runStep("i18n", this.initI18n);
             await this.runStep("db", this.initDb);
             await this.runStep("migrations", this.runMigrations);
             await this.runStep("seeding", this.seedData);
+            await this.runStep("i18n", this.initI18n);
+            await this.runStep("api", this.initApi);
             await this.runStep("services", this.initServices);
             await this.runStep("stores", this.initStores);
 
@@ -60,8 +65,12 @@ export class AppContextCreator {
         await new SeedService(this.dbContext).run();
     }
 
+    private async initApi() {
+        this.api = await initApiLayer();
+    }
+
     private async initServices() {
-        this.services = await initAppServices(this.dbContext);
+        this.services = await initAppServices(this.dbContext, this.api);
     }
 
     private async initStores() {

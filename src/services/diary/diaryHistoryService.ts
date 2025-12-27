@@ -3,8 +3,7 @@ import { DiaryHistoryItem } from "@appTypes/diary/DiaryHistoryItem";
 import { sortByDate } from "@utils/array.helper";
 
 class DiaryHistoryService {
-    constructor(private unitOfWork: UnitOfWork) {
-    }
+    constructor(private unitOfWork: UnitOfWork) { }
 
     public async getHistory(): Promise<DiaryHistoryItem[]> {
         const result = await this.unitOfWork.diaryHistoryRepository.getAll();

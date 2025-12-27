@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import { RefreshControl, ScrollView } from "react-native";
 import * as Location from "expo-location";
 import useAppContext from "@hooks/useAppContext";
-import UI from "src/shared/components/ui";
+import UI from "@shared/components/ui";
 import AccessDeniedStatic from "../../shared/components/accessDeniedStatic/AccessDeniedStatic";
 import { LocationCoords } from "@appTypes/LocationCoords";
 import CurrentWeatherStatus from "./commonWeatherStatus/CommonWeatherStatus";
@@ -41,7 +41,6 @@ const Weather = () => {
             }
 
             const { coords } = await Location.getCurrentPositionAsync();
-
             appStore.weather.weatherSettings.saveLocation(coords);
             await fetchWeather(coords);
         })();
