@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import UI from "src/shared/components/ui";
-import { useFormContext } from "@form/formStore/FormContext";
+import { useFormContext } from "@shared/form/formStore/FormContext";
 import { observer } from "mobx-react-lite";
 import { useTranslation } from "react-i18next";
-import Form from "src/core/form/index";
+import Form from "@shared/form/index";
 import ExtendedSymptomsList from "./fields/extendedSymptomsList/ExtendedSymptomsList";
 import NewUserSymptomForm from "./newUserSymptomForm/NewUserSymptomForm";
 import NewNoteFormStore from "../store/NewNoteFormStore";

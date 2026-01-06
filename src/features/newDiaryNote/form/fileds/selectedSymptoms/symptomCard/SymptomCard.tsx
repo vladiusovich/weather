@@ -7,7 +7,7 @@ import { Pressable } from "react-native";
 import NewNoteFormStore from "../../../../store/NewNoteFormStore";
 import Format from "src/shared/components/format";
 import { Symptom } from "@appTypes/diary/DiaryHistoryItem";
-import { useFormContext } from "@form/formStore/FormContext";
+import { useFormContext } from "@shared/form/formStore/FormContext";
 
 const SymptomCard: React.FC<Symptom> = ({
     ...props

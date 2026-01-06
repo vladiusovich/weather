@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
 import UI from "src/shared/components/ui";
-import { useFormContext } from "@form/formStore/FormContext";
+import { useFormContext } from "@shared/form/formStore/FormContext";
 import { useTranslation } from "react-i18next";
 import NewNoteFormStore from "../../../../store/NewNoteFormStore";
 

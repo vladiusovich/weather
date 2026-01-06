@@ -3,10 +3,10 @@ import type { SheetProps as NativeSheetProps } from "@tamagui/sheet";
 import { Sheet } from "@tamagui/sheet";
 import useBackHandler from "@hooks/useBackHandler";
 // import AppStoreProvider from '@store/provider/AppStoreProvider';
-import Form from "src/core/form/index";
+import Form from "@shared/form/index";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useWindowDimensions } from "react-native";
-import { FormStore } from "@form/formStore/FormStore";
+import { FormStore } from "@shared/form/formStore/FormStore";
 
 export type SheetProps<T extends Record<string, any>> = {
     /** Content to render inside the main sheet */

@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import React from "react";
 import UI from "src/shared/components/ui";
 import { useTranslation } from "react-i18next";
-import { useFormContext } from "@form/formStore/FormContext";
+import { useFormContext } from "@shared/form/formStore/FormContext";
 import Format from "src/shared/components/format";
 import NewNoteFormStore from "src/features/newDiaryNote/store/NewNoteFormStore";
 import Chip from "src/shared/components/ui/chip/Chip";

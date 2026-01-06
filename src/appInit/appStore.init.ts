@@ -4,12 +4,9 @@ import DiaryStore from "../appStore/diary/DiaryStore";
 import WeatherStore from "../appStore/weather/WeatherStore";
 
 const initAppStore = async (services: AppServicesRootType) => {
-    const weather = new WeatherStore(services);
-    const diary = new DiaryStore(services);
-
     const appStore: AppStoreType = {
-        weather,
-        diary,
+        weather: new WeatherStore(services),
+        diary: new DiaryStore(services),
     };
 
     return appStore;

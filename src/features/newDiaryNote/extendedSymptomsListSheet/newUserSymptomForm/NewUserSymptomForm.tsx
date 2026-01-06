@@ -2,7 +2,7 @@ import React from "react";
 import { observer } from "mobx-react-lite";
 import UI from "src/shared/components/ui";
 import useCreateForm from "@hooks/useCreateForm";
-import Form from "src/core/form/index";
+import Form from "@shared/form/index";
 import { Plus } from "@tamagui/lucide-icons";
 import NewUserSymptomFormStore from "../../store/NewUserSymptomFormStore";
 import { useTranslation } from "react-i18next";

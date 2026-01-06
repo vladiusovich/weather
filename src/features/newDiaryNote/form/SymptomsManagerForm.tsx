@@ -5,7 +5,7 @@ import CommentField from "./fileds/commentField/CommentField";
 import useModalController from "@hooks/useModalController";
 import { useTranslation } from "react-i18next";
 import SymptomChipsField from "./fileds/symptomChipsField/SymptomChipsField";
-import Form from "src/core/form/index";
+import Form from "@shared/form/index";
 import Date from "./fileds/date/Date";
 import ExtendedSymptomsListSheet from "../extendedSymptomsListSheet/ExtendedSymptomsListSheet";
 import SelectedSymptomCards from "./fileds/selectedSymptoms/SelectedSymptomCards";

@@ -1,7 +1,7 @@
 import AppStoreType from "src/appStore/AppStoreType";
 import { TFunction } from "i18next";
 import { makeObservable } from "mobx";
-import LocalizedFormStore from "@form/formStore/LocalizedFormStore";
+import LocalizedFormStore from "@shared/form/formStore/LocalizedFormStore";
 
 export type SymptomFormFields = {
     symptomName: string;

@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
-import { useFormContext } from "@form/formStore/FormContext";
+import { useFormContext } from "@shared/form/formStore/FormContext";
 import SymptomCard from "./symptomCard/SymptomCard";
 import NewNoteFormStore from "../../../store/NewNoteFormStore";
 import { useTranslation } from "react-i18next";

@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
 import UI from "src/shared/components/ui";
-import Form from "src/core/form/index";
+import Form from "@shared/form/index";
 
 const Date: React.FC = () => {
     return (

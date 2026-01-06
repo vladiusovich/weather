@@ -4,7 +4,7 @@ import UI from "src/shared/components/ui";
 import { useTranslation } from "react-i18next";
 import { Symptom } from "@appTypes/diary/DiaryHistoryItem";
 import NewNoteFormStore from "src/features/newDiaryNote/store/NewNoteFormStore";
-import { useFormContext } from "@form/formStore/FormContext";
+import { useFormContext } from "@shared/form/formStore/FormContext";
 
 const PainIntensity: React.FC<Symptom> = ({
     strengtOfPain,

@@ -4,7 +4,7 @@ import useCreateForm from "@hooks/useCreateForm";
 import NewNoteFormStore from "./store/NewNoteFormStore";
 import { useRouter } from "expo-router";
 import useCallbackIf from "@hooks/useCallbackIf";
-import Form from "src/core/form/index";
+import Form from "@shared/form/index";
 import SymptomsManagerForm from "./form/SymptomsManagerForm";
 import UI from "@shared/components/ui";
 

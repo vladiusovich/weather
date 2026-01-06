@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import NewNoteFormStore from "../../../store/NewNoteFormStore";
 import Format from "src/shared/components/format";
 import useSymptomTranslation from "src/shared/components/format/symptom/useSymptomTranslation";
-import { useFormContext } from "@form/formStore/FormContext";
+import { useFormContext } from "@shared/form/formStore/FormContext";
 
 interface Props {
     searchingValue?: string;

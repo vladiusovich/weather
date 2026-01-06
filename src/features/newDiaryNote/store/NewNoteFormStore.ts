@@ -4,7 +4,7 @@ import { TFunction } from "i18next";
 import { ValidatorBuilder } from "@validation/index";
 import constraints from "@validation/constraints";
 import { generateUUID } from "@utils/generateUUID";
-import LocalizedFormStore from "@form/formStore/LocalizedFormStore";
+import LocalizedFormStore from "@shared/form/formStore/LocalizedFormStore";
 
 type NewNoteFormFields = {
     date: Date;

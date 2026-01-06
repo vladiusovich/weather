@@ -1,5 +1,5 @@
 import Button, { IMnButtonProps } from "src/shared/components/ui/button/Button";
-import { useFormContext } from "@form/formStore/FormContext";
+import { useFormContext } from "@shared/form/formStore/FormContext";
 import { observer } from "mobx-react-lite";
 
 /**

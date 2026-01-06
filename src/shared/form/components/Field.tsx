@@ -1,6 +1,6 @@
 import YStack from "src/shared/components/ui/stack/YStack";
 import Typo from "src/shared/components/ui/typo/Typo";
-import { useFormContext } from "@form/formStore/FormContext";
+import { useFormContext } from "@shared/form/formStore/FormContext";
 import { observer } from "mobx-react-lite";
 
 /**

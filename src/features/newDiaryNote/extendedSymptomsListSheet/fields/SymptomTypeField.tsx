@@ -2,7 +2,7 @@ import UI, { SelectorOption } from "src/shared/components/ui";
 import useAppContext from "@hooks/useAppContext";
 import { useTranslation } from "react-i18next";
 import { observer } from "mobx-react-lite";
-import Form from "src/core/form/index";
+import Form from "@shared/form/index";
 import { useEffect } from "react";
 
 const SymptomTypeField: React.FC = () => {
