@@ -9,7 +9,7 @@
             "@store/*": ["src/appStore/*"],
             "@appTypes/*": ["./src/types/*"],
             "@utils/*": ["./src/utils/*"],
-            "@validation/*": ["./src/validation/*"],
+            "@validation/*": ["src/shared/validation/*"],
             "@hooks/*": ["./src/hooks/*"],
             "@form/*": ["src/shared/form/*"],
             "@db/*": ["./src/infrastructure/db/*"],

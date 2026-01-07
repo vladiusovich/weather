@@ -1,8 +1,8 @@
 import { Symptom } from "@appTypes/diary/DiaryHistoryItem";
 import AppStoreType from "@store/AppStoreType";
 import { TFunction } from "i18next";
-import { ValidatorBuilder } from "@validation/index";
-import constraints from "@validation/constraints";
+import { ValidatorBuilder } from "@shared/validation/index";
+import constraints from "@shared/validation/constraints";
 import { generateUUID } from "@utils/generateUUID";
 import LocalizedFormStore from "@shared/form/formStore/LocalizedFormStore";
 
@@ -82,9 +82,11 @@ class NewNoteFormStore extends LocalizedFormStore<NewNoteFormFields> {
         const symptoms = this.values.symptoms.filter(s => s.id !== id);
         this.setValue("symptoms", [...symptoms]);
     }
+
     private isSymptomAdded(id: string) {
         return this.values?.symptoms?.some(s => s.id === id);
     }
+
     private findSymptom(id: string) {
         return this.store.diary.symptoms.all.find(s => s.id === id);
     }

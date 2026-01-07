@@ -19,14 +19,13 @@ type InitStageType =
     | "ready"
     | "failed";
 
-
 // TODO: status?: ready | inProgress | fail
 export class AppContextCreator {
     public appStore?: AppStoreType;
     public services?: AppServicesRootType;
     public api!: AppApiLayer;
     public dbContext!: DbContextType;
-    public stage: InitStageType = "i18n";
+    public stage: InitStageType = "db";
 
     async init() {
         try {
