@@ -2,20 +2,19 @@ import { createThemes, defaultComponentThemes } from "@tamagui/theme-builder";
 import * as Colors from "@tamagui/colors";
 
 const darkPalette = [
-    "hsla(0, 0%, 2%, 1.00)",
-    "hsla(0, 0%, 7%, 1)",
-    "hsla(0, 0%, 10%, 1)",
-    "hsla(0, 0%, 13%, 1)",
-    "hsla(0, 0%, 16%, 1)",
-    "hsla(0, 0%, 20%, 1)",
-    "hsla(0, 0%, 25%, 1)",
-    "hsla(0, 0%, 30%, 1)",
-    "hsla(0, 0%, 35%, 1)",
-    "hsla(0, 0%, 45%, 1)",
-    "hsla(0, 0%, 50%, 1)",
-    "hsla(0, 0%, 55%, 1)",
+    "hsla(0, 0%, 7%, 1.00)",
+    "hsla(0, 0%, 15%, 1)",
+    "hsla(0, 0%, 18%, 1)",
+    "hsla(0, 0%, 21%, 1)",
+    "hsla(0, 0%, 24%, 1)",
+    "hsla(0, 0%, 28%, 1)",
+    "hsla(0, 0%, 33%, 1)",
+    "hsla(0, 0%, 38%, 1)",
+    "hsla(0, 0%, 43%, 1)",
+    "hsla(0, 0%, 53%, 1)",
+    "hsla(0, 0%, 58%, 1)",
+    "hsla(0, 0%, 63%, 1)",
 ];
-
 const lightPalette = [
     "hsla(0, 15%, 99%, 1)",
     "hsla(0, 15%, 94%, 1)",

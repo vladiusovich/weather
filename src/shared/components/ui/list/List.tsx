@@ -1,5 +1,6 @@
 import React from "react";
 import { ListItem, ListItemProps as TamaguiListItemProps, YGroup } from "tamagui";
+import { StyledListItem } from "./ListItem.styled";
 
 export type ListItemProps = TamaguiListItemProps;
 
@@ -9,18 +10,18 @@ export interface ListProps {
 
 const defaultProps = {
     size: "$6",
-    bg: "$background0",
+    bg: "$background",
     // hoverTheme: true,
     pressTheme: true,
 } as const;
 
 const List: React.FC<ListProps> = ({ items = [] }) => {
     return (
-        <YGroup rounded={"$7"}>
+        <YGroup rounded={"$7"} gap={"$1"}>
             {items.map((i) => {
                 return (
                     <YGroup.Item>
-                        <ListItem {...defaultProps} {...i} />
+                        <StyledListItem {...defaultProps} {...i} />
                     </YGroup.Item>
                 );
             })}

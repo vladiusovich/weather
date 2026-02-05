@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { useRouter } from "expo-router";
-import { ChevronRight, Languages } from "@tamagui/lucide-icons";
+import { ChevronRight, Languages, SunMoon } from "@tamagui/lucide-icons";
 import UI from "src/shared/components/ui";
 import { ScrollView } from "tamagui";
 import { useTranslation } from "react-i18next";
@@ -19,12 +19,12 @@ const Settings = () => {
                         iconAfter: ChevronRight,
                         onPress: () => router.push("/settings/language"),
                     },
-                    // {
-                    //     icon: SunMoon,
-                    //     title: "Theme",
-                    //     iconAfter: ChevronRight,
-                    //     onPress: () => router.push("/settings/theme"),
-                    // },
+                    {
+                        icon: SunMoon,
+                        title: "Theme",
+                        iconAfter: ChevronRight,
+                        onPress: () => router.push("/settings/language"),
+                    },
                 ]}
             />
         </UI.ScreenWrapper>
