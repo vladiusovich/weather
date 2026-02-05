@@ -1,17 +1,10 @@
 type RuleName = "required" | "invalid";
-
 type ValidatorFn<T, K extends string> = (value?: T) => K | undefined;
-
-export class ValidatorBuilder<
-    T,
-    R extends string = never
-> {
+export class ValidatorBuilder<T, R extends string = never> {
     private validators: ValidatorFn<T, string>[] = [];
-
     private constructor(validators: ValidatorFn<T, string>[]) {
         this.validators = validators;
     }
-
     static create<U>() {
         return new ValidatorBuilder<U, never>([]);
     }
@@ -30,7 +23,6 @@ export class ValidatorBuilder<
         const fn: ValidatorFn<T, K> = (value) => (predicate(value) ? name : undefined);
         return new ValidatorBuilder<T, R | K>([...this.validators, fn as ValidatorFn<T, string>]);
     }
-
     build(messages: { [P in R]: string }): (value?: T) => string | undefined {
         return (value?: T) => {
             for (const validate of this.validators as ValidatorFn<T, R>[]) {

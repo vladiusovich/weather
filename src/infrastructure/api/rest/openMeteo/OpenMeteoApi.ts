@@ -12,10 +12,10 @@ class OpenMeteoApi {
 
     public async fetchData(request: MeteoRequest) {
         const d = await this.httpClient.request<MeteoResponse>({
-            method: "get",
+            method: "GET",
             url: "/forecast",
+            params: request,
             cacheTimeInSeconds: 60,
-            data: request,
         });
 
         return d.data;

@@ -70,14 +70,12 @@ const Weather = () => {
             refreshControl={<RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />}
         >
             <UI.Loader isLoading={isLoading} />
-            {!isLoading && (
-                <UI.YStack gap='$3'>
-                    {/* <LocationStatus /> */}
-                    <CurrentWeatherStatus />
-                    <HourlyForecast />
-                    <DailyForecast />
-                </UI.YStack>
-            )}
+            <UI.YStack gap='$3'>
+                {/* <LocationStatus /> */}
+                <CurrentWeatherStatus />
+                <HourlyForecast />
+                <DailyForecast />
+            </UI.YStack>
         </UI.ScreenWrapper>
     );
 };

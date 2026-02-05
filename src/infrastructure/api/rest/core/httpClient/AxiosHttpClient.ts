@@ -2,9 +2,9 @@ import axios, { AxiosInstance } from "axios";
 import {
     IHttpClient,
     IHttpClientOptions,
+    IHttpClientRequest,
     IHttpClientResponse,
 } from "./IHttpClient";
-
 
 /*
     TODO:
@@ -17,14 +17,9 @@ class AxiosHttpClient implements IHttpClient {
         this.instance = axios.create(options);
     }
 
-    public async request<T>(config: any): Promise<IHttpClientResponse<T>> {
+    public async request<T>(config: IHttpClientRequest): Promise<IHttpClientResponse<T>> {
         const response = await this.instance.request<T>(config);
-
-        return {
-            data: response.data,
-            status: response.status,
-            statusText: response.statusText,
-        };
+        return response;;
     };
 }
 

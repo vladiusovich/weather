@@ -9,8 +9,8 @@ import { AppApiLayer } from "@api/rest/AppApiLayer";
 import initApiLayer from "./apiLayer.init";
 
 type InitStageType =
-    | "i18n"
     | "db"
+    | "i18n"
     | "migrations"
     | "seeding"
     | "api"
@@ -23,9 +23,9 @@ type InitStageType =
 export class AppContextCreator {
     public appStore?: AppStoreType;
     public services?: AppServicesRootType;
-    public api!: AppApiLayer;
-    public dbContext!: DbContextType;
     public stage: InitStageType = "db";
+    private api!: AppApiLayer;
+    private dbContext!: DbContextType;
 
     async init() {
         try {
@@ -42,7 +42,7 @@ export class AppContextCreator {
         } catch (err) {
             this.stage = "failed";
             console.error("[AppContext] ❌ init failed:", err);
-            throw err;                      // пробрасываем выше, если нужно
+            throw err;
         }
     }
 

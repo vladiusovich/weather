@@ -12,7 +12,7 @@ class GeoMagneticApi {
 
     public async fetchData(request: GfzGeoMagneticRequest) {
         const d = await this.httpClient.request<GfzGeoMagneticResponse>({
-            method: "get",
+            method: "GET",
             url: "/json/", // the last "/" is required
             cacheTimeInSeconds: 60,
             params: request,

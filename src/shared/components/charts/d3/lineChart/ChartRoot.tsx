@@ -151,13 +151,14 @@ export const ChartRoot: React.FC<ChartProps> = ({
                 onLayout={e => onLayout(e.nativeEvent.layout)}
                 style={{ minHeight: height, position: "relative" }}
             >
-                {enableGestures ? (
-                    <GestureDetector gesture={gesture}>
-                        {chartContent}
-                    </GestureDetector>
-                ) : (
-                    chartContent
-                )}
+                {enableGestures
+                    ? (
+                        <GestureDetector gesture={gesture}>
+                            {chartContent}
+                        </GestureDetector>
+                    )
+                    : chartContent
+                }
             </View>
         </GestureHandlerRootView>
     );

@@ -3,6 +3,17 @@ export interface IHttpClientOptions {
     timeout: number;
 }
 
+export type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
+
+export interface IHttpClientRequest {
+    method: HttpMethod;
+    url: string;
+    params?: Record<string, any>;
+    data?: any;
+    headers?: Record<string, string>;
+    cacheTimeInSeconds?: number;
+}
+
 export interface IHttpClientResponse<T = any> {
     data: T;
     status: number;
@@ -11,5 +22,5 @@ export interface IHttpClientResponse<T = any> {
 
 // Adapter
 export interface IHttpClient {
-    request<T>(config: any): Promise<IHttpClientResponse<T>>;
+    request<T>(request: IHttpClientRequest): Promise<IHttpClientResponse<T>>;
 }
