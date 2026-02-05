@@ -1,11 +1,11 @@
 import { SizeTokens, TokensParsed } from "@tamagui/web";
 import { FunctionComponent } from "react";
-import { Button as UiButton, ButtonProps, getTokens, Spinner } from "tamagui";
+import { Button as UiButton, ButtonProps as UiButtonProps, getTokens, Spinner } from "tamagui";
 
 type InputComponentIconProps = { color?: any; size?: any }
 type IconProp = JSX.Element | FunctionComponent<InputComponentIconProps> | null
 
-export interface IMnButtonProps extends ButtonProps {
+export interface ButtonProps extends UiButtonProps {
     loading?: boolean
     loadingIcon?: IconProp
     loadingIconAligment?: "left" | "right"
@@ -46,7 +46,7 @@ const getShapeSize = ({
     });
 };
 
-const Button = (props: IMnButtonProps) => {
+const Button = (props: ButtonProps) => {
     const {
         loading = false,
         loadingIconAligment,

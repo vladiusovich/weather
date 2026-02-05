@@ -23,6 +23,7 @@ import Input from "./input/Input";
 import Searchbar from "./searchbar/Searchbar";
 import { Separator, View } from "tamagui";
 import List from "./list/List";
+import FallbackMessage from "./fallbackMessage/FallbackMessage";
 
 export * from "./table/Table";
 export * from "./selector/Selector";
@@ -30,6 +31,7 @@ export * from "./input/Input";
 export * from "./searchbar/Searchbar";
 export * from "./datepicker/Datepicker";
 export * from "./list/List";
+export * from "./fallbackMessage/FallbackMessage";
 
 const UI = {
     Typo: Typo,
@@ -55,6 +57,7 @@ const UI = {
     Searchbar,
     Slider,
     List,
+    FallbackMessage,
 
     Paper,
     SheetView,

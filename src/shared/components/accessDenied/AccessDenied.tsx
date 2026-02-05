@@ -7,7 +7,7 @@ interface AccessDeniedStaticProps {
     permission: SystemPermissionType;
 }
 
-const AccessDeniedStatic: React.FC<AccessDeniedStaticProps> = ({ permission }) => {
+const AccessDenied: React.FC<AccessDeniedStaticProps> = ({ permission }) => {
     const { t } = useTranslation();
 
     const handleOpenSettings = async () => {
@@ -30,22 +30,15 @@ const AccessDeniedStatic: React.FC<AccessDeniedStaticProps> = ({ permission }) =
     );
 
     return (
-        <UI.YStack justify='center' flex={1}>
-            <UI.YStack gap='$3' items='center'>
-                <UI.Typo.H4>
-                    {header}
-                </UI.Typo.H4>
-
-                <UI.Typo.Text>
-                    {description}
-                </UI.Typo.Text>
-
-                <UI.Button onPress={handleOpenSettings}>
-                    {submit}
-                </UI.Button>
-            </UI.YStack>
-        </UI.YStack>
+        <UI.FallbackMessage
+            header={header}
+            description={description}
+            actions={[{
+                onPress: handleOpenSettings,
+                children: submit,
+            }]}
+        />
     );
 };
 
-export default AccessDeniedStatic;
+export default AccessDenied;

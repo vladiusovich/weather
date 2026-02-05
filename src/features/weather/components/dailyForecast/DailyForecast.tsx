@@ -2,10 +2,10 @@ import { useTranslation } from "react-i18next";
 import { observer } from "mobx-react-lite";
 import useAppContext from "@hooks/useAppContext";
 import Format from "src/shared/components/format";
-import ScrollableForecast from "../common/scrollableForecast/ScrollableForecast";
-import ForecastItem from "../common/scrollableForecast/ForecastItem";
 import { Calendar } from "@tamagui/lucide-icons";
 import { isSameDay, getNow } from "@utils/datetime.helper";
+import ScrollableForecast from "../scrollableForecast/ScrollableForecast";
+import ForecastItem from "../scrollableForecast/ForecastItem";
 
 const DailyForecast: React.FC = () => {
     const { t } = useTranslation();

@@ -28,8 +28,6 @@ class WeatherDataStore {
             timezone: "GMT",
         });
 
-        console.log(weather, location);
-
         runInAction(() => {
             this.data = weather;
         });
