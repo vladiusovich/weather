@@ -19,9 +19,8 @@ const AppTabsRouter: React.FC<AppTabsRouterProps> = ({
                 headerShown: false,
                 sceneStyle: {
                     backgroundColor: theme.background.val,
-                },
-            }
-            }
+                }
+            }}
         >
             {children}
         </Tabs >

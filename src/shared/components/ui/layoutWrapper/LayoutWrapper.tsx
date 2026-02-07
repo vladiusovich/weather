@@ -9,7 +9,7 @@ type BaseWrapperProps = {
 
 interface OwnProps<T extends React.ElementType> {
     Component?: T;
-    fullVeriacal?: boolean;
+    fullVertical?: boolean;
 }
 
 export type ScreenWrapperProps<T extends React.ElementType = typeof View> =
@@ -24,14 +24,14 @@ const baseStyle = {
 export const ScreenWrapper = <T extends React.ElementType = typeof View>({
     Component,
     children,
-    fullVeriacal = true,
+    fullVertical = true,
     ...rest
 }: ScreenWrapperProps<T>): React.ReactElement => {
     const WrapperComponent = Component || View;
     const insets = useSafeAreaInsets();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    const styles = { ...baseStyle, pb: fullVeriacal ? undefined : insets.bottom };
+    const styles = { ...baseStyle, pb: fullVertical ? undefined : insets.bottom };
 
     const Styled = React.useMemo(() => styled(WrapperComponent as any, styles), [WrapperComponent, styles]);
 

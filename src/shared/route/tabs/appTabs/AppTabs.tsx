@@ -21,8 +21,10 @@ export const AppTabs: React.FC<BottomTabBarProps> = ({
             borderColor={"transparent"}
             borderTopWidth={0}
             paddingInline={25}
+            // opacity={0.8}
         >
             <XStack
+                position="fixed"
                 justify={"center"}
                 bg={theme.background02}
                 borderWidth={1}
@@ -66,7 +68,6 @@ export const AppTabs: React.FC<BottomTabBarProps> = ({
                     );
                 })}
             </XStack>
-
         </XStack>
     );
 };

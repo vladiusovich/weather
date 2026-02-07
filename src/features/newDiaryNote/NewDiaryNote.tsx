@@ -15,7 +15,7 @@ const NewDiaryNote = (() => {
     useCallbackIf(newNoteFormStore.isSubmitted, () => router.replace("/diary/success"));
 
     return (
-        <UI.ScreenWrapper fullVeriacal={false}>
+        <UI.ScreenWrapper fullVertical={false}>
             <Form.Provider form={newNoteFormStore}>
                 <SymptomsManagerForm />
             </Form.Provider>
