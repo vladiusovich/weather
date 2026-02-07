@@ -68,6 +68,9 @@
         "settings": {
             "title": "Settings"
         },
+        "theme": {
+            "title": "Theme"
+        },
         "languages": {
             "title": "Language"
         },

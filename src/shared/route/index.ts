@@ -1,9 +1,9 @@
 import Stack from "./Stack";
-import Tabs from "./Tabs";
+import AppTabsRouter from "./tabs/AppTabsRouter";
 
 const Router = {
     Stack,
-    Tabs,
+    AppTabsRouter,
 };
 
 export default Router;

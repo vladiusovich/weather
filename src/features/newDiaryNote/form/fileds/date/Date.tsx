@@ -10,7 +10,6 @@ const Date: React.FC = () => {
             name='date'
             size={"$5"}
             scaleIcon={1.4}
-            bg={"$background06"}
         />
     );
 };

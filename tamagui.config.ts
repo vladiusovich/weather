@@ -18,9 +18,22 @@ const config = createTamagui({
 });
 
 export type AppConfig = typeof config;
+
+export const createConfig = () => {
+    const conf = createTamagui({
+        ...defaultConfig,
+        themes,
+    });
+
+    return conf;
+};
+
+export type TamaguiCustomConfig = AppConfig;
+
 declare module "tamagui" {
-    // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+    // eslint-disable-next-line @typescript-eslint/no-empty-object-type, @typescript-eslint/no-shadow
     interface TamaguiCustomConfig extends AppConfig { }
 }
+
 
 export default config;

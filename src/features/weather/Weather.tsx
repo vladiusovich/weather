@@ -11,7 +11,7 @@ import { useWeatherData } from "./hooks/useWeatherData";
 import { useLocationPermission } from "./hooks/useLocationPermission";
 import AccessDenied from "@shared/components/accessDenied/AccessDenied";
 
-const Weather = observer(() => {
+const Weather = () => {
     const appStore = useAppContext();
 
     const {
@@ -73,6 +73,6 @@ const Weather = observer(() => {
             </UI.YStack>
         </UI.ScreenWrapper>
     );
-});
+};
 
-export default Weather;
+export default observer(Weather);

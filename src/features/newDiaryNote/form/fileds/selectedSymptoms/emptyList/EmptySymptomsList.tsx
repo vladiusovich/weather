@@ -12,7 +12,8 @@ const EmptySymptomsList: React.FC = () => {
     const error = form.errors.symptoms;
 
     return (
-        <UI.Paper
+        <UI.View
+            rounded={15}
             minH={120}
             borderWidth={"$1"}
             borderColor={error ? "$red4" : "$borderColor"}
@@ -23,7 +24,7 @@ const EmptySymptomsList: React.FC = () => {
                     {t("screens.newDiaryNote.selectedSymptomsSection.emptyList")}
                 </UI.Typo.Text>
             </UI.YStack>
-        </UI.Paper>
+        </UI.View>
     );
 };
 

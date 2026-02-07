@@ -15,6 +15,7 @@ const CommentField: React.FC = () => {
                 component={UI.TextArea}
                 name='comment'
                 placeholder={t("screens.newDiaryNote.fields.comment.placeholder")}
+                bg={"transparent"}
                 maxLength={150}
             />
         </UI.YStack>

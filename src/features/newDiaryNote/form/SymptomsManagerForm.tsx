@@ -9,6 +9,7 @@ import Form from "@shared/form/index";
 import Date from "./fileds/date/Date";
 import ExtendedSymptomsListSheet from "../extendedSymptomsListSheet/ExtendedSymptomsListSheet";
 import SelectedSymptomCards from "./fileds/selectedSymptoms/SelectedSymptomCards";
+import { View } from "tamagui";
 
 const SymptomsManagerForm: React.FC = () => {
     const { t } = useTranslation();
@@ -17,7 +18,7 @@ const SymptomsManagerForm: React.FC = () => {
     return (
         <UI.YStack gap={"$3"} flex={1}>
             <ExtendedSymptomsListSheet open={open} onClose={onClose} />
-            <UI.Paper flex={1}>
+            <View flex={1}>
                 <UI.YStack flex={1} gap={"$5"}>
                     <UI.YStack gap={"$5"}>
                         <Date />
@@ -31,7 +32,7 @@ const SymptomsManagerForm: React.FC = () => {
                 <Form.Submit size={"$5"} mt={"$2"}>
                     {t("screens.newDiaryNote.submit")}
                 </Form.Submit>
-            </UI.Paper>
+            </View>
         </UI.YStack>
     );
 };

@@ -26,7 +26,7 @@ const TabsLayout = () => {
     const { t } = useTranslation();
 
     return (
-        <Router.Tabs>
+        <Router.AppTabsRouter>
             <Tabs.Screen
                 name='index'
                 options={{
@@ -48,7 +48,7 @@ const TabsLayout = () => {
                     tabBarIcon: tabBarIcon(ChartBar)
                 }}
             />
-        </Router.Tabs>
+        </Router.AppTabsRouter >
     );
 };
 

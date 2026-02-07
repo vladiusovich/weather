@@ -23,7 +23,7 @@ const Settings = () => {
                         icon: SunMoon,
                         title: "Theme",
                         iconAfter: ChevronRight,
-                        onPress: () => router.push("/settings/language"),
+                        onPress: () => router.push("/settings/theme"),
                     },
                 ]}
             />
